@@ -1,0 +1,12 @@
+D:\Backend\Backend\C# Advance\Laboratory\Framework\bin\Debug\Framework.dll.config
+D:\Backend\Backend\C# Advance\Laboratory\Framework\bin\Debug\Framework.dll
+D:\Backend\Backend\C# Advance\Laboratory\Framework\bin\Debug\Framework.pdb
+D:\Backend\Backend\C# Advance\Laboratory\Framework\bin\Debug\EntityFramework.dll
+D:\Backend\Backend\C# Advance\Laboratory\Framework\bin\Debug\EntityFramework.SqlServer.dll
+D:\Backend\Backend\C# Advance\Laboratory\Framework\bin\Debug\EntityFramework.xml
+D:\Backend\Backend\C# Advance\Laboratory\Framework\bin\Debug\EntityFramework.SqlServer.xml
+D:\Backend\Backend\C# Advance\Laboratory\Framework\obj\Debug\Framework.csproj.AssemblyReference.cache
+D:\Backend\Backend\C# Advance\Laboratory\Framework\obj\Debug\Framework.csproj.CoreCompileInputs.cache
+D:\Backend\Backend\C# Advance\Laboratory\Framework\obj\Debug\Framework.csproj.Up2Date
+D:\Backend\Backend\C# Advance\Laboratory\Framework\obj\Debug\Framework.dll
+D:\Backend\Backend\C# Advance\Laboratory\Framework\obj\Debug\Framework.pdb

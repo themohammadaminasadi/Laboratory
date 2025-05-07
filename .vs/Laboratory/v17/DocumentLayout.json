@@ -1,0 +1,363 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Backend\\Backend\\C# Advance\\Laboratory\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D90EA061-71D6-46E2-9026-30EE6606BF79}|DataAccess\\DataAccess.csproj|d:\\backend\\backend\\c# advance\\laboratory\\dataaccess\\employeerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D90EA061-71D6-46E2-9026-30EE6606BF79}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\employeerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{48DE1273-9E6D-4555-BAD6-D9FAC2AE34F6}|DoaminModel\\DoaminModel.csproj|d:\\backend\\backend\\c# advance\\laboratory\\doaminmodel\\models\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{48DE1273-9E6D-4555-BAD6-D9FAC2AE34F6}|DoaminModel\\DoaminModel.csproj|solutionrelative:doaminmodel\\models\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D6912300-1608-44D4-91A9-FBD4BA9C4684}|DataAccessServices\\DataAccessServices.csproj|d:\\backend\\backend\\c# advance\\laboratory\\dataaccessservices\\services\\iemployeerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D6912300-1608-44D4-91A9-FBD4BA9C4684}|DataAccessServices\\DataAccessServices.csproj|solutionrelative:dataaccessservices\\services\\iemployeerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E1CBF5E-B47E-4AB1-A266-A092CAE13494}|Laboratory\\Laboratory.csproj|d:\\backend\\backend\\c# advance\\laboratory\\laboratory\\frmemployee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{3E1CBF5E-B47E-4AB1-A266-A092CAE13494}|Laboratory\\Laboratory.csproj|solutionrelative:laboratory\\frmemployee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E1CBF5E-B47E-4AB1-A266-A092CAE13494}|Laboratory\\Laboratory.csproj|d:\\backend\\backend\\c# advance\\laboratory\\laboratory\\frminsurance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{3E1CBF5E-B47E-4AB1-A266-A092CAE13494}|Laboratory\\Laboratory.csproj|solutionrelative:laboratory\\frminsurance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E1CBF5E-B47E-4AB1-A266-A092CAE13494}|Laboratory\\Laboratory.csproj|d:\\backend\\backend\\c# advance\\laboratory\\laboratory\\frminsurance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E1CBF5E-B47E-4AB1-A266-A092CAE13494}|Laboratory\\Laboratory.csproj|solutionrelative:laboratory\\frminsurance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E1CBF5E-B47E-4AB1-A266-A092CAE13494}|Laboratory\\Laboratory.csproj|d:\\backend\\backend\\c# advance\\laboratory\\laboratory\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E1CBF5E-B47E-4AB1-A266-A092CAE13494}|Laboratory\\Laboratory.csproj|solutionrelative:laboratory\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E1CBF5E-B47E-4AB1-A266-A092CAE13494}|Laboratory\\Laboratory.csproj|d:\\backend\\backend\\c# advance\\laboratory\\laboratory\\frmcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E1CBF5E-B47E-4AB1-A266-A092CAE13494}|Laboratory\\Laboratory.csproj|solutionrelative:laboratory\\frmcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E1CBF5E-B47E-4AB1-A266-A092CAE13494}|Laboratory\\Laboratory.csproj|d:\\backend\\backend\\c# advance\\laboratory\\laboratory\\frmcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{3E1CBF5E-B47E-4AB1-A266-A092CAE13494}|Laboratory\\Laboratory.csproj|solutionrelative:laboratory\\frmcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D90EA061-71D6-46E2-9026-30EE6606BF79}|DataAccess\\DataAccess.csproj|d:\\backend\\backend\\c# advance\\laboratory\\dataaccess\\insurancerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D90EA061-71D6-46E2-9026-30EE6606BF79}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\insurancerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{48DE1273-9E6D-4555-BAD6-D9FAC2AE34F6}|DoaminModel\\DoaminModel.csproj|d:\\backend\\backend\\c# advance\\laboratory\\doaminmodel\\models\\insurance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{48DE1273-9E6D-4555-BAD6-D9FAC2AE34F6}|DoaminModel\\DoaminModel.csproj|solutionrelative:doaminmodel\\models\\insurance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{48DE1273-9E6D-4555-BAD6-D9FAC2AE34F6}|DoaminModel\\DoaminModel.csproj|d:\\backend\\backend\\c# advance\\laboratory\\doaminmodel\\models\\laboratorycontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{48DE1273-9E6D-4555-BAD6-D9FAC2AE34F6}|DoaminModel\\DoaminModel.csproj|solutionrelative:doaminmodel\\models\\laboratorycontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E1CBF5E-B47E-4AB1-A266-A092CAE13494}|Laboratory\\Laboratory.csproj|d:\\backend\\backend\\c# advance\\laboratory\\laboratory\\frmunits.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{3E1CBF5E-B47E-4AB1-A266-A092CAE13494}|Laboratory\\Laboratory.csproj|solutionrelative:laboratory\\frmunits.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E1CBF5E-B47E-4AB1-A266-A092CAE13494}|Laboratory\\Laboratory.csproj|d:\\backend\\backend\\c# advance\\laboratory\\laboratory\\frmunits.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E1CBF5E-B47E-4AB1-A266-A092CAE13494}|Laboratory\\Laboratory.csproj|solutionrelative:laboratory\\frmunits.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E1CBF5E-B47E-4AB1-A266-A092CAE13494}|Laboratory\\Laboratory.csproj|d:\\backend\\backend\\c# advance\\laboratory\\laboratory\\frmcategory.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E1CBF5E-B47E-4AB1-A266-A092CAE13494}|Laboratory\\Laboratory.csproj|solutionrelative:laboratory\\frmcategory.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D6912300-1608-44D4-91A9-FBD4BA9C4684}|DataAccessServices\\DataAccessServices.csproj|d:\\backend\\backend\\c# advance\\laboratory\\dataaccessservices\\services\\iinsurancerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D6912300-1608-44D4-91A9-FBD4BA9C4684}|DataAccessServices\\DataAccessServices.csproj|solutionrelative:dataaccessservices\\services\\iinsurancerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D6912300-1608-44D4-91A9-FBD4BA9C4684}|DataAccessServices\\DataAccessServices.csproj|d:\\backend\\backend\\c# advance\\laboratory\\dataaccessservices\\services\\itestcategoriesrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D6912300-1608-44D4-91A9-FBD4BA9C4684}|DataAccessServices\\DataAccessServices.csproj|solutionrelative:dataaccessservices\\services\\itestcategoriesrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D6912300-1608-44D4-91A9-FBD4BA9C4684}|DataAccessServices\\DataAccessServices.csproj|d:\\backend\\backend\\c# advance\\laboratory\\dataaccessservices\\services\\iunitrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D6912300-1608-44D4-91A9-FBD4BA9C4684}|DataAccessServices\\DataAccessServices.csproj|solutionrelative:dataaccessservices\\services\\iunitrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D6912300-1608-44D4-91A9-FBD4BA9C4684}|DataAccessServices\\DataAccessServices.csproj|d:\\backend\\backend\\c# advance\\laboratory\\dataaccessservices\\services\\ibaserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D6912300-1608-44D4-91A9-FBD4BA9C4684}|DataAccessServices\\DataAccessServices.csproj|solutionrelative:dataaccessservices\\services\\ibaserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Employee.cs",
+              "DocumentMoniker": "D:\\Backend\\Backend\\C# Advance\\Laboratory\\DoaminModel\\Models\\Employee.cs",
+              "RelativeDocumentMoniker": "DoaminModel\\Models\\Employee.cs",
+              "ToolTip": "D:\\Backend\\Backend\\C# Advance\\Laboratory\\DoaminModel\\Models\\Employee.cs",
+              "RelativeToolTip": "DoaminModel\\Models\\Employee.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABoAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T07:11:26.064Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "EmployeeRepository.cs",
+              "DocumentMoniker": "D:\\Backend\\Backend\\C# Advance\\Laboratory\\DataAccess\\EmployeeRepository.cs",
+              "RelativeDocumentMoniker": "DataAccess\\EmployeeRepository.cs",
+              "ToolTip": "D:\\Backend\\Backend\\C# Advance\\Laboratory\\DataAccess\\EmployeeRepository.cs",
+              "RelativeToolTip": "DataAccess\\EmployeeRepository.cs",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAmwDwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T06:44:40.207Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "frmInsurance.cs",
+              "DocumentMoniker": "D:\\Backend\\Backend\\C# Advance\\Laboratory\\Laboratory\\frmInsurance.cs",
+              "RelativeDocumentMoniker": "Laboratory\\frmInsurance.cs",
+              "ToolTip": "D:\\Backend\\Backend\\C# Advance\\Laboratory\\Laboratory\\frmInsurance.cs",
+              "RelativeToolTip": "Laboratory\\frmInsurance.cs",
+              "ViewState": "AgIAAHYAAAAAAAAAAAAYwIgAAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T05:53:20.515Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "frmInsurance.cs [Design]",
+              "DocumentMoniker": "D:\\Backend\\Backend\\C# Advance\\Laboratory\\Laboratory\\frmInsurance.cs",
+              "RelativeDocumentMoniker": "Laboratory\\frmInsurance.cs",
+              "ToolTip": "D:\\Backend\\Backend\\C# Advance\\Laboratory\\Laboratory\\frmInsurance.cs [Design]",
+              "RelativeToolTip": "Laboratory\\frmInsurance.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T05:46:19.079Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "frmCategory.cs [Design]",
+              "DocumentMoniker": "D:\\Backend\\Backend\\C# Advance\\Laboratory\\Laboratory\\frmCategory.cs",
+              "RelativeDocumentMoniker": "Laboratory\\frmCategory.cs",
+              "ToolTip": "D:\\Backend\\Backend\\C# Advance\\Laboratory\\Laboratory\\frmCategory.cs [Design]",
+              "RelativeToolTip": "Laboratory\\frmCategory.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T05:27:16.172Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "frmUnits.cs [Design]",
+              "DocumentMoniker": "D:\\Backend\\Backend\\C# Advance\\Laboratory\\Laboratory\\frmUnits.cs",
+              "RelativeDocumentMoniker": "Laboratory\\frmUnits.cs",
+              "ToolTip": "D:\\Backend\\Backend\\C# Advance\\Laboratory\\Laboratory\\frmUnits.cs [Design]",
+              "RelativeToolTip": "Laboratory\\frmUnits.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T05:27:04.052Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "frmCategory.cs",
+              "DocumentMoniker": "D:\\Backend\\Backend\\C# Advance\\Laboratory\\Laboratory\\frmCategory.cs",
+              "RelativeDocumentMoniker": "Laboratory\\frmCategory.cs",
+              "ToolTip": "D:\\Backend\\Backend\\C# Advance\\Laboratory\\Laboratory\\frmCategory.cs",
+              "RelativeToolTip": "Laboratory\\frmCategory.cs",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAuwEwAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T05:31:33.763Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "frmEmployee.cs [Design]",
+              "DocumentMoniker": "D:\\Backend\\Backend\\C# Advance\\Laboratory\\Laboratory\\frmEmployee.cs",
+              "RelativeDocumentMoniker": "Laboratory\\frmEmployee.cs",
+              "ToolTip": "D:\\Backend\\Backend\\C# Advance\\Laboratory\\Laboratory\\frmEmployee.cs [Design]",
+              "RelativeToolTip": "Laboratory\\frmEmployee.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T05:24:28.502Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IEmployeeRepository.cs",
+              "DocumentMoniker": "D:\\Backend\\Backend\\C# Advance\\Laboratory\\DataAccessServices\\services\\IEmployeeRepository.cs",
+              "RelativeDocumentMoniker": "DataAccessServices\\services\\IEmployeeRepository.cs",
+              "ToolTip": "D:\\Backend\\Backend\\C# Advance\\Laboratory\\DataAccessServices\\services\\IEmployeeRepository.cs",
+              "RelativeToolTip": "DataAccessServices\\services\\IEmployeeRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T05:00:39.489Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Backend\\Backend\\C# Advance\\Laboratory\\Laboratory\\Program.cs",
+              "RelativeDocumentMoniker": "Laboratory\\Program.cs",
+              "ToolTip": "D:\\Backend\\Backend\\C# Advance\\Laboratory\\Laboratory\\Program.cs",
+              "RelativeToolTip": "Laboratory\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T05:44:03.134Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Insurance.cs",
+              "DocumentMoniker": "D:\\Backend\\Backend\\C# Advance\\Laboratory\\DoaminModel\\Models\\Insurance.cs",
+              "RelativeDocumentMoniker": "DoaminModel\\Models\\Insurance.cs",
+              "ToolTip": "D:\\Backend\\Backend\\C# Advance\\Laboratory\\DoaminModel\\Models\\Insurance.cs",
+              "RelativeToolTip": "DoaminModel\\Models\\Insurance.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T05:50:37.643Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "InsuranceRepository.cs",
+              "DocumentMoniker": "D:\\Backend\\Backend\\C# Advance\\Laboratory\\DataAccess\\InsuranceRepository.cs",
+              "RelativeDocumentMoniker": "DataAccess\\InsuranceRepository.cs",
+              "ToolTip": "D:\\Backend\\Backend\\C# Advance\\Laboratory\\DataAccess\\InsuranceRepository.cs",
+              "RelativeToolTip": "DataAccess\\InsuranceRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T05:45:56.76Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "frmCategory.Designer.cs",
+              "DocumentMoniker": "D:\\Backend\\Backend\\C# Advance\\Laboratory\\Laboratory\\frmCategory.Designer.cs",
+              "RelativeDocumentMoniker": "Laboratory\\frmCategory.Designer.cs",
+              "ToolTip": "D:\\Backend\\Backend\\C# Advance\\Laboratory\\Laboratory\\frmCategory.Designer.cs",
+              "RelativeToolTip": "Laboratory\\frmCategory.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T05:27:52.96Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "LaboratoryContext.cs",
+              "DocumentMoniker": "D:\\Backend\\Backend\\C# Advance\\Laboratory\\DoaminModel\\Models\\LaboratoryContext.cs",
+              "RelativeDocumentMoniker": "DoaminModel\\Models\\LaboratoryContext.cs",
+              "ToolTip": "D:\\Backend\\Backend\\C# Advance\\Laboratory\\DoaminModel\\Models\\LaboratoryContext.cs",
+              "RelativeToolTip": "DoaminModel\\Models\\LaboratoryContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T04:59:10.602Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "frmUnits.cs",
+              "DocumentMoniker": "D:\\Backend\\Backend\\C# Advance\\Laboratory\\Laboratory\\frmUnits.cs",
+              "RelativeDocumentMoniker": "Laboratory\\frmUnits.cs",
+              "ToolTip": "D:\\Backend\\Backend\\C# Advance\\Laboratory\\Laboratory\\frmUnits.cs",
+              "RelativeToolTip": "Laboratory\\frmUnits.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAA8wDsAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T05:31:23.755Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "IUnitRepository.cs",
+              "DocumentMoniker": "D:\\Backend\\Backend\\C# Advance\\Laboratory\\DataAccessServices\\services\\IUnitRepository.cs",
+              "RelativeDocumentMoniker": "DataAccessServices\\services\\IUnitRepository.cs",
+              "ToolTip": "D:\\Backend\\Backend\\C# Advance\\Laboratory\\DataAccessServices\\services\\IUnitRepository.cs",
+              "RelativeToolTip": "DataAccessServices\\services\\IUnitRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T05:01:17.269Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "ITestCategoriesRepository.cs",
+              "DocumentMoniker": "D:\\Backend\\Backend\\C# Advance\\Laboratory\\DataAccessServices\\services\\ITestCategoriesRepository.cs",
+              "RelativeDocumentMoniker": "DataAccessServices\\services\\ITestCategoriesRepository.cs",
+              "ToolTip": "D:\\Backend\\Backend\\C# Advance\\Laboratory\\DataAccessServices\\services\\ITestCategoriesRepository.cs",
+              "RelativeToolTip": "DataAccessServices\\services\\ITestCategoriesRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T05:00:43.388Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "IInsuranceRepository.cs",
+              "DocumentMoniker": "D:\\Backend\\Backend\\C# Advance\\Laboratory\\DataAccessServices\\services\\IInsuranceRepository.cs",
+              "RelativeDocumentMoniker": "DataAccessServices\\services\\IInsuranceRepository.cs",
+              "ToolTip": "D:\\Backend\\Backend\\C# Advance\\Laboratory\\DataAccessServices\\services\\IInsuranceRepository.cs",
+              "RelativeToolTip": "DataAccessServices\\services\\IInsuranceRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T05:00:41.484Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "IBaseRepository.cs",
+              "DocumentMoniker": "D:\\Backend\\Backend\\C# Advance\\Laboratory\\DataAccessServices\\services\\IBaseRepository.cs",
+              "RelativeDocumentMoniker": "DataAccessServices\\services\\IBaseRepository.cs",
+              "ToolTip": "D:\\Backend\\Backend\\C# Advance\\Laboratory\\DataAccessServices\\services\\IBaseRepository.cs",
+              "RelativeToolTip": "DataAccessServices\\services\\IBaseRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T05:00:37.111Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 65,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 105,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

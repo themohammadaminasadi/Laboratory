@@ -1,0 +1,12 @@
+D:\Backend\Backend\C# Advance\Laboratory\DataAccessServices\bin\Debug\DataAccessServices.dll.config
+D:\Backend\Backend\C# Advance\Laboratory\DataAccessServices\bin\Debug\DataAccessServices.dll
+D:\Backend\Backend\C# Advance\Laboratory\DataAccessServices\bin\Debug\DataAccessServices.pdb
+D:\Backend\Backend\C# Advance\Laboratory\DataAccessServices\bin\Debug\EntityFramework.dll
+D:\Backend\Backend\C# Advance\Laboratory\DataAccessServices\bin\Debug\EntityFramework.SqlServer.dll
+D:\Backend\Backend\C# Advance\Laboratory\DataAccessServices\bin\Debug\EntityFramework.xml
+D:\Backend\Backend\C# Advance\Laboratory\DataAccessServices\bin\Debug\EntityFramework.SqlServer.xml
+D:\Backend\Backend\C# Advance\Laboratory\DataAccessServices\obj\Debug\DataAccessServices.csproj.AssemblyReference.cache
+D:\Backend\Backend\C# Advance\Laboratory\DataAccessServices\obj\Debug\DataAccessServices.csproj.CoreCompileInputs.cache
+D:\Backend\Backend\C# Advance\Laboratory\DataAccessServices\obj\Debug\DataAcce.2B56C15A.Up2Date
+D:\Backend\Backend\C# Advance\Laboratory\DataAccessServices\obj\Debug\DataAccessServices.dll
+D:\Backend\Backend\C# Advance\Laboratory\DataAccessServices\obj\Debug\DataAccessServices.pdb

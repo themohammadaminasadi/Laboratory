@@ -16,7 +16,7 @@ namespace Laboratory
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmInsurance());
+            Application.Run(new frmEmployee());
         }
     }
 }

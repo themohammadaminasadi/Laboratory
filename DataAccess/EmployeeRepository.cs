@@ -16,16 +16,34 @@ namespace DataAccess
         private LaboratoryContext db = new LaboratoryContext();
         public int Add(Employee Model)
         {
-            db.Employees.Add(Model);
-            db.SaveChanges();
-            return Model.EmployeeID;
+            try
+            {
+                db.Employees.Add(Model);
+                db.SaveChanges();
+                return Model.EmployeeID;
+            }
+            catch (Exception)
+            {
+
+                throw new Exception("عملیات اضافه کردن به درستی اضافه نشده با پشتیبانی تماس بگیرید");
+            }
+            
         }
 
         public bool Delete(int Key)
         {
-            db.Employees.Remove(db.Employees.FirstOrDefault(x => x.EmployeeID == Key));
-            db.SaveChanges();
-            return true;
+            try
+            {
+                db.Employees.Remove(db.Employees.FirstOrDefault(x => x.EmployeeID == Key));
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+
+                throw new Exception("عملیات حذف با موفقیت انجام نشد با پشتیبانی تماس بگیرید");
+            }
+            
         }
 
         public Employee Get(int Key)
@@ -44,17 +62,26 @@ namespace DataAccess
         }
         public bool Update(Employee NewModel)
         {
-            var OldEmployee = db.Employees.FirstOrDefault(x => x.EmployeeID == NewModel.EmployeeID);
-            OldEmployee.Active = NewModel.Active;
-            OldEmployee.Title = NewModel.Title;
-            OldEmployee.UserName = NewModel.UserName;
-            OldEmployee.Password = NewModel.Password;
-            OldEmployee.NationalCode = NewModel.NationalCode;
-            OldEmployee.FirstName = NewModel.FirstName;
-            OldEmployee.LastName = NewModel.LastName;
-            OldEmployee.PhoneNumber = NewModel.PhoneNumber;
-            db.SaveChanges();
-            return true;
+            try
+            {
+                var OldEmployee = db.Employees.FirstOrDefault(x => x.EmployeeID == NewModel.EmployeeID);
+                OldEmployee.Active = NewModel.Active;
+                OldEmployee.Title = NewModel.Title;
+                OldEmployee.UserName = NewModel.UserName;
+                OldEmployee.Password = NewModel.Password;
+                OldEmployee.NationalCode = NewModel.NationalCode;
+                OldEmployee.FirstName = NewModel.FirstName;
+                OldEmployee.LastName = NewModel.LastName;
+                OldEmployee.PhoneNumber = NewModel.PhoneNumber;
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+
+                throw new Exception("عملیات ویرایش با شکست رو به رو شد با پشتیبانی تماس بگیرید");
+            }
+           
         }
     }
 }

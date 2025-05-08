@@ -1,3 +1,11 @@
+D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.csproj.AssemblyReference.cache
+D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.frmCategory.resources
+D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.frmEmployee.resources
+D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.frmInsurance.resources
+D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.frmUnits.resources
+D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.Properties.Resources.resources
+D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.csproj.GenerateResource.cache
+D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.csproj.CoreCompileInputs.cache
 D:\Backend\Backend\C# Advance\Laboratory\Laboratory\bin\Debug\Laboratory.exe.config
 D:\Backend\Backend\C# Advance\Laboratory\Laboratory\bin\Debug\Laboratory.exe
 D:\Backend\Backend\C# Advance\Laboratory\Laboratory\bin\Debug\Laboratory.pdb
@@ -17,14 +25,6 @@ D:\Backend\Backend\C# Advance\Laboratory\Laboratory\bin\Debug\Framework.pdb
 D:\Backend\Backend\C# Advance\Laboratory\Laboratory\bin\Debug\Framework.dll.config
 D:\Backend\Backend\C# Advance\Laboratory\Laboratory\bin\Debug\EntityFramework.xml
 D:\Backend\Backend\C# Advance\Laboratory\Laboratory\bin\Debug\EntityFramework.SqlServer.xml
-D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.csproj.AssemblyReference.cache
-D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.frmCategory.resources
-D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.frmEmployee.resources
-D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.frmUnits.resources
-D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.Properties.Resources.resources
-D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.csproj.GenerateResource.cache
-D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.csproj.CoreCompileInputs.cache
 D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.csproj.Up2Date
 D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.exe
 D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.pdb
-D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.frmInsurance.resources

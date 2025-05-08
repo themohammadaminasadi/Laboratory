@@ -6,15 +6,19 @@ namespace DoaminModel.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("TEMP")]
-    public partial class TEMP
+    [Table("InsuranceTest")]
+    public partial class InsuranceTest
     {
-        public int ID { get; set; }
+        public int InsuranceTestID { get; set; }
 
         public int TestID { get; set; }
 
         public int InsuraneID { get; set; }
 
         public int Discount { get; set; }
+
+        public virtual Insurance Insurance { get; set; }
+
+        public virtual Test Test { get; set; }
     }
 }

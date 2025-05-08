@@ -9,6 +9,12 @@ namespace DoaminModel.Models
     [Table("Employee")]
     public partial class Employee
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Employee()
+        {
+            PaitentTestHeders = new HashSet<PaitentTestHeder>();
+        }
+
         public int EmployeeID { get; set; }
 
         [Required]
@@ -26,16 +32,19 @@ namespace DoaminModel.Models
         [StringLength(50)]
         public string Password { get; set; }
 
+        [Required]
         [StringLength(20)]
         public string NationalCode { get; set; }
 
-        [Required]
         [StringLength(16)]
         public string PhoneNumber { get; set; }
 
         public bool Active { get; set; }
 
-        [StringLength(50)]
+        [StringLength(90)]
         public string Title { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PaitentTestHeder> PaitentTestHeders { get; set; }
     }
 }

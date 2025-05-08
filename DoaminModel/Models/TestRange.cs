@@ -24,7 +24,11 @@ namespace DoaminModel.Models
 
         public int? ToAge { get; set; }
 
+        public bool Hazard { get; set; }
+
         [StringLength(100)]
         public string Description { get; set; }
+
+        public virtual Test Test { get; set; }
     }
 }

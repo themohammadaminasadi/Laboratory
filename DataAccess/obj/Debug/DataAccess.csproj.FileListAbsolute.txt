@@ -1,3 +1,5 @@
+D:\Backend\Backend\C# Advance\Laboratory\DataAccess\obj\Debug\DataAccess.csproj.AssemblyReference.cache
+D:\Backend\Backend\C# Advance\Laboratory\DataAccess\obj\Debug\DataAccess.csproj.CoreCompileInputs.cache
 D:\Backend\Backend\C# Advance\Laboratory\DataAccess\bin\Debug\DataAccess.dll.config
 D:\Backend\Backend\C# Advance\Laboratory\DataAccess\bin\Debug\DataAccess.dll
 D:\Backend\Backend\C# Advance\Laboratory\DataAccess\bin\Debug\DataAccess.pdb
@@ -11,8 +13,6 @@ D:\Backend\Backend\C# Advance\Laboratory\DataAccess\bin\Debug\DoaminModel.pdb
 D:\Backend\Backend\C# Advance\Laboratory\DataAccess\bin\Debug\DoaminModel.dll.config
 D:\Backend\Backend\C# Advance\Laboratory\DataAccess\bin\Debug\EntityFramework.xml
 D:\Backend\Backend\C# Advance\Laboratory\DataAccess\bin\Debug\EntityFramework.SqlServer.xml
-D:\Backend\Backend\C# Advance\Laboratory\DataAccess\obj\Debug\DataAccess.csproj.AssemblyReference.cache
-D:\Backend\Backend\C# Advance\Laboratory\DataAccess\obj\Debug\DataAccess.csproj.CoreCompileInputs.cache
 D:\Backend\Backend\C# Advance\Laboratory\DataAccess\obj\Debug\DataAccess.csproj.Up2Date
 D:\Backend\Backend\C# Advance\Laboratory\DataAccess\obj\Debug\DataAccess.dll
 D:\Backend\Backend\C# Advance\Laboratory\DataAccess\obj\Debug\DataAccess.pdb

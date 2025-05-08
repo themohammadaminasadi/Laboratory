@@ -1,21 +1,15 @@
-# Build results
-bin/
-obj/
-
-# User-specific files
-*.rsuser
+# VS cache files
+.vs/
 *.suo
 *.user
 *.userosscache
-*.sln.docstates
 
-# VS cache files
-*.cache
-*.csproj.AssemblyReference.cache
-
-# VS folders
-.vs/
+# Build results
+bin/
+obj/
+*.exe
+*.pdb
 
 # Others
 *.log
-*.tmp
+*.cache

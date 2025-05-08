@@ -18,6 +18,7 @@ namespace DoaminModel.Models
         public virtual DbSet<PaitentTestHeder> PaitentTestHeders { get; set; }
         public virtual DbSet<Patient> Patients { get; set; }
         public virtual DbSet<PatientTestDetail> PatientTestDetails { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Test> Tests { get; set; }
         public virtual DbSet<TestCategory> TestCategories { get; set; }
         public virtual DbSet<TestRange> TestRanges { get; set; }

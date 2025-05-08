@@ -17,6 +17,9 @@ namespace DoaminModel.Models
 
         public int Discount { get; set; }
 
+        [Column(TypeName = "date")]
+        public DateTime Year { get; set; }
+
         public virtual Insurance Insurance { get; set; }
 
         public virtual Test Test { get; set; }

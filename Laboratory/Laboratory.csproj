@@ -82,6 +82,12 @@
     <Compile Include="frmInsurance.Designer.cs">
       <DependentUpon>frmInsurance.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmPatient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPatient.Designer.cs">
+      <DependentUpon>frmPatient.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmUnits.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +104,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmInsurance.resx">
       <DependentUpon>frmInsurance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPatient.resx">
+      <DependentUpon>frmPatient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmUnits.resx">
       <DependentUpon>frmUnits.cs</DependentUpon>

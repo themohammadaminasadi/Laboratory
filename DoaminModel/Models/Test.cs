@@ -9,6 +9,14 @@ namespace DoaminModel.Models
     [Table("Test")]
     public partial class Test
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Test()
+        {
+            InsuranceTests = new HashSet<InsuranceTest>();
+            PatientTestDetails = new HashSet<PatientTestDetail>();
+            TestRanges = new HashSet<TestRange>();
+        }
+
         public int TestID { get; set; }
 
         [Required]
@@ -25,5 +33,20 @@ namespace DoaminModel.Models
 
         [StringLength(50)]
         public string Description { get; set; }
+
+        public long? Price { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<InsuranceTest> InsuranceTests { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PatientTestDetail> PatientTestDetails { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TestRange> TestRanges { get; set; }
+
+        public virtual TestCategory TestCategory { get; set; }
+
+        public virtual Unit Unit { get; set; }
     }
 }

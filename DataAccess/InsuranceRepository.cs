@@ -53,7 +53,7 @@ namespace DataAccess
 
         public bool hasInsuranceInTableTemp(int InsuranceID)
         {
-            return db.TEMPs.Any(x => x.InsuraneID == InsuranceID);
+            return db.InsuranceTests.Any(x => x.InsuraneID == InsuranceID);
         }
 
         public bool HasInuranceTypeNameInTableInsurance(string InsuranceTypeName)

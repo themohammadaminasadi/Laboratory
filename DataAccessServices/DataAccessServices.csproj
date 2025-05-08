@@ -58,6 +58,7 @@
     <Compile Include="services\IInsuranceRepository.cs" />
     <Compile Include="services\ITestCategoriesRepository.cs" />
     <Compile Include="services\IUnitRepository.cs" />
+    <Compile Include="services\IPatientRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

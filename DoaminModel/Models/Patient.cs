@@ -9,6 +9,12 @@ namespace DoaminModel.Models
     [Table("Patient")]
     public partial class Patient
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Patient()
+        {
+            PaitentTestHeders = new HashSet<PaitentTestHeder>();
+        }
+
         public int PatientID { get; set; }
 
         [Required]
@@ -37,5 +43,8 @@ namespace DoaminModel.Models
 
         [StringLength(70)]
         public string Description { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PaitentTestHeder> PaitentTestHeders { get; set; }
     }
 }

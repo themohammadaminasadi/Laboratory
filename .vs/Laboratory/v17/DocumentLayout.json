@@ -3,15 +3,15 @@
   "WorkspaceRootPath": "D:\\Backend\\Backend\\C# Advance\\Laboratory\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3E1CBF5E-B47E-4AB1-A266-A092CAE13494}|Laboratory\\Laboratory.csproj|D:\\Backend\\Backend\\C# Advance\\Laboratory\\laboratory\\frmemployee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{3E1CBF5E-B47E-4AB1-A266-A092CAE13494}|Laboratory\\Laboratory.csproj|d:\\backend\\backend\\c# advance\\laboratory\\laboratory\\frmemployee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{3E1CBF5E-B47E-4AB1-A266-A092CAE13494}|Laboratory\\Laboratory.csproj|solutionrelative:laboratory\\frmemployee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3E1CBF5E-B47E-4AB1-A266-A092CAE13494}|Laboratory\\Laboratory.csproj|d:\\backend\\backend\\c# advance\\laboratory\\laboratory\\frmemployee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3E1CBF5E-B47E-4AB1-A266-A092CAE13494}|Laboratory\\Laboratory.csproj|D:\\Backend\\Backend\\C# Advance\\Laboratory\\laboratory\\frmemployee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3E1CBF5E-B47E-4AB1-A266-A092CAE13494}|Laboratory\\Laboratory.csproj|solutionrelative:laboratory\\frmemployee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3E1CBF5E-B47E-4AB1-A266-A092CAE13494}|Laboratory\\Laboratory.csproj|d:\\backend\\backend\\c# advance\\laboratory\\laboratory\\frmemployee.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3E1CBF5E-B47E-4AB1-A266-A092CAE13494}|Laboratory\\Laboratory.csproj|D:\\Backend\\Backend\\C# Advance\\Laboratory\\laboratory\\frmemployee.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3E1CBF5E-B47E-4AB1-A266-A092CAE13494}|Laboratory\\Laboratory.csproj|solutionrelative:laboratory\\frmemployee.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -228,8 +228,7 @@
               "ToolTip": "D:\\Backend\\Backend\\C# Advance\\Laboratory\\Laboratory\\frmCategory.cs [Design]",
               "RelativeToolTip": "Laboratory\\frmCategory.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-07T05:27:16.172Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-05-07T05:27:16.172Z"
             },
             {
               "$type": "Document",
@@ -277,8 +276,7 @@
               "RelativeToolTip": "Laboratory\\frmCategory.Designer.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-07T05:27:52.96Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-07T05:27:52.96Z"
             },
             {
               "$type": "Document",

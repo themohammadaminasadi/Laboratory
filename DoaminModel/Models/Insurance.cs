@@ -9,6 +9,13 @@ namespace DoaminModel.Models
     [Table("Insurance")]
     public partial class Insurance
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Insurance()
+        {
+            InsuranceTests = new HashSet<InsuranceTest>();
+            PaitentTestHeders = new HashSet<PaitentTestHeder>();
+        }
+
         public int InsuranceID { get; set; }
 
         [Required]
@@ -17,5 +24,11 @@ namespace DoaminModel.Models
 
         [StringLength(200)]
         public string Description { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<InsuranceTest> InsuranceTests { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PaitentTestHeder> PaitentTestHeders { get; set; }
     }
 }

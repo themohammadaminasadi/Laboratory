@@ -9,5 +9,6 @@ namespace DateAccessServices.Services
     public interface ITestCategoriesRepository
     {
         bool HasCategoriesInTableTestCategories(int CategoryID);
+        List<DoaminModel.ViewModel.CategoryTest.CategoryListItem> GetAllForComboFormTest();
     }
 }

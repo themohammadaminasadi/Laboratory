@@ -67,7 +67,9 @@
     <Compile Include="Models\TestRange.cs" />
     <Compile Include="Models\Unit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\CategoryTest\CategoryListItem.cs" />
     <Compile Include="ViewModel\InsuranceTest\InsuranceTestListItem.cs" />
+    <Compile Include="ViewModel\Test\TestListItem.cs" />
     <Compile Include="ViewModel\Test\TestListItemForFormInsuranceTest.cs" />
   </ItemGroup>
   <ItemGroup>

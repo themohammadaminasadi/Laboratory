@@ -30,3 +30,4 @@ D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.exe
 D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.pdb
 D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.frmPatient.resources
 D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.frmInsuranceTest.resources
+D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.frmTest.resources

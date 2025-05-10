@@ -1,6 +1,7 @@
 ﻿using DataAccessServices.Services;
 using DateAccessServices.Services;
 using DoaminModel.Models;
+using DoaminModel.ViewModel.CategoryTest;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,6 +53,17 @@ namespace DataAccess
         public List<TestCategory> GetAll()
         {
             return db.TestCategories.ToList();
+        }
+
+        public List<CategoryListItem> GetAllForComboFormTest()
+        {
+            var q = from CT in db.TestCategories
+                    select new CategoryListItem
+                    {
+                        CategoryID = CT.CategoryID,
+                        CategoryName = CT.CategoryName
+                    };
+            return q.ToList();
         }
 
         public bool HasCategoriesInTableTestCategories(int CategoryID)

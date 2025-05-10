@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dataGridViewInsuraceTest = new System.Windows.Forms.DataGridView();
             this.ClmnInsuranceTestID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClmnTestName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,8 +50,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txtYear = new System.Windows.Forms.TextBox();
+            this.err = new System.Windows.Forms.ErrorProvider(this.components);
+            this.lblErrorDiscount = new System.Windows.Forms.Label();
+            this.lblErrorYear = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewInsuraceTest)).BeginInit();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.err)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewInsuraceTest
@@ -69,6 +74,7 @@
             this.dataGridViewInsuraceTest.Name = "dataGridViewInsuraceTest";
             this.dataGridViewInsuraceTest.Size = new System.Drawing.Size(1340, 706);
             this.dataGridViewInsuraceTest.TabIndex = 0;
+            this.dataGridViewInsuraceTest.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewInsuraceTest_CellContentClick);
             // 
             // ClmnInsuranceTestID
             // 
@@ -118,7 +124,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("B Titr", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label1.Location = new System.Drawing.Point(12, 48);
+            this.label1.Location = new System.Drawing.Point(12, 32);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(38, 30);
             this.label1.TabIndex = 1;
@@ -127,7 +133,7 @@
             // cmbInsurance
             // 
             this.cmbInsurance.FormattingEnabled = true;
-            this.cmbInsurance.Location = new System.Drawing.Point(77, 50);
+            this.cmbInsurance.Location = new System.Drawing.Point(77, 34);
             this.cmbInsurance.Name = "cmbInsurance";
             this.cmbInsurance.Size = new System.Drawing.Size(187, 32);
             this.cmbInsurance.TabIndex = 2;
@@ -137,7 +143,7 @@
             this.panel3.Controls.Add(this.btnCancle);
             this.panel3.Controls.Add(this.btnUpdate);
             this.panel3.Controls.Add(this.btnAdd);
-            this.panel3.Location = new System.Drawing.Point(524, 28);
+            this.panel3.Location = new System.Drawing.Point(516, 183);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(200, 197);
             this.panel3.TabIndex = 9;
@@ -152,6 +158,7 @@
             this.btnCancle.TabIndex = 5;
             this.btnCancle.Text = "انصراف";
             this.btnCancle.UseVisualStyleBackColor = false;
+            this.btnCancle.Click += new System.EventHandler(this.btnCancle_Click);
             // 
             // btnUpdate
             // 
@@ -163,6 +170,7 @@
             this.btnUpdate.TabIndex = 4;
             this.btnUpdate.Text = "ویرایش";
             this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnAdd
             // 
@@ -178,7 +186,7 @@
             // 
             // txtTest
             // 
-            this.txtTest.Location = new System.Drawing.Point(77, 153);
+            this.txtTest.Location = new System.Drawing.Point(77, 109);
             this.txtTest.Name = "txtTest";
             this.txtTest.Size = new System.Drawing.Size(187, 31);
             this.txtTest.TabIndex = 10;
@@ -188,7 +196,7 @@
             // 
             this.lstTest.FormattingEnabled = true;
             this.lstTest.ItemHeight = 24;
-            this.lstTest.Location = new System.Drawing.Point(77, 183);
+            this.lstTest.Location = new System.Drawing.Point(77, 139);
             this.lstTest.Name = "lstTest";
             this.lstTest.Size = new System.Drawing.Size(187, 172);
             this.lstTest.TabIndex = 11;
@@ -198,7 +206,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("B Titr", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label2.Location = new System.Drawing.Point(12, 151);
+            this.label2.Location = new System.Drawing.Point(12, 107);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 30);
             this.label2.TabIndex = 12;
@@ -206,7 +214,7 @@
             // 
             // txtDiscount
             // 
-            this.txtDiscount.Location = new System.Drawing.Point(362, 247);
+            this.txtDiscount.Location = new System.Drawing.Point(461, 34);
             this.txtDiscount.Name = "txtDiscount";
             this.txtDiscount.Size = new System.Drawing.Size(187, 31);
             this.txtDiscount.TabIndex = 13;
@@ -215,7 +223,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("B Titr", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label3.Location = new System.Drawing.Point(306, 248);
+            this.label3.Location = new System.Drawing.Point(405, 36);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(58, 30);
             this.label3.TabIndex = 14;
@@ -225,7 +233,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("B Titr", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label4.Location = new System.Drawing.Point(306, 296);
+            this.label4.Location = new System.Drawing.Point(405, 107);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(37, 30);
             this.label4.TabIndex = 16;
@@ -233,16 +241,43 @@
             // 
             // txtYear
             // 
-            this.txtYear.Location = new System.Drawing.Point(362, 295);
+            this.txtYear.Location = new System.Drawing.Point(461, 106);
             this.txtYear.Name = "txtYear";
             this.txtYear.Size = new System.Drawing.Size(187, 31);
             this.txtYear.TabIndex = 15;
+            // 
+            // err
+            // 
+            this.err.BlinkRate = 500;
+            this.err.ContainerControl = this;
+            // 
+            // lblErrorDiscount
+            // 
+            this.lblErrorDiscount.AutoSize = true;
+            this.lblErrorDiscount.Font = new System.Drawing.Font("B Nazanin", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.lblErrorDiscount.ForeColor = System.Drawing.Color.Red;
+            this.lblErrorDiscount.Location = new System.Drawing.Point(462, 72);
+            this.lblErrorDiscount.Name = "lblErrorDiscount";
+            this.lblErrorDiscount.Size = new System.Drawing.Size(0, 19);
+            this.lblErrorDiscount.TabIndex = 17;
+            // 
+            // lblErrorYear
+            // 
+            this.lblErrorYear.AutoSize = true;
+            this.lblErrorYear.Font = new System.Drawing.Font("B Nazanin", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.lblErrorYear.ForeColor = System.Drawing.Color.Red;
+            this.lblErrorYear.Location = new System.Drawing.Point(462, 140);
+            this.lblErrorYear.Name = "lblErrorYear";
+            this.lblErrorYear.Size = new System.Drawing.Size(0, 19);
+            this.lblErrorYear.TabIndex = 18;
             // 
             // frmInsuranceTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(747, 651);
+            this.Controls.Add(this.lblErrorYear);
+            this.Controls.Add(this.lblErrorDiscount);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtYear);
             this.Controls.Add(this.label3);
@@ -263,6 +298,7 @@
             this.Load += new System.EventHandler(this.frmInsuranceTest_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewInsuraceTest)).EndInit();
             this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.err)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -291,5 +327,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtYear;
+        private System.Windows.Forms.ErrorProvider err;
+        private System.Windows.Forms.Label lblErrorYear;
+        private System.Windows.Forms.Label lblErrorDiscount;
     }
 }

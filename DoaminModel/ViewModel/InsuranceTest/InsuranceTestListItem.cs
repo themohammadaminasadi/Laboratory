@@ -11,7 +11,7 @@ namespace DoaminModel.ViewModel.InsuranceTest
         public int InsuranceTestID { get; set; }
         public string TestName { get; set; }
         public string InsuranceType { get; set; }
-        public DateTime Year { get; set; }
+        public int Year { get; set; }
         public int Discount { get; set; }
 
         

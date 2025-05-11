@@ -58,6 +58,7 @@
     <Compile Include="services\IInsuranceRepository.cs" />
     <Compile Include="services\IInsuranceTestRepository.cs" />
     <Compile Include="services\ITestCategoriesRepository.cs" />
+    <Compile Include="services\ITestRangeRepository.cs" />
     <Compile Include="services\ITestRepository.cs" />
     <Compile Include="services\IUnitRepository.cs" />
     <Compile Include="services\IPatientRepository.cs" />

@@ -108,5 +108,10 @@ namespace DataAccess
             };
             return q.ToList();
         }
+
+        public bool ExsistTestInTableTestRange(int TestID)
+        {
+            return db.TestRanges.Any(x => x.TestID == TestID);
+        }
     }
 }

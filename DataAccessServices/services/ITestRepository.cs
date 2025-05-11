@@ -11,5 +11,6 @@ namespace DataAccessServices.services
         List<DoaminModel.ViewModel.Test.TestListItem> GetAllTestListForGrid();
 
         List<DoaminModel.ViewModel.Test.TestListItemForFormInsuranceTest> GetAllTestForListViewFormInsuranceTest(string sm);
+        bool ExsistTestInTableTestRange(int TestID);
     }
 }

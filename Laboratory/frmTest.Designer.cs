@@ -77,6 +77,8 @@
             this.lblErrorTest = new System.Windows.Forms.Label();
             this.lblErrorPrice = new System.Windows.Forms.Label();
             this.err = new System.Windows.Forms.ErrorProvider(this.components);
+            this.rdbUnknownGender = new System.Windows.Forms.RadioButton();
+            this.rdbUnKnownAge = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewTest)).BeginInit();
             this.panel3.SuspendLayout();
             this.grpGenderHasEfect.SuspendLayout();
@@ -105,6 +107,7 @@
             this.DataGridViewTest.Name = "DataGridViewTest";
             this.DataGridViewTest.Size = new System.Drawing.Size(943, 252);
             this.DataGridViewTest.TabIndex = 0;
+            this.DataGridViewTest.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewTest_CellContentClick);
             // 
             // ClmnTestID
             // 
@@ -200,6 +203,7 @@
             this.btnCancle.TabIndex = 5;
             this.btnCancle.Text = "انصراف";
             this.btnCancle.UseVisualStyleBackColor = false;
+            this.btnCancle.Click += new System.EventHandler(this.btnCancle_Click);
             // 
             // btnUpdate
             // 
@@ -211,6 +215,7 @@
             this.btnUpdate.TabIndex = 4;
             this.btnUpdate.Text = "ویرایش";
             this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnAdd
             // 
@@ -289,6 +294,7 @@
             // 
             // grpGenderHasEfect
             // 
+            this.grpGenderHasEfect.Controls.Add(this.rdbUnknownGender);
             this.grpGenderHasEfect.Controls.Add(this.rdbNotHasGender);
             this.grpGenderHasEfect.Controls.Add(this.rdbHasGender);
             this.grpGenderHasEfect.Font = new System.Drawing.Font("B Titr", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
@@ -302,7 +308,7 @@
             // rdbNotHasGender
             // 
             this.rdbNotHasGender.AutoSize = true;
-            this.rdbNotHasGender.Location = new System.Drawing.Point(141, 29);
+            this.rdbNotHasGender.Location = new System.Drawing.Point(177, 30);
             this.rdbNotHasGender.Name = "rdbNotHasGender";
             this.rdbNotHasGender.Size = new System.Drawing.Size(54, 27);
             this.rdbNotHasGender.TabIndex = 1;
@@ -325,6 +331,7 @@
             // 
             // grpAgeHasEfect
             // 
+            this.grpAgeHasEfect.Controls.Add(this.rdbUnKnownAge);
             this.grpAgeHasEfect.Controls.Add(this.rdbNotAge);
             this.grpAgeHasEfect.Controls.Add(this.rdbHasAge);
             this.grpAgeHasEfect.Font = new System.Drawing.Font("B Titr", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
@@ -338,7 +345,7 @@
             // rdbNotAge
             // 
             this.rdbNotAge.AutoSize = true;
-            this.rdbNotAge.Location = new System.Drawing.Point(135, 29);
+            this.rdbNotAge.Location = new System.Drawing.Point(168, 29);
             this.rdbNotAge.Name = "rdbNotAge";
             this.rdbNotAge.Size = new System.Drawing.Size(54, 27);
             this.rdbNotAge.TabIndex = 2;
@@ -532,6 +539,28 @@
             this.err.BlinkRate = 500;
             this.err.ContainerControl = this;
             // 
+            // rdbUnknownGender
+            // 
+            this.rdbUnknownGender.AutoSize = true;
+            this.rdbUnknownGender.Location = new System.Drawing.Point(45, 29);
+            this.rdbUnknownGender.Name = "rdbUnknownGender";
+            this.rdbUnknownGender.Size = new System.Drawing.Size(90, 27);
+            this.rdbUnknownGender.TabIndex = 2;
+            this.rdbUnknownGender.TabStop = true;
+            this.rdbUnknownGender.Text = "مشخص نیست";
+            this.rdbUnknownGender.UseVisualStyleBackColor = true;
+            // 
+            // rdbUnKnownAge
+            // 
+            this.rdbUnKnownAge.AutoSize = true;
+            this.rdbUnKnownAge.Location = new System.Drawing.Point(26, 30);
+            this.rdbUnKnownAge.Name = "rdbUnKnownAge";
+            this.rdbUnKnownAge.Size = new System.Drawing.Size(90, 27);
+            this.rdbUnKnownAge.TabIndex = 3;
+            this.rdbUnKnownAge.TabStop = true;
+            this.rdbUnKnownAge.Text = "مشخص نیست";
+            this.rdbUnKnownAge.UseVisualStyleBackColor = true;
+            // 
             // frmTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 24F);
@@ -627,5 +656,7 @@
         private System.Windows.Forms.Label lblErrorTest;
         private System.Windows.Forms.Label lblErrorPrice;
         private System.Windows.Forms.ErrorProvider err;
+        private System.Windows.Forms.RadioButton rdbUnknownGender;
+        private System.Windows.Forms.RadioButton rdbUnKnownAge;
     }
 }

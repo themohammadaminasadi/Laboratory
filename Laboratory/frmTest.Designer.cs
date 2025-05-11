@@ -53,25 +53,25 @@
             this.label3 = new System.Windows.Forms.Label();
             this.lstUnit = new System.Windows.Forms.ListBox();
             this.grpGenderHasEfect = new System.Windows.Forms.GroupBox();
+            this.rdbNotHasGender = new System.Windows.Forms.RadioButton();
+            this.rdbHasGender = new System.Windows.Forms.RadioButton();
             this.grpAgeHasEfect = new System.Windows.Forms.GroupBox();
+            this.rdbNotAge = new System.Windows.Forms.RadioButton();
+            this.rdbHasAge = new System.Windows.Forms.RadioButton();
             this.txtPrice = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtSearchTest = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtSearchUnit = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.checklistCategoryTest = new System.Windows.Forms.CheckedListBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.txtSearchToUnitPrice = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.txtFromUnitPrice = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.rdbHasGender = new System.Windows.Forms.RadioButton();
-            this.rdbNotHasGender = new System.Windows.Forms.RadioButton();
-            this.rdbHasAge = new System.Windows.Forms.RadioButton();
-            this.rdbNotAge = new System.Windows.Forms.RadioButton();
-            this.checklistCategoryTest = new System.Windows.Forms.CheckedListBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtSearchUnit = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtSearchTest = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.lblErrorTest = new System.Windows.Forms.Label();
@@ -265,6 +265,7 @@
             this.txtUnit.Name = "txtUnit";
             this.txtUnit.Size = new System.Drawing.Size(320, 31);
             this.txtUnit.TabIndex = 16;
+            this.txtUnit.TextChanged += new System.EventHandler(this.txtUnit_TextChanged);
             // 
             // label3
             // 
@@ -284,6 +285,7 @@
             this.lstUnit.Name = "lstUnit";
             this.lstUnit.Size = new System.Drawing.Size(320, 124);
             this.lstUnit.TabIndex = 17;
+            this.lstUnit.DoubleClick += new System.EventHandler(this.lstUnit_DoubleClick);
             // 
             // grpGenderHasEfect
             // 
@@ -297,6 +299,30 @@
             this.grpGenderHasEfect.TabStop = false;
             this.grpGenderHasEfect.Text = "تاثیر جنسیت";
             // 
+            // rdbNotHasGender
+            // 
+            this.rdbNotHasGender.AutoSize = true;
+            this.rdbNotHasGender.Location = new System.Drawing.Point(141, 29);
+            this.rdbNotHasGender.Name = "rdbNotHasGender";
+            this.rdbNotHasGender.Size = new System.Drawing.Size(54, 27);
+            this.rdbNotHasGender.TabIndex = 1;
+            this.rdbNotHasGender.TabStop = true;
+            this.rdbNotHasGender.Text = "ندارد";
+            this.rdbNotHasGender.UseVisualStyleBackColor = true;
+            // 
+            // rdbHasGender
+            // 
+            this.rdbHasGender.AutoSize = true;
+            this.rdbHasGender.Font = new System.Drawing.Font("B Titr", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.rdbHasGender.Location = new System.Drawing.Point(281, 29);
+            this.rdbHasGender.Name = "rdbHasGender";
+            this.rdbHasGender.Size = new System.Drawing.Size(49, 27);
+            this.rdbHasGender.TabIndex = 0;
+            this.rdbHasGender.TabStop = true;
+            this.rdbHasGender.Text = "دارد";
+            this.rdbHasGender.UseVisualStyleBackColor = true;
+            this.rdbHasGender.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            // 
             // grpAgeHasEfect
             // 
             this.grpAgeHasEfect.Controls.Add(this.rdbNotAge);
@@ -308,6 +334,29 @@
             this.grpAgeHasEfect.TabIndex = 19;
             this.grpAgeHasEfect.TabStop = false;
             this.grpAgeHasEfect.Text = "تاثیر سن";
+            // 
+            // rdbNotAge
+            // 
+            this.rdbNotAge.AutoSize = true;
+            this.rdbNotAge.Location = new System.Drawing.Point(135, 29);
+            this.rdbNotAge.Name = "rdbNotAge";
+            this.rdbNotAge.Size = new System.Drawing.Size(54, 27);
+            this.rdbNotAge.TabIndex = 2;
+            this.rdbNotAge.TabStop = true;
+            this.rdbNotAge.Text = "ندارد";
+            this.rdbNotAge.UseVisualStyleBackColor = true;
+            // 
+            // rdbHasAge
+            // 
+            this.rdbHasAge.AutoSize = true;
+            this.rdbHasAge.Font = new System.Drawing.Font("B Titr", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.rdbHasAge.Location = new System.Drawing.Point(274, 29);
+            this.rdbHasAge.Name = "rdbHasAge";
+            this.rdbHasAge.Size = new System.Drawing.Size(49, 27);
+            this.rdbHasAge.TabIndex = 2;
+            this.rdbHasAge.TabStop = true;
+            this.rdbHasAge.Text = "دارد";
+            this.rdbHasAge.UseVisualStyleBackColor = true;
             // 
             // txtPrice
             // 
@@ -344,59 +393,23 @@
             this.panel1.Size = new System.Drawing.Size(1324, 180);
             this.panel1.TabIndex = 22;
             // 
-            // label5
+            // checklistCategoryTest
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("B Titr", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label5.Location = new System.Drawing.Point(50, 358);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(101, 30);
-            this.label5.TabIndex = 23;
-            this.label5.Text = "پنل جست و جو";
+            this.checklistCategoryTest.FormattingEnabled = true;
+            this.checklistCategoryTest.Location = new System.Drawing.Point(108, 13);
+            this.checklistCategoryTest.Name = "checklistCategoryTest";
+            this.checklistCategoryTest.Size = new System.Drawing.Size(173, 160);
+            this.checklistCategoryTest.TabIndex = 30;
             // 
-            // txtSearchTest
+            // label10
             // 
-            this.txtSearchTest.Location = new System.Drawing.Point(957, 18);
-            this.txtSearchTest.Name = "txtSearchTest";
-            this.txtSearchTest.Size = new System.Drawing.Size(284, 31);
-            this.txtSearchTest.TabIndex = 25;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("B Titr", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label6.Location = new System.Drawing.Point(1247, 19);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(61, 30);
-            this.label6.TabIndex = 24;
-            this.label6.Text = "آزمایش";
-            // 
-            // txtSearchUnit
-            // 
-            this.txtSearchUnit.Location = new System.Drawing.Point(568, 18);
-            this.txtSearchUnit.Name = "txtSearchUnit";
-            this.txtSearchUnit.Size = new System.Drawing.Size(290, 31);
-            this.txtSearchUnit.TabIndex = 25;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("B Titr", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label7.Location = new System.Drawing.Point(864, 19);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(44, 30);
-            this.label7.TabIndex = 24;
-            this.label7.Text = "واحد";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("B Titr", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label8.Location = new System.Drawing.Point(287, 10);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(42, 30);
-            this.label8.TabIndex = 25;
-            this.label8.Text = "گروه";
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("B Titr", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label10.Location = new System.Drawing.Point(1246, 95);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(60, 30);
+            this.label10.TabIndex = 29;
+            this.label10.Text = "از قیمت";
             // 
             // txtSearchToUnitPrice
             // 
@@ -422,70 +435,59 @@
             this.txtFromUnitPrice.Size = new System.Drawing.Size(411, 31);
             this.txtFromUnitPrice.TabIndex = 28;
             // 
-            // label10
+            // label8
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("B Titr", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label10.Location = new System.Drawing.Point(1246, 95);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(60, 30);
-            this.label10.TabIndex = 29;
-            this.label10.Text = "از قیمت";
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("B Titr", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label8.Location = new System.Drawing.Point(287, 10);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(42, 30);
+            this.label8.TabIndex = 25;
+            this.label8.Text = "گروه";
             // 
-            // rdbHasGender
+            // txtSearchUnit
             // 
-            this.rdbHasGender.AutoSize = true;
-            this.rdbHasGender.Font = new System.Drawing.Font("B Titr", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.rdbHasGender.Location = new System.Drawing.Point(281, 29);
-            this.rdbHasGender.Name = "rdbHasGender";
-            this.rdbHasGender.Size = new System.Drawing.Size(49, 27);
-            this.rdbHasGender.TabIndex = 0;
-            this.rdbHasGender.TabStop = true;
-            this.rdbHasGender.Text = "دارد";
-            this.rdbHasGender.UseVisualStyleBackColor = true;
-            this.rdbHasGender.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            this.txtSearchUnit.Location = new System.Drawing.Point(568, 18);
+            this.txtSearchUnit.Name = "txtSearchUnit";
+            this.txtSearchUnit.Size = new System.Drawing.Size(290, 31);
+            this.txtSearchUnit.TabIndex = 25;
             // 
-            // rdbNotHasGender
+            // label7
             // 
-            this.rdbNotHasGender.AutoSize = true;
-            this.rdbNotHasGender.Location = new System.Drawing.Point(141, 29);
-            this.rdbNotHasGender.Name = "rdbNotHasGender";
-            this.rdbNotHasGender.Size = new System.Drawing.Size(54, 27);
-            this.rdbNotHasGender.TabIndex = 1;
-            this.rdbNotHasGender.TabStop = true;
-            this.rdbNotHasGender.Text = "ندارد";
-            this.rdbNotHasGender.UseVisualStyleBackColor = true;
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("B Titr", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label7.Location = new System.Drawing.Point(864, 19);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(44, 30);
+            this.label7.TabIndex = 24;
+            this.label7.Text = "واحد";
             // 
-            // rdbHasAge
+            // txtSearchTest
             // 
-            this.rdbHasAge.AutoSize = true;
-            this.rdbHasAge.Font = new System.Drawing.Font("B Titr", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.rdbHasAge.Location = new System.Drawing.Point(274, 29);
-            this.rdbHasAge.Name = "rdbHasAge";
-            this.rdbHasAge.Size = new System.Drawing.Size(49, 27);
-            this.rdbHasAge.TabIndex = 2;
-            this.rdbHasAge.TabStop = true;
-            this.rdbHasAge.Text = "دارد";
-            this.rdbHasAge.UseVisualStyleBackColor = true;
+            this.txtSearchTest.Location = new System.Drawing.Point(957, 18);
+            this.txtSearchTest.Name = "txtSearchTest";
+            this.txtSearchTest.Size = new System.Drawing.Size(284, 31);
+            this.txtSearchTest.TabIndex = 25;
             // 
-            // rdbNotAge
+            // label6
             // 
-            this.rdbNotAge.AutoSize = true;
-            this.rdbNotAge.Location = new System.Drawing.Point(135, 29);
-            this.rdbNotAge.Name = "rdbNotAge";
-            this.rdbNotAge.Size = new System.Drawing.Size(54, 27);
-            this.rdbNotAge.TabIndex = 2;
-            this.rdbNotAge.TabStop = true;
-            this.rdbNotAge.Text = "ندارد";
-            this.rdbNotAge.UseVisualStyleBackColor = true;
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("B Titr", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label6.Location = new System.Drawing.Point(1247, 19);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(61, 30);
+            this.label6.TabIndex = 24;
+            this.label6.Text = "آزمایش";
             // 
-            // checklistCategoryTest
+            // label5
             // 
-            this.checklistCategoryTest.FormattingEnabled = true;
-            this.checklistCategoryTest.Location = new System.Drawing.Point(108, 13);
-            this.checklistCategoryTest.Name = "checklistCategoryTest";
-            this.checklistCategoryTest.Size = new System.Drawing.Size(173, 160);
-            this.checklistCategoryTest.TabIndex = 30;
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("B Titr", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label5.Location = new System.Drawing.Point(50, 358);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(101, 30);
+            this.label5.TabIndex = 23;
+            this.label5.Text = "پنل جست و جو";
             // 
             // txtDescription
             // 

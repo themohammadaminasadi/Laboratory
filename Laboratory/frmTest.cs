@@ -4,7 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.ModelConfiguration.Configuration;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -17,8 +19,10 @@ namespace Laboratory
     public partial class frmTest: Form
     {
         private int TestID = 0;
+        private int UnitID = 0;
         private TestRepository repo = new TestRepository();
         private CategoryRepository repoCategoryTest = new CategoryRepository();
+        private UnitRepository repoUnit = new UnitRepository();
         private void BindCombo()
         {
             cmbCategory.DataSource = null;
@@ -127,10 +131,59 @@ namespace Laboratory
                 err.SetError(txtUnit, "خواهشمند است واحد را از لیست انتخاب کنید");
                 return;
             }
-            Test test = new Test();
+            Test test = new Test
+            {
+                Description = txtDescription.Text,
+                Price = Convert.ToInt32(txtPrice.Text),
+                TestName = txtTest.Text,
+                CategoryID = Convert.ToInt32(cmbCategory.SelectedValue),
+                UnitID = Convert.ToInt32(lstUnit.SelectedValue)
+            };
+            if (rdbHasAge.Checked)
+            {
+                test.AgeHasEfect = true;
+            }
+            else if (!rdbNotAge.Checked)
+            {
+                test.AgeHasEfect = false;
+            }
+            if (rdbHasGender.Checked)
+            {
+                test.GenderHasEfect = true;
+            }
+            else if (!rdbNotHasGender.Checked)
+            {
+                test.GenderHasEfect = false;    
+            }
+            repo.Add(test);
+            CleanForm();
+            BindGrid();
+            GoToAddMode();
         }
-            
 
+        private void txtUnit_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtUnit.Text))
+            {
+                lstUnit.DisplayMember = "UnitName";
+                lstUnit.ValueMember = "UnitID";
+                lstUnit.DataSource = repoUnit.SearchUnitForFormTest(txtUnit.Text);
+            }
+            else
+            {
+                lstUnit.Visible = false;    
+            }
         }
+
+        private void lstUnit_DoubleClick(object sender, EventArgs e)
+        {
+            UnitID = Convert.ToInt32(lstUnit.SelectedValue);
+            string UnitName = repoUnit.Get(UnitID).UnitName;
+            if (UnitName != null)
+            {
+                txtUnit.Text = UnitName;
+            }
+        }
+    }
     }
 

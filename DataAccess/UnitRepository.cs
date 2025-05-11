@@ -1,5 +1,7 @@
 ﻿using DateAccessServices.Services;
 using DoaminModel.Models;
+using DoaminModel.ViewModel.Test;
+using DoaminModel.ViewModel.Unit;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -69,6 +71,22 @@ namespace DataAccess
         public bool HasUnitInTest(int UnitID)
         {
             return db.Tests.Any(x => x.UnitID == UnitID);
+        }
+        public List<DoaminModel.ViewModel.Unit.UnitListForSearchInformTest> SearchUnitForFormTest(string sm)
+        {
+            var q = from U in db.Units select U;
+            if (!string.IsNullOrEmpty(sm))
+            {
+                q = q.Where(x => x.UnitName.StartsWith(sm));
+            }
+            var result = from q1 in q
+                         select new UnitListForSearchInformTest
+                         {
+                             UnitID = q1.UnitID,
+                             UnitName = q1.UnitName
+                         };
+            return result.ToList();
+
         }
     }
 }

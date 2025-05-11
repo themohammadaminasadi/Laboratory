@@ -53,15 +53,16 @@
             this.label3 = new System.Windows.Forms.Label();
             this.lstUnit = new System.Windows.Forms.ListBox();
             this.grpGenderHasEfect = new System.Windows.Forms.GroupBox();
+            this.rdbUnknownGender = new System.Windows.Forms.RadioButton();
             this.rdbNotHasGender = new System.Windows.Forms.RadioButton();
             this.rdbHasGender = new System.Windows.Forms.RadioButton();
             this.grpAgeHasEfect = new System.Windows.Forms.GroupBox();
+            this.rdbUnKnownAge = new System.Windows.Forms.RadioButton();
             this.rdbNotAge = new System.Windows.Forms.RadioButton();
             this.rdbHasAge = new System.Windows.Forms.RadioButton();
             this.txtPrice = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.checklistCategoryTest = new System.Windows.Forms.CheckedListBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtSearchToUnitPrice = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -77,8 +78,6 @@
             this.lblErrorTest = new System.Windows.Forms.Label();
             this.lblErrorPrice = new System.Windows.Forms.Label();
             this.err = new System.Windows.Forms.ErrorProvider(this.components);
-            this.rdbUnknownGender = new System.Windows.Forms.RadioButton();
-            this.rdbUnKnownAge = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewTest)).BeginInit();
             this.panel3.SuspendLayout();
             this.grpGenderHasEfect.SuspendLayout();
@@ -305,6 +304,17 @@
             this.grpGenderHasEfect.TabStop = false;
             this.grpGenderHasEfect.Text = "تاثیر جنسیت";
             // 
+            // rdbUnknownGender
+            // 
+            this.rdbUnknownGender.AutoSize = true;
+            this.rdbUnknownGender.Location = new System.Drawing.Point(45, 29);
+            this.rdbUnknownGender.Name = "rdbUnknownGender";
+            this.rdbUnknownGender.Size = new System.Drawing.Size(90, 27);
+            this.rdbUnknownGender.TabIndex = 2;
+            this.rdbUnknownGender.TabStop = true;
+            this.rdbUnknownGender.Text = "مشخص نیست";
+            this.rdbUnknownGender.UseVisualStyleBackColor = true;
+            // 
             // rdbNotHasGender
             // 
             this.rdbNotHasGender.AutoSize = true;
@@ -341,6 +351,17 @@
             this.grpAgeHasEfect.TabIndex = 19;
             this.grpAgeHasEfect.TabStop = false;
             this.grpAgeHasEfect.Text = "تاثیر سن";
+            // 
+            // rdbUnKnownAge
+            // 
+            this.rdbUnKnownAge.AutoSize = true;
+            this.rdbUnKnownAge.Location = new System.Drawing.Point(26, 30);
+            this.rdbUnKnownAge.Name = "rdbUnKnownAge";
+            this.rdbUnKnownAge.Size = new System.Drawing.Size(90, 27);
+            this.rdbUnKnownAge.TabIndex = 3;
+            this.rdbUnKnownAge.TabStop = true;
+            this.rdbUnKnownAge.Text = "مشخص نیست";
+            this.rdbUnKnownAge.UseVisualStyleBackColor = true;
             // 
             // rdbNotAge
             // 
@@ -385,7 +406,6 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.checklistCategoryTest);
             this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.txtSearchToUnitPrice);
             this.panel1.Controls.Add(this.label9);
@@ -399,14 +419,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1324, 180);
             this.panel1.TabIndex = 22;
-            // 
-            // checklistCategoryTest
-            // 
-            this.checklistCategoryTest.FormattingEnabled = true;
-            this.checklistCategoryTest.Location = new System.Drawing.Point(108, 13);
-            this.checklistCategoryTest.Name = "checklistCategoryTest";
-            this.checklistCategoryTest.Size = new System.Drawing.Size(173, 160);
-            this.checklistCategoryTest.TabIndex = 30;
             // 
             // label10
             // 
@@ -424,6 +436,7 @@
             this.txtSearchToUnitPrice.Name = "txtSearchToUnitPrice";
             this.txtSearchToUnitPrice.Size = new System.Drawing.Size(393, 31);
             this.txtSearchToUnitPrice.TabIndex = 27;
+            this.txtSearchToUnitPrice.TextChanged += new System.EventHandler(this.txtSearchToUnitPrice_TextChanged);
             // 
             // label9
             // 
@@ -441,6 +454,7 @@
             this.txtFromUnitPrice.Name = "txtFromUnitPrice";
             this.txtFromUnitPrice.Size = new System.Drawing.Size(411, 31);
             this.txtFromUnitPrice.TabIndex = 28;
+            this.txtFromUnitPrice.TextChanged += new System.EventHandler(this.txtFromUnitPrice_TextChanged);
             // 
             // label8
             // 
@@ -458,6 +472,7 @@
             this.txtSearchUnit.Name = "txtSearchUnit";
             this.txtSearchUnit.Size = new System.Drawing.Size(290, 31);
             this.txtSearchUnit.TabIndex = 25;
+            this.txtSearchUnit.TextChanged += new System.EventHandler(this.txtSearchUnit_TextChanged);
             // 
             // label7
             // 
@@ -475,6 +490,7 @@
             this.txtSearchTest.Name = "txtSearchTest";
             this.txtSearchTest.Size = new System.Drawing.Size(284, 31);
             this.txtSearchTest.TabIndex = 25;
+            this.txtSearchTest.TextChanged += new System.EventHandler(this.txtSearchTest_TextChanged);
             // 
             // label6
             // 
@@ -538,28 +554,6 @@
             // 
             this.err.BlinkRate = 500;
             this.err.ContainerControl = this;
-            // 
-            // rdbUnknownGender
-            // 
-            this.rdbUnknownGender.AutoSize = true;
-            this.rdbUnknownGender.Location = new System.Drawing.Point(45, 29);
-            this.rdbUnknownGender.Name = "rdbUnknownGender";
-            this.rdbUnknownGender.Size = new System.Drawing.Size(90, 27);
-            this.rdbUnknownGender.TabIndex = 2;
-            this.rdbUnknownGender.TabStop = true;
-            this.rdbUnknownGender.Text = "مشخص نیست";
-            this.rdbUnknownGender.UseVisualStyleBackColor = true;
-            // 
-            // rdbUnKnownAge
-            // 
-            this.rdbUnKnownAge.AutoSize = true;
-            this.rdbUnKnownAge.Location = new System.Drawing.Point(26, 30);
-            this.rdbUnKnownAge.Name = "rdbUnKnownAge";
-            this.rdbUnKnownAge.Size = new System.Drawing.Size(90, 27);
-            this.rdbUnKnownAge.TabIndex = 3;
-            this.rdbUnKnownAge.TabStop = true;
-            this.rdbUnKnownAge.Text = "مشخص نیست";
-            this.rdbUnKnownAge.UseVisualStyleBackColor = true;
             // 
             // frmTest
             // 
@@ -650,7 +644,6 @@
         private System.Windows.Forms.RadioButton rdbHasGender;
         private System.Windows.Forms.RadioButton rdbNotAge;
         private System.Windows.Forms.RadioButton rdbHasAge;
-        private System.Windows.Forms.CheckedListBox checklistCategoryTest;
         private System.Windows.Forms.TextBox txtDescription;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label lblErrorTest;

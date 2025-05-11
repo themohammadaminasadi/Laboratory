@@ -10,6 +10,7 @@ using System.Drawing;
 using System.Drawing.Text;
 using System.Globalization;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -25,6 +26,7 @@ namespace Laboratory
         private TestRepository repo = new TestRepository();
         private CategoryRepository repoCategoryTest = new CategoryRepository();
         private UnitRepository repoUnit = new UnitRepository();
+        DoaminModel.ViewModel.Test.TestListItemSearchForFormTest sm = new DoaminModel.ViewModel.Test.TestListItemSearchForFormTest();
         private void BindCombo()
         {
             cmbCategory.DataSource = null;
@@ -34,15 +36,15 @@ namespace Laboratory
             cmbCategory.DisplayMember = "CategoryName";
             cmbCategory.DataSource = lst;
         }
-        private void BindCheckListBox()
-        {
-            checklistCategoryTest.Items.Clear();
-            var lstCategoryListItem = repoCategoryTest.GetAllForComboFormTest();
-            foreach (var item in lstCategoryListItem)
-            {
-                checklistCategoryTest.Items.Add(item.CategoryName);
-            }
-        }
+        //private void BindCheckListBox()
+        //{
+        //    checklistCategoryTest.Items.Clear();
+        //    var lstCategoryListItem = repoCategoryTest.GetAllForComboFormTest();
+        //    foreach (var item in lstCategoryListItem)
+        //    {
+        //        checklistCategoryTest.Items.Add(item.CategoryName);
+        //    }
+        //}
         public void BindGrid()
         {
             DataGridViewTest.DataSource = null;
@@ -68,10 +70,10 @@ namespace Laboratory
                 rdbHasAge.Checked = true;
                 rdbHasGender.Checked = true;
                 txtSearchUnit.Text = "";
-                for (int i = 0; i < checklistCategoryTest.Items.Count; i++)
-                {
-                    checklistCategoryTest.SetItemChecked(i, false);
-                }
+                //for (int i = 0; i < checklistCategoryTest.Items.Count; i++)
+                //{
+                //    checklistCategoryTest.SetItemChecked(i, false);
+                //}
                 lstUnit.Visible =false; 
 
             }
@@ -104,7 +106,7 @@ namespace Laboratory
         {
             CleanForm();
             BindCombo();
-            BindCheckListBox();
+            //BindCheckListBox();
             BindGrid();
         }
 
@@ -168,6 +170,7 @@ namespace Laboratory
                 test.GenderHasEfect = null;
             }
                 repo.Add(test);
+
             CleanForm();
             BindGrid();
             GoToAddMode();
@@ -195,6 +198,7 @@ namespace Laboratory
             if (UnitName != null)
             {
                 txtUnit.Text = UnitName;
+                lstUnit.Visible = false;    
             }
         }
 
@@ -340,7 +344,73 @@ namespace Laboratory
             GoToAddMode();
             err.Clear();
             BindCombo();
-            BindCheckListBox();
+            //BindCheckListBox();
+        }
+
+        private void txtSearchTest_TextChanged(object sender, EventArgs e)
+        {
+            
+            if (!string.IsNullOrEmpty(txtSearchTest.Text) && txtSearchTest.Text.Length >= 2)
+            {
+                sm.TestName = txtSearchTest.Text;
+                BindGridForSearch(sm);
+            }
+            else
+            {
+                sm.TestName = null;
+                BindGrid();
+            }
+            
+        }
+        private void BindGridForSearch(DoaminModel.ViewModel.Test.TestListItemSearchForFormTest sm)
+        {
+            DataGridViewTest.DataSource = null;
+            DataGridViewTest.DataSource = repo.SearchFormTest(sm);
+        }
+
+        private void txtSearchUnit_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtSearchUnit.Text))
+            {
+                sm.UnitName = txtSearchUnit.Text;
+                BindGridForSearch(sm);
+            }
+            else
+            {
+                sm.UnitName = null;
+                BindGrid();
+            }
+
+        }
+
+        private void txtFromUnitPrice_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtFromUnitPrice.Text))
+            {
+                sm.FromPrice = Convert.ToInt32(txtFromUnitPrice.Text);
+                BindGridForSearch(sm);
+
+            }
+            else
+            {
+                sm.FromPrice = null;
+                BindGrid();
+            }
+        }
+
+        private void txtSearchToUnitPrice_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtSearchToUnitPrice.Text))
+            {
+                sm.ToPrice = Convert.ToInt32(txtSearchToUnitPrice.Text);
+                BindGridForSearch(sm);
+
+            }
+            else
+            {
+                sm.ToPrice = null;
+                BindGrid();
+            }
         }
     }
     }

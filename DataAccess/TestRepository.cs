@@ -113,5 +113,41 @@ namespace DataAccess
         {
             return db.TestRanges.Any(x => x.TestID == TestID);
         }
+
+        public List<TestListItem> SearchFormTest(TestListItemSearchForFormTest sm)
+        {
+            var q = from T in db.Tests select T;
+            if (!string.IsNullOrEmpty(sm.TestName))
+            {
+                q = q.Where(x => x.TestName.Contains(sm.TestName));
+            }
+            if (sm.FromPrice != null)
+            {
+                q = q.Where(x => x.Price >= sm.FromPrice);
+            }
+            if (sm.ToPrice != null)
+            {
+                q = q.Where(x => x.Price <= sm.ToPrice);
+            }
+            if (!string.IsNullOrEmpty(sm.UnitName))
+            {
+                q = q.Where(x => x.Unit.UnitName.StartsWith(sm.UnitName));
+            }
+            var Result = from R in q
+                         select new TestListItem
+                         {
+                             TestID = R.TestID,
+                             TestName = R.TestName,
+                             Price = R.Price,
+                             CategoryID = R.CategoryID,
+                             UnitID = R.UnitID,
+                             CategoryName = R.TestCategory.CategoryName,
+                             UnitName = R.Unit.UnitName,
+                             AgeHasEfect = R.AgeHasEfect == true ? "دارد" : (R.AgeHasEfect == false ? "ندارد" : "مشخص نیست"),
+                             GenderHasEfect = R.GenderHasEfect == true ? "دارد" : (R.GenderHasEfect == false ? "ندارد" : "مشخص نیست")
+
+                         };
+            return Result.ToList();
+        }
     }
 }

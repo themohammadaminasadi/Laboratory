@@ -71,6 +71,7 @@
     <Compile Include="ViewModel\InsuranceTest\InsuranceTestListItem.cs" />
     <Compile Include="ViewModel\Test\TestListItem.cs" />
     <Compile Include="ViewModel\Test\TestListItemForFormInsuranceTest.cs" />
+    <Compile Include="ViewModel\Test\TestListItemSearchForFormTest.cs" />
     <Compile Include="ViewModel\Unit\UnitListForSearchInformTest.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -63,9 +63,109 @@ namespace Laboratory.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _1503_c0a1cb4ea066186b0ccb5ac93600c395 {
+            get {
+                object obj = ResourceManager.GetObject("1503_c0a1cb4ea066186b0ccb5ac93600c395", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _1503_c0a1cb4ea066186b0ccb5ac93600c3951 {
+            get {
+                object obj = ResourceManager.GetObject("1503_c0a1cb4ea066186b0ccb5ac93600c3951", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _1503_c0a1cb4ea066186b0ccb5ac93600c3952 {
+            get {
+                object obj = ResourceManager.GetObject("1503_c0a1cb4ea066186b0ccb5ac93600c3952", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _777494_200 {
             get {
                 object obj = ResourceManager.GetObject("777494-200", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Cart1007247www_tiktarh_com_ {
+            get {
+                object obj = ResourceManager.GetObject("Cart1007247www.tiktarh.com_", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Cart1007247www_tiktarh1 {
+            get {
+                object obj = ResourceManager.GetObject("Cart1007247www.tiktarh1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Cart1007247www_tiktarh2 {
+            get {
+                object obj = ResourceManager.GetObject("Cart1007247www.tiktarh2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap images {
+            get {
+                object obj = ResourceManager.GetObject("images", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap resized_image {
+            get {
+                object obj = ResourceManager.GetObject("resized_image", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ضربدر_قرمز_png_full {
+            get {
+                object obj = ResourceManager.GetObject("ضربدر-قرمز-png-full", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ضربدر_قرمز_png_full1 {
+            get {
+                object obj = ResourceManager.GetObject("ضربدر-قرمز-png-full1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

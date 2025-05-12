@@ -117,38 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Cart1007247www.tiktarh2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Cart1007247www.tiktarh.com_.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="1503_c0a1cb4ea066186b0ccb5ac93600c3952" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\1503_c0a1cb4ea066186b0ccb5ac93600c395.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ضربدر-قرمز-png-full" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ضربدر-قرمز-png-full.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Cart1007247www.tiktarh1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Cart1007247www.tiktarh.com_1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Cart1007247www.tiktarh.com_" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Cart1007247www.tiktarh.com_.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="resized_image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\resized_image.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="777494-200" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Image\777494-200.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ضربدر-قرمز-png-full1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ضربدر-قرمز-png-full1.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="1503_c0a1cb4ea066186b0ccb5ac93600c395" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\1503_c0a1cb4ea066186b0ccb5ac93600c395.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="1503_c0a1cb4ea066186b0ccb5ac93600c3951" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\1503_c0a1cb4ea066186b0ccb5ac93600c3951.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="images" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\images.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
 </root>

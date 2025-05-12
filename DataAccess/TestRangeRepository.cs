@@ -1,5 +1,7 @@
-﻿using DataAccessServices.Services;
+﻿using DataAccessServices.services;
+using DataAccessServices.Services;
 using DoaminModel.Models;
+using DoaminModel.ViewModel.TestRange;
 using System;
 using System.Collections.Generic;
 using System.Data.Common;
@@ -10,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess
 {
-    public class TestRangeRepository : IBaseRepository<DoaminModel.Models.TestRange, int>
+    public class TestRangeRepository : IBaseRepository<DoaminModel.Models.TestRange, int>,ITestRangeRepository
     {
         private LaboratoryContext db = new LaboratoryContext();
         public int Add(TestRange Model)
@@ -53,6 +55,23 @@ namespace DataAccess
             return db.TestRanges.ToList();
         }
 
+        public List<TestListItemForGridFormTestRange> GetAllFormTestRange()
+        {
+            var q = from TR in db.TestRanges select new TestListItemForGridFormTestRange
+            {
+                TestName = TR.Test.TestName,
+                RangeID = TR.RangeID,
+                MinValue = TR.MinValue,
+                MaxValue = TR.MaxValue,
+                FromAge = TR.FromAge,
+                ToAge = TR.ToAge,
+                Hazard = TR.Hazard,
+                Gender = TR.Gender == 1 ? "مرد" :
+                         TR.Gender == 0 ? "زن" :
+                         TR.Gender == 3 ? "همه" : "نامشخص"
+            };
+            return q.ToList();
+        }
         public bool Update(TestRange NewModel)
         {
             try

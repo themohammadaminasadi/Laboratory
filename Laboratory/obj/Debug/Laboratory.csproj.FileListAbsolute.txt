@@ -31,3 +31,4 @@ D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.csproj.
 D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.csproj.Up2Date
 D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.exe
 D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.pdb
+D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.frmTestRange.resources

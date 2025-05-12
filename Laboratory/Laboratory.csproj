@@ -100,6 +100,12 @@
     <Compile Include="frmTest.Designer.cs">
       <DependentUpon>frmTest.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmTestRange.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTestRange.Designer.cs">
+      <DependentUpon>frmTestRange.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmUnits.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,6 +131,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmTest.resx">
       <DependentUpon>frmTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTestRange.resx">
+      <DependentUpon>frmTestRange.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmUnits.resx">
       <DependentUpon>frmUnits.cs</DependentUpon>

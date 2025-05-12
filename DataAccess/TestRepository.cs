@@ -5,6 +5,7 @@ using DoaminModel.ViewModel.Test;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
@@ -146,6 +147,25 @@ namespace DataAccess
                              AgeHasEfect = R.AgeHasEfect == true ? "دارد" : (R.AgeHasEfect == false ? "ندارد" : "مشخص نیست"),
                              GenderHasEfect = R.GenderHasEfect == true ? "دارد" : (R.GenderHasEfect == false ? "ندارد" : "مشخص نیست")
 
+                         };
+            return Result.ToList();
+        }
+
+        public List<TestListItemForListBoxFormTestRange> GetAllTestForListBoxFormTestRange(string TestName)
+        {
+            var q = from T in db.Tests select T;
+            if (!string.IsNullOrEmpty(TestName))
+            {
+                q = q.Where(x => x.TestName.StartsWith(TestName));
+            }
+            var Result = from T1 in q
+                         select new TestListItemForListBoxFormTestRange
+                         {
+                             FullInfoTest = T1.TestName + "             " +
+                             (T1.GenderHasEfect == true ? "تأثیر دارد" :
+                             T1.GenderHasEfect == false ? "تأثیر ندارد" :
+                             "مشخص نیست"),
+                             TestID = T1.TestID
                          };
             return Result.ToList();
         }

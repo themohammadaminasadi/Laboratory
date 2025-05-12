@@ -10,14 +10,20 @@ using System.Security.Authentication.ExtendedProtection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Laboratory
 {
     public partial class frmTestRange: Form
     {
+        //کنترل اینکه در تکس باکس ها فقط عدد و رشته وارد شود . 
         int RangeID = 0;
         DataAccess.TestRangeRepository repo = new DataAccess.TestRangeRepository();
         DataAccess.TestRepository repoTest = new DataAccess.TestRepository();
+        public void Search(DoaminModel.ViewModel.TestRange.ListSearchItemForSearchPanelTestRange sm)
+        {
+            DGVTestRange.DataSource = repo.Search(sm);
+        }
         public void BindGrid()
         {
             DGVTestRange.DataSource = null;
@@ -81,199 +87,336 @@ namespace Laboratory
 
         private void txtTest_TextChanged(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtTest.Text))
+            try
             {
-                lstTest.Visible = true;
-                lstTest.DataSource = repoTest.GetAllTestForListBoxFormTestRange(txtTest.Text);
-                lstTest.ValueMember = "TestID";
-                lstTest.DisplayMember = "FullInfoTest";
+                if (!string.IsNullOrEmpty(txtTest.Text))
+                {
+                    lstTest.Visible = true;
+                    lstTest.DataSource = repoTest.GetAllTestForListBoxFormTestRange(txtTest.Text);
+                    lstTest.ValueMember = "TestID";
+                    lstTest.DisplayMember = "FullInfoTest";
+                }
+                else
+                {
+                    lstTest.Visible = false;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                lstTest.Visible = false;
+
+                throw new Exception("با پشتیبانی تماس بگیرید " + ex);
             }
+          
         }
 
         private void lstTest_DoubleClick(object sender, EventArgs e)
         {
-            int TestID = Convert.ToInt32(lstTest.SelectedValue);
-            Test Test = repoTest.Get(TestID);
-            txtTest.Text = Test.TestName;
-            if (Test.GenderHasEfect == null)
+            try
             {
-                rdbBothGender.Checked = true;
-                lblInfoTest.Text = "";
+                int TestID = Convert.ToInt32(lstTest.SelectedValue);
+                Test Test = repoTest.Get(TestID);
+                txtTest.Text = Test.TestName;
+                if (Test.GenderHasEfect == null)
+                {
+                    rdbBothGender.Checked = true;
+                    lblInfoTest.Text = "";
+                }
+                else if (Test.GenderHasEfect == false)
+                {
+                    lblInfoTest.Text = "با توجه به تاثیر جنسیت بر آزمایشی که انتخاب کرده اید خواهشمند است برای رنچ این آزمایش جنسیت بین زن و مرد را انتخاب کنید ";
+                    rdbBothGender.Enabled = true;
+                }
+                else if (Test.GenderHasEfect == true)
+                {
+                    lblInfoTest.Text = "با توجه به تاثیر جنسیت بر آزمایشی که انتخاب کرده اید خواهشمند است برای رنچ این آزمایش جنسیت بین زن و مرد را انتخاب کنید";
+                    rdbBothGender.Enabled = true;
+                }
+                lstTest.Visible = false;
             }
-            else if (Test.GenderHasEfect == false)
+            catch (Exception ex)
             {
-                lblInfoTest.Text = "با توجه به تاثیر جنسیت بر آزمایشی که انتخاب کرده اید خواهشمند است برای رنچ این آزمایش جنسیت بین زن و مرد را انتخاب کنید ";
-                rdbBothGender.Enabled = true;
+
+                throw new Exception("روی listBox ارور به وجود آمده است با پشتیبانی تماس بگیرید" + ex);
             }
-            else if (Test.GenderHasEfect == true)
-            {
-                lblInfoTest.Text = "با توجه به تاثیر جنسیت بر آزمایشی که انتخاب کرده اید خواهشمند است برای رنچ این آزمایش جنسیت بین زن و مرد را انتخاب کنید";
-                rdbBothGender.Enabled = true;
-            }
-            lstTest.Visible = false;
+           
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (lstTest.SelectedItems == null)
+            try
             {
-                err.SetError(lstTest, "یک آزمایش را از لیست انتخاب کنید");
-                return;
+                if (lstTest.SelectedItems == null)
+                {
+                    err.SetError(lstTest, "یک آزمایش را از لیست انتخاب کنید");
+                    return;
+                }
+                TestRange testRange = new TestRange();
+                testRange.TestID = Convert.ToInt32(lstTest.SelectedValue);
+                testRange.MinValue = Convert.ToDouble(txtMinValue.Text);
+                testRange.MaxValue = Convert.ToDouble(txtMaxValue.Text);
+                testRange.FromAge = Convert.ToInt32(txtFromAge.Text);
+                testRange.ToAge = Convert.ToInt32(txtToAge.Text);
+                testRange.Description = txtDescription.Text;
+                if (CKBHazard.Checked == true)
+                {
+                    testRange.Hazard = true;
+                }
+                else if (CKBHazard.Checked == false)
+                {
+                    testRange.Hazard = false;
+                }
+                if (rdbMale.Checked == true)
+                {
+                    testRange.Gender = 1;
+                }
+                else if (rdbFamle.Checked == true)
+                {
+                    testRange.Gender = 0;
+                }
+                else if (rdbBothGender.Checked == true)
+                {
+                    testRange.Gender = 3;
+                }
+                repo.Add(testRange);
+                CleanForm();
+                BindGrid();
+                GoToAddMode();
+                err.Clear();
             }
-            TestRange testRange = new TestRange();
-            testRange.TestID = Convert.ToInt32(lstTest.SelectedValue);
-            testRange.MinValue = Convert.ToDouble(txtMinValue.Text);
-            testRange.MaxValue = Convert.ToDouble(txtMaxValue.Text);
-            testRange.FromAge = Convert.ToInt32(txtFromAge.Text);
-            testRange.ToAge = Convert.ToInt32(txtToAge.Text);
-            testRange.Description = txtDescription.Text;
-            if (CKBHazard.Checked == true)
+            catch (Exception ex)
             {
-                testRange.Hazard = true;
+
+                throw new Exception("عملیات اضافه کردن به مشکل خورد لطفاً با پشتیبانی تماس بگیرید"+ex);
             }
-            else if(CKBHazard.Checked == false)
-            {
-                testRange.Hazard = false;
-            }
-            if (rdbMale.Checked == true)
-            {
-                testRange.Gender = 1;
-            }
-            else if (rdbFamle.Checked == true)
-            {
-                testRange.Gender = 0;
-            }
-            else if (rdbBothGender.Checked == true)
-            {
-                testRange.Gender = 3;
-            }
-            repo.Add(testRange);
-            CleanForm();
-            BindGrid();
-            GoToAddMode();
-            err.Clear();
+            
         }
 
         private void btnCancle_Click(object sender, EventArgs e)
         {
-            GoToAddMode();
-            CleanForm();
-            err.Clear();
+            try
+            {
+                GoToAddMode();
+                CleanForm();
+                err.Clear();
+            }
+            catch (Exception)
+            {
+
+                throw new Exception("Error In btn Cancle");
+            }
+           
 
         }
 
         private void DGVTestRange_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            RangeID = Convert.ToInt32(DGVTestRange.Rows[e.RowIndex].Cells[0].Value);
-            if (e.ColumnIndex == 8)
+
+            try
             {
-                
-                TestRange testRange = repo.Get(RangeID);
-                txtFromAge.Text = testRange.FromAge.ToString();
-                txtToAge.Text = testRange.ToAge.ToString();
-                txtMinValue.Text = testRange.MinValue.ToString();
-                txtMaxValue.Text = testRange.MaxValue.ToString();
-                txtDescription.Text = testRange.Description;
-                txtTest.Text = repoTest.Get(testRange.TestID).TestName;
-                bool? GenderEffect = repoTest.Get(testRange.TestID).GenderHasEfect;
-                if (GenderEffect == null)
+                RangeID = Convert.ToInt32(DGVTestRange.Rows[e.RowIndex].Cells[0].Value);
+                if (e.ColumnIndex == 8)
                 {
-                    rdbBothGender.Enabled = false;
-                    rdbBothGender.Checked = false;
+
+                    TestRange testRange = repo.Get(RangeID);
+                    txtFromAge.Text = testRange.FromAge.ToString();
+                    txtToAge.Text = testRange.ToAge.ToString();
+                    txtMinValue.Text = testRange.MinValue.ToString();
+                    txtMaxValue.Text = testRange.MaxValue.ToString();
+                    txtDescription.Text = testRange.Description;
+                    txtTest.Text = repoTest.Get(testRange.TestID).TestName;
+                    bool? GenderEffect = repoTest.Get(testRange.TestID).GenderHasEfect;
+                    if (GenderEffect == null)
+                    {
+                        rdbBothGender.Enabled = false;
+                        rdbBothGender.Checked = false;
+                    }
+                    if (testRange.Hazard == true)
+                    {
+                        CKBHazard.Checked = true;
+                    }
+                    else if (testRange.Hazard == false)
+                    {
+                        CKBHazard.Checked = false;
+                    }
+                    if (testRange.Gender == 1)
+                    {
+                        rdbMale.Checked = true;
+                    }
+                    else if (testRange.Gender == 0)
+                    {
+                        rdbFamle.Checked = true;
+                    }
+                    else if (testRange.Gender == 3)
+                    {
+                        rdbBothGender.Checked = true;
+                    }
+                    GoToEditMode();
+                    err.Clear();
                 }
-                if (testRange.Hazard == true)
+                if (e.ColumnIndex == 9)
                 {
-                    CKBHazard.Checked = true;
+                    if (MessageBox.Show("آیا مطمئن هستید میخواهید این رنچ را حذف کنید ؟", "هشدار", MessageBoxButtons.YesNo)==DialogResult.Yes)
+                    {
+                        repo.Delete(RangeID);
+                        CleanForm();
+                        GoToAddMode();
+                        BindGrid();
+                        err.Clear();
+                    }
+                    else
+                    {
+                        GoToAddMode();
+                        CleanForm();
+                        err.Clear();
+                    }
                 }
-                else if (testRange.Hazard == false)
-                {
-                    CKBHazard.Checked = false;
-                }
-                if (testRange.Gender == 1)
-                {
-                    rdbMale.Checked = true;
-                }
-                else if(testRange.Gender == 0)
-                {
-                    rdbFamle.Checked = true;   
-                }
-                else if(testRange.Gender == 3)
-                {
-                    rdbBothGender.Checked = true;
-                }
-                GoToEditMode();
-                err.Clear();
             }
-            if (e.ColumnIndex == 9)
+            catch (Exception ex)
             {
-                if (MessageBox.Show("آیا مطمئن هستید میخواهید این رنچ را حذف کنید ؟","هشدار",MessageBoxButtons.YesNo)==DialogResult.Yes)
-                {
-                    repo.Delete(RangeID);
-                    CleanForm();
-                    GoToAddMode();
-                    BindGrid();
-                    err.Clear();
-                }
-                else
-                {
-                    GoToAddMode();
-                    CleanForm();
-                    err.Clear();
-                }
+
+                throw new Exception("در دکمه ویرایش یا حذف در گرید با مشکل رو به رو شده است با پشتیبانی تماس بگیرید" + ex);
             }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            TestRange testRange = new TestRange();
-            if (txtTest.Text == repoTest.Get(Convert.ToInt32(lstTest.SelectedValue)).TestName)
+            try
             {
-                testRange.TestID = repoTest.Get(Convert.ToInt32(lstTest.SelectedValue)).TestID;
+                TestRange testRange = new TestRange();
+                if (txtTest.Text == repoTest.Get(Convert.ToInt32(lstTest.SelectedValue)).TestName)
+                {
+                    testRange.TestID = repoTest.Get(Convert.ToInt32(lstTest.SelectedValue)).TestID;
+                }
+                if (rdbBothGender.Enabled == false)
+                {
+
+                    if (!rdbMale.Checked && !rdbFamle.Checked)
+                    {
+                        err.SetError(grpGender, "لطفاً یکی از گزینه‌های مرد یا زن را انتخاب کنید.");
+                        return;
+                    }
+                }
+                if (rdbBothGender.Checked)
+                {
+                    testRange.Gender = 3;
+                }
+                else if (rdbMale.Checked == true)
+                {
+                    testRange.Gender = 1;
+                }
+                else if (rdbFamle.Checked == true)
+                {
+                    testRange.Gender =0;
+                }
+                if (CKBHazard.Checked == true)
+                {
+                    testRange.Hazard = true;
+                }
+                else if (CKBHazard.Checked == false)
+                {
+                    testRange.Hazard = false;
+                }
+                testRange.MinValue = Convert.ToDouble(txtMinValue.Text);
+                testRange.MaxValue = Convert.ToDouble(txtMaxValue.Text);
+                testRange.FromAge = Convert.ToInt32(txtFromAge.Text);
+                testRange.ToAge = Convert.ToInt32(txtToAge.Text);
+                testRange.Description = txtDescription.Text;
+                testRange.RangeID = this.RangeID;
+                repo.Update(testRange);
+                GoToAddMode();
+                CleanForm();
+                BindGrid();
+                err.Clear();
             }
-            if (rdbBothGender.Enabled == false)
+            catch (Exception ex)
             {
 
-                if (!rdbMale.Checked && !rdbFamle.Checked)
+                throw new Exception("عملیات ویرایش با موفقیت انجام نشد با پشتیبانی تماس بگیرید"+ex);
+            }
+        }
+        private void DoSearch()
+        {
+            try
+            {
+                DoaminModel.ViewModel.TestRange.ListSearchItemForSearchPanelTestRange sm = new DoaminModel.ViewModel.TestRange.ListSearchItemForSearchPanelTestRange();
+                if (!string.IsNullOrEmpty(txtSearchTest.Text))
                 {
-                    err.SetError(grpGender, "لطفاً یکی از گزینه‌های مرد یا زن را انتخاب کنید.");
-                    return;
+                    sm.TestName = txtSearchTest.Text;
                 }
+                if (!string.IsNullOrEmpty(txtSearchFromMinum.Text))
+                {
+                    sm.MinValue = Convert.ToDouble(txtSearchFromMinum.Text);
+                }
+                if (!string.IsNullOrEmpty(txtSearchToMaximum.Text))
+                {
+                    sm.MaxValue = Convert.ToInt32(txtSearchToMaximum.Text);
+                }
+                if (!string.IsNullOrEmpty(txtSearchFromAge.Text))
+                {
+                    sm.FromAge = Convert.ToInt32(txtSearchFromAge.Text);
+                }
+                if (!string.IsNullOrEmpty(txtSearchToAge.Text))
+                {
+                    sm.ToAge = Convert.ToInt32(txtSearchToAge.Text);
+                }
+
+                DGVTestRange.DataSource = repo.Search(sm);
             }
-            if (rdbBothGender.Checked)
+            catch (Exception ex)
             {
-                testRange.Gender = 3;
+
+                throw new Exception("در تابع search مشکل ایجاد شده است خواهشمند است با پشتیبانی تماس بگیرید" + ex);
             }
-            else if (rdbMale.Checked == true)
+           
+        }
+        private void txtSearchTest_TextChanged(object sender, EventArgs e)
+        {
+            DoSearch();
+        }
+
+        private void txtSearchFromAge_TextChanged(object sender, EventArgs e)
+        {
+            DoSearch();
+        }
+
+        private void txtSearchToAge_TextChanged(object sender, EventArgs e)
+        {
+            DoSearch();
+        }
+
+        private void txtSearchFromMinum_TextChanged(object sender, EventArgs e)
+        {
+            DoSearch();
+        }
+
+        private void txtSearchToMaximum_TextChanged(object sender, EventArgs e)
+        {
+            DoSearch();
+        }
+
+        private void CKBSearchHazard_Click(object sender, EventArgs e)
+        {
+            DoSearch();
+        }
+
+        private void txtSearchFromMinum_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
             {
-                testRange.Gender = 1;
+                e.Handled = true;
             }
-            else if (rdbFamle.Checked == true)
+
+            // فقط یک نقطه اعشاری اجازه بده
+            if (e.KeyChar == '.' && txtSearchFromMinum.Text.Contains("."))
             {
-                testRange.Gender =0;
+                e.Handled = true;
             }
-            if (CKBHazard.Checked == true)
-            {
-                testRange.Hazard = true;
-            }
-            else if(CKBHazard.Checked == false)
-            {
-                testRange.Hazard = false;   
-            }
-            testRange.MinValue = Convert.ToDouble(txtMinValue.Text);
-            testRange.MaxValue = Convert.ToDouble(txtMaxValue.Text);
-            testRange.FromAge = Convert.ToInt32(txtFromAge.Text);
-            testRange.ToAge = Convert.ToInt32(txtToAge.Text);
-            testRange.Description = txtDescription.Text;
-            testRange.RangeID = this.RangeID;
-            repo.Update(testRange);
-            GoToAddMode();
-            CleanForm();
-            BindGrid();
-            err.Clear();
+        }
+
+        private void txtSearchToMaximum_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
         }
     }
 }

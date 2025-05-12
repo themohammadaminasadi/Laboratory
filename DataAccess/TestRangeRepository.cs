@@ -72,6 +72,48 @@ namespace DataAccess
             };
             return q.ToList();
         }
+
+        public List<TestListItemForGridFormTestRange> Search(ListSearchItemForSearchPanelTestRange sm)
+        {
+            var q = from TR in db.TestRanges select TR;
+            if (!string.IsNullOrEmpty(sm.TestName))
+            {
+                q = q.Where(x => x.Test.TestName.StartsWith(sm.TestName));
+            }
+            if (sm.MinValue != null)
+            {
+                q = q.Where(x => x.MinValue >= sm.MinValue);
+            }
+            if (sm.MaxValue != null)
+            {
+                q = q.Where(x => x.MaxValue <= sm.MaxValue);
+            }
+            if (sm.FromAge != null)
+            {
+                q = q.Where(x => x.FromAge >= sm.FromAge);
+            }
+            if (sm.ToAge != null)
+            {
+                q = q.Where(x => x.ToAge <= sm.ToAge);
+            }
+            
+            var Result = from TR in q
+                         select new TestListItemForGridFormTestRange
+                         {
+                             RangeID = TR.RangeID,
+                             MinValue = TR.MinValue,
+                             MaxValue = TR.MaxValue,
+                             FromAge = TR.FromAge,
+                             ToAge = TR.ToAge,
+                             Hazard = TR.Hazard,
+                             TestName = TR.Test.TestName,
+                             Gender = TR.Gender == 1 ? "مرد" :
+                             TR.Gender == 0 ? "زن" :
+                             TR.Gender == 3 ? "همه" : "نامشخص"
+                         };
+            return Result.ToList();
+        }
+
         public bool Update(TestRange NewModel)
         {
             try

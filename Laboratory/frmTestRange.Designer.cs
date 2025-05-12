@@ -29,8 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.txtTest = new System.Windows.Forms.TextBox();
             this.lstTest = new System.Windows.Forms.ListBox();
@@ -63,12 +64,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.DGVTestRange = new System.Windows.Forms.DataGridView();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.btnCancle = new System.Windows.Forms.Button();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.lblInfoTest = new System.Windows.Forms.Label();
-            this.err = new System.Windows.Forms.ErrorProvider(this.components);
             this.ClmnRangeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClmnTestName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClmnMinValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -79,6 +74,12 @@
             this.ClmnHazard = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ClmnEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ClmnDelete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.btnCancle = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.lblInfoTest = new System.Windows.Forms.Label();
+            this.err = new System.Windows.Forms.ErrorProvider(this.components);
             this.grpGender.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVTestRange)).BeginInit();
@@ -302,6 +303,8 @@
             this.txtSearchToMaximum.Name = "txtSearchToMaximum";
             this.txtSearchToMaximum.Size = new System.Drawing.Size(100, 31);
             this.txtSearchToMaximum.TabIndex = 17;
+            this.txtSearchToMaximum.TextChanged += new System.EventHandler(this.txtSearchToMaximum_TextChanged);
+            this.txtSearchToMaximum.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearchToMaximum_KeyPress);
             // 
             // txtSearchToAge
             // 
@@ -309,6 +312,7 @@
             this.txtSearchToAge.Name = "txtSearchToAge";
             this.txtSearchToAge.Size = new System.Drawing.Size(100, 31);
             this.txtSearchToAge.TabIndex = 19;
+            this.txtSearchToAge.TextChanged += new System.EventHandler(this.txtSearchToAge_TextChanged);
             // 
             // txtSearchFromMinum
             // 
@@ -316,6 +320,8 @@
             this.txtSearchFromMinum.Name = "txtSearchFromMinum";
             this.txtSearchFromMinum.Size = new System.Drawing.Size(100, 31);
             this.txtSearchFromMinum.TabIndex = 17;
+            this.txtSearchFromMinum.TextChanged += new System.EventHandler(this.txtSearchFromMinum_TextChanged);
+            this.txtSearchFromMinum.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearchFromMinum_KeyPress);
             // 
             // label9
             // 
@@ -337,6 +343,7 @@
             this.CKBSearchHazard.TabIndex = 19;
             this.CKBSearchHazard.Text = "خطرناک";
             this.CKBSearchHazard.UseVisualStyleBackColor = true;
+            this.CKBSearchHazard.Click += new System.EventHandler(this.CKBSearchHazard_Click);
             // 
             // txtSearchTest
             // 
@@ -344,6 +351,7 @@
             this.txtSearchTest.Name = "txtSearchTest";
             this.txtSearchTest.Size = new System.Drawing.Size(230, 31);
             this.txtSearchTest.TabIndex = 18;
+            this.txtSearchTest.TextChanged += new System.EventHandler(this.txtSearchTest_TextChanged);
             // 
             // txtSearchFromAge
             // 
@@ -351,6 +359,7 @@
             this.txtSearchFromAge.Name = "txtSearchFromAge";
             this.txtSearchFromAge.Size = new System.Drawing.Size(100, 31);
             this.txtSearchFromAge.TabIndex = 17;
+            this.txtSearchFromAge.TextChanged += new System.EventHandler(this.txtSearchFromAge_TextChanged);
             // 
             // label10
             // 
@@ -385,14 +394,14 @@
             // DGVTestRange
             // 
             this.DGVTestRange.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(247)))), ((int)(((byte)(240)))));
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DGVTestRange.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DGVTestRange.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.DGVTestRange.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGVTestRange.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ClmnRangeID,
@@ -408,78 +417,20 @@
             this.DGVTestRange.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.DGVTestRange.Location = new System.Drawing.Point(0, 526);
             this.DGVTestRange.Name = "DGVTestRange";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DGVTestRange.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DGVTestRange.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.DGVTestRange.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.DGVTestRange.RowTemplate.Height = 25;
             this.DGVTestRange.Size = new System.Drawing.Size(1081, 227);
             this.DGVTestRange.TabIndex = 17;
             this.DGVTestRange.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVTestRange_CellContentClick);
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.btnCancle);
-            this.panel3.Controls.Add(this.btnUpdate);
-            this.panel3.Controls.Add(this.btnAdd);
-            this.panel3.Location = new System.Drawing.Point(869, 121);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(200, 197);
-            this.panel3.TabIndex = 18;
-            // 
-            // btnCancle
-            // 
-            this.btnCancle.BackColor = System.Drawing.Color.Red;
-            this.btnCancle.Font = new System.Drawing.Font("B Titr", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.btnCancle.Location = new System.Drawing.Point(18, 125);
-            this.btnCancle.Name = "btnCancle";
-            this.btnCancle.Size = new System.Drawing.Size(155, 39);
-            this.btnCancle.TabIndex = 5;
-            this.btnCancle.Text = "انصراف";
-            this.btnCancle.UseVisualStyleBackColor = false;
-            this.btnCancle.Click += new System.EventHandler(this.btnCancle_Click);
-            // 
-            // btnUpdate
-            // 
-            this.btnUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.btnUpdate.Font = new System.Drawing.Font("B Titr", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.btnUpdate.Location = new System.Drawing.Point(18, 80);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(155, 39);
-            this.btnUpdate.TabIndex = 4;
-            this.btnUpdate.Text = "ویرایش";
-            this.btnUpdate.UseVisualStyleBackColor = false;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.BackColor = System.Drawing.Color.MediumAquamarine;
-            this.btnAdd.Font = new System.Drawing.Font("B Titr", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.btnAdd.Location = new System.Drawing.Point(18, 35);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(155, 39);
-            this.btnAdd.TabIndex = 3;
-            this.btnAdd.Text = "ثبت";
-            this.btnAdd.UseVisualStyleBackColor = false;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // lblInfoTest
-            // 
-            this.lblInfoTest.AutoSize = true;
-            this.lblInfoTest.Font = new System.Drawing.Font("B Titr", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.lblInfoTest.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.lblInfoTest.Location = new System.Drawing.Point(296, 292);
-            this.lblInfoTest.Name = "lblInfoTest";
-            this.lblInfoTest.Size = new System.Drawing.Size(0, 26);
-            this.lblInfoTest.TabIndex = 19;
-            // 
-            // err
-            // 
-            this.err.BlinkRate = 500;
-            this.err.ContainerControl = this;
             // 
             // ClmnRangeID
             // 
@@ -550,6 +501,67 @@
             this.ClmnDelete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.ClmnDelete.Text = "حذف";
             this.ClmnDelete.UseColumnTextForButtonValue = true;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.btnCancle);
+            this.panel3.Controls.Add(this.btnUpdate);
+            this.panel3.Controls.Add(this.btnAdd);
+            this.panel3.Location = new System.Drawing.Point(869, 121);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(200, 197);
+            this.panel3.TabIndex = 18;
+            // 
+            // btnCancle
+            // 
+            this.btnCancle.BackColor = System.Drawing.Color.Red;
+            this.btnCancle.Font = new System.Drawing.Font("B Titr", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.btnCancle.Location = new System.Drawing.Point(18, 125);
+            this.btnCancle.Name = "btnCancle";
+            this.btnCancle.Size = new System.Drawing.Size(155, 39);
+            this.btnCancle.TabIndex = 5;
+            this.btnCancle.Text = "انصراف";
+            this.btnCancle.UseVisualStyleBackColor = false;
+            this.btnCancle.Click += new System.EventHandler(this.btnCancle_Click);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btnUpdate.Font = new System.Drawing.Font("B Titr", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.btnUpdate.Location = new System.Drawing.Point(18, 80);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(155, 39);
+            this.btnUpdate.TabIndex = 4;
+            this.btnUpdate.Text = "ویرایش";
+            this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.BackColor = System.Drawing.Color.MediumAquamarine;
+            this.btnAdd.Font = new System.Drawing.Font("B Titr", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.btnAdd.Location = new System.Drawing.Point(18, 35);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(155, 39);
+            this.btnAdd.TabIndex = 3;
+            this.btnAdd.Text = "ثبت";
+            this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // lblInfoTest
+            // 
+            this.lblInfoTest.AutoSize = true;
+            this.lblInfoTest.Font = new System.Drawing.Font("B Titr", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.lblInfoTest.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.lblInfoTest.Location = new System.Drawing.Point(296, 292);
+            this.lblInfoTest.Name = "lblInfoTest";
+            this.lblInfoTest.Size = new System.Drawing.Size(0, 26);
+            this.lblInfoTest.TabIndex = 19;
+            // 
+            // err
+            // 
+            this.err.BlinkRate = 500;
+            this.err.ContainerControl = this;
             // 
             // frmTestRange
             // 

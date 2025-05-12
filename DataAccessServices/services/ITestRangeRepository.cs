@@ -1,4 +1,5 @@
 ﻿using DoaminModel.Models;
+using DoaminModel.ViewModel.TestRange;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -11,5 +12,6 @@ namespace DataAccessServices.services
     public interface ITestRangeRepository
     {
         List<DoaminModel.ViewModel.TestRange.TestListItemForGridFormTestRange> GetAllFormTestRange();
+        List<TestListItemForGridFormTestRange> Search(ListSearchItemForSearchPanelTestRange sm);
     }
 }

@@ -108,6 +108,31 @@ namespace Laboratory
             BindCombo();
             //BindCheckListBox();
             BindGrid();
+            DataGridViewTest.EnableHeadersVisualStyles = false;
+
+            // رنگ پس‌زمینه کلی گرید
+            DataGridViewTest.BackgroundColor = Color.FromArgb(235, 247, 240);
+
+            // رنگ ردیف‌های معمولی
+            DataGridViewTest.RowsDefaultCellStyle.BackColor = Color.FromArgb(245, 255, 250); // خیلی نزدیک به فرم
+
+            // رنگ ردیف‌های یکی در میون برای خوانایی بیشتر
+            DataGridViewTest.AlternatingRowsDefaultCellStyle.BackColor = Color.White;
+
+            // رنگ متن سلول‌ها
+            DataGridViewTest.RowsDefaultCellStyle.ForeColor = Color.Black;
+
+            // رنگ انتخاب‌شده (برای اینکه زیادی تیره یا زننده نباشه)
+            DataGridViewTest.DefaultCellStyle.SelectionBackColor = Color.FromArgb(200, 230, 220); // سبز ملایم
+            DataGridViewTest.DefaultCellStyle.SelectionForeColor = Color.Black;
+
+            // رنگ هدر جدول
+            DataGridViewTest.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(220, 240, 230);
+            DataGridViewTest.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+
+            // رنگ خطوط جدول
+            DataGridViewTest.GridColor = Color.LightGray;
+
         }
 
         private void btnAdd_Click(object sender, EventArgs e)

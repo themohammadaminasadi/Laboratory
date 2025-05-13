@@ -30,17 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.DataGridViewTest = new System.Windows.Forms.DataGridView();
-            this.ClmnTestID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClmnTestName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClmnUnitID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClmnUnitName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClmnCategoryID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClmnCategoryName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClmnAgeHasEfect = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClmnGenderHasEfect = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClmnPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClmnEdit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ClmnDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnCancle = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
@@ -78,6 +67,17 @@
             this.lblErrorTest = new System.Windows.Forms.Label();
             this.lblErrorPrice = new System.Windows.Forms.Label();
             this.err = new System.Windows.Forms.ErrorProvider(this.components);
+            this.ClmnTestID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClmnTestName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClmnUnitID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClmnUnitName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClmnCategoryID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClmnCategoryName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClmnAgeHasEfect = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClmnGenderHasEfect = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClmnPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClmnEdit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ClmnDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewTest)).BeginInit();
             this.panel3.SuspendLayout();
             this.grpGenderHasEfect.SuspendLayout();
@@ -104,83 +104,10 @@
             this.DataGridViewTest.Location = new System.Drawing.Point(249, 573);
             this.DataGridViewTest.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.DataGridViewTest.Name = "DataGridViewTest";
-            this.DataGridViewTest.Size = new System.Drawing.Size(943, 252);
+            this.DataGridViewTest.RowTemplate.Height = 25;
+            this.DataGridViewTest.Size = new System.Drawing.Size(952, 252);
             this.DataGridViewTest.TabIndex = 0;
             this.DataGridViewTest.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewTest_CellContentClick);
-            // 
-            // ClmnTestID
-            // 
-            this.ClmnTestID.DataPropertyName = "TestID";
-            this.ClmnTestID.HeaderText = "شناسه آزمایش";
-            this.ClmnTestID.Name = "ClmnTestID";
-            // 
-            // ClmnTestName
-            // 
-            this.ClmnTestName.DataPropertyName = "TestName";
-            this.ClmnTestName.HeaderText = "آزمایش";
-            this.ClmnTestName.Name = "ClmnTestName";
-            // 
-            // ClmnUnitID
-            // 
-            this.ClmnUnitID.DataPropertyName = "UnitID";
-            this.ClmnUnitID.HeaderText = "شناسه واحد";
-            this.ClmnUnitID.Name = "ClmnUnitID";
-            this.ClmnUnitID.Visible = false;
-            // 
-            // ClmnUnitName
-            // 
-            this.ClmnUnitName.DataPropertyName = "UnitName";
-            this.ClmnUnitName.HeaderText = "واحد";
-            this.ClmnUnitName.Name = "ClmnUnitName";
-            // 
-            // ClmnCategoryID
-            // 
-            this.ClmnCategoryID.DataPropertyName = "CategoryID";
-            this.ClmnCategoryID.HeaderText = "شناسه گروه";
-            this.ClmnCategoryID.Name = "ClmnCategoryID";
-            this.ClmnCategoryID.Visible = false;
-            // 
-            // ClmnCategoryName
-            // 
-            this.ClmnCategoryName.DataPropertyName = "CategoryName";
-            this.ClmnCategoryName.HeaderText = "گروه";
-            this.ClmnCategoryName.Name = "ClmnCategoryName";
-            // 
-            // ClmnAgeHasEfect
-            // 
-            this.ClmnAgeHasEfect.DataPropertyName = "AgeHasEfect";
-            this.ClmnAgeHasEfect.HeaderText = "تاثیر سن";
-            this.ClmnAgeHasEfect.Name = "ClmnAgeHasEfect";
-            // 
-            // ClmnGenderHasEfect
-            // 
-            this.ClmnGenderHasEfect.DataPropertyName = "GenderHasEfect";
-            this.ClmnGenderHasEfect.HeaderText = "تاثیر جنسیت";
-            this.ClmnGenderHasEfect.Name = "ClmnGenderHasEfect";
-            // 
-            // ClmnPrice
-            // 
-            this.ClmnPrice.DataPropertyName = "Price";
-            this.ClmnPrice.HeaderText = "قیمت";
-            this.ClmnPrice.Name = "ClmnPrice";
-            // 
-            // ClmnEdit
-            // 
-            this.ClmnEdit.HeaderText = "ویرایش";
-            this.ClmnEdit.Name = "ClmnEdit";
-            this.ClmnEdit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ClmnEdit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ClmnEdit.Text = "ویرایش";
-            this.ClmnEdit.UseColumnTextForButtonValue = true;
-            // 
-            // ClmnDelete
-            // 
-            this.ClmnDelete.HeaderText = "حذف";
-            this.ClmnDelete.Name = "ClmnDelete";
-            this.ClmnDelete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ClmnDelete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ClmnDelete.Text = "حذف";
-            this.ClmnDelete.UseColumnTextForButtonValue = true;
             // 
             // panel3
             // 
@@ -555,10 +482,86 @@
             this.err.BlinkRate = 500;
             this.err.ContainerControl = this;
             // 
+            // ClmnTestID
+            // 
+            this.ClmnTestID.DataPropertyName = "TestID";
+            this.ClmnTestID.HeaderText = "شناسه آزمایش";
+            this.ClmnTestID.Name = "ClmnTestID";
+            this.ClmnTestID.Width = 110;
+            // 
+            // ClmnTestName
+            // 
+            this.ClmnTestName.DataPropertyName = "TestName";
+            this.ClmnTestName.HeaderText = "آزمایش";
+            this.ClmnTestName.Name = "ClmnTestName";
+            // 
+            // ClmnUnitID
+            // 
+            this.ClmnUnitID.DataPropertyName = "UnitID";
+            this.ClmnUnitID.HeaderText = "شناسه واحد";
+            this.ClmnUnitID.Name = "ClmnUnitID";
+            this.ClmnUnitID.Visible = false;
+            // 
+            // ClmnUnitName
+            // 
+            this.ClmnUnitName.DataPropertyName = "UnitName";
+            this.ClmnUnitName.HeaderText = "واحد";
+            this.ClmnUnitName.Name = "ClmnUnitName";
+            // 
+            // ClmnCategoryID
+            // 
+            this.ClmnCategoryID.DataPropertyName = "CategoryID";
+            this.ClmnCategoryID.HeaderText = "شناسه گروه";
+            this.ClmnCategoryID.Name = "ClmnCategoryID";
+            this.ClmnCategoryID.Visible = false;
+            // 
+            // ClmnCategoryName
+            // 
+            this.ClmnCategoryName.DataPropertyName = "CategoryName";
+            this.ClmnCategoryName.HeaderText = "گروه";
+            this.ClmnCategoryName.Name = "ClmnCategoryName";
+            // 
+            // ClmnAgeHasEfect
+            // 
+            this.ClmnAgeHasEfect.DataPropertyName = "AgeHasEfect";
+            this.ClmnAgeHasEfect.HeaderText = "تاثیر سن";
+            this.ClmnAgeHasEfect.Name = "ClmnAgeHasEfect";
+            // 
+            // ClmnGenderHasEfect
+            // 
+            this.ClmnGenderHasEfect.DataPropertyName = "GenderHasEfect";
+            this.ClmnGenderHasEfect.HeaderText = "تاثیر جنسیت";
+            this.ClmnGenderHasEfect.Name = "ClmnGenderHasEfect";
+            // 
+            // ClmnPrice
+            // 
+            this.ClmnPrice.DataPropertyName = "Price";
+            this.ClmnPrice.HeaderText = "قیمت";
+            this.ClmnPrice.Name = "ClmnPrice";
+            // 
+            // ClmnEdit
+            // 
+            this.ClmnEdit.HeaderText = "ویرایش";
+            this.ClmnEdit.Name = "ClmnEdit";
+            this.ClmnEdit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ClmnEdit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ClmnEdit.Text = "ویرایش";
+            this.ClmnEdit.UseColumnTextForButtonValue = true;
+            // 
+            // ClmnDelete
+            // 
+            this.ClmnDelete.HeaderText = "حذف";
+            this.ClmnDelete.Name = "ClmnDelete";
+            this.ClmnDelete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ClmnDelete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ClmnDelete.Text = "حذف";
+            this.ClmnDelete.UseColumnTextForButtonValue = true;
+            // 
             // frmTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(247)))), ((int)(((byte)(240)))));
             this.ClientSize = new System.Drawing.Size(1443, 826);
             this.Controls.Add(this.lblErrorPrice);
             this.Controls.Add(this.lblErrorTest);
@@ -603,17 +606,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView DataGridViewTest;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ClmnTestID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ClmnTestName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ClmnUnitID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ClmnUnitName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ClmnCategoryID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ClmnCategoryName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ClmnAgeHasEfect;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ClmnGenderHasEfect;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ClmnPrice;
-        private System.Windows.Forms.DataGridViewButtonColumn ClmnEdit;
-        private System.Windows.Forms.DataGridViewButtonColumn ClmnDelete;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btnCancle;
         private System.Windows.Forms.Button btnUpdate;
@@ -651,5 +643,16 @@
         private System.Windows.Forms.ErrorProvider err;
         private System.Windows.Forms.RadioButton rdbUnknownGender;
         private System.Windows.Forms.RadioButton rdbUnKnownAge;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClmnTestID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClmnTestName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClmnUnitID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClmnUnitName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClmnCategoryID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClmnCategoryName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClmnAgeHasEfect;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClmnGenderHasEfect;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClmnPrice;
+        private System.Windows.Forms.DataGridViewButtonColumn ClmnEdit;
+        private System.Windows.Forms.DataGridViewButtonColumn ClmnDelete;
     }
 }

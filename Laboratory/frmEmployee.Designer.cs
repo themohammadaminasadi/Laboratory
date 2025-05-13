@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnCancle = new System.Windows.Forms.Button();
@@ -56,6 +57,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridViewEmployee = new System.Windows.Forms.DataGridView();
+            this.err = new System.Windows.Forms.ErrorProvider(this.components);
             this.ClmnEmployeeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClmnTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClmnFirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,7 +68,6 @@
             this.ClmnPhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClmnEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ClmnDelete = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.err = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.pnlInfoUser.SuspendLayout();
@@ -344,6 +345,15 @@
             // 
             // dataGridViewEmployee
             // 
+            this.dataGridViewEmployee.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(244)))), ((int)(((byte)(234)))));
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewEmployee.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewEmployee.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ClmnEmployeeID,
@@ -356,17 +366,25 @@
             this.ClmnPhoneNumber,
             this.ClmnEdit,
             this.ClmnDelete});
-            this.dataGridViewEmployee.Location = new System.Drawing.Point(45, 542);
+            this.dataGridViewEmployee.Location = new System.Drawing.Point(33, 542);
             this.dataGridViewEmployee.Name = "dataGridViewEmployee";
-            this.dataGridViewEmployee.Size = new System.Drawing.Size(1041, 212);
+            this.dataGridViewEmployee.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewEmployee.RowTemplate.Height = 25;
+            this.dataGridViewEmployee.Size = new System.Drawing.Size(1061, 212);
             this.dataGridViewEmployee.TabIndex = 9;
             this.dataGridViewEmployee.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewEmployee_CellContentClick);
+            // 
+            // err
+            // 
+            this.err.BlinkRate = 500;
+            this.err.ContainerControl = this;
             // 
             // ClmnEmployeeID
             // 
             this.ClmnEmployeeID.DataPropertyName = "EmployeeID";
             this.ClmnEmployeeID.HeaderText = "شناسه کارمند";
             this.ClmnEmployeeID.Name = "ClmnEmployeeID";
+            this.ClmnEmployeeID.Width = 120;
             // 
             // ClmnTitle
             // 
@@ -416,6 +434,8 @@
             this.ClmnEdit.Name = "ClmnEdit";
             this.ClmnEdit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.ClmnEdit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ClmnEdit.Text = "ویرایش";
+            this.ClmnEdit.UseColumnTextForButtonValue = true;
             // 
             // ClmnDelete
             // 
@@ -423,16 +443,14 @@
             this.ClmnDelete.Name = "ClmnDelete";
             this.ClmnDelete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.ClmnDelete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // err
-            // 
-            this.err.BlinkRate = 500;
-            this.err.ContainerControl = this;
+            this.ClmnDelete.Text = "حذف";
+            this.ClmnDelete.UseColumnTextForButtonValue = true;
             // 
             // frmEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(244)))), ((int)(((byte)(234)))));
             this.ClientSize = new System.Drawing.Size(1118, 753);
             this.Controls.Add(this.dataGridViewEmployee);
             this.Controls.Add(this.panel3);
@@ -490,6 +508,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView dataGridViewEmployee;
         private System.Windows.Forms.ErrorProvider err;
+        private System.Windows.Forms.Button btnShow;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClmnEmployeeID;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClmnTitle;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClmnFirstName;
@@ -500,6 +519,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ClmnPhoneNumber;
         private System.Windows.Forms.DataGridViewButtonColumn ClmnEdit;
         private System.Windows.Forms.DataGridViewButtonColumn ClmnDelete;
-        private System.Windows.Forms.Button btnShow;
     }
 }

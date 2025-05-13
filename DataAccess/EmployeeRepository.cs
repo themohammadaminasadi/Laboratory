@@ -83,5 +83,15 @@ namespace DataAccess
             }
            
         }
+
+        public Employee GetEmployeeWithUserName(string UserName)
+        {
+            return db.Employees.FirstOrDefault(x => x.UserName == UserName);
+        }
+
+        //Employee IEmployeeRepository.GetEmployeeWithUserName(string UserName)
+        //{
+        //    return GetEmployeeWithUserName(UserName);
+        //}
     }
 }

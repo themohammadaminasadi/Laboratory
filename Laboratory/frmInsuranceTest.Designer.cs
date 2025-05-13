@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewInsuraceTest = new System.Windows.Forms.DataGridView();
             this.ClmnInsuranceTestID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClmnTestName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,6 +61,15 @@
             // 
             // dataGridViewInsuraceTest
             // 
+            this.dataGridViewInsuraceTest.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(247)))), ((int)(((byte)(240)))));
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewInsuraceTest.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewInsuraceTest.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewInsuraceTest.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ClmnInsuranceTestID,
@@ -72,6 +82,8 @@
             this.dataGridViewInsuraceTest.Location = new System.Drawing.Point(3, 441);
             this.dataGridViewInsuraceTest.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.dataGridViewInsuraceTest.Name = "dataGridViewInsuraceTest";
+            this.dataGridViewInsuraceTest.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewInsuraceTest.RowTemplate.Height = 25;
             this.dataGridViewInsuraceTest.Size = new System.Drawing.Size(1340, 706);
             this.dataGridViewInsuraceTest.TabIndex = 0;
             this.dataGridViewInsuraceTest.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewInsuraceTest_CellContentClick);
@@ -275,6 +287,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(247)))), ((int)(((byte)(240)))));
             this.ClientSize = new System.Drawing.Size(747, 651);
             this.Controls.Add(this.lblErrorYear);
             this.Controls.Add(this.lblErrorDiscount);

@@ -30,17 +30,18 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewCategory = new System.Windows.Forms.DataGridView();
+            this.ClmnCategoryID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClmnCategoryName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClmnEdit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ClmnDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.txtCategoryName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnCancle = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.err = new System.Windows.Forms.ErrorProvider(this.components);
-            this.ClmnCategoryID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClmnCategoryName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClmnEdit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ClmnDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCategory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.err)).BeginInit();
             this.SuspendLayout();
@@ -50,6 +51,14 @@
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             this.dataGridViewCategory.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewCategory.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(244)))), ((int)(((byte)(234)))));
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("B Nazanin", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewCategory.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewCategory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewCategory.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ClmnCategoryID,
@@ -60,9 +69,41 @@
             this.dataGridViewCategory.Location = new System.Drawing.Point(0, 199);
             this.dataGridViewCategory.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dataGridViewCategory.Name = "dataGridViewCategory";
+            this.dataGridViewCategory.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewCategory.RowTemplate.Height = 25;
             this.dataGridViewCategory.Size = new System.Drawing.Size(443, 231);
             this.dataGridViewCategory.TabIndex = 9;
             this.dataGridViewCategory.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewCategory_CellContentClick);
+            // 
+            // ClmnCategoryID
+            // 
+            this.ClmnCategoryID.DataPropertyName = "CategoryID";
+            this.ClmnCategoryID.HeaderText = "شناسه گروه";
+            this.ClmnCategoryID.Name = "ClmnCategoryID";
+            // 
+            // ClmnCategoryName
+            // 
+            this.ClmnCategoryName.DataPropertyName = "CategoryName";
+            this.ClmnCategoryName.HeaderText = "گروه";
+            this.ClmnCategoryName.Name = "ClmnCategoryName";
+            // 
+            // ClmnEdit
+            // 
+            this.ClmnEdit.HeaderText = "ویرایش";
+            this.ClmnEdit.Name = "ClmnEdit";
+            this.ClmnEdit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ClmnEdit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ClmnEdit.Text = "ویرایش";
+            this.ClmnEdit.UseColumnTextForButtonValue = true;
+            // 
+            // ClmnDelete
+            // 
+            this.ClmnDelete.HeaderText = "حذف";
+            this.ClmnDelete.Name = "ClmnDelete";
+            this.ClmnDelete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ClmnDelete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ClmnDelete.Text = "حذف";
+            this.ClmnDelete.UseColumnTextForButtonValue = true;
             // 
             // txtCategoryName
             // 
@@ -120,36 +161,6 @@
             // 
             this.err.BlinkRate = 500;
             this.err.ContainerControl = this;
-            // 
-            // ClmnCategoryID
-            // 
-            this.ClmnCategoryID.DataPropertyName = "CategoryID";
-            this.ClmnCategoryID.HeaderText = "شناسه گروه";
-            this.ClmnCategoryID.Name = "ClmnCategoryID";
-            // 
-            // ClmnCategoryName
-            // 
-            this.ClmnCategoryName.DataPropertyName = "CategoryName";
-            this.ClmnCategoryName.HeaderText = "گروه";
-            this.ClmnCategoryName.Name = "ClmnCategoryName";
-            // 
-            // ClmnEdit
-            // 
-            this.ClmnEdit.HeaderText = "ویرایش";
-            this.ClmnEdit.Name = "ClmnEdit";
-            this.ClmnEdit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ClmnEdit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ClmnEdit.Text = "ویرایش";
-            this.ClmnEdit.UseColumnTextForButtonValue = true;
-            // 
-            // ClmnDelete
-            // 
-            this.ClmnDelete.HeaderText = "حذف";
-            this.ClmnDelete.Name = "ClmnDelete";
-            this.ClmnDelete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ClmnDelete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ClmnDelete.Text = "حذف";
-            this.ClmnDelete.UseColumnTextForButtonValue = true;
             // 
             // frmCategory
             // 

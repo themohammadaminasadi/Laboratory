@@ -33,3 +33,4 @@ D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.exe
 D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.pdb
 D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.frmTestRange.resources
 D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.frmLogin.resources
+D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.frmSwichBoard.resources

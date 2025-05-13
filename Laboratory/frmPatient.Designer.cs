@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewPatient = new System.Windows.Forms.DataGridView();
             this.ClmnPatientID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClmnFirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -83,6 +84,15 @@
             // 
             // dataGridViewPatient
             // 
+            this.dataGridViewPatient.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(247)))), ((int)(((byte)(240)))));
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewPatient.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewPatient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewPatient.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ClmnPatientID,
@@ -97,6 +107,8 @@
             this.dataGridViewPatient.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dataGridViewPatient.Location = new System.Drawing.Point(0, 688);
             this.dataGridViewPatient.Name = "dataGridViewPatient";
+            this.dataGridViewPatient.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewPatient.RowTemplate.Height = 25;
             this.dataGridViewPatient.Size = new System.Drawing.Size(1056, 224);
             this.dataGridViewPatient.TabIndex = 0;
             this.dataGridViewPatient.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPatient_CellContentClick);
@@ -497,6 +509,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(247)))), ((int)(((byte)(240)))));
             this.ClientSize = new System.Drawing.Size(1056, 912);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.panel2);
@@ -505,6 +518,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataGridViewPatient);
             this.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.ForeColor = System.Drawing.Color.Black;
             this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.Name = "frmPatient";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;

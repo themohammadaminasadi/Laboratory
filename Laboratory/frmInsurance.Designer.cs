@@ -29,8 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewInsurance = new System.Windows.Forms.DataGridView();
+            this.ClmnInsuranceID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClmnInsuranceTypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClmnEdit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ClmnDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.txtInsuranceTypeName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -39,19 +44,23 @@
             this.err = new System.Windows.Forms.ErrorProvider(this.components);
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.ClmnInsuranceID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClmnInsuranceTypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClmnEdit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ClmnDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewInsurance)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.err)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewInsurance
             // 
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            this.dataGridViewInsurance.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.dataGridViewInsurance.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewInsurance.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(244)))), ((int)(((byte)(234)))));
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("B Nazanin", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewInsurance.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewInsurance.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewInsurance.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ClmnInsuranceID,
@@ -62,9 +71,41 @@
             this.dataGridViewInsurance.Location = new System.Drawing.Point(0, 261);
             this.dataGridViewInsurance.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dataGridViewInsurance.Name = "dataGridViewInsurance";
+            this.dataGridViewInsurance.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewInsurance.RowTemplate.Height = 25;
             this.dataGridViewInsurance.Size = new System.Drawing.Size(444, 231);
             this.dataGridViewInsurance.TabIndex = 15;
             this.dataGridViewInsurance.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewInsurance_CellContentClick);
+            // 
+            // ClmnInsuranceID
+            // 
+            this.ClmnInsuranceID.DataPropertyName = "InsuranceID";
+            this.ClmnInsuranceID.HeaderText = "شناسه بیمه";
+            this.ClmnInsuranceID.Name = "ClmnInsuranceID";
+            // 
+            // ClmnInsuranceTypeName
+            // 
+            this.ClmnInsuranceTypeName.DataPropertyName = "InsuranceTypeName";
+            this.ClmnInsuranceTypeName.HeaderText = "بیمه";
+            this.ClmnInsuranceTypeName.Name = "ClmnInsuranceTypeName";
+            // 
+            // ClmnEdit
+            // 
+            this.ClmnEdit.HeaderText = "ویرایش";
+            this.ClmnEdit.Name = "ClmnEdit";
+            this.ClmnEdit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ClmnEdit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ClmnEdit.Text = "ویرایش";
+            this.ClmnEdit.UseColumnTextForButtonValue = true;
+            // 
+            // ClmnDelete
+            // 
+            this.ClmnDelete.HeaderText = "حذف";
+            this.ClmnDelete.Name = "ClmnDelete";
+            this.ClmnDelete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ClmnDelete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ClmnDelete.Text = "حذف";
+            this.ClmnDelete.UseColumnTextForButtonValue = true;
             // 
             // txtInsuranceTypeName
             // 
@@ -142,36 +183,6 @@
             this.label2.Size = new System.Drawing.Size(53, 23);
             this.label2.TabIndex = 19;
             this.label2.Text = "توضیحات";
-            // 
-            // ClmnInsuranceID
-            // 
-            this.ClmnInsuranceID.DataPropertyName = "InsuranceID";
-            this.ClmnInsuranceID.HeaderText = "شناسه بیمه";
-            this.ClmnInsuranceID.Name = "ClmnInsuranceID";
-            // 
-            // ClmnInsuranceTypeName
-            // 
-            this.ClmnInsuranceTypeName.DataPropertyName = "InsuranceTypeName";
-            this.ClmnInsuranceTypeName.HeaderText = "بیمه";
-            this.ClmnInsuranceTypeName.Name = "ClmnInsuranceTypeName";
-            // 
-            // ClmnEdit
-            // 
-            this.ClmnEdit.HeaderText = "ویرایش";
-            this.ClmnEdit.Name = "ClmnEdit";
-            this.ClmnEdit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ClmnEdit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ClmnEdit.Text = "ویرایش";
-            this.ClmnEdit.UseColumnTextForButtonValue = true;
-            // 
-            // ClmnDelete
-            // 
-            this.ClmnDelete.HeaderText = "حذف";
-            this.ClmnDelete.Name = "ClmnDelete";
-            this.ClmnDelete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ClmnDelete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ClmnDelete.Text = "حذف";
-            this.ClmnDelete.UseColumnTextForButtonValue = true;
             // 
             // frmInsurance
             // 

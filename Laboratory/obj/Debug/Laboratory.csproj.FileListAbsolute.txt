@@ -6,6 +6,9 @@ D:\Backend\Backend\C# Advance\Laboratory\Laboratory\bin\Debug\DataAccessServices
 D:\Backend\Backend\C# Advance\Laboratory\Laboratory\bin\Debug\DoaminModel.dll
 D:\Backend\Backend\C# Advance\Laboratory\Laboratory\bin\Debug\EntityFramework.dll
 D:\Backend\Backend\C# Advance\Laboratory\Laboratory\bin\Debug\EntityFramework.SqlServer.dll
+D:\Backend\Backend\C# Advance\Laboratory\Laboratory\bin\Debug\FarsiLibrary.Localization.dll
+D:\Backend\Backend\C# Advance\Laboratory\Laboratory\bin\Debug\FarsiLibrary.Utils.dll
+D:\Backend\Backend\C# Advance\Laboratory\Laboratory\bin\Debug\FarsiLibrary.Win.dll
 D:\Backend\Backend\C# Advance\Laboratory\Laboratory\bin\Debug\Framework.dll
 D:\Backend\Backend\C# Advance\Laboratory\Laboratory\bin\Debug\DataAccessServices.pdb
 D:\Backend\Backend\C# Advance\Laboratory\Laboratory\bin\Debug\DataAccessServices.dll.config
@@ -22,8 +25,12 @@ D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.frmCate
 D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.frmEmployee.resources
 D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.frmInsurance.resources
 D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.frmInsuranceTest.resources
+D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.frmLaboratoryVisit.resources
+D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.frmLogin.resources
 D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.frmPatient.resources
+D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.frmSwichBoard.resources
 D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.frmTest.resources
+D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.frmTestRange.resources
 D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.frmUnits.resources
 D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.Properties.Resources.resources
 D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.csproj.GenerateResource.cache
@@ -31,6 +38,3 @@ D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.csproj.
 D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.csproj.Up2Date
 D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.exe
 D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.pdb
-D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.frmTestRange.resources
-D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.frmLogin.resources
-D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.frmSwichBoard.resources

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessServices.services
 {
-    public interface IPatientTestHeder
+    public interface IPatientTestHederRepository
     {
         List<PaitientSearchItem> SearchByMobile(string MobileName);
         List<PaitientSearchItem> SearchByPatientName(string PatientName);

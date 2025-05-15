@@ -30,22 +30,22 @@
         {
             this.components = new System.ComponentModel.Container();
             this.MenuStrip = new System.Windows.Forms.MenuStrip();
-            this.ToolStrip = new System.Windows.Forms.ToolStrip();
-            this.lblUserName = new System.Windows.Forms.ToolStripLabel();
-            this.lblDateTime = new System.Windows.Forms.ToolStripLabel();
             this.مدیریتآزمایشToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.آزمایشToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ثبتآزمایشToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.رنجبندیآزمایشاتToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.گروهآزمایشاتToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.واحدآزمایشاتToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.بیمهToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.مدیریتبیمهToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.مدیریتفرانشیزToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.گروهآزمایشاتToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.واحدآزمایشاتToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.مدیریتکاربرانToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.مدیریتبیمارToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.مدیریتکارمندانToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStrip = new System.Windows.Forms.ToolStrip();
+            this.lblUserName = new System.Windows.Forms.ToolStripLabel();
+            this.lblDateTime = new System.Windows.Forms.ToolStripLabel();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.MenuStrip.SuspendLayout();
             this.ToolStrip.SuspendLayout();
@@ -64,35 +64,6 @@
             this.MenuStrip.Size = new System.Drawing.Size(1244, 34);
             this.MenuStrip.TabIndex = 1;
             this.MenuStrip.Text = "menuStrip1";
-            // 
-            // ToolStrip
-            // 
-            this.ToolStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(202)))), ((int)(((byte)(203)))), ((int)(((byte)(210)))));
-            this.ToolStrip.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.ToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.lblUserName,
-            this.lblDateTime});
-            this.ToolStrip.Location = new System.Drawing.Point(0, 700);
-            this.ToolStrip.Name = "ToolStrip";
-            this.ToolStrip.Size = new System.Drawing.Size(1244, 25);
-            this.ToolStrip.TabIndex = 2;
-            this.ToolStrip.Text = "toolStrip1";
-            // 
-            // lblUserName
-            // 
-            this.lblUserName.Font = new System.Drawing.Font("B Titr", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.lblUserName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(132)))), ((int)(((byte)(219)))));
-            this.lblUserName.Name = "lblUserName";
-            this.lblUserName.RightToLeftAutoMirrorImage = true;
-            this.lblUserName.Size = new System.Drawing.Size(102, 22);
-            this.lblUserName.Text = "lblUserName";
-            // 
-            // lblDateTime
-            // 
-            this.lblDateTime.Font = new System.Drawing.Font("B Titr", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.lblDateTime.Name = "lblDateTime";
-            this.lblDateTime.Size = new System.Drawing.Size(79, 22);
-            this.lblDateTime.Text = "DateTime";
             // 
             // مدیریتآزمایشToolStripMenuItem
             // 
@@ -129,35 +100,6 @@
             this.رنجبندیآزمایشاتToolStripMenuItem.Text = "رنج بندی آزمایشات";
             this.رنجبندیآزمایشاتToolStripMenuItem.Click += new System.EventHandler(this.رنجبندیآزمایشاتToolStripMenuItem_Click);
             // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(183, 30);
-            this.toolStripMenuItem2.Text = "ویزیت";
-            // 
-            // بیمهToolStripMenuItem
-            // 
-            this.بیمهToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.مدیریتبیمهToolStripMenuItem,
-            this.مدیریتفرانشیزToolStripMenuItem});
-            this.بیمهToolStripMenuItem.Name = "بیمهToolStripMenuItem";
-            this.بیمهToolStripMenuItem.Size = new System.Drawing.Size(45, 30);
-            this.بیمهToolStripMenuItem.Text = "بیمه";
-            // 
-            // مدیریتبیمهToolStripMenuItem
-            // 
-            this.مدیریتبیمهToolStripMenuItem.Name = "مدیریتبیمهToolStripMenuItem";
-            this.مدیریتبیمهToolStripMenuItem.Size = new System.Drawing.Size(180, 30);
-            this.مدیریتبیمهToolStripMenuItem.Text = "مدیریت بیمه";
-            this.مدیریتبیمهToolStripMenuItem.Click += new System.EventHandler(this.مدیریتبیمهToolStripMenuItem_Click);
-            // 
-            // مدیریتفرانشیزToolStripMenuItem
-            // 
-            this.مدیریتفرانشیزToolStripMenuItem.Name = "مدیریتفرانشیزToolStripMenuItem";
-            this.مدیریتفرانشیزToolStripMenuItem.Size = new System.Drawing.Size(180, 30);
-            this.مدیریتفرانشیزToolStripMenuItem.Text = "مدیریت فرانشیز";
-            this.مدیریتفرانشیزToolStripMenuItem.Click += new System.EventHandler(this.مدیریتفرانشیزToolStripMenuItem_Click);
-            // 
             // گروهآزمایشاتToolStripMenuItem
             // 
             this.گروهآزمایشاتToolStripMenuItem.Name = "گروهآزمایشاتToolStripMenuItem";
@@ -171,6 +113,36 @@
             this.واحدآزمایشاتToolStripMenuItem.Size = new System.Drawing.Size(191, 30);
             this.واحدآزمایشاتToolStripMenuItem.Text = "واحد آزمایشات";
             this.واحدآزمایشاتToolStripMenuItem.Click += new System.EventHandler(this.واحدآزمایشاتToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(183, 30);
+            this.toolStripMenuItem2.Text = "ویزیت";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            // 
+            // بیمهToolStripMenuItem
+            // 
+            this.بیمهToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.مدیریتبیمهToolStripMenuItem,
+            this.مدیریتفرانشیزToolStripMenuItem});
+            this.بیمهToolStripMenuItem.Name = "بیمهToolStripMenuItem";
+            this.بیمهToolStripMenuItem.Size = new System.Drawing.Size(45, 30);
+            this.بیمهToolStripMenuItem.Text = "بیمه";
+            // 
+            // مدیریتبیمهToolStripMenuItem
+            // 
+            this.مدیریتبیمهToolStripMenuItem.Name = "مدیریتبیمهToolStripMenuItem";
+            this.مدیریتبیمهToolStripMenuItem.Size = new System.Drawing.Size(168, 30);
+            this.مدیریتبیمهToolStripMenuItem.Text = "مدیریت بیمه";
+            this.مدیریتبیمهToolStripMenuItem.Click += new System.EventHandler(this.مدیریتبیمهToolStripMenuItem_Click);
+            // 
+            // مدیریتفرانشیزToolStripMenuItem
+            // 
+            this.مدیریتفرانشیزToolStripMenuItem.Name = "مدیریتفرانشیزToolStripMenuItem";
+            this.مدیریتفرانشیزToolStripMenuItem.Size = new System.Drawing.Size(168, 30);
+            this.مدیریتفرانشیزToolStripMenuItem.Text = "مدیریت فرانشیز";
+            this.مدیریتفرانشیزToolStripMenuItem.Click += new System.EventHandler(this.مدیریتفرانشیزToolStripMenuItem_Click);
             // 
             // مدیریتکاربرانToolStripMenuItem
             // 
@@ -194,6 +166,35 @@
             this.مدیریتکارمندانToolStripMenuItem.Size = new System.Drawing.Size(181, 30);
             this.مدیریتکارمندانToolStripMenuItem.Text = "مدیریت کارمندان";
             this.مدیریتکارمندانToolStripMenuItem.Click += new System.EventHandler(this.مدیریتکارمندانToolStripMenuItem_Click);
+            // 
+            // ToolStrip
+            // 
+            this.ToolStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(202)))), ((int)(((byte)(203)))), ((int)(((byte)(210)))));
+            this.ToolStrip.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.ToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lblUserName,
+            this.lblDateTime});
+            this.ToolStrip.Location = new System.Drawing.Point(0, 700);
+            this.ToolStrip.Name = "ToolStrip";
+            this.ToolStrip.Size = new System.Drawing.Size(1244, 25);
+            this.ToolStrip.TabIndex = 2;
+            this.ToolStrip.Text = "toolStrip1";
+            // 
+            // lblUserName
+            // 
+            this.lblUserName.Font = new System.Drawing.Font("B Titr", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.lblUserName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(132)))), ((int)(((byte)(219)))));
+            this.lblUserName.Name = "lblUserName";
+            this.lblUserName.RightToLeftAutoMirrorImage = true;
+            this.lblUserName.Size = new System.Drawing.Size(102, 22);
+            this.lblUserName.Text = "lblUserName";
+            // 
+            // lblDateTime
+            // 
+            this.lblDateTime.Font = new System.Drawing.Font("B Titr", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.lblDateTime.Name = "lblDateTime";
+            this.lblDateTime.Size = new System.Drawing.Size(79, 22);
+            this.lblDateTime.Text = "DateTime";
             // 
             // timer
             // 

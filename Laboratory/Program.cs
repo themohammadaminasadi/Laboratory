@@ -20,7 +20,7 @@ namespace Laboratory
               new System.Globalization.CultureInfo("fa-IR");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmLaboratoryVisit());
+            Application.Run(new frmLogin());
         }
     }
 }

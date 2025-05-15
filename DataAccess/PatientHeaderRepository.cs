@@ -2,6 +2,7 @@
 using DataAccessServices.Services;
 using DoaminModel.Models;
 using DoaminModel.ViewModel.Patient;
+using DoaminModel.ViewModel.PatientTest;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,32 @@ namespace DataAccess
         private LaboratoryContext db = new LaboratoryContext();
         public int Add(PaitentTestHeder Model)
         {
-            throw new NotImplementedException();
+            try
+            {
+                db.PaitentTestHeders.Add(Model);
+                db.SaveChanges();
+                return Model.PatientTestHederID;
+            }
+            catch (Exception)
+            {
+
+                throw new Exception("عملیات اضافه کردن با موفقیت انجام نشد با پشتیبانی تماس بگیرید");
+            }
+        }
+
+        public int Add(PatientTestDetail patientTestDetail)
+        {
+            try
+            {
+                db.PatientTestDetails.Add(patientTestDetail);
+                db.SaveChanges();
+                return patientTestDetail.PatientTestDetailsID;
+            }
+            catch (Exception)
+            {
+
+                throw new Exception("عملیات اضافه کردن با مشکل رو به رو شد با پشتیبانی تماس بگیرید");
+            }
         }
 
         public bool Delete(int Key)
@@ -25,12 +51,33 @@ namespace DataAccess
 
         public PaitentTestHeder Get(int Key)
         {
-            throw new NotImplementedException();
+            return db.PaitentTestHeders.FirstOrDefault(x => x.PatientTestHederID==Key);
         }
 
         public List<PaitentTestHeder> GetAll()
         {
             throw new NotImplementedException();
+        }
+
+        public List<PatientTestDetailsListItem> GetAllForGirdFormVisit(int PatientTestHederID)
+        {
+            var q = from PT in db.PatientTestDetails.Where(x => x.PatientTestHederID == PatientTestHederID)
+                    select new PatientTestDetailsListItem
+                    {
+                        PatientTestHederID = PT.PatientTestHederID,
+                        PatientTestDetailsID = PT.PatientTestDetailsID,
+                        TestID = PT.TestID,
+                        Price = PT.Price,
+                        TestName = PT.Test.TestName,
+                        Discount = db.InsuranceTests.Where(x=>x.TestID == PT.TestID && x.InsuraneID == PT.PaitentTestHeder.InsuranceID).Select(x=>x.Discount).FirstOrDefault(),
+                        InsuranceID = PT.PaitentTestHeder.InsuranceID
+                    };
+            return q.ToList();
+        }
+
+        public long GetTotalPrice(int PatientTestHederID)
+        {
+            return db.PatientTestDetails.Where(x => x.PatientTestHederID == PatientTestHederID).Sum(x => x.Price);
         }
 
         public List<PaitientSearchItem> SearchByMobile(string MobileName)
@@ -85,6 +132,29 @@ namespace DataAccess
         public bool Update(PaitentTestHeder NewModel)
         {
             throw new NotImplementedException();
+        }
+        public bool DeleteDetails(int patientTestDetailID)
+        {
+            db.PatientTestDetails.Remove(db.PatientTestDetails.FirstOrDefault(x => x.PatientTestDetailsID == patientTestDetailID));
+            db.SaveChanges();
+            return true;
+        }
+
+        public PatientTestDetail GetPatientDetails(int patientTestDetailID)
+        {
+            return db.PatientTestDetails.FirstOrDefault(x => x.PatientTestDetailsID == patientTestDetailID);
+        }
+
+        public bool UpdatePatientDetails(PatientTestDetail patientTestDetail)
+        {
+            var OldPatientTestDetails = db.PatientTestDetails.FirstOrDefault(x => x.PatientTestDetailsID == patientTestDetail.PatientTestDetailsID);
+            OldPatientTestDetails.TestID = patientTestDetail.TestID;
+            OldPatientTestDetails.Result = patientTestDetail.Result;
+            OldPatientTestDetails.HasStar = patientTestDetail.HasStar;
+            OldPatientTestDetails.PatientTestHederID = patientTestDetail.PatientTestHederID;
+            OldPatientTestDetails.Price = patientTestDetail.Price;
+            db.SaveChanges();
+            return true;    
         }
     }
 }

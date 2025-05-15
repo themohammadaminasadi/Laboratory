@@ -50,6 +50,11 @@ namespace DataAccess
             return db.InsuranceTests.FirstOrDefault(x => x.InsuranceTestID == Key);
         }
 
+        public InsuranceTest Get(int InsuranceID, int TestID)
+        {
+            return db.InsuranceTests.FirstOrDefault(x => x.InsuraneID == InsuranceID && x.TestID == TestID);
+        }
+
         public List<InsuranceTest> GetAll()
         {
             return db.InsuranceTests.ToList();

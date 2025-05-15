@@ -1,4 +1,5 @@
-﻿using DoaminModel.ViewModel.Patient;
+﻿using DoaminModel.Models;
+using DoaminModel.ViewModel.Patient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +13,11 @@ namespace DataAccessServices.services
         List<PaitientSearchItem> SearchByMobile(string MobileName);
         List<PaitientSearchItem> SearchByPatientName(string PatientName);
         List<PaitientSearchItem> SearchByNationalCode(string NationalCode);
+        int Add(PatientTestDetail patientTestDetail);
+        List<DoaminModel.ViewModel.PatientTest.PatientTestDetailsListItem> GetAllForGirdFormVisit(int PatientTestHederID);
+        long GetTotalPrice(int PatientTestHederID);
+        bool DeleteDetails(int patientTestDetailID);
+        PatientTestDetail GetPatientDetails(int patientTestDetailID);
+        bool UpdatePatientDetails(PatientTestDetail patientTestDetail);
     }
 }

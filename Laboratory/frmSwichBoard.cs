@@ -57,6 +57,8 @@ namespace Laboratory
                 {
                     child.Activate();
                     ExsistThisFromInSwitchBoard = true;
+                    this.StartPosition = FormStartPosition.CenterScreen;
+
                 }
             }
             if (!ExsistThisFromInSwitchBoard)
@@ -64,6 +66,7 @@ namespace Laboratory
                 frmPatient frmPatient = new frmPatient();
                 frmPatient.MdiParent = this;
                 frmPatient.Show();
+                this.StartPosition = FormStartPosition.CenterScreen;
             }
         }
 
@@ -203,6 +206,25 @@ namespace Laboratory
                 frmUnits frmUnits = new frmUnits();
                 frmUnits.MdiParent = this;
                 frmUnits.Show();
+            }
+        }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            bool ExsistFormInSwitchBoard = false;
+            foreach (Form Child in this.MdiChildren)
+            {
+                if (Child is frmLaboratoryVisit)
+                {
+                    Child.Activate();
+                    ExsistFormInSwitchBoard = true;
+                }
+            }
+            if (!ExsistFormInSwitchBoard)
+            {
+                frmLaboratoryVisit frmLaboratoryVisit = new frmLaboratoryVisit(UserName);
+                frmLaboratoryVisit.MdiParent = this;
+                frmLaboratoryVisit.Show();
             }
         }
     }

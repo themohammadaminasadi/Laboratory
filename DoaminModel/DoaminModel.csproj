@@ -69,6 +69,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\CategoryTest\CategoryListItem.cs" />
     <Compile Include="ViewModel\InsuranceTest\InsuranceTestListItem.cs" />
+    <Compile Include="ViewModel\PatientTest\PatientTestDetailsListItem.cs" />
     <Compile Include="ViewModel\Patient\PaitientSearchItem.cs" />
     <Compile Include="ViewModel\TestRange\ListSearchItemForSearchPanelTestRange.cs" />
     <Compile Include="ViewModel\TestRange\TestListItemForGridFormTestRange.cs" />

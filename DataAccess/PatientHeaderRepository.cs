@@ -5,6 +5,7 @@ using DoaminModel.ViewModel.Patient;
 using DoaminModel.ViewModel.PatientTest;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -46,7 +47,9 @@ namespace DataAccess
 
         public bool Delete(int Key)
         {
-            throw new NotImplementedException();
+            db.PaitentTestHeders.Remove(db.PaitentTestHeders.FirstOrDefault(x => x.PatientTestHederID == Key));
+            db.SaveChanges();
+            return true;
         }
 
         public PaitentTestHeder Get(int Key)
@@ -77,7 +80,10 @@ namespace DataAccess
 
         public long GetTotalPrice(int PatientTestHederID)
         {
-            return db.PatientTestDetails.Where(x => x.PatientTestHederID == PatientTestHederID).Sum(x => x.Price);
+            return db.PatientTestDetails
+             .Where(x => x.PatientTestHederID == PatientTestHederID)
+             .Sum(x => (long?)x.Price) ?? 0; 
+            //(long?) : if x.price is null when nullable && sum(x.price) if null is 0 
         }
 
         public List<PaitientSearchItem> SearchByMobile(string MobileName)
@@ -135,9 +141,18 @@ namespace DataAccess
         }
         public bool DeleteDetails(int patientTestDetailID)
         {
-            db.PatientTestDetails.Remove(db.PatientTestDetails.FirstOrDefault(x => x.PatientTestDetailsID == patientTestDetailID));
-            db.SaveChanges();
-            return true;
+            try
+            {
+                db.PatientTestDetails.Remove(db.PatientTestDetails.FirstOrDefault(x => x.PatientTestDetailsID == patientTestDetailID));
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+
+                throw new Exception("با مدیر سیستم تماس بگیرید");
+            }
+         
         }
 
         public PatientTestDetail GetPatientDetails(int patientTestDetailID)
@@ -155,6 +170,22 @@ namespace DataAccess
             OldPatientTestDetails.Price = patientTestDetail.Price;
             db.SaveChanges();
             return true;    
+        }
+
+        public bool ExsistDetailsForTestHeader(int PatientTestHederID)
+        {
+            return db.PatientTestDetails.Any(x => x.PatientTestDetailsID == PatientTestHederID);
+        }
+        public bool DeleteTestDetails(int patientTestDetailID)
+        {
+            db.PatientTestDetails.Remove(db.PatientTestDetails.FirstOrDefault(x => x.PatientTestDetailsID == patientTestDetailID));
+            db.SaveChanges();
+            return true;
+        }
+
+        public bool ExsistHeader(int PatientTestHederID)
+        {
+            return db.PaitentTestHeders.Any(x => x.PatientTestHederID == PatientTestHederID);
         }
     }
 }

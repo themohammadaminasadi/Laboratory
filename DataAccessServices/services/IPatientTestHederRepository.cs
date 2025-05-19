@@ -19,5 +19,8 @@ namespace DataAccessServices.services
         bool DeleteDetails(int patientTestDetailID);
         PatientTestDetail GetPatientDetails(int patientTestDetailID);
         bool UpdatePatientDetails(PatientTestDetail patientTestDetail);
+        bool ExsistDetailsForTestHeader(int PatientTestHederID);
+        bool DeleteTestDetails(int patientTestDetailID);
+        bool ExsistHeader(int PatientTestHederID);
     }
 }

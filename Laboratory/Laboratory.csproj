@@ -116,6 +116,12 @@
     <Compile Include="frmPatient.Designer.cs">
       <DependentUpon>frmPatient.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmResultTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmResultTest.Designer.cs">
+      <DependentUpon>frmResultTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmSwichBoard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,6 +168,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPatient.resx">
       <DependentUpon>frmPatient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmResultTest.resx">
+      <DependentUpon>frmResultTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSwichBoard.resx">
       <DependentUpon>frmSwichBoard.cs</DependentUpon>

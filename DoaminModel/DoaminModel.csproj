@@ -71,6 +71,8 @@
     <Compile Include="ViewModel\InsuranceTest\InsuranceTestListItem.cs" />
     <Compile Include="ViewModel\PatientTest\PatientTestDetailsListItem.cs" />
     <Compile Include="ViewModel\Patient\PaitientSearchItem.cs" />
+    <Compile Include="ViewModel\ResultTest\ListItemResultTestHeader.cs" />
+    <Compile Include="ViewModel\ResultTest\ListItemTestDetails.cs" />
     <Compile Include="ViewModel\TestRange\ListSearchItemForSearchPanelTestRange.cs" />
     <Compile Include="ViewModel\TestRange\TestListItemForGridFormTestRange.cs" />
     <Compile Include="ViewModel\Test\TestListItem.cs" />

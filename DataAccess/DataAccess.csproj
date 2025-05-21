@@ -57,6 +57,7 @@
     <Compile Include="InsuranceRepository.cs" />
     <Compile Include="InsuranceTestRepository.cs" />
     <Compile Include="PatientHeaderRepository.cs" />
+    <Compile Include="ResultTestRepository.cs" />
     <Compile Include="TestRangeRepository.cs" />
     <Compile Include="TestRepository.cs" />
     <Compile Include="PatientRepository.cs" />

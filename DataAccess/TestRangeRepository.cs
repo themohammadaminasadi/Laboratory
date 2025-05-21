@@ -73,6 +73,11 @@ namespace DataAccess
             return q.ToList();
         }
 
+        public List<TestRange> GetTestWithTestID(int TestID)
+        {
+            return db.TestRanges.Where(x => x.TestID == TestID).ToList();
+        }
+
         public List<TestListItemForGridFormTestRange> Search(ListSearchItemForSearchPanelTestRange sm)
         {
             var q = from TR in db.TestRanges select TR;

@@ -9,7 +9,7 @@ namespace DoaminModel.ViewModel.ResultTest
     public class ListItemResultTestHeader
     {
         public int PatientTestHederID { get; set; }
-        public int HederDate { get; set; }
+        public DateTime? HederDate { get; set; }
         public int PaitentID { get; set; }
         public string DrName { get; set; }
         public string NationalCode { get; set; }

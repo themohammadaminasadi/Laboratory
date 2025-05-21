@@ -13,5 +13,6 @@ namespace DataAccessServices.services
     {
         List<DoaminModel.ViewModel.TestRange.TestListItemForGridFormTestRange> GetAllFormTestRange();
         List<TestListItemForGridFormTestRange> Search(ListSearchItemForSearchPanelTestRange sm);
+        List<TestRange> GetTestWithTestID(int TestID);
     }
 }

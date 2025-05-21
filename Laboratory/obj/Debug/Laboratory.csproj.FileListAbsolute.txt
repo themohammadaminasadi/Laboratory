@@ -28,6 +28,7 @@ D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.frmInsu
 D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.frmLaboratoryVisit.resources
 D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.frmLogin.resources
 D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.frmPatient.resources
+D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.frmResultTest.resources
 D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.frmSwichBoard.resources
 D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.frmTest.resources
 D:\Backend\Backend\C# Advance\Laboratory\Laboratory\obj\Debug\Laboratory.frmTestRange.resources

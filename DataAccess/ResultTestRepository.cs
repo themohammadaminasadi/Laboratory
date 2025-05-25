@@ -4,6 +4,7 @@ using DoaminModel.ViewModel.ResultTest;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -41,6 +42,67 @@ namespace DataAccess
                         HasStar = Details.HasStar,
                         Result = Details.Result
                     }).ToList();
+        }
+
+        public List<ListItemForListBox> SearchPaitentByNationalCode(string NationalCode)
+        {
+            if (!string.IsNullOrEmpty(NationalCode))
+            {
+                var q = from P in db.Patients
+                        where P.NationalCode.StartsWith(NationalCode)
+                        select new ListItemForListBox
+                        {
+                            PatientID = P.PatientID,
+                            FullInfoPatient = P.FirstName + "  " + P.LastName + " " + P.NationalCode
+                        };
+                return q.ToList();
+
+            }
+            else
+            {
+                return new List<ListItemForListBox>();
+            }
+            
+        }
+
+        public List<ListItemForListBox> SearchPaitentByPatientHeaderTestID(int? PatientHeaderID)
+        {
+            if (PatientHeaderID.HasValue)
+            {
+                var q = from P in db.PaitentTestHeders
+                        where P.PatientTestHederID == PatientHeaderID.Value
+                        select new ListItemForListBox
+                        {
+                            PatientID = P.PaitentID,
+                            FullInfoPatient = P.Patient.FirstName + "  " + P.Patient.LastName + " " + P.NationalCode
+                        };
+                return q.ToList();
+
+            }
+            else
+            {
+                return new List<ListItemForListBox>();
+            }
+        }
+
+        public List<ListItemForListBox> SearchPatientByPatientName(string PatientName)
+        {
+            if (!string.IsNullOrEmpty(PatientName))
+            {
+                var q = from P in db.PaitentTestHeders
+                        where (P.Patient.FirstName + " " + P.Patient.LastName).Contains(PatientName)
+                        select new ListItemForListBox
+                        {
+                            PatientID = P.PaitentID,
+                            FullInfoPatient = P.Patient.FirstName + "  " + P.Patient.LastName + " " + P.NationalCode
+                        };
+                return q.ToList();
+
+            }
+            else
+            {
+                return new List<ListItemForListBox>();
+            }
         }
 
         public bool setResult(int PatientDetailsID, double Result, bool HasStar)

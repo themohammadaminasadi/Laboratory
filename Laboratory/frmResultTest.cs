@@ -30,6 +30,7 @@ namespace Laboratory
         {
             InitializeComponent();
         }
+        
         private void BindGridTestHeader()
         {
             DGVTestHeader.DataSource = null;
@@ -45,6 +46,7 @@ namespace Laboratory
         {
             
             BindGridTestHeader();
+            lstPatient.Visible = false;
         }
 
         private void DGVTestHeader_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -129,6 +131,56 @@ namespace Laboratory
                 DGVDetails.DataSource = null;
                 DGVDetails.DataSource = details;
             }
+        }
+
+        private void txtSearchPatient_TextChanged(object sender, EventArgs e)
+        {
+            lstPatient.ValueMember = "PatientID";
+            lstPatient.DisplayMember = "FullInfoPatient";
+            if (!string.IsNullOrEmpty(txtSearchPatient.Text))
+            {
+                lstPatient.Visible = true;
+                if (txtSearchPatient.Text.StartsWith("0"))
+                {
+                    lstPatient.DataSource = repo.SearchPaitentByNationalCode(txtSearchPatient.Text);
+                }
+                else if (txtSearchPatient.Text.All(c => char.IsDigit(c)))
+                {
+                    lstPatient.DataSource = repo.SearchPaitentByPatientHeaderTestID(Convert.ToInt32(txtSearchPatient.Text));
+                }
+                else if(txtSearchPatient.Text.All(c => char.IsLetter(c)))
+                {
+                    lstPatient.DataSource = repo.SearchPatientByPatientName(txtSearchPatient.Text);
+                }
+                
+            }
+            else
+            {
+                lstPatient.Visible = false; 
+            }
+        }
+
+        private void lstPatient_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (lstPatient.SelectedIndex < 0)
+            {
+                MessageBox.Show("خواهشمند است یکی را انتخاب کنید ");
+                return;
+            }
+            else
+            {
+                PatientID = Convert.ToInt32(lstPatient.SelectedValue);
+                var TestHeader = repoHeader.GetPendingTestByPatientID(PatientID);
+                if (TestHeader == null)
+                {
+                    DGVTestHeader.DataSource = null;
+                }
+                else
+                {
+                    DGVTestHeader.DataSource =TestHeader;   
+                }
+            }
+                
         }
     }
 }

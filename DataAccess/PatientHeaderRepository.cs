@@ -3,6 +3,7 @@ using DataAccessServices.Services;
 using DoaminModel.Models;
 using DoaminModel.ViewModel.Patient;
 using DoaminModel.ViewModel.PatientTest;
+using DoaminModel.ViewModel.ResultTest;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -186,6 +187,23 @@ namespace DataAccess
         public bool ExsistHeader(int PatientTestHederID)
         {
             return db.PaitentTestHeders.Any(x => x.PatientTestHederID == PatientTestHederID);
+        }
+
+        public List<ListItemResultTestHeader> GetPendingTestByPatientID(int PatientID)
+        {
+            return (from Header in db.PaitentTestHeders
+                    where db.PatientTestDetails
+                        .Any(d => d.PatientTestHederID == Header.PatientTestHederID && d.Result == null && Header.PaitentID == PatientID)
+                    select new ListItemResultTestHeader
+                    {
+                        PatientTestHederID = Header.PatientTestHederID,
+                        HederDate = Header.HederDate,
+                        PaitentID = Header.PaitentID,
+                        Age = Header.Age,
+                        DrName = Header.DrName,
+                        FullNamePaitent = Header.Patient.FirstName + " " + Header.Patient.LastName,
+                        NationalCode = Header.Patient.NationalCode
+                    }).ToList();
         }
     }
 }

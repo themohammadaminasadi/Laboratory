@@ -10,3 +10,15 @@ D:\Backend\Backend\C# Advance\Laboratory\DoaminModel\obj\Debug\DoaminModel.cspro
 D:\Backend\Backend\C# Advance\Laboratory\DoaminModel\obj\Debug\DoaminMo.089C1973.Up2Date
 D:\Backend\Backend\C# Advance\Laboratory\DoaminModel\obj\Debug\DoaminModel.dll
 D:\Backend\Backend\C# Advance\Laboratory\DoaminModel\obj\Debug\DoaminModel.pdb
+D:\Amin\C# Advance\Laboratory\DoaminModel\bin\Debug\DoaminModel.dll.config
+D:\Amin\C# Advance\Laboratory\DoaminModel\bin\Debug\DoaminModel.dll
+D:\Amin\C# Advance\Laboratory\DoaminModel\bin\Debug\DoaminModel.pdb
+D:\Amin\C# Advance\Laboratory\DoaminModel\bin\Debug\EntityFramework.dll
+D:\Amin\C# Advance\Laboratory\DoaminModel\bin\Debug\EntityFramework.SqlServer.dll
+D:\Amin\C# Advance\Laboratory\DoaminModel\bin\Debug\EntityFramework.xml
+D:\Amin\C# Advance\Laboratory\DoaminModel\bin\Debug\EntityFramework.SqlServer.xml
+D:\Amin\C# Advance\Laboratory\DoaminModel\obj\Debug\DoaminModel.csproj.AssemblyReference.cache
+D:\Amin\C# Advance\Laboratory\DoaminModel\obj\Debug\DoaminModel.csproj.CoreCompileInputs.cache
+D:\Amin\C# Advance\Laboratory\DoaminModel\obj\Debug\DoaminMo.089C1973.Up2Date
+D:\Amin\C# Advance\Laboratory\DoaminModel\obj\Debug\DoaminModel.dll
+D:\Amin\C# Advance\Laboratory\DoaminModel\obj\Debug\DoaminModel.pdb

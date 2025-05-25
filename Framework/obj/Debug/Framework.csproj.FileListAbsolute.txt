@@ -10,3 +10,15 @@ D:\Backend\Backend\C# Advance\Laboratory\Framework\obj\Debug\Framework.csproj.Co
 D:\Backend\Backend\C# Advance\Laboratory\Framework\obj\Debug\Framework.csproj.Up2Date
 D:\Backend\Backend\C# Advance\Laboratory\Framework\obj\Debug\Framework.dll
 D:\Backend\Backend\C# Advance\Laboratory\Framework\obj\Debug\Framework.pdb
+D:\Amin\C# Advance\Laboratory\Framework\bin\Debug\Framework.dll.config
+D:\Amin\C# Advance\Laboratory\Framework\bin\Debug\Framework.dll
+D:\Amin\C# Advance\Laboratory\Framework\bin\Debug\Framework.pdb
+D:\Amin\C# Advance\Laboratory\Framework\bin\Debug\EntityFramework.dll
+D:\Amin\C# Advance\Laboratory\Framework\bin\Debug\EntityFramework.SqlServer.dll
+D:\Amin\C# Advance\Laboratory\Framework\bin\Debug\EntityFramework.xml
+D:\Amin\C# Advance\Laboratory\Framework\bin\Debug\EntityFramework.SqlServer.xml
+D:\Amin\C# Advance\Laboratory\Framework\obj\Debug\Framework.csproj.AssemblyReference.cache
+D:\Amin\C# Advance\Laboratory\Framework\obj\Debug\Framework.csproj.CoreCompileInputs.cache
+D:\Amin\C# Advance\Laboratory\Framework\obj\Debug\Framework.csproj.Up2Date
+D:\Amin\C# Advance\Laboratory\Framework\obj\Debug\Framework.dll
+D:\Amin\C# Advance\Laboratory\Framework\obj\Debug\Framework.pdb

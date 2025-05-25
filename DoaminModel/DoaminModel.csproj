@@ -61,7 +61,6 @@
     <Compile Include="Models\PaitentTestHeder.cs" />
     <Compile Include="Models\Patient.cs" />
     <Compile Include="Models\PatientTestDetail.cs" />
-    <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Models\Test.cs" />
     <Compile Include="Models\TestCategory.cs" />
     <Compile Include="Models\TestRange.cs" />
@@ -71,6 +70,7 @@
     <Compile Include="ViewModel\InsuranceTest\InsuranceTestListItem.cs" />
     <Compile Include="ViewModel\PatientTest\PatientTestDetailsListItem.cs" />
     <Compile Include="ViewModel\Patient\PaitientSearchItem.cs" />
+    <Compile Include="ViewModel\ResultTest\ListItemForListBox.cs" />
     <Compile Include="ViewModel\ResultTest\ListItemResultTestHeader.cs" />
     <Compile Include="ViewModel\ResultTest\ListItemTestDetails.cs" />
     <Compile Include="ViewModel\TestRange\ListSearchItemForSearchPanelTestRange.cs" />

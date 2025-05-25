@@ -12,5 +12,9 @@ namespace DataAccessServices.services
         List<DoaminModel.ViewModel.ResultTest.ListItemResultTestHeader> GetAllPendingTests();
         List<ListItemTestDetails> GetDetails(int PatientHeaderID);
         bool setResult(int PatientDetailsID, double Result, bool HasStar);
+        List<ListItemForListBox> SearchPatientByPatientName(string PatientName);
+        List<ListItemForListBox> SearchPaitentByNationalCode(string NationalCode);
+        List<ListItemForListBox> SearchPaitentByPatientHeaderTestID(int? PatientHeaderID);
+        
     }
 }

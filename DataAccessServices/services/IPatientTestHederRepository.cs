@@ -1,5 +1,6 @@
 ﻿using DoaminModel.Models;
 using DoaminModel.ViewModel.Patient;
+using DoaminModel.ViewModel.ResultTest;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,5 +23,6 @@ namespace DataAccessServices.services
         bool ExsistDetailsForTestHeader(int PatientTestHederID);
         bool DeleteTestDetails(int patientTestDetailID);
         bool ExsistHeader(int PatientTestHederID);
+        List<ListItemResultTestHeader> GetPendingTestByPatientID(int PatientID);
     }
 }

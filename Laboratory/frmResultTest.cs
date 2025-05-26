@@ -30,7 +30,19 @@ namespace Laboratory
         {
             InitializeComponent();
         }
-        
+        private void GoToAddMode()
+        {
+            btnAddResult.Visible = true;
+            btnEditResult.Visible = false;
+            btnCancle.Visible = false;  
+        }
+        private void GoToEditMode()
+        {
+
+            btnAddResult.Visible = false;
+            btnEditResult.Visible = true;
+            btnCancle.Visible = true;
+        }
         private void BindGridTestHeader()
         {
             DGVTestHeader.DataSource = null;
@@ -47,6 +59,7 @@ namespace Laboratory
             
             BindGridTestHeader();
             lstPatient.Visible = false;
+            GoToAddMode();
         }
 
         private void DGVTestHeader_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -56,13 +69,8 @@ namespace Laboratory
             
             if (e.ColumnIndex == 7)
             {
-                PatientHeaderRepository repoHeader = new PatientHeaderRepository();
                 DGVDetails.DataSource  = new ResultTestRepository().GetDetails(PatientTestHederID);
                 
-            }
-            if (e.ColumnIndex == 8)
-            {
-
             }
         }
 
@@ -82,7 +90,24 @@ namespace Laboratory
                 txtTestName.Text = patientTestDetail.Test.TestName;
                 txtTestName.Enabled = false;
             }
-            
+            if (DGVDetails.Columns[e.ColumnIndex].Name == "ClmnEditDetailsTest")
+            {
+                PatientTestDetail patientTestDetail = repoHeader.GetPatientDetails(PatientTestDetailsID);
+                if (patientTestDetail.Result.HasValue)
+                {
+                    GoToEditMode();
+                    txtResult.Text = patientTestDetail.Result.ToString();
+                    txtTestName.Text = patientTestDetail.Test.TestName;
+                    txtTestName.Enabled = false;
+                }
+                else if(!patientTestDetail.Result.HasValue)
+                {
+                    MessageBox.Show("این آزمایش نتیجه ندارد و آزمایشی که نتیجه نداشته است را نمیتوانید ویرایش کنید");
+                    return;
+                }
+                
+                 
+            }
             
         }
 
@@ -156,7 +181,9 @@ namespace Laboratory
             }
             else
             {
-                lstPatient.Visible = false; 
+                lstPatient.Visible = false;
+                BindGridTestHeader();
+
             }
         }
 
@@ -173,14 +200,64 @@ namespace Laboratory
                 var TestHeader = repoHeader.GetPendingTestByPatientID(PatientID);
                 if (TestHeader == null)
                 {
+                    DGVDetails.AutoGenerateColumns = false;
+                    DGVTestHeader.AutoGenerateColumns = false;  
                     DGVTestHeader.DataSource = null;
+                    DGVDetails.DataSource = null;
                 }
                 else
                 {
-                    DGVTestHeader.DataSource =TestHeader;   
+
+                    DGVDetails.AutoGenerateColumns = false;
+                    DGVTestHeader.AutoGenerateColumns = false;
+                    DGVTestHeader.DataSource =TestHeader;
+                    DGVDetails.DataSource = null;
                 }
             }
                 
+        }
+
+        private void btnEditResult_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtResult.Text))
+            {
+                MessageBox.Show("نتیجه نمیتواند خالی باشد");
+                return;
+            }
+            PatientTestDetail NewPatientTestDetail = new PatientTestDetail();
+            var OldPatientTestDetails = repoHeader.GetPatientDetails(this.PatientTestDetailsID);
+            double Result = Convert.ToDouble(txtResult.Text);
+            var ListTestRange = repoTestRange.GetTestWithTestID(TestID);
+            int Age = new PatientRepository().Get(PatientID).Age;
+            var patient = new PatientRepository().Get(PatientID); // patient یک شیء از کلاس Patient هست
+            int genderInt = patient.Gender ? 1 : 0; // ✅ درست: استفاده از شیء patient
+            foreach (var item in ListTestRange)
+            {
+                bool genderMatches = item.Gender == genderInt;
+                if (Result > item.MinValue && Result < item.MaxValue && Age > item.FromAge && Age < item.ToAge && genderMatches)
+                {
+                    HasStar = item.Hazard;
+                }
+            }
+            NewPatientTestDetail.TestID = OldPatientTestDetails.TestID;
+            NewPatientTestDetail.Result = Result;
+            NewPatientTestDetail.PatientTestHederID = OldPatientTestDetails.PatientTestHederID;
+            NewPatientTestDetail.PatientTestDetailsID = OldPatientTestDetails.PatientTestDetailsID;
+            NewPatientTestDetail.Price = OldPatientTestDetails.Price;
+            NewPatientTestDetail.HasStar = this.HasStar;
+            repoHeader.UpdatePatientDetails(NewPatientTestDetail);
+            //Bind Grid Test Details ; 
+            DGVDetails.DataSource = new ResultTestRepository().GetDetails(PatientTestHederID);
+
+        }
+
+        private void btnCancle_Click(object sender, EventArgs e)
+        {
+            GoToAddMode();
+            CleanForm();
+            BindGridTestHeader();
+            DGVDetails.AutoGenerateColumns = false; 
+            DGVDetails.DataSource = null;
         }
     }
 }

@@ -55,7 +55,7 @@ namespace DataAccess
                             PatientID = P.PatientID,
                             FullInfoPatient = P.FirstName + "  " + P.LastName + " " + P.NationalCode
                         };
-                return q.ToList();
+                return q.Distinct().ToList();
 
             }
             else
@@ -76,7 +76,7 @@ namespace DataAccess
                             PatientID = P.PaitentID,
                             FullInfoPatient = P.Patient.FirstName + "  " + P.Patient.LastName + " " + P.NationalCode
                         };
-                return q.ToList();
+                return q.Distinct().ToList();
 
             }
             else
@@ -96,7 +96,7 @@ namespace DataAccess
                             PatientID = P.PaitentID,
                             FullInfoPatient = P.Patient.FirstName + "  " + P.Patient.LastName + " " + P.NationalCode
                         };
-                return q.ToList();
+                return q.Distinct().ToList();
 
             }
             else

@@ -61,6 +61,7 @@
     <Compile Include="Models\PaitentTestHeder.cs" />
     <Compile Include="Models\Patient.cs" />
     <Compile Include="Models\PatientTestDetail.cs" />
+    <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Models\Test.cs" />
     <Compile Include="Models\TestCategory.cs" />
     <Compile Include="Models\TestRange.cs" />

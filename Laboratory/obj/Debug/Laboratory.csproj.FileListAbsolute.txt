@@ -121,3 +121,4 @@ D:\Backend\Backend\C# Advance\SampleLaboratory\Laboratory\Laboratory\obj\Debug\L
 D:\Backend\Backend\C# Advance\SampleLaboratory\Laboratory\Laboratory\obj\Debug\Laboratory.csproj.Up2Date
 D:\Backend\Backend\C# Advance\SampleLaboratory\Laboratory\Laboratory\obj\Debug\Laboratory.exe
 D:\Backend\Backend\C# Advance\SampleLaboratory\Laboratory\Laboratory\obj\Debug\Laboratory.pdb
+D:\Backend\Backend\C# Advance\SampleLaboratory\Laboratory\Laboratory\obj\Debug\Laboratory.frmOrderReport.resources

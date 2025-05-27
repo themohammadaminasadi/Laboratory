@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="services\IComprehensiveOrderRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="services\IBaseRepository.cs" />
     <Compile Include="services\IEmployeeRepository.cs" />

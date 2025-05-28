@@ -53,14 +53,13 @@
             this.txtEmployeer = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtPatientHeaderID = new System.Windows.Forms.TextBox();
             this.DGVDetails = new System.Windows.Forms.DataGridView();
             this.ClmnPatientTestDetailsID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClmnTestID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClmnTestName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClmnResult = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClmnHasStar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ClmnAddDetailsTest = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ClmnEditDetailsTest = new System.Windows.Forms.DataGridViewButtonColumn();
             this.DGVTestHeader = new System.Windows.Forms.DataGridView();
             this.ClmnPatientTestHederID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -70,7 +69,7 @@
             this.ClmnDrName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClmnNationalCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClmnAge = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClmnAddResult = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ClmnShowResult = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblInsuracePrice = new System.Windows.Forms.Label();
             this.lblTotalPrice = new System.Windows.Forms.Label();
@@ -78,6 +77,12 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.btnCancle = new System.Windows.Forms.Button();
+            this.btnEditResult = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtTestName = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txtResult = new System.Windows.Forms.TextBox();
             this.grpGender.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVDetails)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGVTestHeader)).BeginInit();
@@ -150,6 +155,7 @@
             this.grpGender.TabIndex = 18;
             this.grpGender.TabStop = false;
             this.grpGender.Text = "جنسیت";
+            this.grpGender.TextChanged += new System.EventHandler(this.grpGender_TextChanged);
             // 
             // rdbBothGender
             // 
@@ -161,6 +167,7 @@
             this.rdbBothGender.TabStop = true;
             this.rdbBothGender.Text = "همه";
             this.rdbBothGender.UseVisualStyleBackColor = true;
+            this.rdbBothGender.CheckedChanged += new System.EventHandler(this.rdbBothGender_CheckedChanged);
             // 
             // rdbFamle
             // 
@@ -172,6 +179,7 @@
             this.rdbFamle.TabStop = true;
             this.rdbFamle.Text = "زن";
             this.rdbFamle.UseVisualStyleBackColor = true;
+            this.rdbFamle.CheckedChanged += new System.EventHandler(this.rdbFamle_CheckedChanged);
             // 
             // rdbMale
             // 
@@ -183,19 +191,21 @@
             this.rdbMale.TabStop = true;
             this.rdbMale.Text = "مرد";
             this.rdbMale.UseVisualStyleBackColor = true;
+            this.rdbMale.CheckedChanged += new System.EventHandler(this.rdbMale_CheckedChanged);
             // 
             // txtSearchToAge
             // 
-            this.txtSearchToAge.Location = new System.Drawing.Point(792, 41);
+            this.txtSearchToAge.Location = new System.Drawing.Point(698, 41);
             this.txtSearchToAge.Name = "txtSearchToAge";
             this.txtSearchToAge.Size = new System.Drawing.Size(100, 31);
             this.txtSearchToAge.TabIndex = 23;
+            this.txtSearchToAge.TextChanged += new System.EventHandler(this.txtSearchToAge_TextChanged);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("B Titr", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label9.Location = new System.Drawing.Point(742, 42);
+            this.label9.Location = new System.Drawing.Point(648, 42);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(44, 29);
             this.label9.TabIndex = 24;
@@ -203,16 +213,17 @@
             // 
             // txtSearchFromAge
             // 
-            this.txtSearchFromAge.Location = new System.Drawing.Point(592, 40);
+            this.txtSearchFromAge.Location = new System.Drawing.Point(498, 40);
             this.txtSearchFromAge.Name = "txtSearchFromAge";
             this.txtSearchFromAge.Size = new System.Drawing.Size(100, 31);
             this.txtSearchFromAge.TabIndex = 21;
+            this.txtSearchFromAge.TextChanged += new System.EventHandler(this.txtSearchFromAge_TextChanged);
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("B Titr", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label10.Location = new System.Drawing.Point(540, 40);
+            this.label10.Location = new System.Drawing.Point(446, 40);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(46, 29);
             this.label10.TabIndex = 22;
@@ -220,7 +231,7 @@
             // 
             // txtDrName
             // 
-            this.txtDrName.Location = new System.Drawing.Point(1075, 42);
+            this.txtDrName.Location = new System.Drawing.Point(931, 40);
             this.txtDrName.Name = "txtDrName";
             this.txtDrName.Size = new System.Drawing.Size(173, 31);
             this.txtDrName.TabIndex = 62;
@@ -228,16 +239,17 @@
             // 
             // faDatePickerFrom
             // 
-            this.faDatePickerFrom.Location = new System.Drawing.Point(613, 126);
+            this.faDatePickerFrom.Location = new System.Drawing.Point(519, 126);
             this.faDatePickerFrom.Name = "faDatePickerFrom";
             this.faDatePickerFrom.Size = new System.Drawing.Size(200, 20);
             this.faDatePickerFrom.TabIndex = 61;
+            this.faDatePickerFrom.SelectedDateTimeChanged += new System.EventHandler(this.faDatePickerFrom_SelectedDateTimeChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("B Titr", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label3.Location = new System.Drawing.Point(1008, 44);
+            this.label3.Location = new System.Drawing.Point(864, 42);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(61, 29);
             this.label3.TabIndex = 59;
@@ -247,7 +259,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("B Titr", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label1.Location = new System.Drawing.Point(540, 121);
+            this.label1.Location = new System.Drawing.Point(446, 121);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(58, 29);
             this.label1.TabIndex = 58;
@@ -255,16 +267,17 @@
             // 
             // faDatePickerToDate
             // 
-            this.faDatePickerToDate.Location = new System.Drawing.Point(952, 126);
+            this.faDatePickerToDate.Location = new System.Drawing.Point(904, 126);
             this.faDatePickerToDate.Name = "faDatePickerToDate";
             this.faDatePickerToDate.Size = new System.Drawing.Size(200, 20);
             this.faDatePickerToDate.TabIndex = 64;
+            this.faDatePickerToDate.SelectedDateTimeChanged += new System.EventHandler(this.faDatePickerToDate_SelectedDateTimeChanged);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("B Titr", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label6.Location = new System.Drawing.Point(879, 121);
+            this.label6.Location = new System.Drawing.Point(831, 121);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(56, 29);
             this.label6.TabIndex = 63;
@@ -273,16 +286,17 @@
             // cmbInsurance
             // 
             this.cmbInsurance.FormattingEnabled = true;
-            this.cmbInsurance.Location = new System.Drawing.Point(613, 192);
+            this.cmbInsurance.Location = new System.Drawing.Point(519, 192);
             this.cmbInsurance.Name = "cmbInsurance";
             this.cmbInsurance.Size = new System.Drawing.Size(122, 32);
             this.cmbInsurance.TabIndex = 66;
+            this.cmbInsurance.SelectedIndexChanged += new System.EventHandler(this.cmbInsurance_SelectedIndexChanged);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("B Titr", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label7.Location = new System.Drawing.Point(538, 191);
+            this.label7.Location = new System.Drawing.Point(444, 191);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(67, 29);
             this.label7.TabIndex = 65;
@@ -290,7 +304,7 @@
             // 
             // txtEmployeer
             // 
-            this.txtEmployeer.Location = new System.Drawing.Point(884, 294);
+            this.txtEmployeer.Location = new System.Drawing.Point(631, 307);
             this.txtEmployeer.Name = "txtEmployeer";
             this.txtEmployeer.Size = new System.Drawing.Size(291, 31);
             this.txtEmployeer.TabIndex = 68;
@@ -299,7 +313,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("B Titr", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label8.Location = new System.Drawing.Point(696, 296);
+            this.label8.Location = new System.Drawing.Point(443, 309);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(162, 29);
             this.label8.TabIndex = 67;
@@ -315,12 +329,12 @@
             this.label11.TabIndex = 70;
             this.label11.Text = "کد آزمایش";
             // 
-            // textBox1
+            // txtPatientHeaderID
             // 
-            this.textBox1.Location = new System.Drawing.Point(165, 388);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(240, 31);
-            this.textBox1.TabIndex = 69;
+            this.txtPatientHeaderID.Location = new System.Drawing.Point(165, 388);
+            this.txtPatientHeaderID.Name = "txtPatientHeaderID";
+            this.txtPatientHeaderID.Size = new System.Drawing.Size(240, 31);
+            this.txtPatientHeaderID.TabIndex = 69;
             // 
             // DGVDetails
             // 
@@ -331,12 +345,11 @@
             this.ClmnTestName,
             this.ClmnResult,
             this.ClmnHasStar,
-            this.ClmnAddDetailsTest,
             this.ClmnEditDetailsTest});
-            this.DGVDetails.Location = new System.Drawing.Point(562, 731);
+            this.DGVDetails.Location = new System.Drawing.Point(676, 731);
             this.DGVDetails.Name = "DGVDetails";
             this.DGVDetails.RowHeadersWidth = 51;
-            this.DGVDetails.Size = new System.Drawing.Size(814, 191);
+            this.DGVDetails.Size = new System.Drawing.Size(700, 191);
             this.DGVDetails.TabIndex = 72;
             this.DGVDetails.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVDetails_CellContentClick);
             // 
@@ -383,17 +396,6 @@
             this.ClmnHasStar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.ClmnHasStar.Width = 125;
             // 
-            // ClmnAddDetailsTest
-            // 
-            this.ClmnAddDetailsTest.HeaderText = "ثبت جواب";
-            this.ClmnAddDetailsTest.MinimumWidth = 6;
-            this.ClmnAddDetailsTest.Name = "ClmnAddDetailsTest";
-            this.ClmnAddDetailsTest.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ClmnAddDetailsTest.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ClmnAddDetailsTest.Text = "ثبت جواب";
-            this.ClmnAddDetailsTest.UseColumnTextForButtonValue = true;
-            this.ClmnAddDetailsTest.Width = 125;
-            // 
             // ClmnEditDetailsTest
             // 
             this.ClmnEditDetailsTest.HeaderText = "ویرایش نتیجه";
@@ -416,7 +418,7 @@
             this.ClmnDrName,
             this.ClmnNationalCode,
             this.ClmnAge,
-            this.ClmnAddResult});
+            this.ClmnShowResult});
             this.DGVTestHeader.Location = new System.Drawing.Point(459, 513);
             this.DGVTestHeader.Name = "DGVTestHeader";
             this.DGVTestHeader.RowHeadersWidth = 51;
@@ -481,15 +483,15 @@
             this.ClmnAge.Name = "ClmnAge";
             this.ClmnAge.Width = 125;
             // 
-            // ClmnAddResult
+            // ClmnShowResult
             // 
-            this.ClmnAddResult.DataPropertyName = "AddResult";
-            this.ClmnAddResult.HeaderText = "ثبت جواب";
-            this.ClmnAddResult.MinimumWidth = 6;
-            this.ClmnAddResult.Name = "ClmnAddResult";
-            this.ClmnAddResult.Text = "ثبت جواب";
-            this.ClmnAddResult.UseColumnTextForButtonValue = true;
-            this.ClmnAddResult.Width = 125;
+            this.ClmnShowResult.DataPropertyName = "ShowResult";
+            this.ClmnShowResult.HeaderText = "جزئیات";
+            this.ClmnShowResult.MinimumWidth = 6;
+            this.ClmnShowResult.Name = "ClmnShowResult";
+            this.ClmnShowResult.Text = "جزئیات";
+            this.ClmnShowResult.UseColumnTextForButtonValue = true;
+            this.ClmnShowResult.Width = 125;
             // 
             // panel1
             // 
@@ -500,7 +502,7 @@
             this.panel1.Controls.Add(this.label15);
             this.panel1.Controls.Add(this.label13);
             this.panel1.Controls.Add(this.label12);
-            this.panel1.Location = new System.Drawing.Point(37, 513);
+            this.panel1.Location = new System.Drawing.Point(1047, 190);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(319, 292);
             this.panel1.TabIndex = 73;
@@ -521,7 +523,7 @@
             this.lblTotalPrice.AutoSize = true;
             this.lblTotalPrice.Font = new System.Drawing.Font("B Titr", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.lblTotalPrice.ForeColor = System.Drawing.Color.Magenta;
-            this.lblTotalPrice.Location = new System.Drawing.Point(25, 238);
+            this.lblTotalPrice.Location = new System.Drawing.Point(25, 247);
             this.lblTotalPrice.Name = "lblTotalPrice";
             this.lblTotalPrice.Size = new System.Drawing.Size(20, 29);
             this.lblTotalPrice.TabIndex = 78;
@@ -568,17 +570,81 @@
             this.label12.TabIndex = 74;
             this.label12.Text = "مجموع آزمایشات";
             // 
+            // btnCancle
+            // 
+            this.btnCancle.BackColor = System.Drawing.Color.Red;
+            this.btnCancle.Font = new System.Drawing.Font("B Titr", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.btnCancle.Location = new System.Drawing.Point(262, 731);
+            this.btnCancle.Name = "btnCancle";
+            this.btnCancle.Size = new System.Drawing.Size(107, 46);
+            this.btnCancle.TabIndex = 80;
+            this.btnCancle.Text = "انصراف";
+            this.btnCancle.UseVisualStyleBackColor = false;
+            this.btnCancle.Click += new System.EventHandler(this.btnCancle_Click);
+            // 
+            // btnEditResult
+            // 
+            this.btnEditResult.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btnEditResult.Font = new System.Drawing.Font("B Titr", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.btnEditResult.Location = new System.Drawing.Point(110, 731);
+            this.btnEditResult.Name = "btnEditResult";
+            this.btnEditResult.Size = new System.Drawing.Size(117, 46);
+            this.btnEditResult.TabIndex = 79;
+            this.btnEditResult.Text = "ویرایش نتیجه آزمایش";
+            this.btnEditResult.UseVisualStyleBackColor = false;
+            this.btnEditResult.Click += new System.EventHandler(this.btnEditResult_Click);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("B Titr", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label14.Location = new System.Drawing.Point(38, 597);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(61, 30);
+            this.label14.TabIndex = 78;
+            this.label14.Text = "آزمایش";
+            // 
+            // txtTestName
+            // 
+            this.txtTestName.Location = new System.Drawing.Point(128, 599);
+            this.txtTestName.Name = "txtTestName";
+            this.txtTestName.Size = new System.Drawing.Size(241, 31);
+            this.txtTestName.TabIndex = 77;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("B Titr", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label16.Location = new System.Drawing.Point(53, 654);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(45, 30);
+            this.label16.TabIndex = 75;
+            this.label16.Text = "نتبجه";
+            // 
+            // txtResult
+            // 
+            this.txtResult.Location = new System.Drawing.Point(128, 653);
+            this.txtResult.Name = "txtResult";
+            this.txtResult.Size = new System.Drawing.Size(241, 31);
+            this.txtResult.TabIndex = 74;
+            // 
             // frmOrderReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(247)))), ((int)(((byte)(240)))));
             this.ClientSize = new System.Drawing.Size(1378, 922);
+            this.Controls.Add(this.btnCancle);
+            this.Controls.Add(this.btnEditResult);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.txtTestName);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.txtResult);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.DGVDetails);
             this.Controls.Add(this.DGVTestHeader);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtPatientHeaderID);
             this.Controls.Add(this.txtEmployeer);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.cmbInsurance);
@@ -645,24 +711,9 @@
         private System.Windows.Forms.TextBox txtEmployeer;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtPatientHeaderID;
         private System.Windows.Forms.DataGridView DGVDetails;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ClmnPatientTestDetailsID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ClmnTestID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ClmnTestName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ClmnResult;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn ClmnHasStar;
-        private System.Windows.Forms.DataGridViewButtonColumn ClmnAddDetailsTest;
-        private System.Windows.Forms.DataGridViewButtonColumn ClmnEditDetailsTest;
         private System.Windows.Forms.DataGridView DGVTestHeader;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ClmnPatientTestHederID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ClmnHederDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ClmnFullNamePaitent;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ClmnPaitentID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ClmnDrName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ClmnNationalCode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ClmnAge;
-        private System.Windows.Forms.DataGridViewButtonColumn ClmnAddResult;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
@@ -670,5 +721,25 @@
         private System.Windows.Forms.Label lblInsuracePrice;
         private System.Windows.Forms.Label lblTotalPrice;
         private System.Windows.Forms.Label lblTotalPriceTests;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClmnPatientTestHederID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClmnHederDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClmnFullNamePaitent;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClmnPaitentID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClmnDrName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClmnNationalCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClmnAge;
+        private System.Windows.Forms.DataGridViewButtonColumn ClmnShowResult;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClmnPatientTestDetailsID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClmnTestID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClmnTestName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClmnResult;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ClmnHasStar;
+        private System.Windows.Forms.DataGridViewButtonColumn ClmnEditDetailsTest;
+        private System.Windows.Forms.Button btnCancle;
+        private System.Windows.Forms.Button btnEditResult;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox txtTestName;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox txtResult;
     }
 }

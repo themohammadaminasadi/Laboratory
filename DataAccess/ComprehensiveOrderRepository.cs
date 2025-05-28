@@ -1,6 +1,7 @@
 ﻿using DataAccessServices.services;
 using DoaminModel.Models;
 using DoaminModel.ViewModel.Order;
+using DoaminModel.ViewModel.PatientTest;
 using DoaminModel.ViewModel.ResultTest;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,12 @@ namespace DataAccess
     public class ComprehensiveOrderRepository : IComprehensiveOrderRepository
     {
         private LaboratoryContext db = new LaboratoryContext();
+
+        public List<PatientTestDetail> GetPatientDetailsForCalcualteTotalPrice(int PatientTestHederID)
+        {
+            return db.PatientTestDetails.Where(x => x.PatientTestHederID == PatientTestHederID).ToList();
+        }
+
         public List<ListItemResultTestHeader> SearchComprehensiveOrderForPushDataGridTestHeader(ItemsSearchOrderReport ls)
         {
             var q = from P in db.PaitentTestHeders select P;
@@ -78,5 +85,15 @@ namespace DataAccess
                          };
             return Result.ToList();
         }
+
+        public decimal TotalPriceForComprehensiveOrderReport(int PatientTestHederID)
+        {
+            return db.PatientTestDetails.Where(x => x.PatientTestHederID == PatientTestHederID).Sum(x => (decimal?)x.Price) ?? 0;
+        }
+
+        //public decimal TotalPriceInsuraceToWe(int PatientTestHederID)
+        //{
+        //    return db.PatientTestDetails.Where(x => x.PatientTestHederID == PatientTestHederID).Sum(x => (decimal?)x.Price **(x.PaitentTestHeder.Insurance.InsuranceTests.Select(x => x.Discount)) ;
+        //}
     }
 }

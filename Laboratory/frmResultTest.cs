@@ -248,6 +248,7 @@ namespace Laboratory
             repoHeader.UpdatePatientDetails(NewPatientTestDetail);
             //Bind Grid Test Details ; 
             DGVDetails.DataSource = new ResultTestRepository().GetDetails(PatientTestHederID);
+            CleanForm();
 
         }
 

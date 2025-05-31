@@ -55,6 +55,7 @@
     <Compile Include="services\IComprehensiveOrderRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="services\IBaseRepository.cs" />
+    <Compile Include="services\IEditResultTestRepository.cs" />
     <Compile Include="services\IEmployeeRepository.cs" />
     <Compile Include="services\IInsuranceRepository.cs" />
     <Compile Include="services\IInsuranceTestRepository.cs" />

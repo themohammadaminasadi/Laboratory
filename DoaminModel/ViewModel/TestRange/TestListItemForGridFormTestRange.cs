@@ -24,7 +24,8 @@ namespace DoaminModel.ViewModel.TestRange
         public int? ToAge { get; set; }
 
         public bool Hazard { get; set; }
-       
+        public int TestID { get; set; }
+
 
     }
 }

@@ -11,5 +11,7 @@ namespace DateAccessServices.Services
     {
         bool Login(string UserName, string Password);
         Employee GetEmployeeWithUserName(string UserName);
+        bool ExsistDuplicateUserName(string UserName);
+        bool ExsistLogInTablePatientTestHeader(int EmployeeID);
     }
 }

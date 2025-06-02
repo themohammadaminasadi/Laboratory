@@ -45,6 +45,11 @@ namespace DataAccess
 
         }
 
+        public bool ExsistDupplicateCategoryName(string TestName)
+        {
+            return db.TestCategories.Any(x => x.CategoryName == TestName);
+        }
+
         public TestCategory Get(int Key)
         {
             return db.TestCategories.FirstOrDefault(x => x.CategoryID == Key);

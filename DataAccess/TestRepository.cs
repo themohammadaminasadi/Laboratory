@@ -169,5 +169,10 @@ namespace DataAccess
                          };
             return Result.ToList();
         }
+
+        public bool ExsistTestInVisit(int TestID)
+        {
+            return db.PatientTestDetails.Any(x => x.TestID == TestID);
+        }
     }
 }

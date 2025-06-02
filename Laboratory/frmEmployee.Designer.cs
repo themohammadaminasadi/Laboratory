@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnCancle = new System.Windows.Forms.Button();
@@ -57,7 +57,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridViewEmployee = new System.Windows.Forms.DataGridView();
-            this.err = new System.Windows.Forms.ErrorProvider(this.components);
             this.ClmnEmployeeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClmnTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClmnFirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -68,6 +67,7 @@
             this.ClmnPhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClmnEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ClmnDelete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.err = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.pnlInfoUser.SuspendLayout();
@@ -178,10 +178,11 @@
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(33, 31);
+            this.txtPassword.Location = new System.Drawing.Point(32, 34);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(291, 31);
             this.txtPassword.TabIndex = 9;
+            this.txtPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
             // 
             // txtUserName
             // 
@@ -189,6 +190,7 @@
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(291, 31);
             this.txtUserName.TabIndex = 10;
+            this.txtUserName.TextChanged += new System.EventHandler(this.txtUserName_TextChanged);
             // 
             // groupBox1
             // 
@@ -220,13 +222,13 @@
             // 
             this.btnShow.BackColor = System.Drawing.SystemColors.ControlLight;
             this.btnShow.Font = new System.Drawing.Font("B Nazanin", 5.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.btnShow.Location = new System.Drawing.Point(32, 32);
+            this.btnShow.Location = new System.Drawing.Point(32, 35);
             this.btnShow.Name = "btnShow";
             this.btnShow.Size = new System.Drawing.Size(45, 30);
             this.btnShow.TabIndex = 12;
             this.btnShow.Text = "Show";
             this.btnShow.UseVisualStyleBackColor = false;
-            this.btnShow.Click += new System.EventHandler(this.btnShow_Click);
+            this.btnShow.Click += new System.EventHandler(this.btnShow_Click_1);
             // 
             // txtTitle
             // 
@@ -251,6 +253,7 @@
             this.txtPhoneNumber.Name = "txtPhoneNumber";
             this.txtPhoneNumber.Size = new System.Drawing.Size(291, 31);
             this.txtPhoneNumber.TabIndex = 5;
+            this.txtPhoneNumber.TextChanged += new System.EventHandler(this.txtPhoneNumber_TextChanged);
             // 
             // txtNationalCode
             // 
@@ -265,6 +268,7 @@
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(291, 31);
             this.txtLastName.TabIndex = 8;
+            this.txtLastName.TextChanged += new System.EventHandler(this.txtLastName_TextChanged);
             // 
             // txtFirstName
             // 
@@ -272,6 +276,7 @@
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(291, 31);
             this.txtFirstName.TabIndex = 4;
+            this.txtFirstName.TextChanged += new System.EventHandler(this.txtFirstName_TextChanged);
             // 
             // label6
             // 
@@ -346,14 +351,14 @@
             // dataGridViewEmployee
             // 
             this.dataGridViewEmployee.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(244)))), ((int)(((byte)(234)))));
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewEmployee.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewEmployee.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewEmployee.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ClmnEmployeeID,
@@ -373,11 +378,6 @@
             this.dataGridViewEmployee.Size = new System.Drawing.Size(1061, 212);
             this.dataGridViewEmployee.TabIndex = 9;
             this.dataGridViewEmployee.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewEmployee_CellContentClick);
-            // 
-            // err
-            // 
-            this.err.BlinkRate = 500;
-            this.err.ContainerControl = this;
             // 
             // ClmnEmployeeID
             // 
@@ -445,6 +445,11 @@
             this.ClmnDelete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.ClmnDelete.Text = "حذف";
             this.ClmnDelete.UseColumnTextForButtonValue = true;
+            // 
+            // err
+            // 
+            this.err.BlinkRate = 500;
+            this.err.ContainerControl = this;
             // 
             // frmEmployee
             // 

@@ -57,78 +57,121 @@ namespace Laboratory
 
         private void frmUnits_Load(object sender, EventArgs e)
         {
-            BindGrid();
-            GoToAddMode();
-            CleanForm();
-            err.Clear();
+            try
+            {
+                BindGrid();
+                GoToAddMode();
+                CleanForm();
+                err.Clear();
+            }
+            catch (Exception)
+            {
+
+                throw new Exception("ارور در لود صفحه : خواهشمند است با پشتیبانی تماس بگیرید");
+            }
+       
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtUnitName.Text))
+            try
             {
-                err.SetError(txtUnitName, "واحد را وارد کنید");
-                return;
+                if (string.IsNullOrEmpty(txtUnitName.Text))
+                {
+                    err.SetError(txtUnitName, "واحد را وارد کنید");
+                    return;
+                }
+                Unit Units = new Unit { UnitName = txtUnitName.Text };
+                repo.Add(Units);
+                CleanForm();
+                BindGrid();
+                GoToAddMode();
+                err.Clear();
             }
-            Unit Units = new Unit { UnitName = txtUnitName.Text };
-            repo.Add(Units);
-            CleanForm();
-            BindGrid();
-            GoToAddMode();
-            err.Clear();
+            catch (Exception)
+            {
+
+                throw new Exception("ارور در اضافه کردن : خواهشمند است با پشتیبانی تماس بگیرید");
+            }
+          
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtUnitName.Text))
+            try
             {
-                err.SetError(txtUnitName, "واحد نمیتواند خالی باشد");
-                return;
+                if (string.IsNullOrEmpty(txtUnitName.Text))
+                {
+                    err.SetError(txtUnitName, "واحد نمیتواند خالی باشد");
+                    return;
+                }
+                Unit NewUnits = new Unit { UnitName = txtUnitName.Text, UnitID = this.UnitID };
+                repo.Update(NewUnits);
+                CleanForm();
+                BindGrid();
+                GoToAddMode();
+                err.Clear();
             }
-            Unit NewUnits = new Unit { UnitName = txtUnitName.Text, UnitID = this.UnitID };
-            repo.Update(NewUnits);
-            CleanForm();
-            BindGrid();
-            GoToAddMode();
-            err.Clear();
+            catch (Exception)
+            {
+
+                throw new Exception("ارور در آپدیت : خواهشمند است با پشتیبانی تماس بگیرید");
+            }
         }
 
         private void btnCancle_Click(object sender, EventArgs e)
         {
-            GoToAddMode();
-            CleanForm();
+            try
+            {
+                GoToAddMode();
+                CleanForm();
+                err.Clear();
+            }
+            catch (Exception)
+            {
+
+                throw new Exception("ارور در دکمه انصراف : خواهشمند است با پشتیبانی تماس بگیرید");
+            }
         }
         //Delete And Update Unit:
         private void dataGridViewUnits_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            UnitID = Convert.ToInt32(dataGridViewUnits.Rows[e.RowIndex].Cells[0].Value);
-            if (e.ColumnIndex == 3)
+            try
             {
-                if (MessageBox.Show("آیا مطمئن هستید میخواهید حذف کنید این واحد را ؟","هشدار",MessageBoxButtons.YesNo)==DialogResult.Yes)
+                UnitID = Convert.ToInt32(dataGridViewUnits.Rows[e.RowIndex].Cells[0].Value);
+                if (e.ColumnIndex == 3)
                 {
-                    if (repo.HasUnitInTest(UnitID))
+                    if (MessageBox.Show("آیا مطمئن هستید میخواهید حذف کنید این واحد را ؟", "هشدار", MessageBoxButtons.YesNo)==DialogResult.Yes)
                     {
-                        MessageBox.Show("این واحد دارای سابقه می باشد در جدول آزمایش نمیتوانید آن را حذف کنید");
-                        return;
+                        if (repo.HasUnitInTest(UnitID))
+                        {
+                            MessageBox.Show("این واحد دارای سابقه می باشد در جدول آزمایش نمیتوانید آن را حذف کنید");
+                            return;
+                        }
+                        else
+                        {
+                            repo.Delete(UnitID);
+                            BindGrid();
+                            GoToAddMode();
+                        }
                     }
                     else
                     {
-                        repo.Delete(UnitID);
-                        BindGrid();
                         GoToAddMode();
-                    }                      
+                        CleanForm();
+                    }
                 }
-                else
+                if (e.ColumnIndex == 2)
                 {
-                    GoToAddMode();
-                    CleanForm();
+                    Unit unit = repo.Get(UnitID);
+                    txtUnitName.Text = unit.UnitName;
+                    GoToEditMode();
                 }
             }
-            if (e.ColumnIndex == 2)
+            catch (Exception)
             {
-                Unit unit = repo.Get(UnitID);
-                txtUnitName.Text = unit.UnitName;
-                GoToEditMode();
+
+                throw new Exception("ارور در گرید : خواهشمند است با پشتیبانی تماس بگیرید");
             }
         }
     }

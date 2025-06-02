@@ -56,94 +56,134 @@ namespace Laboratory
         private void dataGridViewInsurance_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
-            InsuranceID = Convert.ToInt32(dataGridViewInsurance.Rows[e.RowIndex].Cells[0].Value);
-            if (e.ColumnIndex == 3)
+            try
             {
-                if (MessageBox.Show("آیا مطمئن هستید میخواهید حذف کنید این بیمه را ؟", "هشدار", MessageBoxButtons.YesNo)==DialogResult.Yes)
+                InsuranceID = Convert.ToInt32(dataGridViewInsurance.Rows[e.RowIndex].Cells[0].Value);
+                if (e.ColumnIndex == 3)
                 {
-                    if (repo.hasInsuranceInTableTemp(InsuranceID))
+                    if (MessageBox.Show("آیا مطمئن هستید میخواهید حذف کنید این بیمه را ؟", "هشدار", MessageBoxButtons.YesNo)==DialogResult.Yes)
                     {
-                        MessageBox.Show("این بیمه دارای سابقه می باشد در جدول آزمایش نمیتوانید آن را حذف کنید");
-                        return;
+                        if (repo.hasInsuranceInTableTemp(InsuranceID))
+                        {
+                            MessageBox.Show("این بیمه دارای سابقه می باشد در جدول آزمایش نمیتوانید آن را حذف کنید");
+                            return;
+                        }
+                        else
+                        {
+                            repo.Delete(InsuranceID);
+                            BindGrid();
+                            GoToAddMode();
+                            err.Clear();
+                        }
                     }
                     else
                     {
-                        repo.Delete(InsuranceID);
-                        BindGrid();
                         GoToAddMode();
-                        err.Clear();
+                        CleanForm();
                     }
                 }
-                else
+                if (e.ColumnIndex == 2)
                 {
-                    GoToAddMode();
-                    CleanForm();
+                    Insurance Insurance = repo.Get(InsuranceID);
+                    txtInsuranceTypeName.Text = Insurance.InsuranceTypeName;
+                    txtDescription.Text = Insurance.Description;
+                    GoToEditMode();
+                    err.Clear();
                 }
             }
-            if (e.ColumnIndex == 2)
+            catch (Exception)
             {
-                Insurance Insurance = repo.Get(InsuranceID);
-                txtInsuranceTypeName.Text = Insurance.InsuranceTypeName;
-                txtDescription.Text = Insurance.Description;
-                GoToEditMode();
-                err.Clear();
+
+                throw new Exception("ارور در گرید : خواهشمند است با مدیر سیستم تماس بگیرید");
             }
         }
 
         private void frmInsurance_Load(object sender, EventArgs e)
         {
-            BindGrid();
-            GoToAddMode();
-            CleanForm();
-            err.Clear();
+            try
+            {
+                BindGrid();
+                GoToAddMode();
+                CleanForm();
+                err.Clear();
+            }
+            catch (Exception)
+            {
+
+                throw new Exception("ارور در لود صفحه : خواهشمند است با مدیر سیستم تماس بگیرید");
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            
-            if (string.IsNullOrEmpty(txtInsuranceTypeName.Text))
+
+            try
             {
-                err.SetError(txtInsuranceTypeName, " بیمه را وارد کنید");
-                return;
+                if (string.IsNullOrEmpty(txtInsuranceTypeName.Text))
+                {
+                    err.SetError(txtInsuranceTypeName, " بیمه را وارد کنید");
+                    return;
+                }
+                Insurance Insurance = new Insurance { InsuranceTypeName = txtInsuranceTypeName.Text, Description = txtDescription.Text };
+                if (repo.HasInuranceTypeNameInTableInsurance(Insurance.InsuranceTypeName))
+                {
+                    MessageBox.Show("بیمه وارد شده تکراری است");
+                    return;
+                }
+                repo.Add(Insurance);
+                CleanForm();
+                BindGrid();
+                GoToAddMode();
+                err.Clear();
             }
-            Insurance Insurance = new Insurance { InsuranceTypeName = txtInsuranceTypeName.Text,Description = txtDescription.Text };
-            if (repo.HasInuranceTypeNameInTableInsurance(Insurance.InsuranceTypeName))
+            catch (Exception)
             {
-                MessageBox.Show("بیمه وارد شده تکراری است");
-                return;
+
+                throw new Exception("ارور در دکمه اضافه کردن : خواهشمند است با مدیر سیستم تماس بگیرید");
             }
-            repo.Add(Insurance);
-            CleanForm();
-            BindGrid();
-            GoToAddMode();
-            err.Clear();
         }
 
         private void btnCancle_Click(object sender, EventArgs e)
         {
-            GoToAddMode();
-            CleanForm();
-            err.Clear();
+            try
+            {
+                GoToAddMode();
+                CleanForm();
+                err.Clear();
+            }
+            catch (Exception)
+            {
+
+                throw new Exception("ارور در دکمه انصراف کردن : خواهشمند است با مدیر سیستم تماس بگیرید");
+            }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtInsuranceTypeName.Text))
+            try
             {
-                err.SetError(txtInsuranceTypeName, "بیمه نمیتواند خالی باشد");
-                return;
+                if (string.IsNullOrEmpty(txtInsuranceTypeName.Text))
+                {
+                    err.SetError(txtInsuranceTypeName, "بیمه نمیتواند خالی باشد");
+                    return;
+                }
+                Insurance insurance = new Insurance { InsuranceID = this.InsuranceID, Description=txtDescription.Text, InsuranceTypeName=txtInsuranceTypeName.Text };
+                if (repo.HasInuranceTypeNameInTableInsurance(insurance.InsuranceTypeName))
+                {
+                    MessageBox.Show("بیمه وارد شده تکراری است");
+                    return;
+                }
+                repo.Update(insurance);
+                BindGrid();
+                CleanForm();
+                GoToAddMode();
+                err.Clear();
             }
-            Insurance insurance = new Insurance { InsuranceID = this.InsuranceID, Description=txtDescription.Text, InsuranceTypeName=txtInsuranceTypeName.Text };
-            if (repo.HasInuranceTypeNameInTableInsurance(insurance.InsuranceTypeName))
+            catch (Exception)
             {
-                MessageBox.Show("بیمه وارد شده تکراری است");
-                return;
+
+                throw new Exception("ارور در دکمه ویرایش کردن : خواهشمند است با مدیر سیستم تماس بگیرید");
             }
-            repo.Update(insurance);
-            BindGrid();
-            CleanForm();
-            GoToAddMode();
-            err.Clear();
         }
     }
 }

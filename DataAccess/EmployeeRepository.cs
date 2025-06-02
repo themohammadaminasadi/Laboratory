@@ -89,6 +89,16 @@ namespace DataAccess
             return db.Employees.FirstOrDefault(x => x.UserName == UserName);
         }
 
+        public bool ExsistDuplicateUserName(string UserName)
+        {
+            return db.Employees.Any(x => x.UserName == UserName);
+        }
+
+        public bool ExsistLogInTablePatientTestHeader(int EmployeeID)
+        {
+            return db.PaitentTestHeders.Any(x => x.EmployeeID == EmployeeID);
+        }
+
         //Employee IEmployeeRepository.GetEmployeeWithUserName(string UserName)
         //{
         //    return GetEmployeeWithUserName(UserName);

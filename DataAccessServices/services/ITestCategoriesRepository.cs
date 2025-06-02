@@ -10,5 +10,6 @@ namespace DateAccessServices.Services
     {
         bool HasCategoriesInTableTestCategories(int CategoryID);
         List<DoaminModel.ViewModel.CategoryTest.CategoryListItem> GetAllForComboFormTest();
+        bool ExsistDupplicateCategoryName(string TestName);
     }
 }

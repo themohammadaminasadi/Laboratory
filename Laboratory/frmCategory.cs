@@ -56,78 +56,131 @@ namespace Laboratory
 
         private void frmCategory_Load(object sender, EventArgs e)
         {
-            BindGrid();
-            GoToAddMode();
-            CleanForm();
-            err.Clear();
+            try
+            {
+                BindGrid();
+                GoToAddMode();
+                CleanForm();
+                err.Clear();
+            }
+            catch (Exception)
+            {
+
+                throw new Exception("ارور در لود صفحه : خواهشمند است با مدیر سیستم تماس بگیرید");
+            }
+           
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtCategoryName.Text))
+
+            try
             {
-                err.SetError(txtCategoryName, "نام گروه را وارد کنید");
-                return;
+                if (string.IsNullOrEmpty(txtCategoryName.Text))
+                {
+                    err.SetError(txtCategoryName, "نام گروه را وارد کنید");
+                    return;
+                }
+                if (repo.ExsistDupplicateCategoryName(txtCategoryName.Text))
+                {
+                    MessageBox.Show("این گروه قبلاً وارد شده بود");
+                    return;
+                }
+                DoaminModel.Models.TestCategory Category = new TestCategory { CategoryName = txtCategoryName.Text };
+                repo.Add(Category);
+                CleanForm();
+                BindGrid();
+                GoToAddMode();
+                err.Clear();
             }
-            DoaminModel.Models.TestCategory Category = new TestCategory { CategoryName = txtCategoryName.Text };
-            repo.Add(Category);
-            CleanForm();
-            BindGrid();
-            GoToAddMode();
-            err.Clear();
+            catch (Exception)
+            {
+
+                throw new Exception("ارور در اضافه کردن : خواهشمند است با مدیر سیستم تماس بگیرید");
+            }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtCategoryName.Text))
+            try
             {
-                err.SetError(txtCategoryName, "واحد نمیتواند خالی باشد");
-                return;
+                if (string.IsNullOrEmpty(txtCategoryName.Text))
+                {
+                    err.SetError(txtCategoryName, "واحد نمیتواند خالی باشد");
+                    return;
+                }
+                if (repo.ExsistDupplicateCategoryName(txtCategoryName.Text))
+                {
+                    MessageBox.Show("این گروه قبلاً وارد شده بود");
+                    return;
+                }
+                TestCategory NewCategory = new TestCategory { CategoryName = txtCategoryName.Text, CategoryID = this.CategoryID };
+                repo.Update(NewCategory);
+                CleanForm();
+                BindGrid();
+                GoToAddMode();
+                err.Clear();
             }
-            TestCategory NewCategory = new TestCategory { CategoryName = txtCategoryName.Text, CategoryID = this.CategoryID };
-            repo.Update(NewCategory);
-            CleanForm();
-            BindGrid();
-            GoToAddMode();
-            err.Clear();
+            catch (Exception)
+            {
+
+                throw new Exception("ارور در دکمه ویرایش : خواهشمند است با مدیر سیستم تماس بگیرید");
+            }
         }
 
         private void btnCancle_Click(object sender, EventArgs e)
         {
-            GoToAddMode();
-            CleanForm();
+            try
+            {
+                GoToAddMode();
+                CleanForm();
+                err.Clear();
+            }
+            catch (Exception)
+            {
+
+                throw new Exception("ارور در دکمه انصراف : خواهشمند است با مدیر سیستم تماس بگیرید");
+            }
         }
 
         private void dataGridViewCategory_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            CategoryID = Convert.ToInt32(dataGridViewCategory.Rows[e.RowIndex].Cells[0].Value);
-            if (e.ColumnIndex == 3)
+            try
             {
-                if (MessageBox.Show("آیا مطمئن هستید میخواهید حذف کنید این گروه را ؟", "هشدار", MessageBoxButtons.YesNo)==DialogResult.Yes)
+                CategoryID = Convert.ToInt32(dataGridViewCategory.Rows[e.RowIndex].Cells[0].Value);
+                if (e.ColumnIndex == 3)
                 {
-                    if (repo.HasCategoriesInTableTestCategories(CategoryID))
+                    if (MessageBox.Show("آیا مطمئن هستید میخواهید حذف کنید این گروه را ؟", "هشدار", MessageBoxButtons.YesNo)==DialogResult.Yes)
                     {
-                        MessageBox.Show("این گروه دارای سابقه می باشد در جدول آزمایش نمیتوانید آن را حذف کنید");
-                        return;
+                        if (repo.HasCategoriesInTableTestCategories(CategoryID))
+                        {
+                            MessageBox.Show("این گروه دارای سابقه می باشد در جدول آزمایش نمیتوانید آن را حذف کنید");
+                            return;
+                        }
+                        else
+                        {
+                            repo.Delete(CategoryID);
+                            BindGrid();
+                            GoToAddMode();
+                        }
                     }
                     else
                     {
-                        repo.Delete(CategoryID);
-                        BindGrid();
                         GoToAddMode();
+                        CleanForm();
                     }
                 }
-                else
+                if (e.ColumnIndex == 2)
                 {
-                    GoToAddMode();
-                    CleanForm();
+                    TestCategory Category = repo.Get(CategoryID);
+                    txtCategoryName.Text = Category.CategoryName;
+                    GoToEditMode();
                 }
             }
-            if (e.ColumnIndex == 2)
+            catch (Exception)
             {
-                TestCategory Category = repo.Get(CategoryID);
-                txtCategoryName.Text = Category.CategoryName;
-                GoToEditMode();
+
+                throw new Exception("ارور در گرید : خواهشمند است با مدیر سیستم تماس بگیرید");
             }
         }
     }

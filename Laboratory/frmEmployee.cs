@@ -16,7 +16,7 @@ namespace Laboratory
     public partial class frmEmployee: Form
     {
         private int EmployeeID = 0;
-        bool VariableShow = false;
+        bool VariableShow = true;
         DataAccess.EmployeeRepository repo = new DataAccess.EmployeeRepository();
         public void BindGrid()
         {
@@ -72,157 +72,219 @@ namespace Laboratory
 
         private void frmEmployee_Load(object sender, EventArgs e)
         {
-            CleanForm();
-            BindGrid();
-            GoToAddMode();
-            err.Clear();
-            txtPassword.PasswordChar = '*';
-        
-            btnShow.BringToFront();
+            try
+            {
+                CleanForm();
+                BindGrid();
+                GoToAddMode();
+                err.Clear();
+                txtPassword.PasswordChar = '*';
+
+                btnShow.BringToFront();
+            }
+            catch (Exception)
+            {
+
+                throw new Exception("ارور در هنگام لود صفحه : خواهشمند است با راهبر سیستم تماس بگیرید");
+            }
+         
 
         }
 
         private void dataGridViewEmployee_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            EmployeeID = Convert.ToInt32(dataGridViewEmployee.Rows[e.RowIndex].Cells[0].Value);
-            if (e.ColumnIndex == 8)
+            try
             {
-                Employee Employees = repo.Get(EmployeeID);
-                txtFirstName.Text = Employees.FirstName;
-                txtLastName.Text = Employees.LastName;
-                txtPassword.Text = Employees.Password;
-                txtPhoneNumber.Text = Employees.PhoneNumber;
-                txtTitle.Text = Employees.Title;
-                txtNationalCode.Text = Employees.NationalCode;
-                txtUserName.Text = Employees.UserName;
-                if (Employees.Active)
+                EmployeeID = Convert.ToInt32(dataGridViewEmployee.Rows[e.RowIndex].Cells[0].Value);
+                if (e.ColumnIndex == 8)
                 {
-                    rdbActive.Checked = true;
-                    rdbDiActive.Checked = false;    
-                }
-                if (!Employees.Active)
-                {
-                    rdbDiActive.Checked = true;
-                    rdbActive.Checked = false;
-                }
-                GoToEditMode();
-                err.Clear();
-            }
-            if (e.ColumnIndex == 9)
-            {
-                if (MessageBox.Show("آیا مطمئن هستید که میخواهید این کاربر را حذف کنید ؟","هشدار",MessageBoxButtons.YesNo)==DialogResult.Yes)
-                {
-                    //if any in Other Table ??? 
-                    repo.Delete(EmployeeID);
-                    BindGrid();
-                    CleanForm();
+                    Employee Employees = repo.Get(EmployeeID);
+                    txtFirstName.Text = Employees.FirstName;
+                    txtLastName.Text = Employees.LastName;
+                    txtPassword.Text = Employees.Password;
+                    txtPhoneNumber.Text = Employees.PhoneNumber;
+                    txtTitle.Text = Employees.Title;
+                    txtNationalCode.Text = Employees.NationalCode;
+                    txtUserName.Text = Employees.UserName;
+                    if (Employees.Active)
+                    {
+                        rdbActive.Checked = true;
+                        rdbDiActive.Checked = false;
+                    }
+                    if (!Employees.Active)
+                    {
+                        rdbDiActive.Checked = true;
+                        rdbActive.Checked = false;
+                    }
+                    GoToEditMode();
                     err.Clear();
-                    GoToAddMode();
+                }
+                if (e.ColumnIndex == 9)
+                {
+                    if (MessageBox.Show("آیا مطمئن هستید که میخواهید این کاربر را حذف کنید ؟", "هشدار", MessageBoxButtons.YesNo)==DialogResult.Yes)
+                    {
+                        if (repo.ExsistLogInTablePatientTestHeader(EmployeeID))
+                        {
+                            MessageBox.Show("این کارمند ویزیت ثبت کرده است امکان حذف آن وجود ندارد");
+                        }
+                        else
+                        {
+                            repo.Delete(EmployeeID);
+                            BindGrid();
+                            CleanForm();
+                            err.Clear();
+                            GoToAddMode();
+                        }
+                          
+                    }
                 }
             }
+            catch (Exception)
+            {
+
+                throw new Exception("ارور در فرم کارمندان : خواهشمند است با راهبر سیستم تماس بگیرید");
+            }
+       
         }
 
         private void btnCancle_Click(object sender, EventArgs e)
         {
-            GoToAddMode();
-            CleanForm();
+            try
+            {
+                GoToAddMode();
+                CleanForm();
+            }
+            catch (Exception)
+            {
+
+                throw new Exception("خواهشمند است با مدیر سیستم تماس بگیرید");
+            }
+           
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtLastName.Text))
+            try
             {
-                err.SetError(txtLastName, "نام خانواگی نمیتواند خالی باشد");
-                return;
+                if (string.IsNullOrEmpty(txtLastName.Text))
+                {
+                    err.SetError(txtLastName, "نام خانواگی نمیتواند خالی باشد");
+                    return;
+                }
+                if (string.IsNullOrEmpty(txtUserName.Text))
+                {
+                    err.SetError(txtUserName, "نام کاربری نمیتواند خالی باشد");
+                    return;
+                }
+                if (string.IsNullOrEmpty(txtPassword.Text))
+                {
+                    err.SetError(txtPassword, "رمز عبور نمیتواند خالی باشد");
+                    return;
+                }
+                if (string.IsNullOrEmpty(txtPhoneNumber.Text))
+                {
+                    err.SetError(txtPhoneNumber, "تلفن نمیتواند خالی باشد");
+                    return;
+                }
+                Employee NewEmployee = new Employee
+                {
+                    EmployeeID = this.EmployeeID,
+                    FirstName = txtFirstName.Text,
+                    LastName=txtLastName.Text
+                                                     ,
+                    UserName = txtUserName.Text,
+                    Password = txtPassword.Text,
+                    NationalCode = txtNationalCode.Text,
+                    PhoneNumber = txtPhoneNumber.Text,
+                    Title = txtTitle.Text
+                };
+                if (rdbActive.Checked)
+                {
+                    NewEmployee.Active = true;
+                }
+                else if (rdbDiActive.Checked)
+                {
+                    NewEmployee.Active = false;
+                }
+                if (repo.ExsistDuplicateUserName(NewEmployee.UserName))
+                {
+                    MessageBox.Show("نام کاربری وارد شده تکراری می باشد");
+                    return;
+                }
+                repo.Update(NewEmployee);
+                CleanForm();
+                BindGrid();
+                GoToAddMode();
+                err.Clear();
             }
-            if (string.IsNullOrEmpty(txtUserName.Text))
+            catch (Exception)
             {
-                err.SetError(txtUserName, "نام کاربری نمیتواند خالی باشد");
-                return;
+
+                throw new Exception("ارور در دکمه آپدیت : خواهمشند است با مدیر سیستم تماس بگیرید");
             }
-            if (string.IsNullOrEmpty(txtPassword.Text))
-            {
-                err.SetError(txtPassword, "رمز عبور نمیتواند خالی باشد");
-                return;
-            }
-            if (string.IsNullOrEmpty(txtPhoneNumber.Text))
-            {
-                err.SetError(txtPhoneNumber, "تلفن نمیتواند خالی باشد");
-                return;
-            }
-            Employee NewEmployee = new Employee
-            {
-                EmployeeID = this.EmployeeID,
-                FirstName = txtFirstName.Text,
-                LastName=txtLastName.Text
-                                                 ,
-                UserName = txtUserName.Text,
-                Password = txtPassword.Text,
-                NationalCode = txtNationalCode.Text,
-                PhoneNumber = txtPhoneNumber.Text,
-                Title = txtTitle.Text
-            };
-            if (rdbActive.Checked)
-            {
-                NewEmployee.Active = true;
-            }
-            else if (rdbDiActive.Checked)
-            {
-                NewEmployee.Active = false; 
-            }
-            repo.Update(NewEmployee);
-            CleanForm();
-            BindGrid();
-            GoToAddMode();
-            err.Clear();
+         
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtLastName.Text))
+            try
             {
-                err.SetError(txtLastName, "نام خانواگی نمیتواند خالی باشد");
-                return;
+                if (string.IsNullOrEmpty(txtLastName.Text))
+                {
+                    err.SetError(txtLastName, "نام خانواگی نمیتواند خالی باشد");
+                    return;
+                }
+                if (string.IsNullOrEmpty(txtUserName.Text))
+                {
+                    err.SetError(txtUserName, "نام کاربری نمیتواند خالی باشد");
+                    return;
+                }
+                if (string.IsNullOrEmpty(txtPassword.Text))
+                {
+                    err.SetError(txtPassword, "رمز عبور نمیتواند خالی باشد");
+                    return;
+                }
+                if (string.IsNullOrEmpty(txtPhoneNumber.Text))
+                {
+                    err.SetError(txtPhoneNumber, "تلفن نمیتواند خالی باشد");
+                    return;
+                }
+                Employee NewEmployee = new Employee
+                {
+                    FirstName = txtFirstName.Text,
+                    LastName=txtLastName.Text
+                                                    ,
+                    UserName = txtUserName.Text,
+                    Password = txtPassword.Text,
+                    NationalCode = txtNationalCode.Text,
+                    PhoneNumber = txtPhoneNumber.Text,
+                    Title = txtTitle.Text
+                };
+                if (rdbActive.Checked)
+                {
+                    NewEmployee.Active = true;
+                }
+                else if (rdbDiActive.Checked)
+                {
+                    NewEmployee.Active = false;
+                }
+                if (repo.ExsistDuplicateUserName(NewEmployee.UserName))
+                {
+                    MessageBox.Show("نام کاربری وارد شده تکراری می باشد");
+                    return;
+                }
+                repo.Add(NewEmployee);
+                CleanForm();
+                BindGrid();
+                GoToAddMode();
+                err.Clear();
             }
-            if (string.IsNullOrEmpty(txtUserName.Text))
+            catch (Exception)
             {
-                err.SetError(txtUserName, "نام کاربری نمیتواند خالی باشد");
-                return;
+
+                throw new Exception("ارور در دکمه اضافه کردن : خواهشمند است با مدیر سیستم تماس  بگیرید");
             }
-            if (string.IsNullOrEmpty(txtPassword.Text))
-            {
-                err.SetError(txtPassword, "رمز عبور نمیتواند خالی باشد");
-                return;
-            }
-            if (string.IsNullOrEmpty(txtPhoneNumber.Text))
-            {
-                err.SetError(txtPhoneNumber, "تلفن نمیتواند خالی باشد");
-                return;
-            }
-            Employee NewEmployee = new Employee
-            {
-                FirstName = txtFirstName.Text,
-                LastName=txtLastName.Text
-                                                ,
-                UserName = txtUserName.Text,
-                Password = txtPassword.Text,
-                NationalCode = txtNationalCode.Text,
-                PhoneNumber = txtPhoneNumber.Text,
-                Title = txtTitle.Text
-            };
-            if (rdbActive.Checked)
-            {
-                NewEmployee.Active = true;
-            }
-            else if (rdbDiActive.Checked)
-            {
-                NewEmployee.Active = false;
-            }
-            repo.Add(NewEmployee);
-            CleanForm();
-            BindGrid();
-            GoToAddMode();
-            err.Clear();
+          
 
         }
 
@@ -238,16 +300,85 @@ namespace Laboratory
 
         private void btnShow_Click(object sender, EventArgs e)
         {
-            
-            if (VariableShow)
+            try
             {
-                txtPassword.PasswordChar = '*';
+                if (VariableShow)
+                {
+                    txtPassword.PasswordChar = '\0';  // نمایش رمز
+                }
+                else
+                {
+                    txtPassword.PasswordChar = '*';   // پنهان‌سازی رمز
+                }
+
+                VariableShow = !VariableShow; // تغییر وضعیت
             }
-            if (!VariableShow)
+            catch (Exception)
             {
-                txtPassword.PasswordChar = '\0';
-                VariableShow = true;
+
+                throw new Exception("ارور در دکمه show : خواهشمند است با مدیر سیستم تماس بگیرید");
             }
+          
+        }
+
+        private void txtFirstName_TextChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void txtLastName_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtLastName.Text))
+            {
+                err.Clear();
+            }
+        }
+
+        private void txtUserName_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtUserName.Text))
+            {
+                err.Clear();
+            }
+        }
+
+        private void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtPassword.Text))
+            {
+                err.Clear();
+            }
+        }
+
+        private void txtPhoneNumber_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtPhoneNumber.Text))
+            {
+                err.Clear();
+            }
+        }
+
+        private void btnShow_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                if (VariableShow)
+                {
+                    txtPassword.PasswordChar = '\0';  // نمایش رمز
+                }
+                else
+                {
+                    txtPassword.PasswordChar = '*';   // پنهان‌سازی رمز
+                }
+
+                VariableShow = !VariableShow; // تغییر وضعیت
+            }
+            catch (Exception)
+            {
+
+                throw new Exception("ارور در دکمه show : خواهشمند است با مدیر سیستم تماس بگیرید");
+            }
+
         }
     }
 }

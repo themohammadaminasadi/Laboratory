@@ -15,5 +15,6 @@ namespace DataAccessServices.services
 
         List<DoaminModel.ViewModel.Test.TestListItem> SearchFormTest(DoaminModel.ViewModel.Test.TestListItemSearchForFormTest sm);
         List<DoaminModel.ViewModel.Test.TestListItemForListBoxFormTestRange> GetAllTestForListBoxFormTestRange(string TestName);
+        bool ExsistTestInVisit(int TestID);
     }
 }

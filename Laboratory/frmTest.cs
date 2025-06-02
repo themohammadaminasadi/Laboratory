@@ -104,101 +104,117 @@ namespace Laboratory
 
         private void frmTest_Load(object sender, EventArgs e)
         {
-            CleanForm();
-            BindCombo();
-            //BindCheckListBox();
-            BindGrid();
-            DataGridViewTest.EnableHeadersVisualStyles = false;
+            try
+            {
+                CleanForm();
+                BindCombo();
+                //BindCheckListBox();
+                BindGrid();
+                DataGridViewTest.EnableHeadersVisualStyles = false;
 
-            // رنگ پس‌زمینه کلی گرید
-            DataGridViewTest.BackgroundColor = Color.FromArgb(235, 247, 240);
+                // رنگ پس‌زمینه کلی گرید
+                DataGridViewTest.BackgroundColor = Color.FromArgb(235, 247, 240);
 
-            // رنگ ردیف‌های معمولی
-            DataGridViewTest.RowsDefaultCellStyle.BackColor = Color.FromArgb(245, 255, 250); // خیلی نزدیک به فرم
+                // رنگ ردیف‌های معمولی
+                DataGridViewTest.RowsDefaultCellStyle.BackColor = Color.FromArgb(245, 255, 250); // خیلی نزدیک به فرم
 
-            // رنگ ردیف‌های یکی در میون برای خوانایی بیشتر
-            DataGridViewTest.AlternatingRowsDefaultCellStyle.BackColor = Color.White;
+                // رنگ ردیف‌های یکی در میون برای خوانایی بیشتر
+                DataGridViewTest.AlternatingRowsDefaultCellStyle.BackColor = Color.White;
 
-            // رنگ متن سلول‌ها
-            DataGridViewTest.RowsDefaultCellStyle.ForeColor = Color.Black;
+                // رنگ متن سلول‌ها
+                DataGridViewTest.RowsDefaultCellStyle.ForeColor = Color.Black;
 
-            // رنگ انتخاب‌شده (برای اینکه زیادی تیره یا زننده نباشه)
-            DataGridViewTest.DefaultCellStyle.SelectionBackColor = Color.FromArgb(200, 230, 220); // سبز ملایم
-            DataGridViewTest.DefaultCellStyle.SelectionForeColor = Color.Black;
+                // رنگ انتخاب‌شده (برای اینکه زیادی تیره یا زننده نباشه)
+                DataGridViewTest.DefaultCellStyle.SelectionBackColor = Color.FromArgb(200, 230, 220); // سبز ملایم
+                DataGridViewTest.DefaultCellStyle.SelectionForeColor = Color.Black;
 
-            // رنگ هدر جدول
-            DataGridViewTest.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(220, 240, 230);
-            DataGridViewTest.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+                // رنگ هدر جدول
+                DataGridViewTest.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(220, 240, 230);
+                DataGridViewTest.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
 
-            // رنگ خطوط جدول
-            DataGridViewTest.GridColor = Color.LightGray;
+                // رنگ خطوط جدول
+                DataGridViewTest.GridColor = Color.LightGray;
+            }
+            catch (Exception)
+            {
+
+                throw new Exception("ارور در لود صفحه : خواهشمند است با مدیر سیستم تماس بگیرید ");
+            }
 
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtTest.Text))
+            try
             {
-                lblErrorTest.Text = "خواهشمند است آزمایش را وارد کنید";
-                return;
-            }
-            if (cmbCategory.SelectedIndex <= 0)
-            {
-                err.SetError(cmbCategory, "خواهشمند است گروه را انتخاب کنید");
-                return;
-            }
-            if (string.IsNullOrEmpty(txtPrice.Text))
-            {
-                lblErrorPrice.Text = "خواهشمند است قیمت آزمایش را وارد کنید";
-                return;
-            }
-            if (lstUnit.SelectedItem == null)
-            {
-                err.SetError(lstUnit, "خواهشمند است روی واحدهای دو بار کلیک کنید تا در text box وارد شود.");
-                return;
-            }
-            if (string.IsNullOrEmpty(txtUnit.Text))
-            {
-                err.SetError(txtUnit, "خواهشمند است ابتدا سرچ بکنید نام واحد را و سپس واحد را از لیست انتخاب کنید");
-                return;
-            }
-            Test test = new Test
-            {
-                Description = txtDescription.Text,
-                Price = Convert.ToInt32(txtPrice.Text),
-                TestName = txtTest.Text,
-                CategoryID = Convert.ToInt32(cmbCategory.SelectedValue),
-                UnitID = Convert.ToInt32(lstUnit.SelectedValue)
-            };
-            if (rdbHasAge.Checked)
-            {
-                test.AgeHasEfect = true;
-            }
-            else if (rdbNotAge.Checked)
-            {
-                test.AgeHasEfect = false;
-            }
-            else if(rdbUnKnownAge.Checked)
-            {
-                test.AgeHasEfect = null;
-            }
-            if (rdbHasGender.Checked)
-            {
-                test.GenderHasEfect = true;
-            }
-            else if (rdbNotHasGender.Checked)
-            {
-                test.GenderHasEfect = false;
-            }
-            else if(rdbUnknownGender.Checked)
-            {
-                test.GenderHasEfect = null;
-            }
+                if (string.IsNullOrEmpty(txtTest.Text))
+                {
+                    lblErrorTest.Text = "خواهشمند است آزمایش را وارد کنید";
+                    return;
+                }
+                if (cmbCategory.SelectedIndex <= 0)
+                {
+                    err.SetError(cmbCategory, "خواهشمند است گروه را انتخاب کنید");
+                    return;
+                }
+                if (string.IsNullOrEmpty(txtPrice.Text))
+                {
+                    lblErrorPrice.Text = "خواهشمند است قیمت آزمایش را وارد کنید";
+                    return;
+                }
+                if (lstUnit.SelectedItem == null)
+                {
+                    err.SetError(lstUnit, "خواهشمند است روی واحدهای دو بار کلیک کنید تا در text box وارد شود.");
+                    return;
+                }
+                if (string.IsNullOrEmpty(txtUnit.Text))
+                {
+                    err.SetError(txtUnit, "خواهشمند است ابتدا سرچ بکنید نام واحد را و سپس واحد را از لیست انتخاب کنید");
+                    return;
+                }
+                Test test = new Test
+                {
+                    Description = txtDescription.Text,
+                    Price = Convert.ToInt32(txtPrice.Text),
+                    TestName = txtTest.Text,
+                    CategoryID = Convert.ToInt32(cmbCategory.SelectedValue),
+                    UnitID = Convert.ToInt32(lstUnit.SelectedValue)
+                };
+                if (rdbHasAge.Checked)
+                {
+                    test.AgeHasEfect = true;
+                }
+                else if (rdbNotAge.Checked)
+                {
+                    test.AgeHasEfect = false;
+                }
+                else if (rdbUnKnownAge.Checked)
+                {
+                    test.AgeHasEfect = null;
+                }
+                if (rdbHasGender.Checked)
+                {
+                    test.GenderHasEfect = true;
+                }
+                else if (rdbNotHasGender.Checked)
+                {
+                    test.GenderHasEfect = false;
+                }
+                else if (rdbUnknownGender.Checked)
+                {
+                    test.GenderHasEfect = null;
+                }
                 repo.Add(test);
 
-            CleanForm();
-            BindGrid();
-            GoToAddMode();
+                CleanForm();
+                BindGrid();
+                GoToAddMode();
+            }
+            catch (Exception)
+            {
+
+                throw new Exception("ارور در اضافه کردن آزمایش ، خواهشمند است با مدیر سیستم تماس بگیرید");
+            }
         }
 
         private void txtUnit_TextChanged(object sender, EventArgs e)
@@ -209,6 +225,7 @@ namespace Laboratory
                 lstUnit.DisplayMember = "UnitName";
                 lstUnit.ValueMember = "UnitID";
                 lstUnit.DataSource = repoUnit.SearchUnitForFormTest(txtUnit.Text);
+                err.Clear();
             }
             else
             {
@@ -229,146 +246,176 @@ namespace Laboratory
 
         private void btnCancle_Click(object sender, EventArgs e)
         {
-            GoToAddMode();
-            CleanForm();
-            err.Clear();
+            try
+            {
+                GoToAddMode();
+                CleanForm();
+                err.Clear();
+            }
+            catch (Exception)
+            {
+
+                throw new Exception("ارور در دکمه انصراف : خواهشمند است با مدیر سیستم تماس بگیرید")
+            }
         }
 
         private void DataGridViewTest_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            TestID = Convert.ToInt32(DataGridViewTest.Rows[e.RowIndex].Cells[0].Value);
-            if (e.ColumnIndex == 9)
+            try
             {
-                Test Test = repo.Get(TestID);
-                txtPrice.Text = Test.Price.ToString();
-                txtDescription.Text = Test.Description;
-                txtUnit.Text =repoUnit.Get(Test.UnitID).UnitName;
-                cmbCategory.SelectedValue = Test.CategoryID;
-                txtTest.Text = Test.TestName;
-                if (Test.AgeHasEfect==true)
+                TestID = Convert.ToInt32(DataGridViewTest.Rows[e.RowIndex].Cells[0].Value);
+                if (e.ColumnIndex == 9)
                 {
-                    rdbHasAge.Checked = true;
-                }
-                else if (Test.AgeHasEfect == false)
-                {
-                    rdbNotAge.Checked = true;
-                }
-                else if(Test.AgeHasEfect == null)
-                {
-                    rdbUnKnownAge.Checked = true;
-                }
-                if (Test.GenderHasEfect == true)
-                {
-                    rdbHasGender.Checked = true;
-                }
-                else if(Test.GenderHasEfect == false)
-                {
-                    rdbNotHasGender.Checked = true;
-                }
-                else if(Test.GenderHasEfect == null)
-                {
-                    rdbUnknownGender.Checked = true;   
-                }
-                GoToEditMode();
-
-            }
-            if (e.ColumnIndex == 10)
-            {
-                if (MessageBox.Show("آیا میخواهید این آزمایش را حفظ کنید ؟","هشدار",MessageBoxButtons.YesNo)==DialogResult.Yes)
-                {
-                    if (repo.ExsistTestInTableTestRange(TestID))
+                    if (repo.ExsistTestInTableTestRange(TestID) || repo.ExsistTestInVisit(TestID))
                     {
-                        MessageBox.Show("این آزمایش دارای سابقه می باشد امکان حذف آن وجود ندارد");
+                        MessageBox.Show("این آزمایش دارای سابقه می باشد امکان ویرایش آن وجود ندارد");
                         return;
+                    }
+                    Test Test = repo.Get(TestID);
+                    txtPrice.Text = Test.Price.ToString();
+                    txtDescription.Text = Test.Description;
+                    txtUnit.Text =repoUnit.Get(Test.UnitID).UnitName;
+                    cmbCategory.SelectedValue = Test.CategoryID;
+                    txtTest.Text = Test.TestName;
+                    if (Test.AgeHasEfect==true)
+                    {
+                        rdbHasAge.Checked = true;
+                    }
+                    else if (Test.AgeHasEfect == false)
+                    {
+                        rdbNotAge.Checked = true;
+                    }
+                    else if (Test.AgeHasEfect == null)
+                    {
+                        rdbUnKnownAge.Checked = true;
+                    }
+                    if (Test.GenderHasEfect == true)
+                    {
+                        rdbHasGender.Checked = true;
+                    }
+                    else if (Test.GenderHasEfect == false)
+                    {
+                        rdbNotHasGender.Checked = true;
+                    }
+                    else if (Test.GenderHasEfect == null)
+                    {
+                        rdbUnknownGender.Checked = true;
+                    }
+
+                    GoToEditMode();
+
+                }
+                if (e.ColumnIndex == 10)
+                {
+                    if (MessageBox.Show("آیا میخواهید این آزمایش را حفظ کنید ؟", "هشدار", MessageBoxButtons.YesNo)==DialogResult.Yes)
+                    {
+                        if (repo.ExsistTestInTableTestRange(TestID) || repo.ExsistTestInVisit(TestID))
+                        {
+                            MessageBox.Show("این آزمایش دارای سابقه می باشد امکان حذف آن وجود ندارد");
+                            return;
+                        }
+                        else
+                        {
+                            repo.Delete(TestID);
+                            BindGrid();
+                            CleanForm();
+                            GoToAddMode();
+                            err.Clear();
+                        }
                     }
                     else
                     {
-                        repo.Delete(TestID);
-                        BindGrid();
-                        CleanForm();
                         GoToAddMode();
+                        CleanForm();
                         err.Clear();
                     }
                 }
-                else
-                {
-                    GoToAddMode();
-                    CleanForm();
-                    err.Clear();
-                }
+            }
+            catch (Exception)
+            {
+
+                throw new Exception("ارور در گرید : خواهشمند است با مدیر سیستم تماس بگیرید");
             }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtTest.Text))
+            try
             {
-                lblErrorTest.Text = "خواهشمند است آزمایش را وارد کنید";
-                return;
+                if (string.IsNullOrEmpty(txtTest.Text))
+                {
+                    lblErrorTest.Text = "خواهشمند است آزمایش را وارد کنید";
+                    return;
+                }
+                if (cmbCategory.SelectedIndex <= 0)
+                {
+                    err.SetError(cmbCategory, "خواهشمند است گروه را انتخاب کنید");
+                    return;
+                }
+                if (string.IsNullOrEmpty(txtPrice.Text))
+                {
+                    lblErrorPrice.Text = "خواهشمند است قیمت آزمایش را وارد کنید";
+                    return;
+                }
+                if (lstUnit.SelectedItem == null)
+                {
+                    err.SetError(lstUnit, "خواهشمند است روی واحدهای دو بار کلیک کنید تا در text box وارد شود.");
+                    return;
+                }
+                if (string.IsNullOrEmpty(txtUnit.Text))
+                {
+                    err.SetError(txtUnit, "خواهشمند است ابتدا سرچ بکنید نام واحد را و سپس واحد را از لیست انتخاب کنید");
+                    return;
+                }
+                if (txtUnit.Text.Length >= 2)
+                {
+                    lstUnit.Visible = true;
+                }
+                Test test = new Test
+                {
+                    TestID = this.TestID,
+                    Description = txtDescription.Text,
+                    Price = Convert.ToInt32(txtPrice.Text),
+                    TestName = txtTest.Text,
+                    CategoryID = Convert.ToInt32(cmbCategory.SelectedValue),
+                    UnitID = Convert.ToInt32(lstUnit.SelectedValue)
+                };
+                if (rdbHasAge.Checked)
+                {
+                    test.AgeHasEfect = true;
+                }
+                else if (rdbNotAge.Checked)
+                {
+                    test.AgeHasEfect = false;
+                }
+                else if (rdbUnKnownAge.Checked)
+                {
+                    test.AgeHasEfect = null;
+                }
+                if (rdbHasGender.Checked)
+                {
+                    test.GenderHasEfect = true;
+                }
+                else if (rdbNotHasGender.Checked)
+                {
+                    test.GenderHasEfect = false;
+                }
+                else if (rdbUnknownGender.Checked)
+                {
+                    test.GenderHasEfect = null;
+                }
+                repo.Update(test);
+                CleanForm();
+                BindGrid();
+                GoToAddMode();
+                err.Clear();
+                BindCombo();
             }
-            if (cmbCategory.SelectedIndex <= 0)
+            catch (Exception)
             {
-                err.SetError(cmbCategory, "خواهشمند است گروه را انتخاب کنید");
-                return;
+
+                throw new Exception("ارور در ویرایش : خواهشمند است با مدیر سیستم تماس بگیرید");
             }
-            if (string.IsNullOrEmpty(txtPrice.Text))
-            {
-                lblErrorPrice.Text = "خواهشمند است قیمت آزمایش را وارد کنید";
-                return;
-            }
-            if (lstUnit.SelectedItem == null)
-            {
-                err.SetError(lstUnit, "خواهشمند است روی واحدهای دو بار کلیک کنید تا در text box وارد شود.");
-                return;
-            }
-            if (string.IsNullOrEmpty(txtUnit.Text))
-            {
-                err.SetError(txtUnit, "خواهشمند است ابتدا سرچ بکنید نام واحد را و سپس واحد را از لیست انتخاب کنید");
-                return;
-            }
-            if (txtUnit.Text.Length >= 2)
-            {
-                lstUnit.Visible = true;
-            }
-            Test test = new Test
-            {
-                TestID = this.TestID,
-                Description = txtDescription.Text,
-                Price = Convert.ToInt32(txtPrice.Text),
-                TestName = txtTest.Text,
-                CategoryID = Convert.ToInt32(cmbCategory.SelectedValue),
-                UnitID = Convert.ToInt32(lstUnit.SelectedValue)
-            };
-            if (rdbHasAge.Checked)
-            {
-                test.AgeHasEfect = true;
-            }
-            else if (rdbNotAge.Checked)
-            {
-                test.AgeHasEfect = false;
-            }
-            else if (rdbUnKnownAge.Checked)
-            {
-                test.AgeHasEfect = null;
-            }
-            if (rdbHasGender.Checked)
-            {
-                test.GenderHasEfect = true;
-            }
-            else if (rdbNotHasGender.Checked)
-            {
-                test.GenderHasEfect = false;
-            }
-            else if (rdbUnknownGender.Checked)
-            {
-                test.GenderHasEfect = null;
-            }
-            repo.Update(test);
-            CleanForm();
-            BindGrid();
-            GoToAddMode();
-            err.Clear();
-            BindCombo();
             //BindCheckListBox();
         }
 
@@ -436,6 +483,27 @@ namespace Laboratory
                 sm.ToPrice = null;
                 BindGrid();
             }
+        }
+
+        private void txtTest_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtTest.Text))
+            {
+                lblErrorTest.Text = "";
+            }
+        }
+
+        private void txtPrice_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtPrice.Text))
+            {
+                lblErrorPrice.Text = "";
+            }
+        }
+
+        private void cmbCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
     }

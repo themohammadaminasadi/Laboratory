@@ -45,6 +45,11 @@ namespace DataAccess
             }
         }
 
+        public bool ExsistLogInOtherTable(int TestID)
+        {
+            return db.Tests.Any(x => x.TestID == TestID);
+        }
+
         public TestRange Get(int Key)
         {
             return db.TestRanges.FirstOrDefault(x => x.RangeID == Key);
@@ -64,6 +69,7 @@ namespace DataAccess
                 MinValue = TR.MinValue,
                 MaxValue = TR.MaxValue,
                 FromAge = TR.FromAge,
+                TestID = TR.TestID,
                 ToAge = TR.ToAge,
                 Hazard = TR.Hazard,
                 Gender = TR.Gender == 1 ? "مرد" :

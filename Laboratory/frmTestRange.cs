@@ -20,6 +20,7 @@ namespace Laboratory
         int RangeID = 0;
         DataAccess.TestRangeRepository repo = new DataAccess.TestRangeRepository();
         DataAccess.TestRepository repoTest = new DataAccess.TestRepository();
+        int TestID = 0;
         public void Search(DoaminModel.ViewModel.TestRange.ListSearchItemForSearchPanelTestRange sm)
         {
             DGVTestRange.DataSource = repo.Search(sm);
@@ -145,7 +146,12 @@ namespace Laboratory
         {
             try
             {
-                if (lstTest.SelectedItems == null)
+                if (string.IsNullOrEmpty(txtTest.Text))
+                {
+                    MessageBox.Show("آزمایش را باید انتخاب کنید ");
+                    return;
+                }
+                if (lstTest.SelectedIndex < 0)
                 {
                     err.SetError(lstTest, "یک آزمایش را از لیست انتخاب کنید");
                     return;
@@ -169,6 +175,7 @@ namespace Laboratory
                 {
                     testRange.Gender = 1;
                 }
+
                 else if (rdbFamle.Checked == true)
                 {
                     testRange.Gender = 0;
@@ -182,6 +189,7 @@ namespace Laboratory
                 BindGrid();
                 GoToAddMode();
                 err.Clear();
+                lblInfoTest.Text = "";
             }
             catch (Exception ex)
             {
@@ -198,6 +206,7 @@ namespace Laboratory
                 GoToAddMode();
                 CleanForm();
                 err.Clear();
+                lblInfoTest.Text = "";
             }
             catch (Exception)
             {
@@ -214,9 +223,11 @@ namespace Laboratory
             try
             {
                 RangeID = Convert.ToInt32(DGVTestRange.Rows[e.RowIndex].Cells[0].Value);
-                if (e.ColumnIndex == 8)
+                TestID = Convert.ToInt32(DGVTestRange.Rows[e.RowIndex].Cells["ClmnTestID"].Value);
+                
+                if (e.ColumnIndex == 9)
                 {
-
+                    
                     TestRange testRange = repo.Get(RangeID);
                     txtFromAge.Text = testRange.FromAge.ToString();
                     txtToAge.Text = testRange.ToAge.ToString();
@@ -253,15 +264,24 @@ namespace Laboratory
                     GoToEditMode();
                     err.Clear();
                 }
-                if (e.ColumnIndex == 9)
+                if (e.ColumnIndex == 10)
                 {
                     if (MessageBox.Show("آیا مطمئن هستید میخواهید این رنچ را حذف کنید ؟", "هشدار", MessageBoxButtons.YesNo)==DialogResult.Yes)
                     {
-                        repo.Delete(RangeID);
-                        CleanForm();
-                        GoToAddMode();
-                        BindGrid();
-                        err.Clear();
+                        if (repo.ExsistLogInOtherTable(TestID))
+                        {
+                            MessageBox.Show("این رکورد دارای سابقه می باشد");
+                            return;
+                        }
+                        else
+                        {
+                            repo.Delete(RangeID);
+                            CleanForm();
+                            GoToAddMode();
+                            BindGrid();
+                            err.Clear();
+                        }
+                           
                     }
                     else
                     {
@@ -327,6 +347,7 @@ namespace Laboratory
                 CleanForm();
                 BindGrid();
                 err.Clear();
+                lblInfoTest.Text = "";
             }
             catch (Exception ex)
             {

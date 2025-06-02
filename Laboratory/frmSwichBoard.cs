@@ -211,6 +211,11 @@ namespace Laboratory
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
+            
+        }
+
+        private void ثبتآزمایشToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
             bool ExsistFormInSwitchBoard = false;
             foreach (Form Child in this.MdiChildren)
             {
@@ -225,6 +230,63 @@ namespace Laboratory
                 frmLaboratoryVisit frmLaboratoryVisit = new frmLaboratoryVisit(UserName);
                 frmLaboratoryVisit.MdiParent = this;
                 frmLaboratoryVisit.Show();
+            }
+        }
+
+        private void ثبتنتیجهToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            bool ExsistFormInSwitchBoard = false;
+            foreach (Form Child in this.MdiChildren)
+            {
+                if (Child is frmResultTest)
+                {
+                    Child.Activate();
+                    ExsistFormInSwitchBoard = true;
+                }
+            }
+            if (!ExsistFormInSwitchBoard)
+            {
+                frmResultTest frmResultTest = new frmResultTest();
+                frmResultTest.MdiParent = this;
+                frmResultTest.Show();
+            }
+        }
+
+        private void ویرایشنتیجهToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            bool ExsistFormInSwitchBoard = false;
+            foreach (Form Child in this.MdiChildren)
+            {
+                if (Child is frmEditResultTest)
+                {
+                    Child.Activate();
+                    ExsistFormInSwitchBoard = true;
+                }
+            }
+            if (!ExsistFormInSwitchBoard)
+            {
+                frmEditResultTest frmEditResultTest = new frmEditResultTest();
+                frmEditResultTest.MdiParent = this;
+                frmEditResultTest.Show();
+            }
+        }
+
+        private void گزارشجامعToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            bool ExsistFormInSwitchBoard = false;
+            foreach (Form Child in this.MdiChildren)
+            {
+                if (Child is frmOrderReport)
+                {
+                    Child.Activate();
+                    ExsistFormInSwitchBoard = true;
+                }
+            }
+            if (!ExsistFormInSwitchBoard)
+            {
+                frmOrderReport frmOrderReport = new frmOrderReport();
+                frmOrderReport.MdiParent = this;
+                frmOrderReport.Show();
             }
         }
     }

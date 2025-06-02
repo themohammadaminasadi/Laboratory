@@ -32,7 +32,6 @@ namespace Laboratory
         }
         private void GoToEditMode()
         {
-
             btnEditResult.Visible = true;
             btnCancle.Visible = true;
         }
@@ -40,11 +39,17 @@ namespace Laboratory
         {
             var listCombo = new DataAccess.InsuranceRepository().GetAll();
             listCombo.Insert(0, new DoaminModel.Models.Insurance { InsuranceID = -1, InsuranceTypeName = "انتخاب کنید" });
+
+            cmbInsurance.SelectedIndexChanged -= cmbInsurance_SelectedIndexChanged; // ❌ غیرفعال‌سازی
+
             cmbInsurance.DataSource = null;
-            
             cmbInsurance.ValueMember = "InsuranceID";
             cmbInsurance.DisplayMember = "InsuranceTypeName";
             cmbInsurance.DataSource = listCombo;
+
+            cmbInsurance.SelectedIndex = 0;
+
+            cmbInsurance.SelectedIndexChanged += cmbInsurance_SelectedIndexChanged;
         }
         private void DGVTestHeader_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -99,9 +104,74 @@ namespace Laboratory
             DGVDetails.AutoGenerateColumns = false;
             DGVDetails.DataSource = null;
         }
+        private void CleanGridHeader()
+        {
+            DGVTestHeader.AutoGenerateColumns = false;
+            DGVTestHeader.DataSource = null;
+        }
+        private void ApplySearchAndTotal()
+        {
+            total = 0;
+            CleanGridDetails();
+            CleanGridHeader();
+
+            ls = BuildSearchFilters(); // ساختن فیلتر از نو
+
+            var lst = DoSearch(ls);
+
+            foreach (var item in lst)
+            {
+                total += repo.TotalPriceForComprehensiveOrderReport(item.PatientTestHederID);
+            }
+
+            lblTotalPrice.Text = total.ToString();
+        }
+        private ItemsSearchOrderReport BuildSearchFilters()
+        {
+            var filter = new ItemsSearchOrderReport();
+
+            if (!string.IsNullOrWhiteSpace(txtFullName.Text))
+                filter.FullName = txtFullName.Text;
+
+            if (!string.IsNullOrWhiteSpace(txtNationalCode.Text))
+                filter.NationalCode = txtNationalCode.Text;
+
+            if (!string.IsNullOrWhiteSpace(txtPhoneNumber.Text))
+                filter.MobileNumer = txtPhoneNumber.Text;
+
+            if (!string.IsNullOrWhiteSpace(txtDrName.Text))
+                filter.DrName = txtDrName.Text;
+
+            if (!string.IsNullOrWhiteSpace(txtSearchFromAge.Text))
+                filter.FromAge = Convert.ToInt32(txtSearchFromAge.Text);
+
+            if (!string.IsNullOrWhiteSpace(txtSearchToAge.Text))
+                filter.ToAge = Convert.ToInt32(txtSearchToAge.Text);
+
+            if (faDatePickerFrom.SelectedDateTime != null)
+                filter.FromHederDate = faDatePickerFrom.SelectedDateTime;
+
+            if (faDatePickerToDate.SelectedDateTime != null)
+                filter.ToHederDate = faDatePickerToDate.SelectedDateTime;
+
+            if (cmbInsurance.SelectedIndex > 0)
+                filter.InsuranceID = Convert.ToInt32(cmbInsurance.SelectedValue);
+
+            if (rdbMale.Checked)
+                filter.Gender = true;
+            else if (rdbFamle.Checked)
+                filter.Gender = false;
+            else
+                filter.Gender = null;
+
+            if (!string.IsNullOrWhiteSpace(txtPatientHeaderID.Text))
+                filter.PatientTestHederID = Convert.ToInt32(txtPatientHeaderID.Text);
+
+            return filter;
+        }
         private void frmOrderReport_Load(object sender, EventArgs e)
         {
-            //BindGridTestHeader();
+            
             BindCombo();
             GoToAddMode();
             CleanGridDetails();
@@ -113,165 +183,63 @@ namespace Laboratory
 
         private void txtFullName_TextChanged(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtFullName.Text))
-            {
-                ls.FullName = txtFullName.Text;
-                var lst = DoSearch(ls);
-                CleanGridDetails();
-                foreach (var item in lst)
-                {
-                    total += repo.TotalPriceForComprehensiveOrderReport(item.PatientTestHederID);
+           
+            ApplySearchAndTotal();
 
-                }
-                lblTotalPrice.Text = total.ToString();
-            }
         }
 
         private void txtNationalCode_TextChanged(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtNationalCode.Text))
-            {
-                ls.NationalCode = txtNationalCode.Text;
-                var lst = DoSearch(ls);
-                CleanGridDetails();
-                foreach (var item in lst)
-                {
-                    total += repo.TotalPriceForComprehensiveOrderReport(item.PatientTestHederID);
-
-                }
-                lblTotalPrice.Text = total.ToString();
-            }
+          
+            ApplySearchAndTotal();
         }
 
         private void txtPhoneNumber_TextChanged(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtPhoneNumber.Text))
-            {
-                ls.MobileNumer = txtPhoneNumber.Text;
-                var lst = DoSearch(ls);
-                CleanGridDetails();
-                foreach (var item in lst)
-                {
-                    total += repo.TotalPriceForComprehensiveOrderReport(item.PatientTestHederID);
-
-                }
-                lblTotalPrice.Text = total.ToString();
-            }
+           
+            ApplySearchAndTotal();
         }
 
         private void txtDrName_TextChanged(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtDrName.Text))
-            {
-                ls.DrName = txtDrName.Text;
-                CleanGridDetails();
-                var lst = DoSearch(ls);
-                CleanGridDetails();
-                foreach (var item in lst)
-                {
-                    total += repo.TotalPriceForComprehensiveOrderReport(item.PatientTestHederID);
-
-                }
-                lblTotalPrice.Text = total.ToString();
-
-            }
+          
+            ApplySearchAndTotal();
         }
 
         private void txtSearchFromAge_TextChanged(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtSearchFromAge.Text))
-            {
-                ls.FromAge = Convert.ToInt32(txtSearchFromAge.Text);
-                var lst = DoSearch(ls);
-                CleanGridDetails();
-                foreach (var item in lst)
-                {
-                    total += repo.TotalPriceForComprehensiveOrderReport(item.PatientTestHederID);
-
-                }
-                lblTotalPrice.Text = total.ToString();
-            }
+           
+            ApplySearchAndTotal();
         }
 
         private void txtSearchToAge_TextChanged(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtSearchToAge.Text))
-            {
-                ls.ToAge = Convert.ToInt32(txtSearchToAge.Text);
-                var lst = DoSearch(ls);
-                CleanGridDetails();
-                foreach (var item in lst)
-                {
-                    decimal total = repo.TotalPriceForComprehensiveOrderReport(item.PatientTestHederID);
-                    lblTotalPrice.Text = total.ToString();
-                }
-            }
+           
+            ApplySearchAndTotal();
         }
 
         private void faDatePickerFrom_SelectedDateTimeChanged(object sender, EventArgs e)
         {
-            if (faDatePickerFrom.SelectedDateTime != null )
-            {
-                ls.FromHederDate = faDatePickerFrom.SelectedDateTime;
-                var lst = DoSearch(ls);
-                CleanGridDetails();
-                foreach (var item in lst)
-                {
-                    total += repo.TotalPriceForComprehensiveOrderReport(item.PatientTestHederID);
-                    
-                }
-                lblTotalPrice.Text = total.ToString();
-            }
+           
+            ApplySearchAndTotal();
         }
 
         private void faDatePickerToDate_SelectedDateTimeChanged(object sender, EventArgs e)
         {
-            if (faDatePickerToDate.SelectedDateTime != null )
-            {
-                ls.ToHederDate = faDatePickerToDate.SelectedDateTime;
-                var lst = DoSearch(ls);
-                CleanGridDetails();
-                foreach (var item in lst)
-                {
-                    total += repo.TotalPriceForComprehensiveOrderReport(item.PatientTestHederID);
-
-                }
-                lblTotalPrice.Text = total.ToString();
-            }
+            
+            ApplySearchAndTotal();
         }
 
         private void cmbInsurance_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbInsurance.SelectedIndex >= 0)
-            {
-                int InsuranceID = Convert.ToInt32(cmbInsurance.SelectedValue);
-                ls.InsuranceID = InsuranceID;
-                var lst = DoSearch(ls);
-                CleanGridDetails();
-                foreach (var item in lst)
-                {
-                    total += repo.TotalPriceForComprehensiveOrderReport(item.PatientTestHederID);
-
-                }
-                lblTotalPrice.Text = total.ToString();
-            }
+           
+            ApplySearchAndTotal();
         }
 
         private void txtPatientTestHederID_TextChanged(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtPatientHeaderID.Text))
-            {
-                PatientTestHederID = Convert.ToInt32(txtPatientHeaderID.Text);
-                ls.PatientTestHederID = PatientTestHederID;
-                var lst = DoSearch(ls);
-                CleanGridDetails();
-                foreach (var item in lst)
-                {
-                    total += repo.TotalPriceForComprehensiveOrderReport(item.PatientTestHederID);
-
-                }
-                lblTotalPrice.Text = total.ToString();
-            }
+            
+            ApplySearchAndTotal();
         }
 
         private void grpGender_TextChanged(object sender, EventArgs e)
@@ -281,50 +249,20 @@ namespace Laboratory
 
         private void rdbMale_CheckedChanged(object sender, EventArgs e)
         {
-            if (rdbMale.Checked)
-            {
-                ls.Gender = true;
-                var lst = DoSearch(ls);
-                CleanGridDetails();
-                foreach (var item in lst)
-                {
-                    total += repo.TotalPriceForComprehensiveOrderReport(item.PatientTestHederID);
 
-                }
-                lblTotalPrice.Text = total.ToString();
-            }
+            
+            ApplySearchAndTotal();
         }
 
         private void rdbFamle_CheckedChanged(object sender, EventArgs e)
         {
-            if (rdbFamle.Checked)
-            {
-                ls.Gender = false;
-                var lst = DoSearch(ls);
-                CleanGridDetails();
-                foreach (var item in lst)
-                {
-                    total += repo.TotalPriceForComprehensiveOrderReport(item.PatientTestHederID);
-
-                }
-                lblTotalPrice.Text = total.ToString();
-            }
+            ApplySearchAndTotal();
         }
 
         private void rdbBothGender_CheckedChanged(object sender, EventArgs e)
         {
-            if (rdbBothGender.Checked)
-            {
-                ls.Gender = null;
-                var lst = DoSearch(ls);
-                CleanGridDetails();
-                foreach (var item in lst)
-                {
-                    total += repo.TotalPriceForComprehensiveOrderReport(item.PatientTestHederID);
-
-                }
-                lblTotalPrice.Text = total.ToString();
-            }
+           
+            ApplySearchAndTotal();
         }
 
         private void btnEditResult_Click(object sender, EventArgs e)

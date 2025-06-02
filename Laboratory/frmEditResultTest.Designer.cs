@@ -43,15 +43,32 @@
             this.ClmnDrName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClmnNationalCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClmnAge = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClmnEditResult = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ClmnShowReslutDestailsTest = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.DGVDetails = new System.Windows.Forms.DataGridView();
+            this.btnCancle = new System.Windows.Forms.Button();
+            this.btnEditResult = new System.Windows.Forms.Button();
+            this.lblTestName = new System.Windows.Forms.Label();
+            this.txtTestName = new System.Windows.Forms.TextBox();
+            this.btnAddResult = new System.Windows.Forms.Button();
+            this.lblResult = new System.Windows.Forms.Label();
+            this.txtResult = new System.Windows.Forms.TextBox();
+            this.ClmnPatientTestDetailsID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClmnTestID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClmnTestName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClmnResult = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClmnHasStar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ClmnAddDetailsTest = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ClmnDeletePatientTestDetails = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ClmnEditDetailsTest = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DGVPatientTestHeader)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGVDetails)).BeginInit();
             this.SuspendLayout();
             // 
             // faDatePicker
             // 
             this.faDatePicker.Location = new System.Drawing.Point(107, 315);
             this.faDatePicker.Name = "faDatePicker";
-            this.faDatePicker.Size = new System.Drawing.Size(200, 20);
+            this.faDatePicker.Size = new System.Drawing.Size(244, 20);
             this.faDatePicker.TabIndex = 67;
             this.faDatePicker.SelectedDateTimeChanged += new System.EventHandler(this.faDatePicker_SelectedDateTimeChanged);
             // 
@@ -62,7 +79,7 @@
             this.lstPatient.Location = new System.Drawing.Point(94, 85);
             this.lstPatient.Name = "lstPatient";
             this.lstPatient.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.lstPatient.Size = new System.Drawing.Size(200, 172);
+            this.lstPatient.Size = new System.Drawing.Size(257, 172);
             this.lstPatient.TabIndex = 66;
             this.lstPatient.DoubleClick += new System.EventHandler(this.lstPatient_DoubleClick);
             // 
@@ -71,7 +88,7 @@
             this.txtPatient.Location = new System.Drawing.Point(94, 55);
             this.txtPatient.Name = "txtPatient";
             this.txtPatient.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtPatient.Size = new System.Drawing.Size(200, 31);
+            this.txtPatient.Size = new System.Drawing.Size(257, 31);
             this.txtPatient.TabIndex = 65;
             this.txtPatient.TextChanged += new System.EventHandler(this.txtPatient_TextChanged);
             // 
@@ -126,12 +143,13 @@
             this.ClmnDrName,
             this.ClmnNationalCode,
             this.ClmnAge,
-            this.ClmnEditResult});
-            this.DGVPatientTestHeader.Location = new System.Drawing.Point(406, 39);
+            this.ClmnShowReslutDestailsTest});
+            this.DGVPatientTestHeader.Location = new System.Drawing.Point(403, 85);
             this.DGVPatientTestHeader.Name = "DGVPatientTestHeader";
             this.DGVPatientTestHeader.RowHeadersWidth = 51;
             this.DGVPatientTestHeader.Size = new System.Drawing.Size(920, 218);
             this.DGVPatientTestHeader.TabIndex = 69;
+            this.DGVPatientTestHeader.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVPatientTestHeader_CellContentClick);
             // 
             // ClmnPatientTestHederID
             // 
@@ -190,15 +208,177 @@
             this.ClmnAge.Name = "ClmnAge";
             this.ClmnAge.Width = 125;
             // 
-            // ClmnEditResult
+            // ClmnShowReslutDestailsTest
             // 
-            this.ClmnEditResult.DataPropertyName = "EditResult";
-            this.ClmnEditResult.HeaderText = "ویرایش جواب";
-            this.ClmnEditResult.MinimumWidth = 6;
-            this.ClmnEditResult.Name = "ClmnEditResult";
-            this.ClmnEditResult.Text = "ویرایش جواب";
-            this.ClmnEditResult.UseColumnTextForButtonValue = true;
-            this.ClmnEditResult.Width = 125;
+            this.ClmnShowReslutDestailsTest.DataPropertyName = "ShowReslutDestailsTest";
+            this.ClmnShowReslutDestailsTest.HeaderText = "مشاهده جزئیات";
+            this.ClmnShowReslutDestailsTest.MinimumWidth = 6;
+            this.ClmnShowReslutDestailsTest.Name = "ClmnShowReslutDestailsTest";
+            this.ClmnShowReslutDestailsTest.Text = "مشاهده جزئیات";
+            this.ClmnShowReslutDestailsTest.UseColumnTextForButtonValue = true;
+            this.ClmnShowReslutDestailsTest.Width = 125;
+            // 
+            // DGVDetails
+            // 
+            this.DGVDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGVDetails.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ClmnPatientTestDetailsID,
+            this.ClmnTestID,
+            this.ClmnTestName,
+            this.ClmnResult,
+            this.ClmnHasStar,
+            this.ClmnAddDetailsTest,
+            this.ClmnDeletePatientTestDetails,
+            this.ClmnEditDetailsTest});
+            this.DGVDetails.Location = new System.Drawing.Point(403, 303);
+            this.DGVDetails.Name = "DGVDetails";
+            this.DGVDetails.RowHeadersWidth = 51;
+            this.DGVDetails.Size = new System.Drawing.Size(920, 191);
+            this.DGVDetails.TabIndex = 70;
+            this.DGVDetails.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVDetails_CellContentClick);
+            // 
+            // btnCancle
+            // 
+            this.btnCancle.BackColor = System.Drawing.Color.Red;
+            this.btnCancle.Font = new System.Drawing.Font("B Titr", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.btnCancle.Location = new System.Drawing.Point(226, 536);
+            this.btnCancle.Name = "btnCancle";
+            this.btnCancle.Size = new System.Drawing.Size(142, 46);
+            this.btnCancle.TabIndex = 77;
+            this.btnCancle.Text = "انصراف";
+            this.btnCancle.UseVisualStyleBackColor = false;
+            this.btnCancle.Click += new System.EventHandler(this.btnCancle_Click);
+            // 
+            // btnEditResult
+            // 
+            this.btnEditResult.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btnEditResult.Font = new System.Drawing.Font("B Titr", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.btnEditResult.Location = new System.Drawing.Point(39, 608);
+            this.btnEditResult.Name = "btnEditResult";
+            this.btnEditResult.Size = new System.Drawing.Size(151, 46);
+            this.btnEditResult.TabIndex = 76;
+            this.btnEditResult.Text = "ویرایش نتیجه آزمایش";
+            this.btnEditResult.UseVisualStyleBackColor = false;
+            this.btnEditResult.Click += new System.EventHandler(this.btnEditResult_Click);
+            // 
+            // lblTestName
+            // 
+            this.lblTestName.AutoSize = true;
+            this.lblTestName.Font = new System.Drawing.Font("B Titr", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.lblTestName.Location = new System.Drawing.Point(39, 409);
+            this.lblTestName.Name = "lblTestName";
+            this.lblTestName.Size = new System.Drawing.Size(61, 30);
+            this.lblTestName.TabIndex = 75;
+            this.lblTestName.Text = "آزمایش";
+            // 
+            // txtTestName
+            // 
+            this.txtTestName.Location = new System.Drawing.Point(126, 411);
+            this.txtTestName.Name = "txtTestName";
+            this.txtTestName.Size = new System.Drawing.Size(225, 31);
+            this.txtTestName.TabIndex = 74;
+            // 
+            // btnAddResult
+            // 
+            this.btnAddResult.BackColor = System.Drawing.Color.MediumAquamarine;
+            this.btnAddResult.Font = new System.Drawing.Font("B Titr", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.btnAddResult.Location = new System.Drawing.Point(39, 536);
+            this.btnAddResult.Name = "btnAddResult";
+            this.btnAddResult.Size = new System.Drawing.Size(151, 46);
+            this.btnAddResult.TabIndex = 73;
+            this.btnAddResult.Text = "ثبت نتیجه";
+            this.btnAddResult.UseVisualStyleBackColor = false;
+            this.btnAddResult.Click += new System.EventHandler(this.btnAddResult_Click);
+            // 
+            // lblResult
+            // 
+            this.lblResult.AutoSize = true;
+            this.lblResult.Font = new System.Drawing.Font("B Titr", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.lblResult.Location = new System.Drawing.Point(40, 464);
+            this.lblResult.Name = "lblResult";
+            this.lblResult.Size = new System.Drawing.Size(45, 30);
+            this.lblResult.TabIndex = 72;
+            this.lblResult.Text = "نتبجه";
+            // 
+            // txtResult
+            // 
+            this.txtResult.Location = new System.Drawing.Point(124, 463);
+            this.txtResult.Name = "txtResult";
+            this.txtResult.Size = new System.Drawing.Size(227, 31);
+            this.txtResult.TabIndex = 71;
+            // 
+            // ClmnPatientTestDetailsID
+            // 
+            this.ClmnPatientTestDetailsID.DataPropertyName = "PatientTestDetailsID";
+            this.ClmnPatientTestDetailsID.HeaderText = "شناسه جزیئات آزمایش";
+            this.ClmnPatientTestDetailsID.MinimumWidth = 6;
+            this.ClmnPatientTestDetailsID.Name = "ClmnPatientTestDetailsID";
+            this.ClmnPatientTestDetailsID.Width = 150;
+            // 
+            // ClmnTestID
+            // 
+            this.ClmnTestID.DataPropertyName = "TestID";
+            this.ClmnTestID.HeaderText = "شناسه آزمایش";
+            this.ClmnTestID.MinimumWidth = 6;
+            this.ClmnTestID.Name = "ClmnTestID";
+            this.ClmnTestID.Visible = false;
+            this.ClmnTestID.Width = 120;
+            // 
+            // ClmnTestName
+            // 
+            this.ClmnTestName.DataPropertyName = "TestName";
+            this.ClmnTestName.HeaderText = "آزمایش";
+            this.ClmnTestName.MinimumWidth = 6;
+            this.ClmnTestName.Name = "ClmnTestName";
+            this.ClmnTestName.Width = 125;
+            // 
+            // ClmnResult
+            // 
+            this.ClmnResult.DataPropertyName = "Result";
+            this.ClmnResult.HeaderText = "نتیجه";
+            this.ClmnResult.MinimumWidth = 6;
+            this.ClmnResult.Name = "ClmnResult";
+            this.ClmnResult.Width = 125;
+            // 
+            // ClmnHasStar
+            // 
+            this.ClmnHasStar.DataPropertyName = "HasStar";
+            this.ClmnHasStar.HeaderText = "خطرناک";
+            this.ClmnHasStar.MinimumWidth = 6;
+            this.ClmnHasStar.Name = "ClmnHasStar";
+            this.ClmnHasStar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ClmnHasStar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ClmnHasStar.Width = 125;
+            // 
+            // ClmnAddDetailsTest
+            // 
+            this.ClmnAddDetailsTest.HeaderText = "ثبت جواب";
+            this.ClmnAddDetailsTest.MinimumWidth = 6;
+            this.ClmnAddDetailsTest.Name = "ClmnAddDetailsTest";
+            this.ClmnAddDetailsTest.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ClmnAddDetailsTest.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ClmnAddDetailsTest.Text = "ثبت جواب";
+            this.ClmnAddDetailsTest.UseColumnTextForButtonValue = true;
+            this.ClmnAddDetailsTest.Width = 125;
+            // 
+            // ClmnDeletePatientTestDetails
+            // 
+            this.ClmnDeletePatientTestDetails.DataPropertyName = "DeletePatientTestDetails";
+            this.ClmnDeletePatientTestDetails.HeaderText = "حذف";
+            this.ClmnDeletePatientTestDetails.Name = "ClmnDeletePatientTestDetails";
+            this.ClmnDeletePatientTestDetails.Text = "حذف";
+            this.ClmnDeletePatientTestDetails.UseColumnTextForButtonValue = true;
+            // 
+            // ClmnEditDetailsTest
+            // 
+            this.ClmnEditDetailsTest.HeaderText = "ویرایش نتیجه";
+            this.ClmnEditDetailsTest.MinimumWidth = 6;
+            this.ClmnEditDetailsTest.Name = "ClmnEditDetailsTest";
+            this.ClmnEditDetailsTest.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ClmnEditDetailsTest.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ClmnEditDetailsTest.Text = "ویرایش نتیجه";
+            this.ClmnEditDetailsTest.UseColumnTextForButtonValue = true;
+            this.ClmnEditDetailsTest.Width = 125;
             // 
             // frmEditResultTest
             // 
@@ -206,6 +386,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(247)))), ((int)(((byte)(240)))));
             this.ClientSize = new System.Drawing.Size(1326, 690);
+            this.Controls.Add(this.btnCancle);
+            this.Controls.Add(this.btnEditResult);
+            this.Controls.Add(this.lblTestName);
+            this.Controls.Add(this.txtTestName);
+            this.Controls.Add(this.btnAddResult);
+            this.Controls.Add(this.lblResult);
+            this.Controls.Add(this.txtResult);
+            this.Controls.Add(this.DGVDetails);
             this.Controls.Add(this.DGVPatientTestHeader);
             this.Controls.Add(this.faDatePicker);
             this.Controls.Add(this.lstPatient);
@@ -222,6 +410,7 @@
             this.Text = "EditResultTest";
             this.Load += new System.EventHandler(this.frmEditResultTest_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DGVPatientTestHeader)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGVDetails)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -237,6 +426,7 @@
         private System.Windows.Forms.Label lblErrorNationalCode;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView DGVPatientTestHeader;
+        private System.Windows.Forms.DataGridView DGVDetails;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClmnPatientTestHederID;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClmnHederDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClmnFullNamePaitent;
@@ -244,6 +434,21 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ClmnDrName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClmnNationalCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClmnAge;
-        private System.Windows.Forms.DataGridViewButtonColumn ClmnEditResult;
+        private System.Windows.Forms.DataGridViewButtonColumn ClmnShowReslutDestailsTest;
+        private System.Windows.Forms.Button btnCancle;
+        private System.Windows.Forms.Button btnEditResult;
+        private System.Windows.Forms.Label lblTestName;
+        private System.Windows.Forms.TextBox txtTestName;
+        private System.Windows.Forms.Button btnAddResult;
+        private System.Windows.Forms.Label lblResult;
+        private System.Windows.Forms.TextBox txtResult;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClmnPatientTestDetailsID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClmnTestID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClmnTestName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClmnResult;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ClmnHasStar;
+        private System.Windows.Forms.DataGridViewButtonColumn ClmnAddDetailsTest;
+        private System.Windows.Forms.DataGridViewButtonColumn ClmnDeletePatientTestDetails;
+        private System.Windows.Forms.DataGridViewButtonColumn ClmnEditDetailsTest;
     }
 }

@@ -16,6 +16,13 @@ namespace Laboratory
     {
         EditResultTestRepository repo = new EditResultTestRepository();
         PatientRepository repoPatient = new PatientRepository();
+        ResultTestRepository repoResult = new ResultTestRepository();
+        PatientHeaderRepository repoHeader = new PatientHeaderRepository();
+        TestRangeRepository repoTestRange = new TestRangeRepository();
+        private bool HasStar;
+        private int PatientTestHeaderID = 0;
+        private int TestID = 0;
+        private int PatientTestDetailsID = 0;
         private int PatientID = 0;
         public frmEditResultTest()
         {
@@ -26,9 +33,50 @@ namespace Laboratory
             DGVPatientTestHeader.AutoGenerateColumns = false;
             DGVPatientTestHeader.DataSource = null;
         }
+        private void ConfigeDataGridViewPatientDetails()
+        {
+            DGVDetails.AutoGenerateColumns = false;
+            DGVDetails.DataSource = null;
+        }
+        private void GoToEditMode()
+        {
+            btnAddResult.Visible = false;
+            btnEditResult.Visible = true;
+            btnCancle.Visible = true;
+            lblResult.Visible = true;
+            lblTestName.Visible = true;
+            txtTestName.Visible = true;
+            txtResult.Visible = true;
+        }
+        private void GoToAddMode()
+        {
+            btnAddResult.Visible = true;
+            btnEditResult.Visible = false;
+            btnCancle.Visible = false;
+            lblResult.Visible = true;
+            lblTestName.Visible = true;
+            txtTestName.Visible = true;
+            txtResult.Visible = true;
+        }
+        private void CleanForm()
+        {
+            txtResult.Text = "";
+            txtTestName.Text = "";
+        }
+        private void VisibleControlers()
+        {
+            lblResult.Visible = false;
+            lblTestName.Visible = false;
+            txtTestName.Visible = false;
+            txtResult.Visible = false;
+        }
         private void frmEditResultTest_Load(object sender, EventArgs e)
         {
             lstPatient.Visible = false;
+            VisibleControlers();
+            btnAddResult.Visible = false;
+            btnEditResult.Visible = false;
+            btnCancle.Visible = false;
         }
 
         private void txtPatient_TextChanged(object sender, EventArgs e)
@@ -82,11 +130,129 @@ namespace Laboratory
                 Patient patient = repoPatient.Get(PatientID);
                 txtPatient.Text = patient.FirstName + " " + patient.LastName + " " + patient.NationalCode + " " + patient.PhoneNumber;
                 DGVPatientTestHeader.DataSource = repo.GetPatientTestByPatientID(PatientID);
+                lstPatient.Visible = false;
             }
             else
             {
                 ConfigeDataGridViewPatientTestHeader();
+                DGVDetails.AutoGenerateColumns = false;
+                DGVDetails.DataSource = null;
             }
+        }
+
+        private void DGVPatientTestHeader_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            PatientTestHeaderID = Convert.ToInt32(DGVPatientTestHeader.Rows[e.RowIndex].Cells[0].Value);
+            if (e.ColumnIndex == 7)
+            {
+                DGVDetails.DataSource = repoResult.GetDetails(PatientTestHeaderID);
+            }
+        }
+
+        private void DGVDetails_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            PatientTestDetailsID = Convert.ToInt32(DGVDetails.Rows[e.RowIndex].Cells["ClmnPatientTestDetailsID"].Value);
+            var PatientTestDetails = repoHeader.GetPatientDetails(PatientTestDetailsID);
+            if (DGVDetails.Columns[e.ColumnIndex].Name == "ClmnEditDetailsTest")
+            {                
+                
+                if (PatientTestDetails.Result.HasValue)
+                {
+                    GoToEditMode();
+                    txtTestName.Enabled = false;
+                    txtTestName.Text = PatientTestDetails.Test.TestName;
+                    txtResult.Text = PatientTestDetails.Result.ToString();
+                }
+                else if (!PatientTestDetails.Result.HasValue)
+                {
+                    MessageBox.Show("آزمایش نتیجه ندارد");
+                    return;
+                }
+            }
+            if (DGVDetails.Columns[e.ColumnIndex].Name == "ClmnAddDetailsTest")
+            {
+                GoToAddMode();
+                CleanForm();
+                txtTestName.Text = PatientTestDetails.Test.TestName;
+                txtTestName.Enabled = false;
+            }
+            if (DGVDetails.Columns[e.ColumnIndex].Name == "ClmnDeletePatientTestDetails")
+            {
+                CleanForm();
+                VisibleControlers();
+                repoHeader.DeleteDetails(PatientTestDetailsID);
+                DGVDetails.DataSource = repoResult.GetDetails(PatientTestHeaderID);
+            }
+        }
+
+        private void btnEditResult_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtResult.Text))
+            {
+                MessageBox.Show("نتیجه نمیتواند خالی باشد");
+                return;
+            }
+            PatientTestDetail NewPatientTestDetail = new PatientTestDetail();
+            var OldPatientTestDetails = repoHeader.GetPatientDetails(this.PatientTestDetailsID);
+            double Result = Convert.ToDouble(txtResult.Text);
+            var ListTestRange = repoTestRange.GetTestWithTestID(TestID);
+            int Age = new PatientRepository().Get(PatientID).Age;
+            var patient = new PatientRepository().Get(PatientID); // patient یک شیء از کلاس Patient هست
+            int genderInt = patient.Gender ? 1 : 0; // ✅ درست: استفاده از شیء patient
+            foreach (var item in ListTestRange)
+            {
+                bool genderMatches = item.Gender == genderInt;
+                if (Result > item.MinValue && Result < item.MaxValue && Age > item.FromAge && Age < item.ToAge && genderMatches)
+                {
+                    HasStar = item.Hazard;
+                }
+            }
+            NewPatientTestDetail.TestID = OldPatientTestDetails.TestID;
+            NewPatientTestDetail.Result = Result;
+            NewPatientTestDetail.PatientTestHederID = OldPatientTestDetails.PatientTestHederID;
+            NewPatientTestDetail.PatientTestDetailsID = OldPatientTestDetails.PatientTestDetailsID;
+            NewPatientTestDetail.Price = OldPatientTestDetails.Price;
+            NewPatientTestDetail.HasStar = this.HasStar;
+            repoHeader.UpdatePatientDetails(NewPatientTestDetail);
+            //Bind Grid Test Details ; 
+            DGVDetails.DataSource = new ResultTestRepository().GetDetails(PatientTestHeaderID);
+            CleanForm();
+        }
+
+        private void btnCancle_Click(object sender, EventArgs e)
+        {
+            GoToAddMode();
+            CleanForm();
+           
+        }
+
+        private void btnAddResult_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtResult.Text))
+            {
+                MessageBox.Show("نتیجه نمیتواند خالی باشد");
+                return;
+            }
+            double Result = Convert.ToDouble(txtResult.Text);
+
+            var ListTestRange = repoTestRange.GetTestWithTestID(TestID);
+            int Age = new PatientRepository().Get(PatientID).Age;
+            var patient = new PatientRepository().Get(PatientID); // patient یک شیء از کلاس Patient هست
+            int genderInt = patient.Gender ? 1 : 0; // ✅ درست: استفاده از شیء patient
+            foreach (var item in ListTestRange)
+            {
+                bool genderMatches = item.Gender == genderInt;
+                if (Result > item.MinValue && Result < item.MaxValue && Age > item.FromAge && Age < item.ToAge && genderMatches)
+                {
+                    HasStar = item.Hazard;
+                }
+            }
+            repoResult.setResult(PatientTestDetailsID, Result, HasStar);
+            DGVDetails.DataSource = new ResultTestRepository().GetDetails(PatientTestHeaderID);
+            CleanForm();
+            var details = new ResultTestRepository().GetDetails(PatientTestHeaderID);
+            ConfigeDataGridViewPatientDetails();
+            DGVPatientTestHeader.DataSource = details;
         }
     }
 }

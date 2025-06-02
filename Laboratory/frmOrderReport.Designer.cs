@@ -502,9 +502,9 @@
             this.panel1.Controls.Add(this.label15);
             this.panel1.Controls.Add(this.label13);
             this.panel1.Controls.Add(this.label12);
-            this.panel1.Location = new System.Drawing.Point(1047, 190);
+            this.panel1.Location = new System.Drawing.Point(951, 190);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(319, 292);
+            this.panel1.Size = new System.Drawing.Size(415, 292);
             this.panel1.TabIndex = 73;
             // 
             // lblInsuracePrice

@@ -49,13 +49,14 @@ namespace Laboratory
         {
             btnAddTest.Visible = true;
             btnEdit.Visible = false;
-       
+            btnCancleTest.Visible = false;
+
         }
         private void GoToEditMode()
         {
             btnEdit.Visible = true;
             btnAddTest.Visible = false;
-           
+            btnCancleTest.Visible = true;
         }
       
         public void CleanForm()
@@ -140,24 +141,58 @@ namespace Laboratory
         }
         private void frmLaboratoryVisit_Load(object sender, EventArgs e)
         {
-            btnClearFormForAddVisit.Visible = false;
-            lstPatient.Visible = false;
-            BindCombo();
-            pnlDetailsVisit.Visible = false;
-            txtPriceTest.Visible = false;
-            txtPriceWithDiscount.Visible = false;
-            txtDiscount.Visible = false;
-            txtPriceTest.Enabled = false;
-            txtDiscount.Enabled = false;
-            txtPriceWithDiscount.Enabled = false;
-            GoToAddMode();
-            this.AutoValidate = AutoValidate.EnableAllowFocusChange;
-            lblPanleTest.Visible = false;
-            lblTotalPrice.Visible = false;
-            lstTest.Visible = false;
-            lblTotalPriceTests.Visible = false;
-            btnCancle.Visible = false;
-            faDatePicker1.SelectedDateTime = DateTime.Now;
+            try
+            {
+                btnClearFormForAddVisit.Visible = false;
+                lstPatient.Visible = false;
+                BindCombo();
+                pnlDetailsVisit.Visible = false;
+                txtPriceTest.Visible = false;
+                txtPriceWithDiscount.Visible = false;
+                txtDiscount.Visible = false;
+                txtPriceTest.Enabled = false;
+                txtDiscount.Enabled = false;
+                txtPriceWithDiscount.Enabled = false;
+                GoToAddMode();
+                this.AutoValidate = AutoValidate.EnableAllowFocusChange;
+                lblPanleTest.Visible = false;
+                lblTotalPrice.Visible = false;
+                lstTest.Visible = false;
+                lblTotalPriceTests.Visible = false;
+                btnCancle.Visible = false;
+                faDatePicker1.SelectedDateTime = DateTime.Now;
+
+
+                DGVTestDetails.EnableHeadersVisualStyles = false;
+
+                // رنگ پس‌زمینه کلی گرید
+                DGVTestDetails.BackgroundColor = Color.FromArgb(235, 247, 240);
+
+                // رنگ ردیف‌های معمولی
+                DGVTestDetails.RowsDefaultCellStyle.BackColor = Color.FromArgb(245, 255, 250); // خیلی نزدیک به فرم
+
+                // رنگ ردیف‌های یکی در میون برای خوانایی بیشتر
+                DGVTestDetails.AlternatingRowsDefaultCellStyle.BackColor = Color.White;
+
+                // رنگ متن سلول‌ها
+                DGVTestDetails.RowsDefaultCellStyle.ForeColor = Color.Black;
+
+                // رنگ انتخاب‌شده (برای اینکه زیادی تیره یا زننده نباشه)
+                DGVTestDetails.DefaultCellStyle.SelectionBackColor = Color.FromArgb(200, 230, 220); // سبز ملایم
+                DGVTestDetails.DefaultCellStyle.SelectionForeColor = Color.Black;
+
+                // رنگ هدر جدول
+                DGVTestDetails.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(220, 240, 230);
+                DGVTestDetails.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+
+                // رنگ خطوط جدول
+                DGVTestDetails.GridColor = Color.LightGray;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("ارور در لود صفحه : خواهشمند است با مدیر سیستم تماس بگیرید" + ex);
+            }
         }
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
@@ -166,81 +201,97 @@ namespace Laboratory
 
         private void btnAddPatientTest_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtPatient.Text))
+            try
             {
-                err.SetError(txtPatient, "خواهشمند است ابتدا بیمار را سرچ کرده و سپس از لیست روی بیمار دو بار کلیک کنید");
-                return;
+                if (string.IsNullOrEmpty(txtPatient.Text))
+                {
+                    err.SetError(txtPatient, "خواهشمند است ابتدا بیمار را سرچ کرده و سپس از لیست روی بیمار دو بار کلیک کنید");
+                    return;
+                }
+                if (lstPatient.SelectedValue == null)
+                {
+                    err.SetError(lstPatient, "آزمایش را از لیست انتخاب نکرده اید");
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(txtDrName.Text))
+                {
+                    lblErrorDrName.Text = "خواهشمند است نام دکتر را وارد کنید";
+                    return;
+                }
+
+                if (cmbInsurance.SelectedIndex <= 0)
+                {
+                    err.SetError(cmbInsurance, "خواهشمند است یکی از گزینه ها را انتخاب کنید");
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(txtAge.Text))
+                {
+                    lblErrorAge.Text = "خواهشمند است از فرم ثبت بیمار سن را وارد کنید";
+                    return;
+                }
+                if (string.IsNullOrEmpty(txtNationalCode.Text))
+                {
+                    lblErrorNationalCode.Text = "کد ملی نمیتواند خالی باشد";
+                    return;
+                }
+                if (string.IsNullOrEmpty(txtMobileNumber.Text))
+                {
+                    lblErrorMobile.Text = "موبایل نمیتواند خالی باشد";
+                    return;
+                }
+                PaitentTestHeder paitentHeader = new PaitentTestHeder();
+                if (faDatePicker1.SelectedDateTime == null)
+                {
+                    paitentHeader.HederDate = DateTime.Now;
+                }
+                if (faDatePicker1.SelectedDateTime != null)
+                {
+                    paitentHeader.HederDate = faDatePicker1.SelectedDateTime;
+                }
+
+                InsuranceID = Convert.ToInt32(cmbInsurance.SelectedValue);
+                paitentHeader.InsuranceID = this.InsuranceID;
+                paitentHeader.PaitentID = this.PaitentID;
+                EmployeeID = new EmployeeRepository().GetEmployeeWithUserName(this.UserName).EmployeeID;
+                paitentHeader.EmployeeID = this.EmployeeID;
+                paitentHeader.DrName = txtDrName.Text;
+                paitentHeader.NationalCode = txtNationalCode.Text;
+                paitentHeader.Age = Convert.ToInt32(txtAge.Text);
+                PaitentHeaderID = repo.Add(paitentHeader);
+                DoaminModel.Models.Patient P = repoPatient.Get(PaitentID);
+                lblNationalCodePatient.Text = P.NationalCode;
+                lblPatientName.Text = P.FirstName + "  " + P.LastName;
+                lblPatientTestHederID.Text = this.PaitentHeaderID.ToString();
+                CleanError();
+                ShowDetailsTest();
+                err.Clear();
+                btnAddPatientTest.Enabled = false;
+                EnableHeaderVisit();
+                btnCancle.Visible = true;
+                btnClearFormForAddVisit.Visible = true;
             }
-            if (lstPatient.SelectedValue == null)
+            catch (Exception ex)
             {
-                err.SetError(lstPatient, "آزمایش را از لیست انتخاب نکرده اید");
-                return;
+
+                throw new Exception("ارور در دکمه ثبت پذیرش : خواهشمند است با مدیر سیستم تماس بگیرید" + ex);
             }
-            
-            if (string.IsNullOrEmpty(txtDrName.Text))
-            {
-                lblErrorDrName.Text = "خواهشمند است نام دکتر را وارد کنید";
-                return;
-            }
-         
-            if (cmbInsurance.SelectedIndex <= 0)
-            {
-                err.SetError(cmbInsurance, "خواهشمند است یکی از گزینه ها را انتخاب کنید");
-                return;
-            }
-           
-            if (string.IsNullOrEmpty(txtAge.Text))
-            {
-                lblErrorAge.Text = "خواهشمند است از فرم ثبت بیمار سن را وارد کنید";
-                return;
-            }
-            if (string.IsNullOrEmpty(txtNationalCode.Text))
-            {
-                lblErrorNationalCode.Text = "کد ملی نمیتواند خالی باشد";
-                return;
-            }
-            if (string.IsNullOrEmpty(txtMobileNumber.Text))
-            {
-                lblErrorMobile.Text = "موبایل نمیتواند خالی باشد";
-                return;
-            }
-            PaitentTestHeder paitentHeader = new PaitentTestHeder();
-            if (faDatePicker1.SelectedDateTime == null)
-            {
-                paitentHeader.HederDate = DateTime.Now;
-            }
-            if (faDatePicker1.SelectedDateTime != null)
-            {
-                paitentHeader.HederDate = faDatePicker1.SelectedDateTime;
-            }
-        
-            InsuranceID = Convert.ToInt32(cmbInsurance.SelectedValue);
-            paitentHeader.InsuranceID = this.InsuranceID;
-            paitentHeader.PaitentID = this.PaitentID;
-            EmployeeID = new EmployeeRepository().GetEmployeeWithUserName(this.UserName).EmployeeID;
-            paitentHeader.EmployeeID = this.EmployeeID;
-            paitentHeader.DrName = txtDrName.Text;
-            paitentHeader.NationalCode = txtNationalCode.Text;
-            paitentHeader.Age = Convert.ToInt32(txtAge.Text);
-            PaitentHeaderID = repo.Add(paitentHeader);
-            DoaminModel.Models.Patient P = repoPatient.Get(PaitentID);
-            lblNationalCodePatient.Text = P.NationalCode;
-            lblPatientName.Text = P.FirstName + "  " + P.LastName;
-            lblPatientTestHederID.Text = this.PaitentHeaderID.ToString();
-            CleanError();
-            ShowDetailsTest();
-            err.Clear();
-            btnAddPatientTest.Enabled = false;
-            EnableHeaderVisit();
-            btnCancle.Visible = true;
-            btnClearFormForAddVisit.Visible = true;
 
         }
 
         private void btnAddPatient_Click(object sender, EventArgs e)
         {
-            frmPatient frmPatient = new frmPatient();
-            frmPatient.Show();
+            try
+            {
+                frmPatient frmPatient = new frmPatient();
+                frmPatient.Show();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("ارور در دکمه ثبت بیمار جدید : خواهشمند است با مدیر سیستم تماس بگیرید" + ex);
+            }
             
         }
 
@@ -267,12 +318,18 @@ namespace Laboratory
         private void lstTest_DoubleClick(object sender, EventArgs e)
         {
             TestID = Convert.ToInt32(lstTest.SelectedValue);
+            if (!repo.ExsistTestInInsuranceTest(InsuranceID, TestID))
+            {
+                MessageBox.Show("برای این آزمایش فرانشیز یا نوع بیمه مشخص نشده است ");
+                return;
+            }
             Test test = repoTest.Get(TestID);
             txtTestName.Text = test.TestName;
             lstTest.Visible = false;
             txtPriceWithDiscount.Visible = true;
             txtDiscount.Visible = true;
             txtPriceTest.Visible = true;
+
             txtPriceTest.Text = test.Price.ToString();
             
             InsuranceTest insuranceTest = insuranceTestRepository.Get(InsuranceID, TestID);
@@ -282,43 +339,56 @@ namespace Laboratory
 
         private void btnAddTest_Click(object sender, EventArgs e)
         {
-            if (lstTest.SelectedValue == null)
+            try
             {
-                err.SetError(txtTestName, "لطفاً نام آزمایش را سرچ کنید و سپس از لیست انتخاب کنید");
-                return;
+                if (lstTest.SelectedValue == null)
+                {
+                    err.SetError(txtTestName, "لطفاً نام آزمایش را سرچ کنید و سپس از لیست انتخاب کنید");
+                    return;
+                }
+                if (string.IsNullOrEmpty(txtTestName.Text))
+                {
+                    err.SetError(txtTestName, "لطفاً نام آزمایش را سرچ کنید و سپس از لیست انتخاب کنید");
+                    return;
+                }
+                if (string.IsNullOrEmpty(txtPriceTest.Text))
+                {
+                    lblErrorPriceTest.Text = "قیمت نمیتواند خالی باشد ";
+                    return;
+                }
+                if (string.IsNullOrEmpty(txtDiscount.Text))
+                {
+                    lblErrorDiscountTest.Text = "فرانشیز وارد نشده است ";
+                    return;
+                }
+                if (string.IsNullOrEmpty(txtPriceWithDiscount.Text))
+                {
+                    lblErrorPriceWithDiscount.Text = "سهم بیمار نمیتواند خالی باشد";
+                    return;
+                }
+                PatientTestDetail patientTestDetail = new PatientTestDetail();
+                patientTestDetail.TestID = this.TestID;
+                patientTestDetail.PatientTestHederID = this.PaitentHeaderID;
+                patientTestDetail.Price = Convert.ToInt64(txtPriceWithDiscount.Text);
+                patientTestDetail.Result = null;
+                patientTestDetail.Result = null;
+                if (!repo.ExsistTestInInsuranceTest(InsuranceID,TestID))
+                {
+                    MessageBox.Show("برای این آزمایش فرانشیز یا نوع بیمه مشخص نشده است ");
+                    return;
+                }
+                int PatientTestDetailID = repo.Add(patientTestDetail);
+
+                BindGrid();
+                lblTotalPriceTests.Text = repo.GetTotalPrice(this.PaitentHeaderID).ToString();
+                CleanFormDetails();
+                err.Clear();
             }
-            if (string.IsNullOrEmpty(txtTestName.Text))
+            catch (Exception ex)
             {
-                err.SetError(txtTestName, "لطفاً نام آزمایش را سرچ کنید و سپس از لیست انتخاب کنید");
-                return;
+
+                throw new Exception("ارور در دکمه ثبت آزمایش : خواهشمند است با مدیر سیستم تماس بگیرید" + ex);
             }
-            if (string.IsNullOrEmpty(txtPriceTest.Text))
-            {
-                lblErrorPriceTest.Text = "قیمت نمیتواند خالی باشد ";
-                return;
-            }
-            if (string.IsNullOrEmpty(txtDiscount.Text))
-            {
-                lblErrorDiscountTest.Text = "فرانشیز وارد نشده است ";
-                return;
-            }
-            if (string.IsNullOrEmpty(txtPriceWithDiscount.Text))
-            {
-                lblErrorPriceWithDiscount.Text = "سهم بیمار نمیتواند خالی باشد";
-                return;
-            }
-            PatientTestDetail patientTestDetail = new PatientTestDetail();
-            patientTestDetail.TestID = this.TestID;
-            patientTestDetail.PatientTestHederID = this.PaitentHeaderID;
-            patientTestDetail.Price = Convert.ToInt64(txtPriceWithDiscount.Text);
-            patientTestDetail.Result = null;
-            patientTestDetail.Result = null;
-            int PatientTestDetailID = repo.Add(patientTestDetail);
-            
-            BindGrid();
-            lblTotalPriceTests.Text = repo.GetTotalPrice(this.PaitentHeaderID).ToString();
-            CleanFormDetails();
-            err.Clear();
 
         }
 
@@ -329,79 +399,95 @@ namespace Laboratory
 
         private void DGVTestDetails_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            PatientTestDetailsID = Convert.ToInt32(DGVTestDetails.Rows[e.RowIndex].Cells[1].Value);
-            if (e.ColumnIndex == 8)
+            try
             {
-                if (MessageBox.Show("آیا میخواهید این آزمایش را حذف کنید ؟ ","هشدار",MessageBoxButtons.YesNo)==DialogResult.Yes)
+                PatientTestDetailsID = Convert.ToInt32(DGVTestDetails.Rows[e.RowIndex].Cells[1].Value);
+                if (e.ColumnIndex == 8)
                 {
-                    if (repo.DeleteDetails(PatientTestDetailsID)
-)
+                    if (MessageBox.Show("آیا میخواهید این آزمایش را حذف کنید ؟ ", "هشدار", MessageBoxButtons.YesNo)==DialogResult.Yes)
                     {
-                        BindGrid();
-                        lblTotalPriceTests.Text = repo.GetTotalPrice(this.PaitentHeaderID).ToString();
+                        if (repo.DeleteDetails(PatientTestDetailsID)
+    )
+                        {
+                            BindGrid();
+                            lblTotalPriceTests.Text = repo.GetTotalPrice(this.PaitentHeaderID).ToString();
+                        }
+
+
                     }
-                    
-                    
+                    else
+                    {
+                        CleanForm();
+                        CleanFormDetails();
+                        CleanError();
+                    }
                 }
-                else
+                if (e.ColumnIndex == 7)
                 {
-                    CleanForm();
-                    CleanFormDetails();
-                    CleanError();
+                    PatientTestDetail patientTestDetail = repo.GetPatientDetails(PatientTestDetailsID);
+                    Test test = repoTest.Get(patientTestDetail.TestID);
+                    txtTestName.Text = test.TestName;
+                    txtPriceTest.Text = test.Price.ToString();
+                    txtDiscount.Text = (insuranceTestRepository.Get(this.InsuranceID, test.TestID).Discount).ToString();
+                    txtPriceWithDiscount.Text = (Convert.ToInt32(txtPriceTest.Text) * Convert.ToInt32(txtDiscount.Text)).ToString();
+                    GoToEditMode();
                 }
             }
-            if (e.ColumnIndex == 7)
+            catch (Exception ex)
             {
-                PatientTestDetail patientTestDetail = repo.GetPatientDetails(PatientTestDetailsID);
-                Test test = repoTest.Get(patientTestDetail.TestID);
-                txtTestName.Text = test.TestName;
-                txtPriceTest.Text = test.Price.ToString();
-                txtDiscount.Text = (insuranceTestRepository.Get(this.InsuranceID, test.TestID).Discount).ToString();
-                txtPriceWithDiscount.Text = (Convert.ToInt32(txtPriceTest.Text) * Convert.ToInt32(txtDiscount.Text)).ToString();
-                GoToEditMode();
+
+                throw new Exception("ارور در گرید : خواهشمند است با مدیر سیستم تماس بگیرید" + ex);
             }
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            if (lstTest.SelectedValue == null)
+            try
             {
-                err.SetError(txtTestName, "لطفاً نام آزمایش را سرچ کنید و سپس از لیست انتخاب کنید");
-                return;
+                if (lstTest.SelectedValue == null)
+                {
+                    err.SetError(txtTestName, "لطفاً نام آزمایش را سرچ کنید و سپس از لیست انتخاب کنید");
+                    return;
+                }
+                if (string.IsNullOrEmpty(txtTestName.Text))
+                {
+                    err.SetError(txtTestName, "لطفاً نام آزمایش را سرچ کنید و سپس از لیست انتخاب کنید");
+                    return;
+                }
+                if (string.IsNullOrEmpty(txtPriceTest.Text))
+                {
+                    lblErrorPriceTest.Text = "قیمت نمیتواند خالی باشد ";
+                    return;
+                }
+                if (string.IsNullOrEmpty(txtDiscount.Text))
+                {
+                    lblErrorDiscountTest.Text = "فرانشیز وارد نشده است ";
+                    return;
+                }
+                if (string.IsNullOrEmpty(txtPriceWithDiscount.Text))
+                {
+                    lblErrorPriceWithDiscount.Text = "سهم بیمار نمیتواند خالی باشد";
+                    return;
+                }
+                PatientTestDetail patientTestDetail = new PatientTestDetail();
+                patientTestDetail.TestID = Convert.ToInt32(lstTest.SelectedValue);
+                patientTestDetail.PatientTestDetailsID = this.PatientTestDetailsID;
+                patientTestDetail.PatientTestHederID = this.PaitentHeaderID;
+                patientTestDetail.Result = null;
+                patientTestDetail.HasStar = null;
+                patientTestDetail.Price = Convert.ToInt64(txtPriceTest.Text);
+                repo.UpdatePatientDetails(patientTestDetail);
+                GoToAddMode();
+                BindGrid();
+                CleanFormDetails();
+                //Clean Error
+                lblTotalPriceTests.Text = repo.GetTotalPrice(this.PaitentHeaderID).ToString();
             }
-            if (string.IsNullOrEmpty(txtTestName.Text))
+            catch (Exception ex)
             {
-                err.SetError(txtTestName, "لطفاً نام آزمایش را سرچ کنید و سپس از لیست انتخاب کنید");
-                return;
+
+                throw new Exception("ارور در دکمه ویرایش آزمایش : خواهشمند است با مدیر سیستم تماس بگیرید" + ex);
             }
-            if (string.IsNullOrEmpty(txtPriceTest.Text))
-            {
-                lblErrorPriceTest.Text = "قیمت نمیتواند خالی باشد ";
-                return;
-            }
-            if (string.IsNullOrEmpty(txtDiscount.Text))
-            {
-                lblErrorDiscountTest.Text = "فرانشیز وارد نشده است ";
-                return;
-            }
-            if (string.IsNullOrEmpty(txtPriceWithDiscount.Text))
-            {
-                lblErrorPriceWithDiscount.Text = "سهم بیمار نمیتواند خالی باشد";
-                return;
-            }
-            PatientTestDetail patientTestDetail = new PatientTestDetail();
-            patientTestDetail.TestID = Convert.ToInt32(lstTest.SelectedValue);
-            patientTestDetail.PatientTestDetailsID = this.PatientTestDetailsID;
-            patientTestDetail.PatientTestHederID = this.PaitentHeaderID;
-            patientTestDetail.Result = null;
-            patientTestDetail.HasStar = null;
-            patientTestDetail.Price = Convert.ToInt64(txtPriceTest.Text);
-            repo.UpdatePatientDetails(patientTestDetail);
-            GoToAddMode();
-            BindGrid();
-            CleanFormDetails();
-            //Clean Error
-            lblTotalPriceTests.Text = repo.GetTotalPrice(this.PaitentHeaderID).ToString();
 
         }
 
@@ -448,11 +534,19 @@ namespace Laboratory
 
         private void btnClearFormForAddVisit_Click(object sender, EventArgs e)
         {
-            CleanForm();
-            btnAddPatientTest.Enabled = true;
-            ActiveHeaderVisit();
-            lstPatient.Visible = false;
-            btnClearFormForAddVisit.Visible = false;
+            try
+            {
+                CleanForm();
+                btnAddPatientTest.Enabled = true;
+                ActiveHeaderVisit();
+                lstPatient.Visible = false;
+                btnClearFormForAddVisit.Visible = false;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("ارور در دکمه ثبت ویزیت جدید : خواهشمند است با مدیر سیستم تماس بگیرید" + ex);
+            }
 
         }
 
@@ -466,24 +560,47 @@ namespace Laboratory
         {
             //اگر وجود دارد یک آزمایش آنگاه بیا 
             //اگر وجود دارد خود آزمایش بدون جزیئات : 
-            if (repo.ExsistHeader(PaitentHeaderID))
+            try
             {
-                
-                if (repo.ExsistDetailsForTestHeader(PaitentHeaderID))
+                if (repo.ExsistHeader(PaitentHeaderID))
                 {
-                    MessageBox.Show("خواهشمند است ابتدا آزمایشات را حذف کنید و سپس پذیریش را حذف کنید");
-                    return;
-                }
-                else
-                {
-                    repo.Delete(PaitentHeaderID);
-                    CleanForm();
-                    CleanError();
-                    ActiveHeaderVisit();
-                    btnClearFormForAddVisit.Visible = false;
+
+                    if (repo.ExsistDetailsForTestHeader(PaitentHeaderID))
+                    {
+                        MessageBox.Show("خواهشمند است ابتدا آزمایشات را حذف کنید و سپس پذیریش را حذف کنید");
+                        return;
+                    }
+                    else
+                    {
+                        repo.Delete(PaitentHeaderID);
+                        CleanForm();
+                        CleanError();
+                        ActiveHeaderVisit();
+                        btnClearFormForAddVisit.Visible = false;
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+
+                throw new Exception("ارور در دکمه لفو پذیرش : خواهشمند است با مدیر سیستم تماس بگیرید" + ex);
+            }
             
+        }
+
+        private void btnCancleTest_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                CleanFormDetails();
+                GoToAddMode();
+                lblTotalPriceTests.Text = repo.GetTotalPrice(this.PaitentHeaderID).ToString();
+            }
+            catch (Exception)
+            {
+
+                throw new Exception("ارور در دکمه کنسل آزمایش : خواهشمند است با مدیر سیستم تماس بگیرید");
+            }
         }
     }
 }

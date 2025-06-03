@@ -24,5 +24,6 @@ namespace DataAccessServices.services
         bool DeleteTestDetails(int patientTestDetailID);
         bool ExsistHeader(int PatientTestHederID);
         List<ListItemResultTestHeader> GetPendingTestByPatientID(int PatientID);
+        bool ExsistTestInInsuranceTest(int InsuranceID, int TestID);
     }
 }

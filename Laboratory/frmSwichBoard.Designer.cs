@@ -36,23 +36,22 @@
             this.رنجبندیآزمایشاتToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.گروهآزمایشاتToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.واحدآزمایشاتToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.بیمهToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.مدیریتبیمهToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.مدیریتفرانشیزToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.مدیریتکاربرانToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.مدیریتبیمارToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.مدیریتکارمندانToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStrip = new System.Windows.Forms.ToolStrip();
-            this.lblUserName = new System.Windows.Forms.ToolStripLabel();
-            this.lblDateTime = new System.Windows.Forms.ToolStripLabel();
-            this.timer = new System.Windows.Forms.Timer(this.components);
             this.ثبتآزمایشToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.نتایجآزمایشToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ثبتنتیجهToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ویرایشنتیجهToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.گزارشToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.گزارشجامعToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStrip = new System.Windows.Forms.ToolStrip();
+            this.lblUserName = new System.Windows.Forms.ToolStripLabel();
+            this.lblDateTime = new System.Windows.Forms.ToolStripLabel();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             this.MenuStrip.SuspendLayout();
             this.ToolStrip.SuspendLayout();
             this.SuspendLayout();
@@ -77,8 +76,7 @@
             // مدیریتآزمایشToolStripMenuItem
             // 
             this.مدیریتآزمایشToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.آزمایشToolStripMenuItem,
-            this.toolStripMenuItem2});
+            this.آزمایشToolStripMenuItem});
             this.مدیریتآزمایشToolStripMenuItem.Name = "مدیریتآزمایشToolStripMenuItem";
             this.مدیریتآزمایشToolStripMenuItem.Size = new System.Drawing.Size(68, 30);
             this.مدیریتآزمایشToolStripMenuItem.Text = "آزمایش";
@@ -122,13 +120,6 @@
             this.واحدآزمایشاتToolStripMenuItem.Size = new System.Drawing.Size(191, 30);
             this.واحدآزمایشاتToolStripMenuItem.Text = "واحد آزمایشات";
             this.واحدآزمایشاتToolStripMenuItem.Click += new System.EventHandler(this.واحدآزمایشاتToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(183, 30);
-            this.toolStripMenuItem2.Text = "ویزیت";
-            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // بیمهToolStripMenuItem
             // 
@@ -176,6 +167,51 @@
             this.مدیریتکارمندانToolStripMenuItem.Text = "مدیریت کارمندان";
             this.مدیریتکارمندانToolStripMenuItem.Click += new System.EventHandler(this.مدیریتکارمندانToolStripMenuItem_Click);
             // 
+            // ثبتآزمایشToolStripMenuItem1
+            // 
+            this.ثبتآزمایشToolStripMenuItem1.Name = "ثبتآزمایشToolStripMenuItem1";
+            this.ثبتآزمایشToolStripMenuItem1.Size = new System.Drawing.Size(57, 30);
+            this.ثبتآزمایشToolStripMenuItem1.Text = "ویزیت";
+            this.ثبتآزمایشToolStripMenuItem1.Click += new System.EventHandler(this.ثبتآزمایشToolStripMenuItem1_Click);
+            // 
+            // نتایجآزمایشToolStripMenuItem
+            // 
+            this.نتایجآزمایشToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ثبتنتیجهToolStripMenuItem,
+            this.ویرایشنتیجهToolStripMenuItem});
+            this.نتایجآزمایشToolStripMenuItem.Name = "نتایجآزمایشToolStripMenuItem";
+            this.نتایجآزمایشToolStripMenuItem.Size = new System.Drawing.Size(97, 30);
+            this.نتایجآزمایشToolStripMenuItem.Text = "نتایج آزمایش";
+            // 
+            // ثبتنتیجهToolStripMenuItem
+            // 
+            this.ثبتنتیجهToolStripMenuItem.Name = "ثبتنتیجهToolStripMenuItem";
+            this.ثبتنتیجهToolStripMenuItem.Size = new System.Drawing.Size(154, 30);
+            this.ثبتنتیجهToolStripMenuItem.Text = "ثبت نتیجه";
+            this.ثبتنتیجهToolStripMenuItem.Click += new System.EventHandler(this.ثبتنتیجهToolStripMenuItem_Click);
+            // 
+            // ویرایشنتیجهToolStripMenuItem
+            // 
+            this.ویرایشنتیجهToolStripMenuItem.Name = "ویرایشنتیجهToolStripMenuItem";
+            this.ویرایشنتیجهToolStripMenuItem.Size = new System.Drawing.Size(154, 30);
+            this.ویرایشنتیجهToolStripMenuItem.Text = "ویرایش نتیجه";
+            this.ویرایشنتیجهToolStripMenuItem.Click += new System.EventHandler(this.ویرایشنتیجهToolStripMenuItem_Click);
+            // 
+            // گزارشToolStripMenuItem
+            // 
+            this.گزارشToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.گزارشجامعToolStripMenuItem});
+            this.گزارشToolStripMenuItem.Name = "گزارشToolStripMenuItem";
+            this.گزارشToolStripMenuItem.Size = new System.Drawing.Size(63, 30);
+            this.گزارشToolStripMenuItem.Text = "گزارش";
+            // 
+            // گزارشجامعToolStripMenuItem
+            // 
+            this.گزارشجامعToolStripMenuItem.Name = "گزارشجامعToolStripMenuItem";
+            this.گزارشجامعToolStripMenuItem.Size = new System.Drawing.Size(155, 30);
+            this.گزارشجامعToolStripMenuItem.Text = "گزارش جامع";
+            this.گزارشجامعToolStripMenuItem.Click += new System.EventHandler(this.گزارشجامعToolStripMenuItem_Click);
+            // 
             // ToolStrip
             // 
             this.ToolStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(202)))), ((int)(((byte)(203)))), ((int)(((byte)(210)))));
@@ -211,51 +247,6 @@
             this.timer.Interval = 1000;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
-            // ثبتآزمایشToolStripMenuItem1
-            // 
-            this.ثبتآزمایشToolStripMenuItem1.Name = "ثبتآزمایشToolStripMenuItem1";
-            this.ثبتآزمایشToolStripMenuItem1.Size = new System.Drawing.Size(57, 30);
-            this.ثبتآزمایشToolStripMenuItem1.Text = "ویزیت";
-            this.ثبتآزمایشToolStripMenuItem1.Click += new System.EventHandler(this.ثبتآزمایشToolStripMenuItem1_Click);
-            // 
-            // نتایجآزمایشToolStripMenuItem
-            // 
-            this.نتایجآزمایشToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ثبتنتیجهToolStripMenuItem,
-            this.ویرایشنتیجهToolStripMenuItem});
-            this.نتایجآزمایشToolStripMenuItem.Name = "نتایجآزمایشToolStripMenuItem";
-            this.نتایجآزمایشToolStripMenuItem.Size = new System.Drawing.Size(97, 30);
-            this.نتایجآزمایشToolStripMenuItem.Text = "نتایج آزمایش";
-            // 
-            // ثبتنتیجهToolStripMenuItem
-            // 
-            this.ثبتنتیجهToolStripMenuItem.Name = "ثبتنتیجهToolStripMenuItem";
-            this.ثبتنتیجهToolStripMenuItem.Size = new System.Drawing.Size(180, 30);
-            this.ثبتنتیجهToolStripMenuItem.Text = "ثبت نتیجه";
-            this.ثبتنتیجهToolStripMenuItem.Click += new System.EventHandler(this.ثبتنتیجهToolStripMenuItem_Click);
-            // 
-            // ویرایشنتیجهToolStripMenuItem
-            // 
-            this.ویرایشنتیجهToolStripMenuItem.Name = "ویرایشنتیجهToolStripMenuItem";
-            this.ویرایشنتیجهToolStripMenuItem.Size = new System.Drawing.Size(180, 30);
-            this.ویرایشنتیجهToolStripMenuItem.Text = "ویرایش نتیجه";
-            this.ویرایشنتیجهToolStripMenuItem.Click += new System.EventHandler(this.ویرایشنتیجهToolStripMenuItem_Click);
-            // 
-            // گزارشToolStripMenuItem
-            // 
-            this.گزارشToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.گزارشجامعToolStripMenuItem});
-            this.گزارشToolStripMenuItem.Name = "گزارشToolStripMenuItem";
-            this.گزارشToolStripMenuItem.Size = new System.Drawing.Size(63, 30);
-            this.گزارشToolStripMenuItem.Text = "گزارش";
-            // 
-            // گزارشجامعToolStripMenuItem
-            // 
-            this.گزارشجامعToolStripMenuItem.Name = "گزارشجامعToolStripMenuItem";
-            this.گزارشجامعToolStripMenuItem.Size = new System.Drawing.Size(180, 30);
-            this.گزارشجامعToolStripMenuItem.Text = "گزارش جامع";
-            this.گزارشجامعToolStripMenuItem.Click += new System.EventHandler(this.گزارشجامعToolStripMenuItem_Click);
-            // 
             // frmSwichBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -290,7 +281,6 @@
         private System.Windows.Forms.ToolStripMenuItem آزمایشToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ثبتآزمایشToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem رنجبندیآزمایشاتToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem گروهآزمایشاتToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem واحدآزمایشاتToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem بیمهToolStripMenuItem;

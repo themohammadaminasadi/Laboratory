@@ -175,7 +175,7 @@ namespace DataAccess
 
         public bool ExsistDetailsForTestHeader(int PatientTestHederID)
         {
-            return db.PatientTestDetails.Any(x => x.PatientTestDetailsID == PatientTestHederID);
+            return db.PatientTestDetails.Any(x => x.PatientTestHederID == PatientTestHederID);
         }
         public bool DeleteTestDetails(int patientTestDetailID)
         {
@@ -204,6 +204,11 @@ namespace DataAccess
                         FullNamePaitent = Header.Patient.FirstName + " " + Header.Patient.LastName,
                         NationalCode = Header.Patient.NationalCode
                     }).ToList();
+        }
+
+        public bool ExsistTestInInsuranceTest(int InsuranceID, int TestID)
+        {
+            return db.InsuranceTests.Any(x => x.TestID == TestID && x.InsuraneID == InsuranceID);
         }
     }
 }

@@ -11,5 +11,9 @@ namespace DataAccessServices.services
     {
          List<DoaminModel.ViewModel.InsuranceTest.InsuranceTestListItem> GetAllFromViewModel();
          InsuranceTest Get(int InsuranceID, int TestID);
+
+        bool ExsistInsuranceTestInOtherTable(int InsuranceID,int TestID);
+
+        bool InsertDuplicateInsurance(int TestID, int InsuranceID);
     }
 }

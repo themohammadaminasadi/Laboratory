@@ -45,6 +45,11 @@ namespace DataAccess
             }
         }
 
+        public bool ExsistInsuranceTestInOtherTable(int InsuranceID , int TestID)
+        {
+            return db.PaitentTestHeders.Any(x => x.InsuranceID == InsuranceID && x.PatientTestDetails.Any(c => c.TestID == TestID));
+        }
+
         public InsuranceTest Get(int Key)
         {
             return db.InsuranceTests.FirstOrDefault(x => x.InsuranceTestID == Key);
@@ -69,9 +74,16 @@ namespace DataAccess
                         InsuranceType = In.Insurance.InsuranceTypeName,
                         TestName = In.Test.TestName,
                         Year = In.Year,
+                        InsuranceID = In.InsuraneID,
+                        TestID = In.TestID,
                         Discount = In.Discount
                     };
             return q.ToList();
+        }
+
+        public bool InsertDuplicateInsurance(int TestID, int InsuranceID)
+        {
+            return db.InsuranceTests.Any(x => x.TestID == TestID && x.InsuraneID == InsuranceID);
         }
 
         public bool Update(InsuranceTest NewModel)

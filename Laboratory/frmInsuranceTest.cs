@@ -17,7 +17,8 @@ namespace Laboratory
     public partial class frmInsuranceTest: Form
     {
         private int InsuranceTestID = 0;
-        private int TestID = 0; 
+        private int TestID = 0;
+        private int InsuranceID = 0;
         private InsuranceTestRepository repo = new InsuranceTestRepository();
         private TestRepository repoTest = new TestRepository();
         private void BindCombo()
@@ -40,22 +41,18 @@ namespace Laboratory
         /// </summary>
         public void CleanForm()
         {
+            txtDiscount.Text = "";
+            txtTest.Text = "";
             foreach (Control control in this.Controls)
             {
-                if (control is TextBox)
-                {
-                    var txt = (TextBox)control;
-                    txt.Text = "";
-                }
-                else if (control is ComboBox)
+                if (control is ComboBox)
                 {
                     var cmb = (ComboBox)control;
                     cmb.SelectedIndex = 0;
                 }
-                lblErrorDiscount.Text = "";
-                lblErrorYear.Text = "";
-               
             }
+            lblErrorDiscount.Text = "";
+            lblErrorYear.Text = "";
         }
         #region 
         void GoToAddMode()
@@ -78,15 +75,23 @@ namespace Laboratory
 
         private void frmInsuranceTest_Load(object sender, EventArgs e)
         {
-            BindCombo();
-            CleanForm();
-            BindGrid();
-            GoToAddMode();
-            lstTest.Visible = false;
-            PersianCalendar pc = new PersianCalendar();
-            txtYear.Text = pc.GetYear(DateTime.Now).ToString();
-            txtYear.Enabled = false;
-            err.Clear();
+            try
+            {
+                BindCombo();
+                CleanForm();
+                BindGrid();
+                GoToAddMode();
+                lstTest.Visible = false;
+                PersianCalendar pc = new PersianCalendar();
+                txtYear.Text = pc.GetYear(DateTime.Now).ToString();
+                txtYear.Enabled = false;
+                err.Clear();
+            }
+            catch (Exception)
+            {
+
+                throw new Exception("ارور در لود صفحه : خواهشمند است با مدیر سیستم تماس بگیرید");
+            }
         }
 
         private void txtTest_TextChanged(object sender, EventArgs e)
@@ -106,129 +111,189 @@ namespace Laboratory
 
         private void lstTest_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            TestID = Convert.ToInt32(lstTest.SelectedValue);
-            Test Test = repoTest.Get(TestID);
-            txtTest.Text = Test.TestName;
-            lstTest.Visible = false;    
+            try
+            {
+                TestID = Convert.ToInt32(lstTest.SelectedValue);
+                Test Test = repoTest.Get(TestID);
+                txtTest.Text = Test.TestName;
+                lstTest.Visible = false;
+            }
+            catch (Exception)
+            {
+
+                throw new Exception("ارور در موس کلیک : خواهمشند است با مدیر سیستم تماس بگیرید");
+            }
 
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (cmbInsurance.SelectedIndex <= 0)
+            try
             {
-                err.SetError(cmbInsurance, "بیمه را باید انتخاب کنید");
-                return;
+                if (cmbInsurance.SelectedIndex <= 0)
+                {
+                    err.SetError(cmbInsurance, "بیمه را باید انتخاب کنید");
+                    return;
+                }
+                if (lstTest.SelectedIndex < 0)
+                {
+                    MessageBox.Show("خواهشمند است از روی لیست ازمایشات یک آزمایش را انتخاب کنید");
+                    return;
+                }
+                if (string.IsNullOrEmpty(txtDiscount.Text))
+                {
+                    lblErrorDiscount.Text = "خواهشمند درصد فرانشیز را انتخاب کنید ";
+                    return;
+                }
+                if (string.IsNullOrEmpty(txtYear.Text))
+                {
+
+                    lblErrorYear.Text = "سال به صورت اتوماتیک انتخاب نشده است خواهشمند است با مدیر سامانه تماس بگیرید";
+                    return;
+                }
+                InsuranceTest insuranceTest = new InsuranceTest
+                {
+                    InsuraneID = Convert.ToInt32(cmbInsurance.SelectedValue),
+                    TestID = Convert.ToInt32(lstTest.SelectedValue),
+                    Year = Convert.ToInt32(txtYear.Text),
+                    Discount = Convert.ToInt32(txtDiscount.Text)
+                };
+                if (repo.InsertDuplicateInsurance(insuranceTest.TestID , insuranceTest.InsuraneID))
+                {
+                    MessageBox.Show("این رکورد قبلاً وارد شده است ");
+                    return;
+                }
+                repo.Add(insuranceTest);
+                BindGrid();
+                CleanForm();
+                GoToAddMode();
+                err.Clear();
             }
-            if (lstTest.SelectedIndex < 0)
+            catch (Exception)
             {
-                MessageBox.Show("خواهشمند است از روی لیست ازمایشات یک آزمایش را انتخاب کنید");
-                return;
+
+                throw new Exception("ارور در اضافه کردن : خواهشمند است با مدیر سیستم تماس بگیرید");
             }
-            if (string.IsNullOrEmpty(txtDiscount.Text))
-            {
-                lblErrorDiscount.Text = "خواهشمند درصد فرانشیز را انتخاب کنید ";
-                return;
-            }
-            if (string.IsNullOrEmpty(txtYear.Text))
-            {
-                
-                lblErrorYear.Text = "سال به صورت اتوماتیک انتخاب نشده است خواهشمند است با مدیر سامانه تماس بگیرید";
-                return;
-            }
-            InsuranceTest insuranceTest = new InsuranceTest
-            {
-                InsuraneID = Convert.ToInt32(cmbInsurance.SelectedValue),
-                TestID = Convert.ToInt32(lstTest.SelectedValue),
-                Year = Convert.ToInt32(txtYear.Text),
-                Discount = Convert.ToInt32(txtDiscount.Text)
-            };
-            repo.Add(insuranceTest);
-            BindGrid();
-            CleanForm();
-            GoToAddMode();
-            err.Clear();
+          
 
 
         }
 
         private void dataGridViewInsuraceTest_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            InsuranceTestID = Convert.ToInt32(dataGridViewInsuraceTest.Rows[e.RowIndex].Cells[0].Value);
-            if (e.ColumnIndex == 5)
+            try
             {
-                InsuranceTest insuranceTest = repo.Get(InsuranceTestID);
-                txtDiscount.Text = insuranceTest.Discount.ToString();
-                txtYear.Text = insuranceTest.Year.ToString();
-                txtTest.Text = repoTest.Get(insuranceTest.TestID).TestName;
-                cmbInsurance.SelectedValue = insuranceTest.InsuraneID;
-                GoToEditMode();
-                lstTest.Visible = false;    
-            }
-            if (e.ColumnIndex == 6)
-            {
-                if (MessageBox.Show("آیا مطمئن هستید که میخواهید این رکورد را حذف کنید؟","هشدار",MessageBoxButtons.YesNo)==DialogResult.Yes)
+                InsuranceTestID = Convert.ToInt32(dataGridViewInsuraceTest.Rows[e.RowIndex].Cells[0].Value);
+                InsuranceID = Convert.ToInt32(dataGridViewInsuraceTest.Rows[e.RowIndex].Cells["ClmnInsuranceID"].Value);
+                TestID = Convert.ToInt32(dataGridViewInsuraceTest.Rows[e.RowIndex].Cells["ClmnTestID"].Value);
+                if (e.ColumnIndex == 7)
                 {
-                    //if relation in Other Table that Create Method For This Subject
-                    repo.Delete(InsuranceTestID);
-                    CleanForm();
-                    BindGrid();
-                    GoToAddMode();
-                    err.Clear();
+                    InsuranceTest insuranceTest = repo.Get(InsuranceTestID);
+                    txtDiscount.Text = insuranceTest.Discount.ToString();
+                    txtYear.Text = insuranceTest.Year.ToString();
+                    txtTest.Text = repoTest.Get(insuranceTest.TestID).TestName;
+                    cmbInsurance.SelectedValue = insuranceTest.InsuraneID;
+                    GoToEditMode();
+                    lstTest.Visible = false;
                 }
-                else
+                if (e.ColumnIndex == 8)
                 {
-                    CleanForm();
-                    GoToAddMode();
-                    err.Clear();
+                    if (MessageBox.Show("آیا مطمئن هستید که میخواهید این رکورد را حذف کنید؟", "هشدار", MessageBoxButtons.YesNo)==DialogResult.Yes)
+                    {
+                        if (repo.ExsistInsuranceTestInOtherTable(InsuranceID,TestID))
+                        {
+                            MessageBox.Show("این رکورد دارای سابقه می باشد امکان حذف آن وجود ندارد");
+                            return;
+                        }
+                        else
+                        {
+                            repo.Delete(InsuranceTestID);
+                            CleanForm();
+                            BindGrid();
+                            GoToAddMode();
+                            err.Clear();
+                        }
+                    }
+                    else
+                    {
+                        CleanForm();
+                        GoToAddMode();
+                        err.Clear();
 
+                    }
                 }
+            }
+            catch (Exception)
+            {
+
+                throw new Exception("ارور در گرید : خواهشمند است با مدیر سیستم تماس بگیرید");
             }
         }
 
         private void btnCancle_Click(object sender, EventArgs e)
         {
-            GoToAddMode();
-            CleanForm();
-            err.Clear();
+            try
+            {
+                GoToAddMode();
+                CleanForm();
+                err.Clear();
+            }
+            catch (Exception)
+            {
+
+                throw new Exception("ارور در دکمه انصراف : خواهشمند است با مدیر سیستم تماس بگیرید");
+            }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (cmbInsurance.SelectedIndex <= 0)
+            try
             {
-                err.SetError(cmbInsurance, "بیمه را باید انتخاب کنید");
-                return;
+                if (cmbInsurance.SelectedIndex <= 0)
+                {
+                    err.SetError(cmbInsurance, "بیمه را باید انتخاب کنید");
+                    return;
+                }
+                if (lstTest.SelectedIndex < 0)
+                {
+                    MessageBox.Show("خواهشمند است از روی لیست ازمایشات یک آزمایش را انتخاب کنید");
+                    return;
+                }
+                if (string.IsNullOrEmpty(txtDiscount.Text))
+                {
+                    lblErrorDiscount.Text = "خواهشمند درصد فرانشیز را انتخاب کنید ";
+                    return;
+                }
+                if (string.IsNullOrEmpty(txtYear.Text))
+                {
+
+                    lblErrorYear.Text = "سال به صورت اتوماتیک انتخاب نشده است خواهشمند است با مدیر سامانه تماس بگیرید";
+                    return;
+                }
+                InsuranceTest insuranceTest = new InsuranceTest
+                {
+                    InsuraneID = Convert.ToInt32(cmbInsurance.SelectedValue),
+                    Discount = Convert.ToInt32(txtDiscount.Text),
+                    Year = Convert.ToInt32(txtYear.Text),
+                    TestID = Convert.ToInt32(lstTest.SelectedValue),
+                    InsuranceTestID = this.InsuranceTestID
+                };
+                if (repo.InsertDuplicateInsurance(insuranceTest.TestID, insuranceTest.InsuraneID))
+                {
+                    MessageBox.Show("این رکورد قبلاً وارد شده است ");
+                    return;
+                }
+                repo.Update(insuranceTest);
+                CleanForm();
+                BindGrid();
+                GoToAddMode();
+                err.Clear();
             }
-            if (lstTest.SelectedIndex < 0)
-            {
-                MessageBox.Show("خواهشمند است از روی لیست ازمایشات یک آزمایش را انتخاب کنید");
-                return;
-            }
-            if (string.IsNullOrEmpty(txtDiscount.Text))
-            {
-                lblErrorDiscount.Text = "خواهشمند درصد فرانشیز را انتخاب کنید ";
-                return;
-            }
-            if (string.IsNullOrEmpty(txtYear.Text))
+            catch (Exception)
             {
 
-                lblErrorYear.Text = "سال به صورت اتوماتیک انتخاب نشده است خواهشمند است با مدیر سامانه تماس بگیرید";
-                return;
+                throw new Exception("ارور در دکمه ویرایش : خواهشمند است با مدیر سیستم تماس بگیرید");
             }
-            InsuranceTest insuranceTest = new InsuranceTest
-            {
-                InsuraneID = Convert.ToInt32(cmbInsurance.SelectedValue),
-                Discount = Convert.ToInt32(txtDiscount.Text),
-                Year = Convert.ToInt32(txtYear.Text),
-                TestID = Convert.ToInt32(lstTest.SelectedValue),
-                InsuranceTestID = this.InsuranceTestID
-            };
-            repo.Update(insuranceTest);
-            CleanForm();
-            BindGrid();
-            GoToAddMode();
-            err.Clear();
         }
     }
 }

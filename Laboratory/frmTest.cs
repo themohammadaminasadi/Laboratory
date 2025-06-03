@@ -255,7 +255,7 @@ namespace Laboratory
             catch (Exception)
             {
 
-                throw new Exception("ارور در دکمه انصراف : خواهشمند است با مدیر سیستم تماس بگیرید")
+                throw new Exception("ارور در دکمه انصراف : خواهشمند است با مدیر سیستم تماس بگیرید");
             }
         }
 

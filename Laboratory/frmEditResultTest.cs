@@ -187,72 +187,96 @@ namespace Laboratory
 
         private void btnEditResult_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtResult.Text))
+            try
             {
-                MessageBox.Show("نتیجه نمیتواند خالی باشد");
-                return;
-            }
-            PatientTestDetail NewPatientTestDetail = new PatientTestDetail();
-            var OldPatientTestDetails = repoHeader.GetPatientDetails(this.PatientTestDetailsID);
-            double Result = Convert.ToDouble(txtResult.Text);
-            var ListTestRange = repoTestRange.GetTestWithTestID(TestID);
-            int Age = new PatientRepository().Get(PatientID).Age;
-            var patient = new PatientRepository().Get(PatientID); // patient یک شیء از کلاس Patient هست
-            int genderInt = patient.Gender ? 1 : 0; // ✅ درست: استفاده از شیء patient
-            foreach (var item in ListTestRange)
-            {
-                bool genderMatches = item.Gender == genderInt;
-                if (Result > item.MinValue && Result < item.MaxValue && Age > item.FromAge && Age < item.ToAge && genderMatches)
+                if (string.IsNullOrEmpty(txtResult.Text))
                 {
-                    HasStar = item.Hazard;
+                    MessageBox.Show("نتیجه نمیتواند خالی باشد");
+                    return;
                 }
+                PatientTestDetail NewPatientTestDetail = new PatientTestDetail();
+                var OldPatientTestDetails = repoHeader.GetPatientDetails(this.PatientTestDetailsID);
+                double Result = Convert.ToDouble(txtResult.Text);
+                var ListTestRange = repoTestRange.GetTestWithTestID(TestID);
+                int Age = new PatientRepository().Get(PatientID).Age;
+                var patient = new PatientRepository().Get(PatientID); // patient یک شیء از کلاس Patient هست
+                int genderInt = patient.Gender ? 1 : 0; // ✅ درست: استفاده از شیء patient
+                foreach (var item in ListTestRange)
+                {
+                    bool genderMatches = item.Gender == genderInt;
+                    if (Result > item.MinValue && Result < item.MaxValue && Age > item.FromAge && Age < item.ToAge && genderMatches)
+                    {
+                        HasStar = item.Hazard;
+                    }
+                }
+                NewPatientTestDetail.TestID = OldPatientTestDetails.TestID;
+                NewPatientTestDetail.Result = Result;
+                NewPatientTestDetail.PatientTestHederID = OldPatientTestDetails.PatientTestHederID;
+                NewPatientTestDetail.PatientTestDetailsID = OldPatientTestDetails.PatientTestDetailsID;
+                NewPatientTestDetail.Price = OldPatientTestDetails.Price;
+                NewPatientTestDetail.HasStar = this.HasStar;
+                repoHeader.UpdatePatientDetails(NewPatientTestDetail);
+                //Bind Grid Test Details ; 
+                DGVDetails.DataSource = new ResultTestRepository().GetDetails(PatientTestHeaderID);
+                CleanForm();
             }
-            NewPatientTestDetail.TestID = OldPatientTestDetails.TestID;
-            NewPatientTestDetail.Result = Result;
-            NewPatientTestDetail.PatientTestHederID = OldPatientTestDetails.PatientTestHederID;
-            NewPatientTestDetail.PatientTestDetailsID = OldPatientTestDetails.PatientTestDetailsID;
-            NewPatientTestDetail.Price = OldPatientTestDetails.Price;
-            NewPatientTestDetail.HasStar = this.HasStar;
-            repoHeader.UpdatePatientDetails(NewPatientTestDetail);
-            //Bind Grid Test Details ; 
-            DGVDetails.DataSource = new ResultTestRepository().GetDetails(PatientTestHeaderID);
-            CleanForm();
+            catch (Exception ex)
+            {
+
+                throw new Exception("ارور در دکمه ویرایش : خواهشمند است با مدیر سیستم تماس بگیرید" + ex);
+            }
         }
 
         private void btnCancle_Click(object sender, EventArgs e)
         {
-            GoToAddMode();
-            CleanForm();
+            try
+            {
+                GoToAddMode();
+                CleanForm();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("ارور در دکمه انصراف : خواهمشند است با مدیر سیستم تماس بگیرید" + ex);
+            }
            
         }
 
         private void btnAddResult_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtResult.Text))
+            try
             {
-                MessageBox.Show("نتیجه نمیتواند خالی باشد");
-                return;
-            }
-            double Result = Convert.ToDouble(txtResult.Text);
-
-            var ListTestRange = repoTestRange.GetTestWithTestID(TestID);
-            int Age = new PatientRepository().Get(PatientID).Age;
-            var patient = new PatientRepository().Get(PatientID); // patient یک شیء از کلاس Patient هست
-            int genderInt = patient.Gender ? 1 : 0; // ✅ درست: استفاده از شیء patient
-            foreach (var item in ListTestRange)
-            {
-                bool genderMatches = item.Gender == genderInt;
-                if (Result > item.MinValue && Result < item.MaxValue && Age > item.FromAge && Age < item.ToAge && genderMatches)
+                if (string.IsNullOrEmpty(txtResult.Text))
                 {
-                    HasStar = item.Hazard;
+                    MessageBox.Show("نتیجه نمیتواند خالی باشد");
+                    return;
                 }
+                double Result = Convert.ToDouble(txtResult.Text);
+
+                var ListTestRange = repoTestRange.GetTestWithTestID(TestID);
+                int Age = new PatientRepository().Get(PatientID).Age;
+                var patient = new PatientRepository().Get(PatientID); // patient یک شیء از کلاس Patient هست
+                int genderInt = patient.Gender ? 1 : 0; // ✅ درست: استفاده از شیء patient
+                foreach (var item in ListTestRange)
+                {
+                    bool genderMatches = item.Gender == genderInt;
+                    if (Result > item.MinValue && Result < item.MaxValue && Age > item.FromAge && Age < item.ToAge && genderMatches)
+                    {
+                        HasStar = item.Hazard;
+                    }
+                }
+                repoResult.setResult(PatientTestDetailsID, Result, HasStar);
+                DGVDetails.DataSource = new ResultTestRepository().GetDetails(PatientTestHeaderID);
+                CleanForm();
+                var details = new ResultTestRepository().GetDetails(PatientTestHeaderID);
+                ConfigeDataGridViewPatientDetails();
+                DGVPatientTestHeader.DataSource = details;
             }
-            repoResult.setResult(PatientTestDetailsID, Result, HasStar);
-            DGVDetails.DataSource = new ResultTestRepository().GetDetails(PatientTestHeaderID);
-            CleanForm();
-            var details = new ResultTestRepository().GetDetails(PatientTestHeaderID);
-            ConfigeDataGridViewPatientDetails();
-            DGVPatientTestHeader.DataSource = details;
+            catch (Exception ex)
+            {
+
+                throw new Exception("ارور در دکمه اضافه کردن : خواهمشند است با مدیر سیستم تماس بگیرید" + ex);
+            }
         }
     }
 }

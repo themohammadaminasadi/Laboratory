@@ -56,10 +56,63 @@ namespace Laboratory
         }
         private void frmResultTest_Load(object sender, EventArgs e)
         {
-            
             BindGridTestHeader();
             lstPatient.Visible = false;
             GoToAddMode();
+            lblTestTitle.Visible = false;
+            lblResultTitle.Visible = false;
+            btnAddResult.Visible = false;
+            txtTestName.Visible = false;
+            txtResult.Visible = false;
+            DGVDetails.EnableHeadersVisualStyles = false;
+
+            // رنگ پس‌زمینه کلی گرید
+            DGVDetails.BackgroundColor = Color.FromArgb(235, 247, 240);
+
+            // رنگ ردیف‌های معمولی
+            DGVDetails.RowsDefaultCellStyle.BackColor = Color.FromArgb(245, 255, 250); // خیلی نزدیک به فرم
+
+            // رنگ ردیف‌های یکی در میون برای خوانایی بیشتر
+            DGVDetails.AlternatingRowsDefaultCellStyle.BackColor = Color.White;
+
+            // رنگ متن سلول‌ها
+            DGVDetails.RowsDefaultCellStyle.ForeColor = Color.Black;
+
+            // رنگ انتخاب‌شده (برای اینکه زیادی تیره یا زننده نباشه)
+            DGVDetails.DefaultCellStyle.SelectionBackColor = Color.FromArgb(200, 230, 220); // سبز ملایم
+            DGVDetails.DefaultCellStyle.SelectionForeColor = Color.Black;
+
+            // رنگ هدر جدول
+            DGVDetails.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(220, 240, 230);
+            DGVDetails.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+
+            // رنگ خطوط جدول
+            DGVDetails.GridColor = Color.LightGray;
+
+            DGVTestHeader.EnableHeadersVisualStyles = false;
+
+            // رنگ پس‌زمینه کلی گرید
+            DGVTestHeader.BackgroundColor = Color.FromArgb(235, 247, 240);
+
+            // رنگ ردیف‌های معمولی
+            DGVTestHeader.RowsDefaultCellStyle.BackColor = Color.FromArgb(245, 255, 250); // خیلی نزدیک به فرم
+
+            // رنگ ردیف‌های یکی در میون برای خوانایی بیشتر
+            DGVTestHeader.AlternatingRowsDefaultCellStyle.BackColor = Color.White;
+
+            // رنگ متن سلول‌ها
+            DGVTestHeader.RowsDefaultCellStyle.ForeColor = Color.Black;
+
+            // رنگ انتخاب‌شده (برای اینکه زیادی تیره یا زننده نباشه)
+            DGVTestHeader.DefaultCellStyle.SelectionBackColor = Color.FromArgb(200, 230, 220); // سبز ملایم
+            DGVTestHeader.DefaultCellStyle.SelectionForeColor = Color.Black;
+
+            // رنگ هدر جدول
+            DGVTestHeader.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(220, 240, 230);
+            DGVTestHeader.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+
+            // رنگ خطوط جدول
+            DGVTestHeader.GridColor = Color.LightGray;
         }
 
         private void DGVTestHeader_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -70,7 +123,8 @@ namespace Laboratory
             if (e.ColumnIndex == 7)
             {
                 DGVDetails.DataSource  = new ResultTestRepository().GetDetails(PatientTestHederID);
-                
+               
+
             }
         }
 
@@ -87,8 +141,18 @@ namespace Laboratory
                 {
                     txtResult.Text = "";
                 }
+                if (patientTestDetail.Result != null)
+                {
+                    MessageBox.Show("این آزمایش دارای نتیجه است");
+                    return;
+                }
                 txtTestName.Text = patientTestDetail.Test.TestName;
                 txtTestName.Enabled = false;
+                lblTestTitle.Visible = true;
+                lblResultTitle.Visible = true;
+                btnAddResult.Visible = true;
+                txtResult.Visible = true;
+                txtTestName.Visible = true;
             }
             if (DGVDetails.Columns[e.ColumnIndex].Name == "ClmnEditDetailsTest")
             {
@@ -99,6 +163,10 @@ namespace Laboratory
                     txtResult.Text = patientTestDetail.Result.ToString();
                     txtTestName.Text = patientTestDetail.Test.TestName;
                     txtTestName.Enabled = false;
+                    lblTestTitle.Visible = true;
+                    lblResultTitle.Visible = true;
+                    txtResult.Visible = true;
+                    txtTestName.Visible = true;
                 }
                 else if(!patientTestDetail.Result.HasValue)
                 {
@@ -113,48 +181,63 @@ namespace Laboratory
 
         private void btnAddResult_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtResult.Text))
+            try
             {
-                MessageBox.Show("نتیجه نمیتواند خالی باشد");
-                return;
-            }
-            double Result = Convert.ToDouble(txtResult.Text);
-            
-            var ListTestRange = repoTestRange.GetTestWithTestID(TestID);
-            int Age = new PatientRepository().Get(PatientID).Age;
-            var patient = new PatientRepository().Get(PatientID); // patient یک شیء از کلاس Patient هست
-            int genderInt = patient.Gender ? 1 : 0; // ✅ درست: استفاده از شیء patient
-            foreach (var item in ListTestRange)
-            {
-                bool genderMatches = item.Gender == genderInt;
-                if (Result > item.MinValue && Result < item.MaxValue && Age > item.FromAge && Age < item.ToAge && genderMatches)
+                if (string.IsNullOrEmpty(txtResult.Text))
                 {
-                    HasStar = item.Hazard;
+                    MessageBox.Show("نتیجه نمیتواند خالی باشد");
+                    return;
+                }
+                double Result = Convert.ToDouble(txtResult.Text);
+
+                var ListTestRange = repoTestRange.GetTestWithTestID(TestID);
+                int Age = new PatientRepository().Get(PatientID).Age;
+                var patient = new PatientRepository().Get(PatientID); // patient یک شیء از کلاس Patient هست
+                int genderInt = patient.Gender ? 1 : 0; // ✅ درست: استفاده از شیء patient
+                foreach (var item in ListTestRange)
+                {
+                    bool genderMatches = item.Gender == genderInt;
+                    if (Result > item.MinValue && Result < item.MaxValue && Age > item.FromAge && Age < item.ToAge && genderMatches)
+                    {
+                        HasStar = item.Hazard;
+                    }
+                }
+                repo.setResult(PatientTestDetailsID, Result, HasStar);
+                DGVDetails.DataSource = new ResultTestRepository().GetDetails(PatientTestHederID);
+                CleanForm();
+                txtTestName.Enabled = false;
+                lblTestTitle.Visible = false;
+                lblResultTitle.Visible = false;
+                txtResult.Visible = false;
+                txtTestName.Visible = false;
+                GoToAddMode();
+                btnAddResult.Visible = false;
+                //BindGridTestHeader();
+                var details = new ResultTestRepository().GetDetails(PatientTestHederID);
+
+                // اگر همه جواب دارند (هیچ Result ای null نیست)
+
+                // چک می‌کنیم آیا هنوز ردیفی وجود دارد که نتیجه نداشته باشد؟
+                bool allResultsEntered = details.All(d => d.Result.HasValue);
+
+                if (allResultsEntered)
+                {
+                    DGVDetails.AutoGenerateColumns = false;
+                    // فقط در صورتی که همه‌ی جواب‌ها ثبت شده باشند، گریدها را ریست می‌کنیم
+                    DGVDetails.DataSource = null;
+                    BindGridTestHeader(); // گرید بالا را دوباره پر کن تا رکورد حذف شده نشان داده نشود
+                }
+                else
+                {
+                    DGVDetails.AutoGenerateColumns = false;
+                    DGVDetails.DataSource = null;
+                    DGVDetails.DataSource = details;
                 }
             }
-            repo.setResult(PatientTestDetailsID, Result, HasStar);
-            DGVDetails.DataSource = new ResultTestRepository().GetDetails(PatientTestHederID);
-            CleanForm();
-            BindGridTestHeader();
-            var details = new ResultTestRepository().GetDetails(PatientTestHederID);
-           
-            // اگر همه جواب دارند (هیچ Result ای null نیست)
-
-            // چک می‌کنیم آیا هنوز ردیفی وجود دارد که نتیجه نداشته باشد؟
-            bool allResultsEntered = details.All(d => d.Result.HasValue);
-
-            if (allResultsEntered)
+            catch (Exception ex)
             {
-                DGVDetails.AutoGenerateColumns = false;
-                // فقط در صورتی که همه‌ی جواب‌ها ثبت شده باشند، گریدها را ریست می‌کنیم
-                DGVDetails.DataSource = null;
-                BindGridTestHeader(); // گرید بالا را دوباره پر کن تا رکورد حذف شده نشان داده نشود
-            }
-            else
-            {
-                DGVDetails.AutoGenerateColumns = false;
-                DGVDetails.DataSource = null;
-                DGVDetails.DataSource = details;
+
+                throw new Exception("ارور در دکمه ثبت نتیجه : خواهشمند است با مدیر سیستم تماس بگیرید" + ex);
             }
         }
 
@@ -189,76 +272,117 @@ namespace Laboratory
 
         private void lstPatient_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (lstPatient.SelectedIndex < 0)
+            try
             {
-                MessageBox.Show("خواهشمند است یکی را انتخاب کنید ");
-                return;
-            }
-            else
-            {
-                PatientID = Convert.ToInt32(lstPatient.SelectedValue);
-                var TestHeader = repoHeader.GetPendingTestByPatientID(PatientID);
-                if (TestHeader == null)
+                if (lstPatient.SelectedIndex < 0)
                 {
-                    DGVDetails.AutoGenerateColumns = false;
-                    DGVTestHeader.AutoGenerateColumns = false;  
-                    DGVTestHeader.DataSource = null;
-                    DGVDetails.DataSource = null;
+                    MessageBox.Show("خواهشمند است یکی را انتخاب کنید ");
+                    return;
                 }
                 else
                 {
+                    PatientID = Convert.ToInt32(lstPatient.SelectedValue);
+                    var TestHeader = repoHeader.GetPendingTestByPatientID(PatientID);
+                    if (TestHeader == null)
+                    {
+                        DGVDetails.AutoGenerateColumns = false;
+                        DGVTestHeader.AutoGenerateColumns = false;
+                        DGVTestHeader.DataSource = null;
+                        DGVDetails.DataSource = null;
+                    }
+                    else
+                    {
 
-                    DGVDetails.AutoGenerateColumns = false;
-                    DGVTestHeader.AutoGenerateColumns = false;
-                    DGVTestHeader.DataSource =TestHeader;
-                    DGVDetails.DataSource = null;
+                        DGVDetails.AutoGenerateColumns = false;
+                        DGVTestHeader.AutoGenerateColumns = false;
+                        DGVTestHeader.DataSource =TestHeader;
+                        DGVDetails.DataSource = null;
+                        PatientRepository repoPatient = new PatientRepository();
+                        txtSearchPatient.Text = repoPatient.Get(PatientID).FirstName + "   " + repoPatient.Get(PatientID).LastName + "   " + repoPatient.Get(PatientID).NationalCode;
+                        lstPatient.Visible = false;
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("ارور در کلیک روی بیمار : خواهشمند است با مدیر سیستم تماس بگیرید" + ex);
             }
                 
         }
 
         private void btnEditResult_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtResult.Text))
+            try
             {
-                MessageBox.Show("نتیجه نمیتواند خالی باشد");
-                return;
-            }
-            PatientTestDetail NewPatientTestDetail = new PatientTestDetail();
-            var OldPatientTestDetails = repoHeader.GetPatientDetails(this.PatientTestDetailsID);
-            double Result = Convert.ToDouble(txtResult.Text);
-            var ListTestRange = repoTestRange.GetTestWithTestID(TestID);
-            int Age = new PatientRepository().Get(PatientID).Age;
-            var patient = new PatientRepository().Get(PatientID); // patient یک شیء از کلاس Patient هست
-            int genderInt = patient.Gender ? 1 : 0; // ✅ درست: استفاده از شیء patient
-            foreach (var item in ListTestRange)
-            {
-                bool genderMatches = item.Gender == genderInt;
-                if (Result > item.MinValue && Result < item.MaxValue && Age > item.FromAge && Age < item.ToAge && genderMatches)
+                if (string.IsNullOrEmpty(txtResult.Text))
                 {
-                    HasStar = item.Hazard;
+                    MessageBox.Show("نتیجه نمیتواند خالی باشد");
+                    return;
                 }
+                PatientTestDetail NewPatientTestDetail = new PatientTestDetail();
+                var OldPatientTestDetails = repoHeader.GetPatientDetails(this.PatientTestDetailsID);
+                double Result = Convert.ToDouble(txtResult.Text);
+                var ListTestRange = repoTestRange.GetTestWithTestID(TestID);
+                int Age = new PatientRepository().Get(PatientID).Age;
+                var patient = new PatientRepository().Get(PatientID); // patient یک شیء از کلاس Patient هست
+                int genderInt = patient.Gender ? 1 : 0; // ✅ درست: استفاده از شیء patient
+                foreach (var item in ListTestRange)
+                {
+                    bool genderMatches = item.Gender == genderInt;
+                    if (Result > item.MinValue && Result < item.MaxValue && Age > item.FromAge && Age < item.ToAge && genderMatches)
+                    {
+                        HasStar = item.Hazard;
+                    }
+                }
+                NewPatientTestDetail.TestID = OldPatientTestDetails.TestID;
+                NewPatientTestDetail.Result = Result;
+                NewPatientTestDetail.PatientTestHederID = OldPatientTestDetails.PatientTestHederID;
+                NewPatientTestDetail.PatientTestDetailsID = OldPatientTestDetails.PatientTestDetailsID;
+                NewPatientTestDetail.Price = OldPatientTestDetails.Price;
+                NewPatientTestDetail.HasStar = this.HasStar;
+                repoHeader.UpdatePatientDetails(NewPatientTestDetail);
+                //Bind Grid Test Details ; 
+                DGVDetails.DataSource = new ResultTestRepository().GetDetails(PatientTestHederID);
+                CleanForm();
+
+                txtTestName.Enabled = false;
+                lblTestTitle.Visible = false;
+                lblResultTitle.Visible = false;
+                txtResult.Visible = false;
+                txtTestName.Visible = false;
+                GoToAddMode();
+                btnAddResult.Visible = false;
             }
-            NewPatientTestDetail.TestID = OldPatientTestDetails.TestID;
-            NewPatientTestDetail.Result = Result;
-            NewPatientTestDetail.PatientTestHederID = OldPatientTestDetails.PatientTestHederID;
-            NewPatientTestDetail.PatientTestDetailsID = OldPatientTestDetails.PatientTestDetailsID;
-            NewPatientTestDetail.Price = OldPatientTestDetails.Price;
-            NewPatientTestDetail.HasStar = this.HasStar;
-            repoHeader.UpdatePatientDetails(NewPatientTestDetail);
-            //Bind Grid Test Details ; 
-            DGVDetails.DataSource = new ResultTestRepository().GetDetails(PatientTestHederID);
-            CleanForm();
+            catch (Exception ex)
+            {
+
+                throw new Exception("ارور در دکمه ویرایش : خواهشمند است با مدیر سیستم تماس بگیرید" + ex);
+            }
 
         }
 
         private void btnCancle_Click(object sender, EventArgs e)
         {
-            GoToAddMode();
-            CleanForm();
-            BindGridTestHeader();
-            DGVDetails.AutoGenerateColumns = false; 
-            DGVDetails.DataSource = null;
+            try
+            {
+                GoToAddMode();
+                CleanForm();
+                BindGridTestHeader();
+                //DGVDetails.AutoGenerateColumns = false; 
+                //DGVDetails.DataSource = null;
+                btnAddResult.Visible = false;
+                txtTestName.Enabled = false;
+                lblTestTitle.Visible = false;
+                lblResultTitle.Visible = false;
+                txtResult.Visible = false;
+                txtTestName.Visible = false;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("ارور در دکمه انصراف : خواهشمند است با مدیر سیستم تماس بگیرید" + ex);
+            }
         }
     }
 }

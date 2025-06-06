@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Serialization;
+using DataAccess;
+using DoaminModel.Models;
 
 namespace Laboratory
 {
@@ -30,6 +32,29 @@ namespace Laboratory
 
         private void frmSwichBoard_Load(object sender, EventArgs e)
         {
+            try
+            {
+                EmployeeAction employeeAction = new EmployeeAction();
+                int EmployeeActionID = new EmployeeRepository().GetEmployeeWithUserName(UserName).EmployeeActionID;
+                if (EmployeeActionID == 1)
+                {
+                    گزارشجامعToolStripMenuItem.Visible = true;
+                    مدیریتکارمندانToolStripMenuItem.Visible = true;
+                }
+                if (EmployeeActionID == 2)
+                {
+                    گزارشToolStripMenuItem.Visible = false;
+                    گزارشجامعToolStripMenuItem.Visible = false;
+                    مدیریتکارمندانToolStripMenuItem.Visible = false;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("ارور در لود صفحه : خواهمشند است با مدیر سیستم تماس بگیرید" + ex);
+                return;
+            }
+            
             
         }
 

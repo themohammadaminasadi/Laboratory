@@ -24,16 +24,25 @@ namespace Laboratory
             dataGridViewEmployee.AutoGenerateColumns = false;
             dataGridViewEmployee.DataSource = repo.GetAll();
         }
+        void BindComboEmployeeAction()
+        {
+            var listCombo = new DataAccess.EmployeeActionRepository().GetAll();
+            listCombo.Insert(0, new DoaminModel.Models.EmployeeAction { EmployeeActionID = -1, EmployeeActionName = ".........انتخاب کنید ......." });
+            cmbEmployeeAction.DataSource = null;
+            cmbEmployeeAction.DataSource = listCombo;
+            cmbEmployeeAction.ValueMember = "EmployeeActionID";
+            cmbEmployeeAction.DisplayMember = "EmployeeActionName";
+        }
         /// <summary>
         /// به ازای تکس باکس هایی که در فرم است میاید همه را پاک میکند
         /// </summary>
         public void CleanForm()
         {
+            // پاک کردن تکست‌باکس‌ها و رادیوباتن‌ها
             foreach (Control control in this.Controls)
             {
-                if (control is TextBox )
+                if (control is TextBox txt)
                 {
-                    var txt = (TextBox)control;
                     txt.Text = "";
                 }
                 else if (control is RadioButton)
@@ -41,15 +50,21 @@ namespace Laboratory
                     var rdb = (RadioButton)control;
                     rdbActive.Checked = true;
                 }
-                txtPassword.Text = "";
-                txtUserName.Text = "";
-                rdbActive.Checked = true;
-                txtFirstName.Text = "";
-                txtLastName.Text = "";
-                txtNationalCode.Text = "";
-                txtPhoneNumber.Text = "";
-                txtTitle.Text = "";
             }
+
+            
+            txtPassword.Text = "";
+            txtUserName.Text = "";
+            txtFirstName.Text = "";
+            txtLastName.Text = "";
+            txtNationalCode.Text = "";
+            txtPhoneNumber.Text = "";
+            txtTitle.Text = "";
+
+            if (cmbEmployeeAction.Items.Count > 0)
+                cmbEmployeeAction.SelectedIndex = 0;
+
+            rdbActive.Checked = true;
         }
         #region 
         void GoToAddMode()
@@ -76,10 +91,10 @@ namespace Laboratory
             {
                 CleanForm();
                 BindGrid();
+                BindComboEmployeeAction();
                 GoToAddMode();
                 err.Clear();
                 txtPassword.PasswordChar = '*';
-
                 btnShow.BringToFront();
             }
             catch (Exception)
@@ -106,6 +121,7 @@ namespace Laboratory
                     txtTitle.Text = Employees.Title;
                     txtNationalCode.Text = Employees.NationalCode;
                     txtUserName.Text = Employees.UserName;
+                    cmbEmployeeAction.SelectedValue = Employees.EmployeeActionID;
                     if (Employees.Active)
                     {
                         rdbActive.Checked = true;
@@ -181,6 +197,11 @@ namespace Laboratory
                     err.SetError(txtPassword, "رمز عبور نمیتواند خالی باشد");
                     return;
                 }
+                if (cmbEmployeeAction.SelectedIndex <= 0)
+                {
+                    err.SetError(cmbEmployeeAction, "خواهشمند است گروه کارمند در مشخص کنید");
+                    return;
+                }
                 if (string.IsNullOrEmpty(txtPhoneNumber.Text))
                 {
                     err.SetError(txtPhoneNumber, "تلفن نمیتواند خالی باشد");
@@ -190,8 +211,8 @@ namespace Laboratory
                 {
                     EmployeeID = this.EmployeeID,
                     FirstName = txtFirstName.Text,
-                    LastName=txtLastName.Text
-                                                     ,
+                    LastName=txtLastName.Text,
+                    EmployeeActionID = Convert.ToInt32(cmbEmployeeAction.SelectedValue),
                     UserName = txtUserName.Text,
                     Password = txtPassword.Text,
                     NationalCode = txtNationalCode.Text,
@@ -206,11 +227,11 @@ namespace Laboratory
                 {
                     NewEmployee.Active = false;
                 }
-                if (repo.ExsistDuplicateUserName(NewEmployee.UserName))
-                {
-                    MessageBox.Show("نام کاربری وارد شده تکراری می باشد");
-                    return;
-                }
+                //if (repo.ExsistDuplicateUserName(NewEmployee.UserName))
+                //{
+                //    MessageBox.Show("نام کاربری وارد شده تکراری می باشد");
+                //    return;
+                //}
                 repo.Update(NewEmployee);
                 CleanForm();
                 BindGrid();
@@ -249,6 +270,11 @@ namespace Laboratory
                     err.SetError(txtPhoneNumber, "تلفن نمیتواند خالی باشد");
                     return;
                 }
+                if (cmbEmployeeAction.SelectedIndex <= 0)
+                {
+                    err.SetError(cmbEmployeeAction, "خواهشمند است گروه کارمند در مشخص کنید");
+                    return;
+                }
                 Employee NewEmployee = new Employee
                 {
                     FirstName = txtFirstName.Text,
@@ -258,7 +284,8 @@ namespace Laboratory
                     Password = txtPassword.Text,
                     NationalCode = txtNationalCode.Text,
                     PhoneNumber = txtPhoneNumber.Text,
-                    Title = txtTitle.Text
+                    Title = txtTitle.Text,
+                    EmployeeActionID = Convert.ToInt32(cmbEmployeeAction.SelectedValue)
                 };
                 if (rdbActive.Checked)
                 {

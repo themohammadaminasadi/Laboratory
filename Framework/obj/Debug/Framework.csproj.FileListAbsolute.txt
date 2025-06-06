@@ -34,3 +34,15 @@ D:\Backend\Backend\C# Advance\SampleLaboratory\Laboratory\Framework\obj\Debug\Fr
 D:\Backend\Backend\C# Advance\SampleLaboratory\Laboratory\Framework\obj\Debug\Framework.csproj.Up2Date
 D:\Backend\Backend\C# Advance\SampleLaboratory\Laboratory\Framework\obj\Debug\Framework.dll
 D:\Backend\Backend\C# Advance\SampleLaboratory\Laboratory\Framework\obj\Debug\Framework.pdb
+D:\Amin\C# Advance\1404-03-15\Laboratory\Framework\bin\Debug\Framework.dll.config
+D:\Amin\C# Advance\1404-03-15\Laboratory\Framework\bin\Debug\Framework.dll
+D:\Amin\C# Advance\1404-03-15\Laboratory\Framework\bin\Debug\Framework.pdb
+D:\Amin\C# Advance\1404-03-15\Laboratory\Framework\bin\Debug\EntityFramework.dll
+D:\Amin\C# Advance\1404-03-15\Laboratory\Framework\bin\Debug\EntityFramework.SqlServer.dll
+D:\Amin\C# Advance\1404-03-15\Laboratory\Framework\bin\Debug\EntityFramework.xml
+D:\Amin\C# Advance\1404-03-15\Laboratory\Framework\bin\Debug\EntityFramework.SqlServer.xml
+D:\Amin\C# Advance\1404-03-15\Laboratory\Framework\obj\Debug\Framework.csproj.AssemblyReference.cache
+D:\Amin\C# Advance\1404-03-15\Laboratory\Framework\obj\Debug\Framework.csproj.CoreCompileInputs.cache
+D:\Amin\C# Advance\1404-03-15\Laboratory\Framework\obj\Debug\Framework.csproj.Up2Date
+D:\Amin\C# Advance\1404-03-15\Laboratory\Framework\obj\Debug\Framework.dll
+D:\Amin\C# Advance\1404-03-15\Laboratory\Framework\obj\Debug\Framework.pdb

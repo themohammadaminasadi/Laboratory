@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnCancle = new System.Windows.Forms.Button();
@@ -68,6 +68,7 @@
             this.ClmnEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ClmnDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.err = new System.Windows.Forms.ErrorProvider(this.components);
+            this.cmbEmployeeAction = new System.Windows.Forms.ComboBox();
             this.panel3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.pnlInfoUser.SuspendLayout();
@@ -128,7 +129,7 @@
             this.lblInfoUser.Font = new System.Drawing.Font("B Titr", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.lblInfoUser.Location = new System.Drawing.Point(64, 253);
             this.lblInfoUser.Name = "lblInfoUser";
-            this.lblInfoUser.Size = new System.Drawing.Size(107, 29);
+            this.lblInfoUser.Size = new System.Drawing.Size(133, 36);
             this.lblInfoUser.TabIndex = 4;
             this.lblInfoUser.Text = "اطلاعات کاربری";
             // 
@@ -138,7 +139,7 @@
             this.label7.Font = new System.Drawing.Font("B Titr", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label7.Location = new System.Drawing.Point(336, 34);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(34, 29);
+            this.label7.Size = new System.Drawing.Size(42, 36);
             this.label7.TabIndex = 7;
             this.label7.Text = "رمز";
             // 
@@ -148,7 +149,7 @@
             this.label8.Font = new System.Drawing.Font("B Titr", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label8.Location = new System.Drawing.Point(702, 31);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(79, 29);
+            this.label8.Size = new System.Drawing.Size(98, 36);
             this.label8.TabIndex = 6;
             this.label8.Text = "نام کاربری ";
             // 
@@ -158,7 +159,7 @@
             this.rdbDiActive.Font = new System.Drawing.Font("B Titr", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.rdbDiActive.Location = new System.Drawing.Point(134, 35);
             this.rdbDiActive.Name = "rdbDiActive";
-            this.rdbDiActive.Size = new System.Drawing.Size(65, 27);
+            this.rdbDiActive.Size = new System.Drawing.Size(82, 34);
             this.rdbDiActive.TabIndex = 1;
             this.rdbDiActive.TabStop = true;
             this.rdbDiActive.Text = "غیرفعال";
@@ -170,7 +171,7 @@
             this.rdbActive.Font = new System.Drawing.Font("B Titr", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.rdbActive.Location = new System.Drawing.Point(360, 35);
             this.rdbActive.Name = "rdbActive";
-            this.rdbActive.Size = new System.Drawing.Size(49, 27);
+            this.rdbActive.Size = new System.Drawing.Size(62, 34);
             this.rdbActive.TabIndex = 0;
             this.rdbActive.TabStop = true;
             this.rdbActive.Text = "فعال";
@@ -180,7 +181,7 @@
             // 
             this.txtPassword.Location = new System.Drawing.Point(32, 34);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(291, 31);
+            this.txtPassword.Size = new System.Drawing.Size(291, 37);
             this.txtPassword.TabIndex = 9;
             this.txtPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
             // 
@@ -188,7 +189,7 @@
             // 
             this.txtUserName.Location = new System.Drawing.Point(411, 32);
             this.txtUserName.Name = "txtUserName";
-            this.txtUserName.Size = new System.Drawing.Size(291, 31);
+            this.txtUserName.Size = new System.Drawing.Size(291, 37);
             this.txtUserName.TabIndex = 10;
             this.txtUserName.TextChanged += new System.EventHandler(this.txtUserName_TextChanged);
             // 
@@ -234,7 +235,7 @@
             // 
             this.txtTitle.Location = new System.Drawing.Point(399, 142);
             this.txtTitle.Name = "txtTitle";
-            this.txtTitle.Size = new System.Drawing.Size(291, 31);
+            this.txtTitle.Size = new System.Drawing.Size(291, 37);
             this.txtTitle.TabIndex = 10;
             // 
             // label9
@@ -243,7 +244,7 @@
             this.label9.Font = new System.Drawing.Font("B Titr", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label9.Location = new System.Drawing.Point(723, 144);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(46, 29);
+            this.label9.Size = new System.Drawing.Size(57, 36);
             this.label9.TabIndex = 9;
             this.label9.Text = "عنوان";
             // 
@@ -251,7 +252,7 @@
             // 
             this.txtPhoneNumber.Location = new System.Drawing.Point(19, 85);
             this.txtPhoneNumber.Name = "txtPhoneNumber";
-            this.txtPhoneNumber.Size = new System.Drawing.Size(291, 31);
+            this.txtPhoneNumber.Size = new System.Drawing.Size(291, 37);
             this.txtPhoneNumber.TabIndex = 5;
             this.txtPhoneNumber.TextChanged += new System.EventHandler(this.txtPhoneNumber_TextChanged);
             // 
@@ -259,14 +260,14 @@
             // 
             this.txtNationalCode.Location = new System.Drawing.Point(19, 34);
             this.txtNationalCode.Name = "txtNationalCode";
-            this.txtNationalCode.Size = new System.Drawing.Size(291, 31);
+            this.txtNationalCode.Size = new System.Drawing.Size(291, 37);
             this.txtNationalCode.TabIndex = 6;
             // 
             // txtLastName
             // 
             this.txtLastName.Location = new System.Drawing.Point(399, 85);
             this.txtLastName.Name = "txtLastName";
-            this.txtLastName.Size = new System.Drawing.Size(291, 31);
+            this.txtLastName.Size = new System.Drawing.Size(291, 37);
             this.txtLastName.TabIndex = 8;
             this.txtLastName.TextChanged += new System.EventHandler(this.txtLastName_TextChanged);
             // 
@@ -274,7 +275,7 @@
             // 
             this.txtFirstName.Location = new System.Drawing.Point(399, 34);
             this.txtFirstName.Name = "txtFirstName";
-            this.txtFirstName.Size = new System.Drawing.Size(291, 31);
+            this.txtFirstName.Size = new System.Drawing.Size(291, 37);
             this.txtFirstName.TabIndex = 4;
             this.txtFirstName.TextChanged += new System.EventHandler(this.txtFirstName_TextChanged);
             // 
@@ -284,7 +285,7 @@
             this.label6.Font = new System.Drawing.Font("B Titr", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label6.Location = new System.Drawing.Point(324, 88);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(40, 29);
+            this.label6.Size = new System.Drawing.Size(50, 36);
             this.label6.TabIndex = 7;
             this.label6.Text = "تلفن ";
             // 
@@ -294,7 +295,7 @@
             this.label5.Font = new System.Drawing.Font("B Titr", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label5.Location = new System.Drawing.Point(309, 34);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(58, 29);
+            this.label5.Size = new System.Drawing.Size(73, 36);
             this.label5.TabIndex = 6;
             this.label5.Text = "کد ملی ";
             // 
@@ -304,7 +305,7 @@
             this.label4.Font = new System.Drawing.Font("B Titr", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label4.Location = new System.Drawing.Point(700, 88);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(90, 29);
+            this.label4.Size = new System.Drawing.Size(110, 36);
             this.label4.TabIndex = 5;
             this.label4.Text = "نام خانوادگی";
             // 
@@ -314,7 +315,7 @@
             this.label3.Font = new System.Drawing.Font("B Titr", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label3.Location = new System.Drawing.Point(749, 34);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(30, 29);
+            this.label3.Size = new System.Drawing.Size(36, 36);
             this.label3.TabIndex = 4;
             this.label3.Text = "نام";
             // 
@@ -325,7 +326,7 @@
             this.label1.Location = new System.Drawing.Point(69, 15);
             this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 29);
+            this.label1.Size = new System.Drawing.Size(124, 36);
             this.label1.TabIndex = 6;
             this.label1.Text = "اطلاعات هویتی";
             // 
@@ -351,14 +352,14 @@
             // dataGridViewEmployee
             // 
             this.dataGridViewEmployee.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(244)))), ((int)(((byte)(234)))));
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewEmployee.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewEmployee.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewEmployee.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ClmnEmployeeID,
@@ -373,6 +374,7 @@
             this.ClmnDelete});
             this.dataGridViewEmployee.Location = new System.Drawing.Point(33, 542);
             this.dataGridViewEmployee.Name = "dataGridViewEmployee";
+            this.dataGridViewEmployee.RowHeadersWidth = 51;
             this.dataGridViewEmployee.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dataGridViewEmployee.RowTemplate.Height = 25;
             this.dataGridViewEmployee.Size = new System.Drawing.Size(1061, 212);
@@ -383,6 +385,7 @@
             // 
             this.ClmnEmployeeID.DataPropertyName = "EmployeeID";
             this.ClmnEmployeeID.HeaderText = "شناسه کارمند";
+            this.ClmnEmployeeID.MinimumWidth = 6;
             this.ClmnEmployeeID.Name = "ClmnEmployeeID";
             this.ClmnEmployeeID.Width = 120;
             // 
@@ -390,73 +393,100 @@
             // 
             this.ClmnTitle.DataPropertyName = "Title";
             this.ClmnTitle.HeaderText = "عنوان";
+            this.ClmnTitle.MinimumWidth = 6;
             this.ClmnTitle.Name = "ClmnTitle";
+            this.ClmnTitle.Width = 125;
             // 
             // ClmnFirstName
             // 
             this.ClmnFirstName.DataPropertyName = "FirstName";
             this.ClmnFirstName.HeaderText = "نام";
+            this.ClmnFirstName.MinimumWidth = 6;
             this.ClmnFirstName.Name = "ClmnFirstName";
+            this.ClmnFirstName.Width = 125;
             // 
             // ClmnLastName
             // 
             this.ClmnLastName.DataPropertyName = "LastName";
             this.ClmnLastName.HeaderText = "نام خانوادگی";
+            this.ClmnLastName.MinimumWidth = 6;
             this.ClmnLastName.Name = "ClmnLastName";
+            this.ClmnLastName.Width = 125;
             // 
             // ClmnUserName
             // 
             this.ClmnUserName.DataPropertyName = "UserName";
             this.ClmnUserName.HeaderText = "نام کاربری";
+            this.ClmnUserName.MinimumWidth = 6;
             this.ClmnUserName.Name = "ClmnUserName";
+            this.ClmnUserName.Width = 125;
             // 
             // ClmnPassword
             // 
             this.ClmnPassword.DataPropertyName = "Password";
             this.ClmnPassword.HeaderText = "رمز عبور";
+            this.ClmnPassword.MinimumWidth = 6;
             this.ClmnPassword.Name = "ClmnPassword";
+            this.ClmnPassword.Width = 125;
             // 
             // ClmnNationalCode
             // 
             this.ClmnNationalCode.DataPropertyName = "NationalCode";
             this.ClmnNationalCode.HeaderText = "کد ملی";
+            this.ClmnNationalCode.MinimumWidth = 6;
             this.ClmnNationalCode.Name = "ClmnNationalCode";
+            this.ClmnNationalCode.Width = 125;
             // 
             // ClmnPhoneNumber
             // 
             this.ClmnPhoneNumber.DataPropertyName = "PhoneNumber";
             this.ClmnPhoneNumber.HeaderText = "تلفن";
+            this.ClmnPhoneNumber.MinimumWidth = 6;
             this.ClmnPhoneNumber.Name = "ClmnPhoneNumber";
+            this.ClmnPhoneNumber.Width = 125;
             // 
             // ClmnEdit
             // 
             this.ClmnEdit.HeaderText = "ویرایش";
+            this.ClmnEdit.MinimumWidth = 6;
             this.ClmnEdit.Name = "ClmnEdit";
             this.ClmnEdit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.ClmnEdit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.ClmnEdit.Text = "ویرایش";
             this.ClmnEdit.UseColumnTextForButtonValue = true;
+            this.ClmnEdit.Width = 125;
             // 
             // ClmnDelete
             // 
             this.ClmnDelete.HeaderText = "حذف";
+            this.ClmnDelete.MinimumWidth = 6;
             this.ClmnDelete.Name = "ClmnDelete";
             this.ClmnDelete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.ClmnDelete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.ClmnDelete.Text = "حذف";
             this.ClmnDelete.UseColumnTextForButtonValue = true;
+            this.ClmnDelete.Width = 125;
             // 
             // err
             // 
             this.err.BlinkRate = 500;
             this.err.ContainerControl = this;
             // 
+            // cmbEmployeeAction
+            // 
+            this.cmbEmployeeAction.FormattingEnabled = true;
+            this.cmbEmployeeAction.Location = new System.Drawing.Point(900, 304);
+            this.cmbEmployeeAction.Name = "cmbEmployeeAction";
+            this.cmbEmployeeAction.Size = new System.Drawing.Size(121, 37);
+            this.cmbEmployeeAction.TabIndex = 10;
+            // 
             // frmEmployee
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(244)))), ((int)(((byte)(234)))));
             this.ClientSize = new System.Drawing.Size(1118, 753);
+            this.Controls.Add(this.cmbEmployeeAction);
             this.Controls.Add(this.dataGridViewEmployee);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.lblInfoUser);
@@ -524,5 +554,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ClmnPhoneNumber;
         private System.Windows.Forms.DataGridViewButtonColumn ClmnEdit;
         private System.Windows.Forms.DataGridViewButtonColumn ClmnDelete;
+        private System.Windows.Forms.ComboBox cmbEmployeeAction;
     }
 }

@@ -55,6 +55,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="ComprehensiveOrderRepository.cs" />
     <Compile Include="EditResultTestRepository.cs" />
+    <Compile Include="EmployeeActionRepository.cs" />
     <Compile Include="EmployeeRepository.cs" />
     <Compile Include="InsuranceRepository.cs" />
     <Compile Include="InsuranceTestRepository.cs" />

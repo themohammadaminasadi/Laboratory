@@ -72,116 +72,165 @@ namespace Laboratory
         }
         private void frmEditResultTest_Load(object sender, EventArgs e)
         {
-            lstPatient.Visible = false;
-            VisibleControlers();
-            btnAddResult.Visible = false;
-            btnEditResult.Visible = false;
-            btnCancle.Visible = false;
+            try
+            {
+
+                lstPatient.Visible = false;
+                VisibleControlers();
+                btnAddResult.Visible = false;
+                btnEditResult.Visible = false;
+                btnCancle.Visible = false;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("در در لود فرم : خواهشمند است با پشتیبانی تماس بگیرید" + ex.Message);
+            }
         }
 
         private void txtPatient_TextChanged(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtPatient.Text))
+            try
             {
-                ConfigeDataGridViewPatientTestHeader();
-                lstPatient.Visible = true;
-                lstPatient.DisplayMember = "FullInfoPatient";
-                lstPatient.ValueMember = "PatientID";
-                if (txtPatient.Text.All(c=>char.IsLetter(c)))
+                if (!string.IsNullOrEmpty(txtPatient.Text))
                 {
-                    
-                    lstPatient.DataSource = repo.SearchPatientTestHeaderForFrmEditResultTest(txtPatient.Text);
+                    ConfigeDataGridViewPatientTestHeader();
+                    lstPatient.Visible = true;
+                    lstPatient.DisplayMember = "FullInfoPatient";
+                    lstPatient.ValueMember = "PatientID";
+                    if (txtPatient.Text.All(c => char.IsLetter(c)))
+                    {
+
+                        lstPatient.DataSource = repo.SearchPatientTestHeaderForFrmEditResultTest(txtPatient.Text);
+                    }
+                    else if (txtPatient.Text.StartsWith("09"))
+                    {
+                        lstPatient.DataSource = repo.SearchPatientWithMobileNmuberTestHeaderForFrmEditResultTest(txtPatient.Text);
+                    }
+                    else if (txtPatient.Text.All(c => char.IsDigit(c)))
+                    {
+                        lstPatient.DataSource = repo.SearchPatientWithNationalCodeTestHeaderForFrmEditResultTest(txtPatient.Text);
+                    }
                 }
-                else if (txtPatient.Text.StartsWith("09"))
+                else
                 {
-                    lstPatient.DataSource = repo.SearchPatientWithMobileNmuberTestHeaderForFrmEditResultTest(txtPatient.Text);
-                }
-                else if(txtPatient.Text.All(c=>char.IsDigit(c)))
-                {
-                    lstPatient.DataSource = repo.SearchPatientWithNationalCodeTestHeaderForFrmEditResultTest(txtPatient.Text);
+                    lstPatient.Visible = false;
+                    ConfigeDataGridViewPatientTestHeader();
                 }
             }
-            else
+            catch (Exception ex)
             {
-                lstPatient.Visible = false;
-                ConfigeDataGridViewPatientTestHeader();
+
+                throw new Exception("ارور در جست و جو : خواهشمند است با پشتیبانی تماس بگیرید" + ex.Message); 
             }
         }
 
         private void faDatePicker_SelectedDateTimeChanged(object sender, EventArgs e)
         {
-            if (faDatePicker.SelectedDateTime != null)
+            try
             {
-                ConfigeDataGridViewPatientTestHeader();
-                DGVPatientTestHeader.DataSource = repo.SearchPatientWithDateTimeTestHeaderForFrmEditResultTest(Convert.ToDateTime(faDatePicker.SelectedDateTime));
+                if (faDatePicker.SelectedDateTime != null)
+                {
+                    ConfigeDataGridViewPatientTestHeader();
+                    DGVPatientTestHeader.DataSource = repo.SearchPatientWithDateTimeTestHeaderForFrmEditResultTest(Convert.ToDateTime(faDatePicker.SelectedDateTime));
+                }
+                else
+                {
+                    ConfigeDataGridViewPatientTestHeader();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                ConfigeDataGridViewPatientTestHeader();
+
+                throw new Exception("ارور در تقویم : خواهشمند است با پشتیبانی تماس بگیرید" + ex.Message);
             }
         }
 
         private void lstPatient_DoubleClick(object sender, EventArgs e)
         {
-            if (lstPatient.SelectedIndex >= 0 )
+            try
             {
-                ConfigeDataGridViewPatientTestHeader();
-                PatientID = Convert.ToInt32(lstPatient.SelectedValue);
-                Patient patient = repoPatient.Get(PatientID);
-                txtPatient.Text = patient.FirstName + " " + patient.LastName + " " + patient.NationalCode + " " + patient.PhoneNumber;
-                DGVPatientTestHeader.DataSource = repo.GetPatientTestByPatientID(PatientID);
-                lstPatient.Visible = false;
+                if (lstPatient.SelectedIndex >= 0)
+                {
+                    ConfigeDataGridViewPatientTestHeader();
+                    PatientID = Convert.ToInt32(lstPatient.SelectedValue);
+                    Patient patient = repoPatient.Get(PatientID);
+                    txtPatient.Text = patient.FirstName + " " + patient.LastName + " " + patient.NationalCode + " " + patient.PhoneNumber;
+                    DGVPatientTestHeader.DataSource = repo.GetPatientTestByPatientID(PatientID);
+                    lstPatient.Visible = false;
+                }
+                else
+                {
+                    ConfigeDataGridViewPatientTestHeader();
+                    DGVDetails.AutoGenerateColumns = false;
+                    DGVDetails.DataSource = null;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                ConfigeDataGridViewPatientTestHeader();
-                DGVDetails.AutoGenerateColumns = false;
-                DGVDetails.DataSource = null;
+
+                throw new Exception("ارور در کلیک روی لیست : خواهمشند است با پشتیبانی تماس بگیرید" + ex.Message ); 
             }
         }
 
         private void DGVPatientTestHeader_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            PatientTestHeaderID = Convert.ToInt32(DGVPatientTestHeader.Rows[e.RowIndex].Cells[0].Value);
-            if (e.ColumnIndex == 7)
+            try
             {
-                DGVDetails.DataSource = repoResult.GetDetails(PatientTestHeaderID);
+                PatientTestHeaderID = Convert.ToInt32(DGVPatientTestHeader.Rows[e.RowIndex].Cells[0].Value);
+                if (e.ColumnIndex == 7)
+                {
+                    DGVDetails.DataSource = repoResult.GetDetails(PatientTestHeaderID);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("ارور در کلیک روی گرید سربرگ : خواهشمند است با پشتیبانی تماس بگیرید" + ex.Message);
             }
         }
 
         private void DGVDetails_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            PatientTestDetailsID = Convert.ToInt32(DGVDetails.Rows[e.RowIndex].Cells["ClmnPatientTestDetailsID"].Value);
-            var PatientTestDetails = repoHeader.GetPatientDetails(PatientTestDetailsID);
-            if (DGVDetails.Columns[e.ColumnIndex].Name == "ClmnEditDetailsTest")
-            {                
-                
-                if (PatientTestDetails.Result.HasValue)
+            try
+            {
+                PatientTestDetailsID = Convert.ToInt32(DGVDetails.Rows[e.RowIndex].Cells["ClmnPatientTestDetailsID"].Value);
+                var PatientTestDetails = repoHeader.GetPatientDetails(PatientTestDetailsID);
+                if (DGVDetails.Columns[e.ColumnIndex].Name == "ClmnEditDetailsTest")
                 {
-                    GoToEditMode();
-                    txtTestName.Enabled = false;
+
+                    if (PatientTestDetails.Result.HasValue)
+                    {
+                        GoToEditMode();
+                        txtTestName.Enabled = false;
+                        txtTestName.Text = PatientTestDetails.Test.TestName;
+                        txtResult.Text = PatientTestDetails.Result.ToString();
+                    }
+                    else if (!PatientTestDetails.Result.HasValue)
+                    {
+                        MessageBox.Show("آزمایش نتیجه ندارد");
+                        return;
+                    }
+                }
+                if (DGVDetails.Columns[e.ColumnIndex].Name == "ClmnAddDetailsTest")
+                {
+                    GoToAddMode();
+                    CleanForm();
                     txtTestName.Text = PatientTestDetails.Test.TestName;
-                    txtResult.Text = PatientTestDetails.Result.ToString();
+                    txtTestName.Enabled = false;
                 }
-                else if (!PatientTestDetails.Result.HasValue)
+                if (DGVDetails.Columns[e.ColumnIndex].Name == "ClmnDeletePatientTestDetails")
                 {
-                    MessageBox.Show("آزمایش نتیجه ندارد");
-                    return;
+                    CleanForm();
+                    VisibleControlers();
+                    repoHeader.DeleteDetails(PatientTestDetailsID);
+                    DGVDetails.DataSource = repoResult.GetDetails(PatientTestHeaderID);
                 }
             }
-            if (DGVDetails.Columns[e.ColumnIndex].Name == "ClmnAddDetailsTest")
+            catch (Exception ex)
             {
-                GoToAddMode();
-                CleanForm();
-                txtTestName.Text = PatientTestDetails.Test.TestName;
-                txtTestName.Enabled = false;
-            }
-            if (DGVDetails.Columns[e.ColumnIndex].Name == "ClmnDeletePatientTestDetails")
-            {
-                CleanForm();
-                VisibleControlers();
-                repoHeader.DeleteDetails(PatientTestDetailsID);
-                DGVDetails.DataSource = repoResult.GetDetails(PatientTestHeaderID);
+
+                throw new Exception("ارور در کلیک روی گرید جزئیات : خواهشمند است با پشتیبانی تماس بگیرید" + ex.Message);
             }
         }
 
@@ -223,7 +272,7 @@ namespace Laboratory
             catch (Exception ex)
             {
 
-                throw new Exception("ارور در دکمه ویرایش : خواهشمند است با مدیر سیستم تماس بگیرید" + ex);
+                throw new Exception("ارور در دکمه ویرایش : خواهشمند است با مدیر سیستم تماس بگیرید" + ex.Message);
             }
         }
 
@@ -233,11 +282,12 @@ namespace Laboratory
             {
                 GoToAddMode();
                 CleanForm();
+                 
             }
             catch (Exception ex)
             {
 
-                throw new Exception("ارور در دکمه انصراف : خواهمشند است با مدیر سیستم تماس بگیرید" + ex);
+                throw new Exception("ارور در دکمه انصراف : خواهمشند است با مدیر سیستم تماس بگیرید" + ex.Message);
             }
            
         }
@@ -275,7 +325,7 @@ namespace Laboratory
             catch (Exception ex)
             {
 
-                throw new Exception("ارور در دکمه اضافه کردن : خواهمشند است با مدیر سیستم تماس بگیرید" + ex);
+                throw new Exception("ارور در دکمه اضافه کردن : خواهمشند است با مدیر سیستم تماس بگیرید" + ex.Message);
             }
         }
     }

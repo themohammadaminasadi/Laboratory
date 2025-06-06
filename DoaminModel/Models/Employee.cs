@@ -44,6 +44,8 @@ namespace DoaminModel.Models
         [StringLength(90)]
         public string Title { get; set; }
 
+        public int EmployeeActionID { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PaitentTestHeder> PaitentTestHeders { get; set; }
     }

@@ -73,6 +73,7 @@ namespace DataAccess
                 OldEmployee.FirstName = NewModel.FirstName;
                 OldEmployee.LastName = NewModel.LastName;
                 OldEmployee.PhoneNumber = NewModel.PhoneNumber;
+                OldEmployee.EmployeeActionID = NewModel.EmployeeActionID;
                 db.SaveChanges();
                 return true;
             }

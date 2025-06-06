@@ -32,35 +32,59 @@ namespace Laboratory
         }
         private void GoToEditMode()
         {
-            btnEditResult.Visible = true;
-            btnCancle.Visible = true;
+            try
+            {
+                btnEditResult.Visible = true;
+                btnCancle.Visible = true;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("ارور در رفتن فرم به مد ویرایش : خواهشمند است با پشتیبانی تماس بگیرید" + ex.Message);
+            }
         }
         private void BindCombo()
         {
-            var listCombo = new DataAccess.InsuranceRepository().GetAll();
-            listCombo.Insert(0, new DoaminModel.Models.Insurance { InsuranceID = -1, InsuranceTypeName = "انتخاب کنید" });
+            try
+            {
+                var listCombo = new DataAccess.InsuranceRepository().GetAll();
+                listCombo.Insert(0, new DoaminModel.Models.Insurance { InsuranceID = -1, InsuranceTypeName = "انتخاب کنید" });
 
-            cmbInsurance.SelectedIndexChanged -= cmbInsurance_SelectedIndexChanged; // ❌ غیرفعال‌سازی
+                cmbInsurance.SelectedIndexChanged -= cmbInsurance_SelectedIndexChanged; // ❌ غیرفعال‌سازی
 
-            cmbInsurance.DataSource = null;
-            cmbInsurance.ValueMember = "InsuranceID";
-            cmbInsurance.DisplayMember = "InsuranceTypeName";
-            cmbInsurance.DataSource = listCombo;
+                cmbInsurance.DataSource = null;
+                cmbInsurance.ValueMember = "InsuranceID";
+                cmbInsurance.DisplayMember = "InsuranceTypeName";
+                cmbInsurance.DataSource = listCombo;
 
-            cmbInsurance.SelectedIndex = 0;
+                cmbInsurance.SelectedIndex = 0;
 
-            cmbInsurance.SelectedIndexChanged += cmbInsurance_SelectedIndexChanged;
+                cmbInsurance.SelectedIndexChanged += cmbInsurance_SelectedIndexChanged;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("ارور در Combo Box بیمه : خواهشمند است با پشتیبانی تماس بگیرید" + ex);
+            }
         }
         private void DGVTestHeader_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            PatientTestHederID = Convert.ToInt32(DGVTestHeader.Rows[e.RowIndex].Cells[0].Value);
-            PatientID = repoHeader.Get(PatientTestHederID).PaitentID;
-            if (e.ColumnIndex == 7)
+            try
             {
-                DGVDetails.DataSource  = new ResultTestRepository().GetDetails(PatientTestHederID);
+                PatientTestHederID = Convert.ToInt32(DGVTestHeader.Rows[e.RowIndex].Cells[0].Value);
+                PatientID = repoHeader.Get(PatientTestHederID).PaitentID;
+                if (e.ColumnIndex == 7)
+                {
+                    DGVDetails.DataSource = new ResultTestRepository().GetDetails(PatientTestHederID);
 
+                }
+                //Bind With Data ListItemResultTestHeader
             }
-            //Bind With Data ListItemResultTestHeader
+            catch (Exception ex)
+            {
+
+                throw new Exception("ارور در گرید سر برگ : خواهشمند است با پشتیبانی تماس بگیرید" + ex);
+            }
         }
         //private void BindGridTestHeader()
         //{
@@ -76,27 +100,35 @@ namespace Laboratory
         }
         private void DGVDetails_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            PatientTestDetailsID = Convert.ToInt32(DGVDetails.Rows[e.RowIndex].Cells["ClmnPatientTestDetailsID"].Value);
-            TestID = Convert.ToInt32(DGVDetails.Rows[e.RowIndex].Cells["ClmnTestID"].Value);
-
-           
-            if (DGVDetails.Columns[e.ColumnIndex].Name == "ClmnEditDetailsTest")
+            try
             {
-                PatientTestDetail patientTestDetail = repoHeader.GetPatientDetails(PatientTestDetailsID);
-                if (patientTestDetail.Result.HasValue)
-                {
-                    GoToEditMode();
-                    txtResult.Text = patientTestDetail.Result.ToString();
-                    txtTestName.Text = patientTestDetail.Test.TestName;
-                    txtTestName.Enabled = false;
-                }
-                else if (!patientTestDetail.Result.HasValue)
-                {
-                    MessageBox.Show("این آزمایش نتیجه ندارد ");
-                    return;
-                }
+                PatientTestDetailsID = Convert.ToInt32(DGVDetails.Rows[e.RowIndex].Cells["ClmnPatientTestDetailsID"].Value);
+                TestID = Convert.ToInt32(DGVDetails.Rows[e.RowIndex].Cells["ClmnTestID"].Value);
 
 
+                if (DGVDetails.Columns[e.ColumnIndex].Name == "ClmnEditDetailsTest")
+                {
+                    PatientTestDetail patientTestDetail = repoHeader.GetPatientDetails(PatientTestDetailsID);
+                    if (patientTestDetail.Result.HasValue)
+                    {
+                        GoToEditMode();
+                        txtResult.Text = patientTestDetail.Result.ToString();
+                        txtTestName.Text = patientTestDetail.Test.TestName;
+                        txtTestName.Enabled = false;
+                    }
+                    else if (!patientTestDetail.Result.HasValue)
+                    {
+                        MessageBox.Show("این آزمایش نتیجه ندارد ");
+                        return;
+                    }
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("ارور در گرید جزئیات : خواهشمند است با پشتیبانی تماس بگیرید" + ex);
             }
         }
         private void CleanGridDetails()
@@ -171,75 +203,163 @@ namespace Laboratory
         }
         private void frmOrderReport_Load(object sender, EventArgs e)
         {
-            
-            BindCombo();
-            GoToAddMode();
-            CleanGridDetails();
+            try
+            {
+                BindCombo();
+                GoToAddMode();
+                CleanGridDetails();
 
-            //تنظیم فرمت تاریخ :  
-            DGVTestHeader.Columns["ClmnHederDate"].DefaultCellStyle.Format = "yyyy/MM/dd";
+                //تنظیم فرمت تاریخ :  
+                DGVTestHeader.Columns["ClmnHederDate"].DefaultCellStyle.Format = "yyyy/MM/dd";
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("ارور در لود صفحه : خواهشمند است با پشتیبانی تماس بگیرید" + ex);
+            }
+           
 
         }
 
         private void txtFullName_TextChanged(object sender, EventArgs e)
         {
-           
-            ApplySearchAndTotal();
+
+            try
+            {
+                ApplySearchAndTotal();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
 
         }
 
         private void txtNationalCode_TextChanged(object sender, EventArgs e)
         {
-          
-            ApplySearchAndTotal();
+
+            try
+            {
+                ApplySearchAndTotal();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
         }
 
         private void txtPhoneNumber_TextChanged(object sender, EventArgs e)
         {
-           
-            ApplySearchAndTotal();
+
+            try
+            {
+                ApplySearchAndTotal();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
         }
 
         private void txtDrName_TextChanged(object sender, EventArgs e)
         {
-          
-            ApplySearchAndTotal();
+
+            try
+            {
+                ApplySearchAndTotal();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
         }
 
         private void txtSearchFromAge_TextChanged(object sender, EventArgs e)
         {
-           
-            ApplySearchAndTotal();
+
+            try
+            {
+                ApplySearchAndTotal();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
         }
 
         private void txtSearchToAge_TextChanged(object sender, EventArgs e)
         {
-           
-            ApplySearchAndTotal();
+
+            try
+            {
+                ApplySearchAndTotal();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
         }
 
         private void faDatePickerFrom_SelectedDateTimeChanged(object sender, EventArgs e)
         {
-           
-            ApplySearchAndTotal();
+
+            try
+            {
+                ApplySearchAndTotal();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
         }
 
         private void faDatePickerToDate_SelectedDateTimeChanged(object sender, EventArgs e)
         {
-            
-            ApplySearchAndTotal();
+
+            try
+            {
+                ApplySearchAndTotal();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
         }
 
         private void cmbInsurance_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
-            ApplySearchAndTotal();
+
+            try
+            {
+                ApplySearchAndTotal();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
         }
 
         private void txtPatientTestHederID_TextChanged(object sender, EventArgs e)
         {
-            
-            ApplySearchAndTotal();
+
+            try
+            {
+                ApplySearchAndTotal();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
         }
 
         private void grpGender_TextChanged(object sender, EventArgs e)
@@ -250,74 +370,132 @@ namespace Laboratory
         private void rdbMale_CheckedChanged(object sender, EventArgs e)
         {
 
-            
-            ApplySearchAndTotal();
+
+            try
+            {
+                ApplySearchAndTotal();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
         }
 
         private void rdbFamle_CheckedChanged(object sender, EventArgs e)
         {
-            ApplySearchAndTotal();
+            try
+            {
+                ApplySearchAndTotal();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+            
         }
 
         private void rdbBothGender_CheckedChanged(object sender, EventArgs e)
         {
-           
-            ApplySearchAndTotal();
+            try
+            {
+                ApplySearchAndTotal();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+            
         }
 
         private void btnEditResult_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtResult.Text))
+            try
             {
-                MessageBox.Show("نتیجه نمیتواند خالی باشد");
-                return;
-            }
-            PatientTestDetail NewPatientTestDetail = new PatientTestDetail();
-            var OldPatientTestDetails = repoHeader.GetPatientDetails(this.PatientTestDetailsID);
-            double Result = Convert.ToDouble(txtResult.Text);
-            var ListTestRange = repoTestRange.GetTestWithTestID(TestID);
-            int Age = repoHeader.Get(PatientTestHederID).Age;
-            var patient = new PatientRepository().Get(PatientID); // patient یک شیء از کلاس Patient هست
-            int genderInt = patient.Gender ? 1 : 0; // ✅ درست: استفاده از شیء patient
-            foreach (var item in ListTestRange)
-            {
-                bool genderMatches = item.Gender == genderInt;
-                if (Result > item.MinValue && Result < item.MaxValue && Age > item.FromAge && Age < item.ToAge && genderMatches)
+                if (string.IsNullOrEmpty(txtResult.Text))
                 {
-                    HasStar = item.Hazard;
+                    MessageBox.Show("نتیجه نمیتواند خالی باشد");
+                    return;
                 }
+                PatientTestDetail NewPatientTestDetail = new PatientTestDetail();
+                var OldPatientTestDetails = repoHeader.GetPatientDetails(this.PatientTestDetailsID);
+                double Result = Convert.ToDouble(txtResult.Text);
+                var ListTestRange = repoTestRange.GetTestWithTestID(TestID);
+                int Age = repoHeader.Get(PatientTestHederID).Age;
+                var patient = new PatientRepository().Get(PatientID); // patient یک شیء از کلاس Patient هست
+                int genderInt = patient.Gender ? 1 : 0; // ✅ درست: استفاده از شیء patient
+                foreach (var item in ListTestRange)
+                {
+                    bool genderMatches = item.Gender == genderInt;
+                    if (Result > item.MinValue && Result < item.MaxValue && Age > item.FromAge && Age < item.ToAge && genderMatches)
+                    {
+                        HasStar = item.Hazard;
+                    }
+                }
+                NewPatientTestDetail.TestID = OldPatientTestDetails.TestID;
+                NewPatientTestDetail.Result = Result;
+                NewPatientTestDetail.PatientTestHederID = OldPatientTestDetails.PatientTestHederID;
+                NewPatientTestDetail.PatientTestDetailsID = OldPatientTestDetails.PatientTestDetailsID;
+                NewPatientTestDetail.Price = OldPatientTestDetails.Price;
+                NewPatientTestDetail.HasStar = this.HasStar;
+                repoHeader.UpdatePatientDetails(NewPatientTestDetail);
+                //Bind Grid Test Details ; 
+                DGVDetails.AutoGenerateColumns = false;
+                DGVDetails.DataSource = new ResultTestRepository().GetDetails(PatientTestHederID);
+                CleanForm();
+                GoToAddMode();
             }
-            NewPatientTestDetail.TestID = OldPatientTestDetails.TestID;
-            NewPatientTestDetail.Result = Result;
-            NewPatientTestDetail.PatientTestHederID = OldPatientTestDetails.PatientTestHederID;
-            NewPatientTestDetail.PatientTestDetailsID = OldPatientTestDetails.PatientTestDetailsID;
-            NewPatientTestDetail.Price = OldPatientTestDetails.Price;
-            NewPatientTestDetail.HasStar = this.HasStar;
-            repoHeader.UpdatePatientDetails(NewPatientTestDetail);
-            //Bind Grid Test Details ; 
-            DGVDetails.AutoGenerateColumns = false;
-            DGVDetails.DataSource = new ResultTestRepository().GetDetails(PatientTestHederID);
-            CleanForm();
-            GoToAddMode();
+            catch (Exception ex)
+            {
+
+                throw new Exception("ارور در دکمه ویرایش نتیجه : خواهشمند است با پشتیبانی تماس بگیرید" + ex.Message);
+            }
         }
         private void CleanForm()
         {
-            txtResult.Text = "";
-            txtTestName.Text = "";
+            try
+            {
+
+                txtResult.Text = "";
+                txtTestName.Text = "";
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("ارور در متد پاکسازی فرم : خواهشمند است با پشتیبانی تماس بگیرید" + ex.Message);
+            }
         }
 
         private void btnCancle_Click(object sender, EventArgs e)
         {
-            GoToAddMode();
-            CleanForm();
-            DGVDetails.AutoGenerateColumns = false;
-            DGVDetails.DataSource = null;
+            try
+            {
+                GoToAddMode();
+                CleanForm();
+                DGVDetails.AutoGenerateColumns = false;
+                DGVDetails.DataSource = null;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("ارور در دکمه انصراف : خواهشمند است با پشتیبانی تماس بگیرید" + ex.Message);
+            }
         }
 
         private void GoToAddMode()
         {
-            btnEditResult.Visible = false;
-            btnCancle.Visible = false;
+            try
+            {
+                btnEditResult.Visible = false;
+                btnCancle.Visible = false;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("ارور در متد gotoAddMode : خواهشمند است با پشتیبانی تماس بگیرید" + ex.Message);
+            }
         }
     }
 }

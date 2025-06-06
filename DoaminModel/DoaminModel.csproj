@@ -55,13 +55,13 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Models\Employee.cs" />
+    <Compile Include="Models\EmployeeAction.cs" />
     <Compile Include="Models\Insurance.cs" />
     <Compile Include="Models\InsuranceTest.cs" />
     <Compile Include="Models\LaboratoryContext.cs" />
     <Compile Include="Models\PaitentTestHeder.cs" />
     <Compile Include="Models\Patient.cs" />
     <Compile Include="Models\PatientTestDetail.cs" />
-    <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Models\Test.cs" />
     <Compile Include="Models\TestCategory.cs" />
     <Compile Include="Models\TestRange.cs" />

@@ -1,10 +1,10 @@
+using System;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity;
+using System.Linq;
+
 namespace DoaminModel.Models
 {
-    using System;
-    using System.Data.Entity;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Linq;
-
     public partial class LaboratoryContext : DbContext
     {
         public LaboratoryContext()
@@ -13,12 +13,12 @@ namespace DoaminModel.Models
         }
 
         public virtual DbSet<Employee> Employees { get; set; }
+        public virtual DbSet<EmployeeAction> EmployeeActions { get; set; }
         public virtual DbSet<Insurance> Insurances { get; set; }
         public virtual DbSet<InsuranceTest> InsuranceTests { get; set; }
         public virtual DbSet<PaitentTestHeder> PaitentTestHeders { get; set; }
         public virtual DbSet<Patient> Patients { get; set; }
         public virtual DbSet<PatientTestDetail> PatientTestDetails { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Test> Tests { get; set; }
         public virtual DbSet<TestCategory> TestCategories { get; set; }
         public virtual DbSet<TestRange> TestRanges { get; set; }

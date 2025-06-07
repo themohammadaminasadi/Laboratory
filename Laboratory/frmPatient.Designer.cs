@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewPatient = new System.Windows.Forms.DataGridView();
             this.ClmnPatientID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClmnFirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -85,14 +85,14 @@
             // dataGridViewPatient
             // 
             this.dataGridViewPatient.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(247)))), ((int)(((byte)(240)))));
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewPatient.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewPatient.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewPatient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewPatient.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ClmnPatientID,
@@ -454,6 +454,7 @@
             this.txtSearchPhoneNumber.Name = "txtSearchPhoneNumber";
             this.txtSearchPhoneNumber.Size = new System.Drawing.Size(240, 31);
             this.txtSearchPhoneNumber.TabIndex = 16;
+            this.txtSearchPhoneNumber.TextChanged += new System.EventHandler(this.txtSearchPhoneNumber_TextChanged);
             // 
             // txtSearchFirstName
             // 
@@ -461,6 +462,7 @@
             this.txtSearchFirstName.Name = "txtSearchFirstName";
             this.txtSearchFirstName.Size = new System.Drawing.Size(205, 31);
             this.txtSearchFirstName.TabIndex = 14;
+            this.txtSearchFirstName.TextChanged += new System.EventHandler(this.txtSearchFirstName_TextChanged);
             // 
             // label12
             // 
@@ -478,6 +480,7 @@
             this.txtSearchLastName.Name = "txtSearchLastName";
             this.txtSearchLastName.Size = new System.Drawing.Size(205, 31);
             this.txtSearchLastName.TabIndex = 16;
+            this.txtSearchLastName.TextChanged += new System.EventHandler(this.txtSearchLastName_TextChanged);
             // 
             // txtSearchNationalCode
             // 
@@ -485,6 +488,7 @@
             this.txtSearchNationalCode.Name = "txtSearchNationalCode";
             this.txtSearchNationalCode.Size = new System.Drawing.Size(240, 31);
             this.txtSearchNationalCode.TabIndex = 14;
+            this.txtSearchNationalCode.TextChanged += new System.EventHandler(this.txtSearchNationalCode_TextChanged);
             // 
             // label10
             // 

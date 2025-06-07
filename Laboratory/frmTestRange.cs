@@ -397,21 +397,41 @@ namespace Laboratory
 
         private void txtSearchFromAge_TextChanged(object sender, EventArgs e)
         {
+            if (!txtSearchFromAge.Text.All(c=>char.IsDigit(c)))
+            {
+                MessageBox.Show("باید عدد وارد کنید");
+                return;
+            }
             DoSearch();
         }
 
         private void txtSearchToAge_TextChanged(object sender, EventArgs e)
         {
+            if (!txtSearchToAge.Text.All(c => char.IsDigit(c)))
+            {
+                MessageBox.Show("باید عدد وارد کنید");
+                return;
+            }
             DoSearch();
         }
 
         private void txtSearchFromMinum_TextChanged(object sender, EventArgs e)
         {
+            if (!txtSearchFromMinum.Text.All(c => char.IsDigit(c)))
+            {
+                MessageBox.Show("باید عدد وارد کنید");
+                return;
+            }
             DoSearch();
         }
 
         private void txtSearchToMaximum_TextChanged(object sender, EventArgs e)
         {
+            if (!txtSearchToMaximum.Text.All(c => char.IsDigit(c)))
+            {
+                MessageBox.Show("باید عدد وارد کنید");
+                return;
+            }
             DoSearch();
         }
 
@@ -438,6 +458,42 @@ namespace Laboratory
         private void txtSearchToMaximum_KeyPress(object sender, KeyPressEventArgs e)
         {
 
+        }
+
+        private void txtMinValue_TextChanged(object sender, EventArgs e)
+        {
+            if (!txtMinValue.Text.All(c=>char.IsDigit(c)))
+            {
+                MessageBox.Show("کمترین رنج نمیتواند خالی باشد");
+                return;
+            }
+        }
+
+        private void txtMaxValue_TextChanged(object sender, EventArgs e)
+        {
+            if (!txtMaxValue.Text.All(c=>char.IsDigit(c)))
+            {
+                MessageBox.Show("بیشترین رنج نمیتواند خالی باشد");
+                return;
+            }
+        }
+
+        private void txtFromAge_TextChanged(object sender, EventArgs e)
+        {
+            if (!txtFromAge.Text.All(c => char.IsDigit(c)))
+            {
+                MessageBox.Show("کمترین سن نمیتواند خالی باشد");
+                return;
+            }
+        }
+
+        private void txtToAge_TextChanged(object sender, EventArgs e)
+        {
+            if (!txtToAge.Text.All(c => char.IsDigit(c)))
+            {
+                MessageBox.Show("کمترین سن نمیتواند خالی باشد");
+                return;
+            }
         }
     }
 }

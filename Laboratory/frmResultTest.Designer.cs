@@ -61,6 +61,7 @@
             // 
             // DGVTestHeader
             // 
+            this.DGVTestHeader.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(244)))), ((int)(((byte)(234)))));
             this.DGVTestHeader.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGVTestHeader.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ClmnPatientTestHederID,
@@ -151,6 +152,7 @@
             this.txtResult.Name = "txtResult";
             this.txtResult.Size = new System.Drawing.Size(183, 31);
             this.txtResult.TabIndex = 2;
+            this.txtResult.TextChanged += new System.EventHandler(this.txtResult_TextChanged);
             // 
             // lblResultTitle
             // 
@@ -286,6 +288,7 @@
             // 
             // DGVDetails
             // 
+            this.DGVDetails.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(244)))), ((int)(((byte)(234)))));
             this.DGVDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGVDetails.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ClmnPatientTestDetailsID,
@@ -295,7 +298,7 @@
             this.ClmnHasStar,
             this.ClmnAddDetailsTest,
             this.ClmnEditDetailsTest});
-            this.DGVDetails.Location = new System.Drawing.Point(515, 221);
+            this.DGVDetails.Location = new System.Drawing.Point(515, 220);
             this.DGVDetails.Name = "DGVDetails";
             this.DGVDetails.RowHeadersWidth = 51;
             this.DGVDetails.Size = new System.Drawing.Size(814, 191);
@@ -306,9 +309,9 @@
             // 
             this.btnEditResult.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.btnEditResult.Font = new System.Drawing.Font("B Titr", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.btnEditResult.Location = new System.Drawing.Point(309, 520);
+            this.btnEditResult.Location = new System.Drawing.Point(97, 520);
             this.btnEditResult.Name = "btnEditResult";
-            this.btnEditResult.Size = new System.Drawing.Size(117, 46);
+            this.btnEditResult.Size = new System.Drawing.Size(173, 46);
             this.btnEditResult.TabIndex = 11;
             this.btnEditResult.Text = "ویرایش نتیجه آزمایش";
             this.btnEditResult.UseVisualStyleBackColor = false;
@@ -318,9 +321,9 @@
             // 
             this.btnCancle.BackColor = System.Drawing.Color.Red;
             this.btnCancle.Font = new System.Drawing.Font("B Titr", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.btnCancle.Location = new System.Drawing.Point(497, 520);
+            this.btnCancle.Location = new System.Drawing.Point(320, 520);
             this.btnCancle.Name = "btnCancle";
-            this.btnCancle.Size = new System.Drawing.Size(107, 46);
+            this.btnCancle.Size = new System.Drawing.Size(144, 46);
             this.btnCancle.TabIndex = 12;
             this.btnCancle.Text = "انصراف";
             this.btnCancle.UseVisualStyleBackColor = false;

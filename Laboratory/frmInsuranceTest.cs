@@ -158,6 +158,11 @@ namespace Laboratory
                     Year = Convert.ToInt32(txtYear.Text),
                     Discount = Convert.ToInt32(txtDiscount.Text)
                 };
+                if (insuranceTest.Discount > 100)
+                {
+                    MessageBox.Show("فرانشیز نمیتواند بیشتر از 100 درصد باشد");
+                    return;
+                }
                 if (repo.InsertDuplicateInsurance(insuranceTest.TestID , insuranceTest.InsuraneID))
                 {
                     MessageBox.Show("این رکورد قبلاً وارد شده است ");
@@ -254,6 +259,12 @@ namespace Laboratory
                     err.SetError(cmbInsurance, "بیمه را باید انتخاب کنید");
                     return;
                 }
+                if (!txtDiscount.Text.All(c=>char.IsDigit(c)))
+                {
+                    err.SetError(txtDiscount, "فرانشیز نمیتواند به غیر از عدد باشد");
+                    return;
+                }
+                
                 if (lstTest.SelectedIndex < 0)
                 {
                     MessageBox.Show("خواهشمند است از روی لیست ازمایشات یک آزمایش را انتخاب کنید");
@@ -278,9 +289,14 @@ namespace Laboratory
                     TestID = Convert.ToInt32(lstTest.SelectedValue),
                     InsuranceTestID = this.InsuranceTestID
                 };
-                if (repo.InsertDuplicateInsurance(insuranceTest.TestID, insuranceTest.InsuraneID))
+                //if (repo.InsertDuplicateInsurance(insuranceTest.TestID, insuranceTest.InsuraneID))
+                //{
+                //    MessageBox.Show("این رکورد قبلاً وارد شده است ");
+                //    return;
+                //}
+                if (insuranceTest.Discount > 100)
                 {
-                    MessageBox.Show("این رکورد قبلاً وارد شده است ");
+                    MessageBox.Show("فرانشیز نمیتواند بیشتر از 100 درصد باشد");
                     return;
                 }
                 repo.Update(insuranceTest);

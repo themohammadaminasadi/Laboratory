@@ -328,5 +328,14 @@ namespace Laboratory
                 throw new Exception("ارور در دکمه اضافه کردن : خواهمشند است با مدیر سیستم تماس بگیرید" + ex.Message);
             }
         }
+
+        private void txtResult_TextChanged(object sender, EventArgs e)
+        {
+            if (txtResult.Text.All(c=>char.IsDigit(c)))
+            {
+                MessageBox.Show("فقط میتوانید عدد وارد کنید");
+                return;
+            }
+        }
     }
 }

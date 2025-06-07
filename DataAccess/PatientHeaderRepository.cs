@@ -158,7 +158,7 @@ namespace DataAccess
 
         public PatientTestDetail GetPatientDetails(int patientTestDetailID)
         {
-            return db.PatientTestDetails.FirstOrDefault(x => x.PatientTestDetailsID == patientTestDetailID);
+            return db.PatientTestDetails.AsNoTracking().FirstOrDefault(x => x.PatientTestDetailsID == patientTestDetailID); //New
         }
 
         public bool UpdatePatientDetails(PatientTestDetail patientTestDetail)

@@ -157,7 +157,7 @@ namespace Laboratory
                     err.SetError(cmbCategory, "خواهشمند است گروه را انتخاب کنید");
                     return;
                 }
-                if (string.IsNullOrEmpty(txtPrice.Text))
+                if (string.IsNullOrEmpty(txtPrice.Text) || !txtPrice.Text.All(c=>char.IsDigit(c)))
                 {
                     lblErrorPrice.Text = "خواهشمند است قیمت آزمایش را وارد کنید";
                     return;
@@ -352,7 +352,7 @@ namespace Laboratory
                     err.SetError(cmbCategory, "خواهشمند است گروه را انتخاب کنید");
                     return;
                 }
-                if (string.IsNullOrEmpty(txtPrice.Text))
+                if (string.IsNullOrEmpty(txtPrice.Text) || !txtPrice.Text.All(c => char.IsDigit(c)))
                 {
                     lblErrorPrice.Text = "خواهشمند است قیمت آزمایش را وارد کنید";
                     return;
@@ -457,11 +457,15 @@ namespace Laboratory
 
         private void txtFromUnitPrice_TextChanged(object sender, EventArgs e)
         {
+            if (!txtFromUnitPrice.Text.All(c=>char.IsDigit(c)))
+            {
+                MessageBox.Show("خواهشمند است عدد وارد کنید");
+                return;
+            }
             if (!string.IsNullOrEmpty(txtFromUnitPrice.Text))
             {
                 sm.FromPrice = Convert.ToInt32(txtFromUnitPrice.Text);
                 BindGridForSearch(sm);
-
             }
             else
             {
@@ -472,6 +476,11 @@ namespace Laboratory
 
         private void txtSearchToUnitPrice_TextChanged(object sender, EventArgs e)
         {
+            if (!txtSearchToUnitPrice.Text.All(c => char.IsDigit(c)))
+            {
+                MessageBox.Show("خواهشمند است عدد وارد کنید");
+                return;
+            }
             if (!string.IsNullOrEmpty(txtSearchToUnitPrice.Text))
             {
                 sm.ToPrice = Convert.ToInt32(txtSearchToUnitPrice.Text);
@@ -498,6 +507,11 @@ namespace Laboratory
             if (!string.IsNullOrEmpty(txtPrice.Text))
             {
                 lblErrorPrice.Text = "";
+            }
+            if (!txtPrice.Text.All(c=>char.IsDigit(c)))
+            {
+                MessageBox.Show("باید به صورت عدد وارد کنید");
+                return;
             }
         }
 

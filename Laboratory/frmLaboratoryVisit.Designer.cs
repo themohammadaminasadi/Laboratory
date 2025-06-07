@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnAddPatientTest = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblNationalCodePatient = new System.Windows.Forms.Label();
@@ -39,6 +39,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.pnlDetailsVisit = new System.Windows.Forms.Panel();
+            this.btnCancleTest = new System.Windows.Forms.Button();
             this.lblErrorPriceWithDiscount = new System.Windows.Forms.Label();
             this.lblErrorDiscountTest = new System.Windows.Forms.Label();
             this.lblErrorPriceTest = new System.Windows.Forms.Label();
@@ -54,6 +55,15 @@
             this.txtTestName = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.DGVTestDetails = new System.Windows.Forms.DataGridView();
+            this.ClmnPatientTestHederID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClmnPatientTestDetailsID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClmnTestID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClmnInsuranceID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClmnPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClmnTestName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClmnDiscount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClmnEdit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ClmnDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.lblTotalPrice = new System.Windows.Forms.Label();
             this.lblTotalPriceTests = new System.Windows.Forms.Label();
             this.err = new System.Windows.Forms.ErrorProvider(this.components);
@@ -80,16 +90,6 @@
             this.btnClearFormForAddVisit = new System.Windows.Forms.Button();
             this.lblPanleTest = new System.Windows.Forms.Label();
             this.btnCancle = new System.Windows.Forms.Button();
-            this.ClmnPatientTestHederID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClmnPatientTestDetailsID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClmnTestID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClmnInsuranceID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClmnPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClmnTestName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClmnDiscount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClmnEdit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ClmnDelete = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.btnCancleTest = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.pnlDetailsVisit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVTestDetails)).BeginInit();
@@ -204,6 +204,19 @@
             this.pnlDetailsVisit.Size = new System.Drawing.Size(1164, 133);
             this.pnlDetailsVisit.TabIndex = 3;
             this.pnlDetailsVisit.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
+            // 
+            // btnCancleTest
+            // 
+            this.btnCancleTest.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnCancleTest.Font = new System.Drawing.Font("B Titr", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.btnCancleTest.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnCancleTest.Location = new System.Drawing.Point(28, 80);
+            this.btnCancleTest.Name = "btnCancleTest";
+            this.btnCancleTest.Size = new System.Drawing.Size(105, 42);
+            this.btnCancleTest.TabIndex = 54;
+            this.btnCancleTest.Text = "انصراف";
+            this.btnCancleTest.UseVisualStyleBackColor = false;
+            this.btnCancleTest.Click += new System.EventHandler(this.btnCancleTest_Click);
             // 
             // lblErrorPriceWithDiscount
             // 
@@ -340,14 +353,15 @@
             // 
             // DGVTestDetails
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DGVTestDetails.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.DGVTestDetails.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(244)))), ((int)(((byte)(234)))));
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DGVTestDetails.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.DGVTestDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGVTestDetails.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ClmnPatientTestHederID,
@@ -365,6 +379,69 @@
             this.DGVTestDetails.Size = new System.Drawing.Size(717, 184);
             this.DGVTestDetails.TabIndex = 4;
             this.DGVTestDetails.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVTestDetails_CellContentClick);
+            // 
+            // ClmnPatientTestHederID
+            // 
+            this.ClmnPatientTestHederID.DataPropertyName = "PatientTestHederID";
+            this.ClmnPatientTestHederID.HeaderText = "شناسه ";
+            this.ClmnPatientTestHederID.Name = "ClmnPatientTestHederID";
+            this.ClmnPatientTestHederID.Visible = false;
+            this.ClmnPatientTestHederID.Width = 160;
+            // 
+            // ClmnPatientTestDetailsID
+            // 
+            this.ClmnPatientTestDetailsID.DataPropertyName = "PatientTestDetailsID";
+            this.ClmnPatientTestDetailsID.HeaderText = "شناسه هر قلم آزمایش";
+            this.ClmnPatientTestDetailsID.Name = "ClmnPatientTestDetailsID";
+            this.ClmnPatientTestDetailsID.Width = 160;
+            // 
+            // ClmnTestID
+            // 
+            this.ClmnTestID.DataPropertyName = "TestID";
+            this.ClmnTestID.HeaderText = "شناسه آزمایش";
+            this.ClmnTestID.Name = "ClmnTestID";
+            this.ClmnTestID.Visible = false;
+            // 
+            // ClmnInsuranceID
+            // 
+            this.ClmnInsuranceID.HeaderText = "شناسه بیمه";
+            this.ClmnInsuranceID.Name = "ClmnInsuranceID";
+            this.ClmnInsuranceID.Visible = false;
+            // 
+            // ClmnPrice
+            // 
+            this.ClmnPrice.DataPropertyName = "Price";
+            this.ClmnPrice.HeaderText = "قیمت";
+            this.ClmnPrice.Name = "ClmnPrice";
+            // 
+            // ClmnTestName
+            // 
+            this.ClmnTestName.DataPropertyName = "TestName";
+            this.ClmnTestName.HeaderText = "آزمایش";
+            this.ClmnTestName.Name = "ClmnTestName";
+            // 
+            // ClmnDiscount
+            // 
+            this.ClmnDiscount.DataPropertyName = "Discount";
+            this.ClmnDiscount.HeaderText = "فرانشیز آزمایش";
+            this.ClmnDiscount.Name = "ClmnDiscount";
+            this.ClmnDiscount.Width = 120;
+            // 
+            // ClmnEdit
+            // 
+            this.ClmnEdit.HeaderText = "ویرایش";
+            this.ClmnEdit.Name = "ClmnEdit";
+            this.ClmnEdit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ClmnEdit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ClmnEdit.Text = "ویرایش";
+            this.ClmnEdit.UseColumnTextForButtonValue = true;
+            // 
+            // ClmnDelete
+            // 
+            this.ClmnDelete.HeaderText = "حذف";
+            this.ClmnDelete.Name = "ClmnDelete";
+            this.ClmnDelete.Text = "حذف";
+            this.ClmnDelete.UseColumnTextForButtonValue = true;
             // 
             // lblTotalPrice
             // 
@@ -605,82 +682,6 @@
             this.btnCancle.Text = "لغو پذیرش";
             this.btnCancle.UseVisualStyleBackColor = true;
             this.btnCancle.Click += new System.EventHandler(this.btnCancle_Click);
-            // 
-            // ClmnPatientTestHederID
-            // 
-            this.ClmnPatientTestHederID.DataPropertyName = "PatientTestHederID";
-            this.ClmnPatientTestHederID.HeaderText = "شناسه ";
-            this.ClmnPatientTestHederID.Name = "ClmnPatientTestHederID";
-            this.ClmnPatientTestHederID.Visible = false;
-            this.ClmnPatientTestHederID.Width = 160;
-            // 
-            // ClmnPatientTestDetailsID
-            // 
-            this.ClmnPatientTestDetailsID.DataPropertyName = "PatientTestDetailsID";
-            this.ClmnPatientTestDetailsID.HeaderText = "شناسه هر قلم آزمایش";
-            this.ClmnPatientTestDetailsID.Name = "ClmnPatientTestDetailsID";
-            this.ClmnPatientTestDetailsID.Width = 160;
-            // 
-            // ClmnTestID
-            // 
-            this.ClmnTestID.DataPropertyName = "TestID";
-            this.ClmnTestID.HeaderText = "شناسه آزمایش";
-            this.ClmnTestID.Name = "ClmnTestID";
-            this.ClmnTestID.Visible = false;
-            // 
-            // ClmnInsuranceID
-            // 
-            this.ClmnInsuranceID.HeaderText = "شناسه بیمه";
-            this.ClmnInsuranceID.Name = "ClmnInsuranceID";
-            this.ClmnInsuranceID.Visible = false;
-            // 
-            // ClmnPrice
-            // 
-            this.ClmnPrice.DataPropertyName = "Price";
-            this.ClmnPrice.HeaderText = "قیمت";
-            this.ClmnPrice.Name = "ClmnPrice";
-            // 
-            // ClmnTestName
-            // 
-            this.ClmnTestName.DataPropertyName = "TestName";
-            this.ClmnTestName.HeaderText = "آزمایش";
-            this.ClmnTestName.Name = "ClmnTestName";
-            // 
-            // ClmnDiscount
-            // 
-            this.ClmnDiscount.DataPropertyName = "Discount";
-            this.ClmnDiscount.HeaderText = "فرانشیز آزمایش";
-            this.ClmnDiscount.Name = "ClmnDiscount";
-            this.ClmnDiscount.Width = 120;
-            // 
-            // ClmnEdit
-            // 
-            this.ClmnEdit.HeaderText = "ویرایش";
-            this.ClmnEdit.Name = "ClmnEdit";
-            this.ClmnEdit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ClmnEdit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ClmnEdit.Text = "ویرایش";
-            this.ClmnEdit.UseColumnTextForButtonValue = true;
-            // 
-            // ClmnDelete
-            // 
-            this.ClmnDelete.HeaderText = "حذف";
-            this.ClmnDelete.Name = "ClmnDelete";
-            this.ClmnDelete.Text = "حذف";
-            this.ClmnDelete.UseColumnTextForButtonValue = true;
-            // 
-            // btnCancleTest
-            // 
-            this.btnCancleTest.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.btnCancleTest.Font = new System.Drawing.Font("B Titr", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.btnCancleTest.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnCancleTest.Location = new System.Drawing.Point(28, 80);
-            this.btnCancleTest.Name = "btnCancleTest";
-            this.btnCancleTest.Size = new System.Drawing.Size(105, 42);
-            this.btnCancleTest.TabIndex = 54;
-            this.btnCancleTest.Text = "انصراف";
-            this.btnCancleTest.UseVisualStyleBackColor = false;
-            this.btnCancleTest.Click += new System.EventHandler(this.btnCancleTest_Click);
             // 
             // frmLaboratoryVisit
             // 

@@ -34,6 +34,14 @@ namespace Laboratory
         {
             try
             {
+                foreach (Control ctl in this.Controls)
+                {
+                    if (ctl is MdiClient)
+                    {
+                        ctl.BackColor = Color.FromArgb(240, 240, 240);  // رنگ پس‌زمینه MDI container
+                        break;
+                    }
+                }
                 EmployeeAction employeeAction = new EmployeeAction();
                 int EmployeeActionID = new EmployeeRepository().GetEmployeeWithUserName(UserName).EmployeeActionID;
                 if (EmployeeActionID == 1)

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DoaminModel.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,5 +11,7 @@ namespace DataAccessServices.services
     {
         //if Exsist In Other Table 
         bool HasExsistInPatientHear(int PatientID);
+
+        List<Patient> SearchWtihItem(DoaminModel.ViewModel.Patient.PatientSearchItemForPanelSearch sm);
     }
 }

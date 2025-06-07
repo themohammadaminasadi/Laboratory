@@ -73,6 +73,7 @@
     <Compile Include="ViewModel\Order\OrderReportListItem.cs" />
     <Compile Include="ViewModel\PatientTest\PatientTestDetailsListItem.cs" />
     <Compile Include="ViewModel\Patient\PaitientSearchItem.cs" />
+    <Compile Include="ViewModel\Patient\PatientSearchItemForPanelSearch.cs" />
     <Compile Include="ViewModel\ResultTest\ListItemForListBox.cs" />
     <Compile Include="ViewModel\ResultTest\ListItemResultTestHeader.cs" />
     <Compile Include="ViewModel\ResultTest\ListItemTestDetails.cs" />

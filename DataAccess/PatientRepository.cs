@@ -1,6 +1,7 @@
 ﻿using DataAccessServices.services;
 using DataAccessServices.Services;
 using DoaminModel.Models;
+using DoaminModel.ViewModel.Patient;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -56,6 +57,28 @@ namespace DataAccess
         public bool HasExsistInPatientHear(int PatientID)
         {
             return db.PaitentTestHeders.Any(x => x.PaitentID == PatientID);
+        }
+
+        public List<Patient> SearchWtihItem(PatientSearchItemForPanelSearch sm)
+        {
+            var q = from P in db.Patients select P;
+            if (!string.IsNullOrEmpty(sm.FirstName))
+            {
+                q = q.Where(x => x.FirstName.StartsWith(sm.FirstName));
+            }
+            if (!string.IsNullOrEmpty(sm.LastName))
+            {
+                q = q.Where(x => x.LastName.StartsWith(sm.LastName));
+            }
+            if (!string.IsNullOrEmpty(sm.NationalCode))
+            {
+                q = q.Where(x => x.NationalCode.StartsWith(sm.NationalCode));
+            }
+            if (!string.IsNullOrEmpty(sm.PhoneNumber))
+            {
+                q = q.Where(x => x.PhoneNumber.StartsWith(sm.PhoneNumber));
+            }
+            return q.ToList();
         }
 
         public bool Update(Patient NewModel)

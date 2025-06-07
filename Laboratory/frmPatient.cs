@@ -1,4 +1,5 @@
 ﻿using DoaminModel.Models;
+using DoaminModel.ViewModel.Patient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -102,7 +103,7 @@ namespace Laboratory
                     err.SetError(txtAge, "سن بیمار نمیتواند خالی باشد");
                     return;
                 }
-                if (!rdbMale.Checked && rdbFamle.Checked)
+                if (!rdbMale.Checked && !rdbFamle.Checked)
                 {
                     err.SetError(groupBox1, " خواهشمند است یکی از گزینه ها را انتخاب کنید");
                     return;
@@ -124,6 +125,26 @@ namespace Laboratory
                 else if (!rdbFamle.Checked)
                 {
                     patient.Gender = false;
+                }
+                if (patient.NationalCode.Length != 10)
+                {
+                    MessageBox.Show("کد ملی باید 10 رقم باشد");
+                    return;
+                }
+                if (patient.PhoneNumber.Length != 11)
+                {
+                    MessageBox.Show("موبایل باید 11 رقم باشد");
+                    return;
+                }
+                if (!txtLastName.Text.All(c => char.IsLetter(c)))
+                {
+                    MessageBox.Show("نام خانوادگی نمیتواند عدد باشد");
+                    return;
+                }
+                if (!txtFirstName.Text.All(c => char.IsLetter(c)))
+                {
+                    MessageBox.Show("نام نمیتواند عدد باشد");
+                    return;
                 }
                 repo.Add(patient);
                 CleanForm();
@@ -202,6 +223,26 @@ namespace Laboratory
                     Age = Convert.ToInt32(txtAge.Text),
                     Description =txtDescription.Text
                 };
+                if (patient.NationalCode.Length != 10)
+                {
+                    MessageBox.Show("کد ملی باید 10 رقم باشد");
+                    return;
+                }
+                if (patient.PhoneNumber.Length != 11)
+                {
+                    MessageBox.Show("موبایل باید 11 رقم باشد");
+                    return;
+                }
+                if (!txtLastName.Text.All(c => char.IsLetter(c)))
+                {
+                    MessageBox.Show("نام خانوادگی نمیتواند عدد باشد");
+                    return;
+                }
+                if (!txtFirstName.Text.All(c => char.IsLetter(c)))
+                {
+                    MessageBox.Show("نام نمیتواند عدد باشد");
+                    return;
+                }
                 if (rdbMale.Checked)
                 {
                     patient.Gender = true;
@@ -313,6 +354,11 @@ namespace Laboratory
             {
                 err.Clear();
             }
+            if (!txtFirstName.Text.All(c=>char.IsLetter(c)))
+            {
+                MessageBox.Show("نام نمیتواند عدد باشد");
+                return;
+            }
         }
 
         private void txtNationalCode_TextChanged(object sender, EventArgs e)
@@ -329,6 +375,11 @@ namespace Laboratory
             {
                 err.Clear();
             }
+            if (!txtLastName.Text.All(c=>char.IsLetter(c)))
+            {
+                MessageBox.Show("نام خانوادگی نمیتواند عدد باشد");
+                return;
+            }
         }
 
         private void txtPhoneNumber_TextChanged(object sender, EventArgs e)
@@ -337,10 +388,16 @@ namespace Laboratory
             {
                 err.Clear();
             }
+
         }
 
         private void txtAge_TextChanged(object sender, EventArgs e)
         {
+            if (!txtAge.Text.All(c=>char.IsDigit(c)))
+            {
+                MessageBox.Show("باید عدد وارد کنید");
+                return;
+            }
             if (!string.IsNullOrEmpty(txtAge.Text))
             {
                 err.Clear();
@@ -352,6 +409,88 @@ namespace Laboratory
             if (!string.IsNullOrEmpty(txtAddress.Text))
             {
                 err.Clear();
+            }
+
+        }
+
+        private void txtSearchNationalCode_TextChanged(object sender, EventArgs e)
+        {
+            if (!txtNationalCode.Text.All(c=>char.IsDigit(c)))
+            {
+                MessageBox.Show("کد ملی را باید به صورت عدد وارد کنید");
+                return;
+            }
+            if (!string.IsNullOrEmpty(txtSearchNationalCode.Text))
+            {
+                DoSearch();
+            }
+            else
+            {
+                BindGrid();
+            }
+        }
+
+        private void txtSearchPhoneNumber_TextChanged(object sender, EventArgs e)
+        {
+            if (!txtSearchPhoneNumber.Text.All(c=>char.IsDigit(c)))
+            {
+                MessageBox.Show("شماره موبایل را باید به صورت عدد وارد کنید");
+                return;
+            }
+            if (!string.IsNullOrEmpty(txtSearchPhoneNumber.Text))
+            {
+                DoSearch();
+            }
+            else
+            {
+                BindGrid();
+            }
+        }
+
+        private void txtSearchFirstName_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtSearchFirstName.Text))
+            {
+                DoSearch();
+            }
+            else
+            {
+                BindGrid();
+            }
+        }
+
+        private void DoSearch()
+        {    
+            PatientSearchItemForPanelSearch sm = new PatientSearchItemForPanelSearch();
+            if (!string.IsNullOrEmpty(txtSearchFirstName.Text))
+            {
+                sm.FirstName = txtSearchFirstName.Text;
+            }
+            if (!string.IsNullOrEmpty(txtSearchLastName.Text))
+            {
+                sm.LastName = txtSearchLastName.Text;
+            }
+            if (!string.IsNullOrEmpty(txtSearchNationalCode.Text))
+            {
+                sm.NationalCode = txtSearchNationalCode.Text;
+            }
+            if (!string.IsNullOrEmpty(txtSearchPhoneNumber.Text))
+            {
+                sm.PhoneNumber = txtSearchPhoneNumber.Text;
+            }
+            dataGridViewPatient.DataSource = repo.SearchWtihItem(sm);
+        }
+
+        private void txtSearchLastName_TextChanged(object sender, EventArgs e)
+        {
+            DoSearch();
+            if (!string.IsNullOrEmpty(txtSearchLastName.Text))
+            {
+                DoSearch();
+            }
+            else
+            {
+                BindGrid();
             }
         }
     }

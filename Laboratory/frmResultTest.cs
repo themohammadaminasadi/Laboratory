@@ -126,6 +126,12 @@ namespace Laboratory
                
 
             }
+            txtTestName.Enabled = false;
+            lblTestTitle.Visible = false;
+            lblResultTitle.Visible = false;
+            btnAddResult.Visible = false;
+            txtResult.Visible = false;
+            txtTestName.Visible = false;
         }
 
         private void DGVDetails_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -153,10 +159,12 @@ namespace Laboratory
                 btnAddResult.Visible = true;
                 txtResult.Visible = true;
                 txtTestName.Visible = true;
+                GoToAddMode();
             }
             if (DGVDetails.Columns[e.ColumnIndex].Name == "ClmnEditDetailsTest")
             {
                 PatientTestDetail patientTestDetail = repoHeader.GetPatientDetails(PatientTestDetailsID);
+                
                 if (patientTestDetail.Result.HasValue)
                 {
                     GoToEditMode();
@@ -382,6 +390,15 @@ namespace Laboratory
             {
 
                 throw new Exception("ارور در دکمه انصراف : خواهشمند است با مدیر سیستم تماس بگیرید" + ex);
+            }
+        }
+
+        private void txtResult_TextChanged(object sender, EventArgs e)
+        {
+            if (!txtResult.Text.All(c=>char.IsDigit(c)))
+            {
+                MessageBox.Show("نتیجه فقط میتواند عدد باشد");
+                return;
             }
         }
     }

@@ -196,9 +196,9 @@ namespace Laboratory
             {
                 PatientTestDetailsID = Convert.ToInt32(DGVDetails.Rows[e.RowIndex].Cells["ClmnPatientTestDetailsID"].Value);
                 var PatientTestDetails = repoHeader.GetPatientDetails(PatientTestDetailsID);
+                TestID = Convert.ToInt32(DGVDetails.Rows[e.RowIndex].Cells["ClmnTestID"].Value);
                 if (DGVDetails.Columns[e.ColumnIndex].Name == "ClmnEditDetailsTest")
                 {
-
                     if (PatientTestDetails.Result.HasValue)
                     {
                         GoToEditMode();
@@ -214,6 +214,11 @@ namespace Laboratory
                 }
                 if (DGVDetails.Columns[e.ColumnIndex].Name == "ClmnAddDetailsTest")
                 {
+                    if (PatientTestDetails.Result.HasValue)
+                    {
+                        MessageBox.Show("این آزمایش دارای نتیجه است");
+                        return;
+                    }
                     GoToAddMode();
                     CleanForm();
                     txtTestName.Text = PatientTestDetails.Test.TestName;
@@ -221,10 +226,26 @@ namespace Laboratory
                 }
                 if (DGVDetails.Columns[e.ColumnIndex].Name == "ClmnDeletePatientTestDetails")
                 {
-                    CleanForm();
-                    VisibleControlers();
-                    repoHeader.DeleteDetails(PatientTestDetailsID);
-                    DGVDetails.DataSource = repoResult.GetDetails(PatientTestHeaderID);
+                    if (MessageBox.Show("این مطمئن هستید میخواهید این رکورد را حذف کنید ؟","هشدار",MessageBoxButtons.YesNo)==DialogResult.Yes)
+                    {
+                        CleanForm();
+                        VisibleControlers();
+                        repoHeader.DeleteDetails(PatientTestDetailsID);
+                        DGVDetails.DataSource = repoResult.GetDetails(PatientTestHeaderID);
+                    }
+                    else
+                    {
+                        btnAddResult.Visible = false;
+                        btnEditResult.Visible = false;
+                        btnCancle.Visible = false;
+                        lblResult.Visible = false;
+                        lblTestName.Visible = false;
+                        txtTestName.Visible = false;
+                        txtResult.Visible = false;
+                        CleanForm();
+
+                    }
+                   
                 }
             }
             catch (Exception ex)
@@ -268,6 +289,13 @@ namespace Laboratory
                 //Bind Grid Test Details ; 
                 DGVDetails.DataSource = new ResultTestRepository().GetDetails(PatientTestHeaderID);
                 CleanForm();
+                btnAddResult.Visible = false;
+                btnEditResult.Visible = false;
+                btnCancle.Visible = false;
+                lblResult.Visible = false;
+                lblTestName.Visible = false;
+                txtTestName.Visible = false;
+                txtResult.Visible = false;
             }
             catch (Exception ex)
             {
@@ -280,7 +308,13 @@ namespace Laboratory
         {
             try
             {
-                GoToAddMode();
+                btnAddResult.Visible = false;
+                btnEditResult.Visible = false;
+                btnCancle.Visible = false;
+                lblResult.Visible = false;
+                lblTestName.Visible = false;
+                txtTestName.Visible = false;
+                txtResult.Visible = false;
                 CleanForm();
                  
             }
@@ -316,11 +350,18 @@ namespace Laboratory
                     }
                 }
                 repoResult.setResult(PatientTestDetailsID, Result, HasStar);
-                DGVDetails.DataSource = new ResultTestRepository().GetDetails(PatientTestHeaderID);
+                //DGVDetails.DataSource = new ResultTestRepository().GetDetails(PatientTestHeaderID);
                 CleanForm();
                 var details = new ResultTestRepository().GetDetails(PatientTestHeaderID);
                 ConfigeDataGridViewPatientDetails();
-                DGVPatientTestHeader.DataSource = details;
+                DGVDetails.DataSource = details;
+                btnAddResult.Visible = false;
+                btnEditResult.Visible = false;
+                btnCancle.Visible = false;
+                lblResult.Visible = false;
+                lblTestName.Visible = false;
+                txtTestName.Visible = false;
+                txtResult.Visible = false;
             }
             catch (Exception ex)
             {
@@ -331,7 +372,7 @@ namespace Laboratory
 
         private void txtResult_TextChanged(object sender, EventArgs e)
         {
-            if (txtResult.Text.All(c=>char.IsDigit(c)))
+            if (!txtResult.Text.All(c=>char.IsDigit(c)))
             {
                 MessageBox.Show("فقط میتوانید عدد وارد کنید");
                 return;

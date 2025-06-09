@@ -234,6 +234,8 @@ namespace Laboratory
                     // فقط در صورتی که همه‌ی جواب‌ها ثبت شده باشند، گریدها را ریست می‌کنیم
                     DGVDetails.DataSource = null;
                     BindGridTestHeader(); // گرید بالا را دوباره پر کن تا رکورد حذف شده نشان داده نشود
+                    txtSearchPatient.Text = "";
+                    lstPatient.Visible = false;
                 }
                 else
                 {
@@ -376,7 +378,7 @@ namespace Laboratory
             {
                 GoToAddMode();
                 CleanForm();
-                BindGridTestHeader();
+                //BindGridTestHeader();
                 //DGVDetails.AutoGenerateColumns = false; 
                 //DGVDetails.DataSource = null;
                 btnAddResult.Visible = false;

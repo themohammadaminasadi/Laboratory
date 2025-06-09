@@ -25,5 +25,6 @@ namespace DataAccessServices.services
         bool ExsistHeader(int PatientTestHederID);
         List<ListItemResultTestHeader> GetPendingTestByPatientID(int PatientID);
         bool ExsistTestInInsuranceTest(int InsuranceID, int TestID);
+        bool ExsistTestInPatientTestDetails(int TestID , int PatientTestHeaderID);
     }
 }

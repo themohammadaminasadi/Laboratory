@@ -43,6 +43,7 @@
             this.txtUserName = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pnlInfoUser = new System.Windows.Forms.Panel();
+            this.cmbEmployeeAction = new System.Windows.Forms.ComboBox();
             this.btnShow = new System.Windows.Forms.Button();
             this.txtTitle = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -68,7 +69,6 @@
             this.ClmnEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ClmnDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.err = new System.Windows.Forms.ErrorProvider(this.components);
-            this.cmbEmployeeAction = new System.Windows.Forms.ComboBox();
             this.panel3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.pnlInfoUser.SuspendLayout();
@@ -220,6 +220,14 @@
             this.pnlInfoUser.Size = new System.Drawing.Size(887, 222);
             this.pnlInfoUser.TabIndex = 7;
             // 
+            // cmbEmployeeAction
+            // 
+            this.cmbEmployeeAction.FormattingEnabled = true;
+            this.cmbEmployeeAction.Location = new System.Drawing.Point(53, 123);
+            this.cmbEmployeeAction.Name = "cmbEmployeeAction";
+            this.cmbEmployeeAction.Size = new System.Drawing.Size(180, 32);
+            this.cmbEmployeeAction.TabIndex = 10;
+            // 
             // btnShow
             // 
             this.btnShow.BackColor = System.Drawing.SystemColors.ControlLight;
@@ -238,6 +246,7 @@
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.Size = new System.Drawing.Size(291, 31);
             this.txtTitle.TabIndex = 10;
+            this.txtTitle.TextChanged += new System.EventHandler(this.txtTitle_TextChanged);
             // 
             // label9
             // 
@@ -263,6 +272,7 @@
             this.txtNationalCode.Name = "txtNationalCode";
             this.txtNationalCode.Size = new System.Drawing.Size(291, 31);
             this.txtNationalCode.TabIndex = 6;
+            this.txtNationalCode.TextChanged += new System.EventHandler(this.txtNationalCode_TextChanged);
             // 
             // txtLastName
             // 
@@ -472,14 +482,6 @@
             // 
             this.err.BlinkRate = 500;
             this.err.ContainerControl = this;
-            // 
-            // cmbEmployeeAction
-            // 
-            this.cmbEmployeeAction.FormattingEnabled = true;
-            this.cmbEmployeeAction.Location = new System.Drawing.Point(53, 123);
-            this.cmbEmployeeAction.Name = "cmbEmployeeAction";
-            this.cmbEmployeeAction.Size = new System.Drawing.Size(180, 32);
-            this.cmbEmployeeAction.TabIndex = 10;
             // 
             // frmEmployee
             // 

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnAddPatientTest = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblNationalCodePatient = new System.Windows.Forms.Label();
@@ -126,7 +126,7 @@
             this.lblNationalCodePatient.AutoSize = true;
             this.lblNationalCodePatient.Font = new System.Drawing.Font("B Titr", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.lblNationalCodePatient.ForeColor = System.Drawing.Color.Red;
-            this.lblNationalCodePatient.Location = new System.Drawing.Point(56, 111);
+            this.lblNationalCodePatient.Location = new System.Drawing.Point(48, 111);
             this.lblNationalCodePatient.Name = "lblNationalCodePatient";
             this.lblNationalCodePatient.Size = new System.Drawing.Size(0, 29);
             this.lblNationalCodePatient.TabIndex = 10;
@@ -136,7 +136,7 @@
             this.lblPatientName.AutoSize = true;
             this.lblPatientName.Font = new System.Drawing.Font("B Titr", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.lblPatientName.ForeColor = System.Drawing.Color.Red;
-            this.lblPatientName.Location = new System.Drawing.Point(56, 61);
+            this.lblPatientName.Location = new System.Drawing.Point(48, 61);
             this.lblPatientName.Name = "lblPatientName";
             this.lblPatientName.Size = new System.Drawing.Size(0, 29);
             this.lblPatientName.TabIndex = 9;
@@ -146,7 +146,7 @@
             this.lblPatientTestHederID.AutoSize = true;
             this.lblPatientTestHederID.Font = new System.Drawing.Font("B Titr", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.lblPatientTestHederID.ForeColor = System.Drawing.Color.Red;
-            this.lblPatientTestHederID.Location = new System.Drawing.Point(56, 13);
+            this.lblPatientTestHederID.Location = new System.Drawing.Point(48, 13);
             this.lblPatientTestHederID.Name = "lblPatientTestHederID";
             this.lblPatientTestHederID.Size = new System.Drawing.Size(0, 29);
             this.lblPatientTestHederID.TabIndex = 8;
@@ -252,7 +252,7 @@
             // 
             this.btnEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnEdit.Font = new System.Drawing.Font("B Titr", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.btnEdit.Location = new System.Drawing.Point(28, 32);
+            this.btnEdit.Location = new System.Drawing.Point(28, 27);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(105, 42);
             this.btnEdit.TabIndex = 23;
@@ -354,14 +354,14 @@
             // DGVTestDetails
             // 
             this.DGVTestDetails.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(244)))), ((int)(((byte)(234)))));
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DGVTestDetails.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DGVTestDetails.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.DGVTestDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGVTestDetails.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ClmnPatientTestHederID,
@@ -525,6 +525,7 @@
             this.txtMobileNumber.Name = "txtMobileNumber";
             this.txtMobileNumber.Size = new System.Drawing.Size(200, 31);
             this.txtMobileNumber.TabIndex = 44;
+            this.txtMobileNumber.TextChanged += new System.EventHandler(this.txtMobileNumber_TextChanged);
             // 
             // label9
             // 
@@ -563,6 +564,7 @@
             this.txtNationalCode.Name = "txtNationalCode";
             this.txtNationalCode.Size = new System.Drawing.Size(200, 31);
             this.txtNationalCode.TabIndex = 39;
+            this.txtNationalCode.TextChanged += new System.EventHandler(this.txtNationalCode_TextChanged);
             // 
             // label4
             // 
@@ -635,6 +637,7 @@
             this.txtDrName.Name = "txtDrName";
             this.txtDrName.Size = new System.Drawing.Size(173, 31);
             this.txtDrName.TabIndex = 57;
+            this.txtDrName.TextChanged += new System.EventHandler(this.txtDrName_TextChanged);
             // 
             // txtAge
             // 
@@ -642,6 +645,7 @@
             this.txtAge.Name = "txtAge";
             this.txtAge.Size = new System.Drawing.Size(100, 31);
             this.txtAge.TabIndex = 58;
+            this.txtAge.TextChanged += new System.EventHandler(this.txtAge_TextChanged);
             // 
             // cmbInsurance
             // 

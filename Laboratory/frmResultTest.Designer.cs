@@ -309,7 +309,7 @@
             // 
             this.btnEditResult.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.btnEditResult.Font = new System.Drawing.Font("B Titr", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.btnEditResult.Location = new System.Drawing.Point(97, 520);
+            this.btnEditResult.Location = new System.Drawing.Point(97, 510);
             this.btnEditResult.Name = "btnEditResult";
             this.btnEditResult.Size = new System.Drawing.Size(173, 46);
             this.btnEditResult.TabIndex = 11;

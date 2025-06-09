@@ -227,6 +227,16 @@ namespace Laboratory
                 {
                     NewEmployee.Active = false;
                 }
+                if (txtNationalCode.Text.Length != 10)
+                {
+                    err.SetError(txtNationalCode, "کد ملی باید 10 رقم باشد");
+                    return;
+                }
+                if (txtPhoneNumber.Text.Length != 11)
+                {
+                    err.SetError(txtPhoneNumber, "شماره تلفن باید 11 رقم باشد");
+                    return;
+                }
                 //if (repo.ExsistDuplicateUserName(NewEmployee.UserName))
                 //{
                 //    MessageBox.Show("نام کاربری وارد شده تکراری می باشد");
@@ -295,6 +305,16 @@ namespace Laboratory
                 {
                     NewEmployee.Active = false;
                 }
+                if (txtNationalCode.Text.Length != 10)
+                {
+                    err.SetError(txtNationalCode, "کد ملی باید 10 رقم باشد");
+                    return;
+                }
+                if (txtPhoneNumber.Text.Length != 11)
+                {
+                    err.SetError(txtPhoneNumber, "شماره تلفن باید 11 رقم باشد");
+                    return;
+                }
                 if (repo.ExsistDuplicateUserName(NewEmployee.UserName))
                 {
                     MessageBox.Show("نام کاربری وارد شده تکراری می باشد");
@@ -350,12 +370,54 @@ namespace Laboratory
 
         private void txtFirstName_TextChanged(object sender, EventArgs e)
         {
-           
+            if (string.IsNullOrEmpty(txtFirstName.Text))
+            {
+                
+                return;
+            }
+            if (!char.IsLetter(txtFirstName.Text.Trim()[0]))
+            {
+                MessageBox.Show("نام باید شامل حروف باشد");
+                txtFirstName.Text = "";
+                return;
+            }
+            if (!txtFirstName.Text.Trim().Skip(1).All(c => char.IsLetter(c) || c == ' '))
+            {
+                err.SetError(txtFirstName, "نام باید رشته باشد");
+                txtFirstName.Text = "";
+                return;
+            }
+            else
+            {
+                err.Clear();
+                
+            }
         }
 
         private void txtLastName_TextChanged(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtLastName.Text))
+            err.Clear();
+
+            string lastName = txtLastName.Text.Trim();
+            if (string.IsNullOrEmpty(txtLastName.Text))
+            {
+
+                return;
+            }
+            if (!char.IsLetter(lastName[0]))
+            {
+                err.SetError(txtLastName, "نام خانوادگی باید با یک حرف شروع شود و نمی‌تواند عدد یا فاصله باشد");
+                txtLastName.Text = "";
+                return;
+            }
+
+            if (!lastName.Skip(1).All(c => char.IsLetter(c) || c == ' '))
+            {
+                err.SetError(txtLastName, "نام خانوادگی می‌تواند از کاراکتر دوم به بعد شامل فاصله باشد ولی فقط حروف و فاصله مجاز است");
+                txtLastName.Text = "";
+                return;
+            }
+            else
             {
                 err.Clear();
             }
@@ -367,6 +429,11 @@ namespace Laboratory
             {
                 err.Clear();
             }
+            if (string.IsNullOrEmpty(txtUserName.Text))
+            {
+
+                return;
+            }
         }
 
         private void txtPassword_TextChanged(object sender, EventArgs e)
@@ -375,14 +442,39 @@ namespace Laboratory
             {
                 err.Clear();
             }
+            if (string.IsNullOrEmpty(txtPassword.Text))
+            {
+
+                return;
+            }
         }
 
         private void txtPhoneNumber_TextChanged(object sender, EventArgs e)
         {
+
+            err.Clear();
+            if (string.IsNullOrEmpty(txtPhoneNumber.Text))
+            {
+
+                return;
+            }
             if (!string.IsNullOrEmpty(txtPhoneNumber.Text))
             {
                 err.Clear();
             }
+            if (!txtPhoneNumber.Text.Trim().All(c=>char.IsDigit(c)))
+            {
+                err.SetError(txtPhoneNumber, "تلفن باید عدد باشد");
+                txtPhoneNumber.Text = "";
+                return;
+            }
+            else
+            {
+                err.Clear();
+            }
+            
+            
+
         }
 
         private void btnShow_Click_1(object sender, EventArgs e)
@@ -406,6 +498,51 @@ namespace Laboratory
                 throw new Exception("ارور در دکمه show : خواهشمند است با مدیر سیستم تماس بگیرید");
             }
 
+        }
+
+        private void txtNationalCode_TextChanged(object sender, EventArgs e)
+        {
+            err.Clear();
+            if (string.IsNullOrEmpty(txtNationalCode.Text))
+            {
+
+                return;
+            }
+            if (!txtNationalCode.Text.All(c=>char.IsDigit(c)))
+            {
+                err.SetError(txtNationalCode, "کد ملی باید عدد باشد");
+                txtNationalCode.Text = "";
+                return;
+            }
+            else
+            {
+                err.Clear();
+            }
+        }
+
+        private void txtTitle_TextChanged(object sender, EventArgs e)
+        {
+            err.Clear();
+            if (string.IsNullOrEmpty(txtTitle.Text))
+            {
+
+                return;
+            }
+            if (!char.IsLetter(txtTitle.Text.Trim()[0]))
+            {
+                MessageBox.Show("عنوان باید شامل حروف باشد");
+                return;
+            }
+            if (!txtTitle.Text.Trim().Skip(1).All(c=>char.IsLetter(c) || c == ' '))
+            {
+                err.SetError(txtTitle, "عنوان باید رشته باشد");
+                txtTitle.Text = "";
+                return;
+            }
+            else
+            {
+                err.Clear();
+            }
         }
     }
 }

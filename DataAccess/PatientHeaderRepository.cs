@@ -210,5 +210,10 @@ namespace DataAccess
         {
             return db.InsuranceTests.Any(x => x.TestID == TestID && x.InsuraneID == InsuranceID);
         }
+
+        public bool ExsistTestInPatientTestDetails(int TestID , int PatientTestHeaderID)
+        {
+            return db.PatientTestDetails.Where(x=>x.PatientTestHederID == PatientTestHeaderID).Any(x => x.TestID == TestID);
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using DataAccess;
 using DoaminModel.Models;
+using DoaminModel.ViewModel.Order;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -371,10 +372,15 @@ namespace Laboratory
                 patientTestDetail.PatientTestHederID = this.PaitentHeaderID;
                 patientTestDetail.Price = Convert.ToInt64(txtPriceWithDiscount.Text);
                 patientTestDetail.Result = null;
-                patientTestDetail.Result = null;
+                
                 if (!repo.ExsistTestInInsuranceTest(InsuranceID,TestID))
                 {
                     MessageBox.Show("برای این آزمایش فرانشیز یا نوع بیمه مشخص نشده است ");
+                    return;
+                }
+                if (repo.ExsistTestInPatientTestDetails(this.TestID , this.PaitentHeaderID))
+                {
+                    MessageBox.Show("این آزمایش قبلاً وارد شده است");
                     return;
                 }
                 int PatientTestDetailID = repo.Add(patientTestDetail);
@@ -417,9 +423,9 @@ namespace Laboratory
                     }
                     else
                     {
-                        CleanForm();
                         CleanFormDetails();
                         CleanError();
+                        GoToAddMode();
                     }
                 }
                 if (e.ColumnIndex == 7)
@@ -476,6 +482,11 @@ namespace Laboratory
                 patientTestDetail.Result = null;
                 patientTestDetail.HasStar = null;
                 patientTestDetail.Price = Convert.ToInt64(txtPriceTest.Text);
+                if (repo.ExsistTestInPatientTestDetails(this.TestID , this.PaitentHeaderID))
+                {
+                    MessageBox.Show("این آزمایش قبلاً وارد شده است");
+                    return;
+                }
                 repo.UpdatePatientDetails(patientTestDetail);
                 GoToAddMode();
                 BindGrid();
@@ -600,6 +611,99 @@ namespace Laboratory
             {
 
                 throw new Exception("ارور در دکمه کنسل آزمایش : خواهشمند است با مدیر سیستم تماس بگیرید");
+            }
+        }
+
+        private void txtNationalCode_TextChanged(object sender, EventArgs e)
+        {
+            err.Clear();
+            if (string.IsNullOrEmpty(txtNationalCode.Text))
+            {
+                return;
+            }
+            if (!string.IsNullOrEmpty(txtNationalCode.Text))
+            {
+                err.Clear();
+            }
+            if (!txtNationalCode.Text.Trim().All(c => char.IsDigit(c)))
+            {
+                err.SetError(txtNationalCode, "کد ملی باید عدد باشد");
+                txtNationalCode.Text = "";
+                return;
+            }
+            else
+            {
+                err.Clear();
+            }
+        }
+
+        private void txtMobileNumber_TextChanged(object sender, EventArgs e)
+        {
+            err.Clear();
+            if (string.IsNullOrEmpty(txtMobileNumber.Text))
+            {
+                return;
+            }
+            if (!string.IsNullOrEmpty(txtMobileNumber.Text))
+            {
+                err.Clear();
+            }
+            if (!txtMobileNumber.Text.Trim().All(c => char.IsDigit(c)))
+            {
+                err.SetError(txtMobileNumber, "موبایل باید عدد باشد");
+                txtMobileNumber.Text = "";
+                return;
+            }
+            else
+            {
+                err.Clear();
+            }
+        }
+
+        private void txtDrName_TextChanged(object sender, EventArgs e)
+        {
+            err.Clear();
+            if (string.IsNullOrEmpty(txtDrName.Text))
+            {
+                return;
+            }
+            if (!char.IsLetter(txtDrName.Text.Trim()[0]))
+            {
+                MessageBox.Show("نام دکتر باید شامل حروف باشد");
+                return;
+            }
+            if (!txtDrName.Text.Trim().Skip(1).All(c => char.IsLetter(c) || c == ' '))
+            {
+                err.SetError(txtDrName, "نام دکتر باید رشته باشد");
+                txtDrName.Text = "";
+                return;
+            }
+            else
+            {
+                err.Clear();
+            }
+        }
+
+        private void txtAge_TextChanged(object sender, EventArgs e)
+        {
+            err.Clear();
+            if (string.IsNullOrEmpty(txtAge.Text))
+            {
+                return;
+            }
+            if (!string.IsNullOrEmpty(txtAge.Text))
+            {
+                err.Clear();
+            }
+            if (!txtAge.Text.Trim().All(c => char.IsDigit(c)))
+            {
+                err.SetError(txtAge, "موبایل باید عدد باشد");
+                txtAge.Text = "";
+                return;
+            }
+            else
+            {
+                err.Clear();
             }
         }
     }

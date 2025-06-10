@@ -43,12 +43,32 @@ namespace Laboratory
                 throw new Exception("ارور در رفتن فرم به مد ویرایش : خواهشمند است با پشتیبانی تماس بگیرید" + ex.Message);
             }
         }
+        private void BindComboEmployee()
+        {
+            try
+            {
+                var listCombo = new DataAccess.EmployeeRepository().GetAll();
+                listCombo.Insert(0, new DoaminModel.Models.Employee { EmployeeID = -1, LastName = "... انتخاب کنید ...." });
+
+                cmbEmployee.DataSource = null;
+                cmbEmployee.ValueMember = "EmployeeID";
+                cmbEmployee.DisplayMember = "LastName";
+                cmbEmployee.DataSource = listCombo;
+
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("ارور در Combo Box بیمه : خواهشمند است با پشتیبانی تماس بگیرید" + ex);
+            }
+        }
         private void BindCombo()
         {
             try
             {
                 var listCombo = new DataAccess.InsuranceRepository().GetAll();
-                listCombo.Insert(0, new DoaminModel.Models.Insurance { InsuranceID = -1, InsuranceTypeName = "انتخاب کنید" });
+                listCombo.Insert(0, new DoaminModel.Models.Insurance { InsuranceID = -1, InsuranceTypeName  = "انتخاب کنید" });
 
                 cmbInsurance.SelectedIndexChanged -= cmbInsurance_SelectedIndexChanged; // ❌ غیرفعال‌سازی
 
@@ -112,6 +132,10 @@ namespace Laboratory
                     if (patientTestDetail.Result.HasValue)
                     {
                         GoToEditMode();
+                        lblTestName.Visible = true;
+                        lblResult.Visible = true;
+                        txtTestName.Visible = true;
+                        txtResult.Visible = true;
                         txtResult.Text = patientTestDetail.Result.ToString();
                         txtTestName.Text = patientTestDetail.Test.TestName;
                         txtTestName.Enabled = false;
@@ -119,6 +143,9 @@ namespace Laboratory
                     else if (!patientTestDetail.Result.HasValue)
                     {
                         MessageBox.Show("این آزمایش نتیجه ندارد ");
+                        CleanEditTest();
+                        btnCancle.Visible = false;
+                        btnEditResult.Visible = false;  
                         return;
                     }
 
@@ -149,6 +176,20 @@ namespace Laboratory
 
             ls = BuildSearchFilters(); // ساختن فیلتر از نو
 
+            bool isAnyFilterApplied =
+           !string.IsNullOrWhiteSpace(ls.FullName) ||
+           !string.IsNullOrWhiteSpace(ls.NationalCode) ||
+           !string.IsNullOrWhiteSpace(ls.MobileNumer) ||
+           !string.IsNullOrWhiteSpace(ls.DrName) ||
+           (ls.EmployeeID != 0) ||
+           ls.FromAge.HasValue ||
+           ls.ToAge.HasValue ||
+           ls.FromHederDate.HasValue ||
+           ls.ToHederDate.HasValue ||
+           (ls.InsuranceID != 0) ||
+           ls.Gender.HasValue ||
+           ls.PatientTestHederID != 0;
+
             var lst = DoSearch(ls);
 
             foreach (var item in lst)
@@ -173,6 +214,9 @@ namespace Laboratory
 
             if (!string.IsNullOrWhiteSpace(txtDrName.Text))
                 filter.DrName = txtDrName.Text;
+
+            if (cmbEmployee.SelectedIndex > 0)
+                filter.EmployeeID = Convert.ToInt32(cmbEmployee.SelectedValue);
 
             if (!string.IsNullOrWhiteSpace(txtSearchFromAge.Text))
                 filter.FromAge = Convert.ToInt32(txtSearchFromAge.Text);
@@ -206,8 +250,12 @@ namespace Laboratory
             try
             {
                 BindCombo();
+                BindComboEmployee();
                 GoToAddMode();
+                CleanGridHeader();
                 CleanGridDetails();
+                CleanEditTest();
+                lblTotalPrice.Text = "0";
 
                 //تنظیم فرمت تاریخ :  
                 DGVTestHeader.Columns["ClmnHederDate"].DefaultCellStyle.Format = "yyyy/MM/dd";
@@ -226,7 +274,29 @@ namespace Laboratory
 
             try
             {
-                ApplySearchAndTotal();
+                
+                if (txtFullName.Text.Length == 0)
+                {
+                    ApplySearchAndTotal();
+                    return;
+                }
+                if (!char.IsLetter(txtFullName.Text.Trim()[0]))
+                {
+                    MessageBox.Show("نام خانوادگی باید شامل حروف باشد");
+                    txtFullName.Text = "";
+                    return;
+                }
+                if (!txtFullName.Text.Skip(1).All(x=>char.IsLetter(x) || x == ' '))
+                {
+                    MessageBox.Show("نام خانوادگی باید شامل حروف باشد");
+                    txtFullName.Text = "";
+                    return;
+                }
+                else
+                {
+                    ApplySearchAndTotal();
+                }
+                    
             }
             catch (Exception ex)
             {
@@ -241,6 +311,17 @@ namespace Laboratory
 
             try
             {
+                if (txtNationalCode.Text.Trim().Length == 0)
+                {
+                    ApplySearchAndTotal();
+                    return;
+                }
+                if (!txtNationalCode.Text.Trim().All(x=>char.IsDigit(x)))
+                {
+                    MessageBox.Show("کد ملی باید حروف باشد");
+                    txtNationalCode.Text = "";
+                    return;
+                }
                 ApplySearchAndTotal();
             }
             catch (Exception ex)
@@ -255,6 +336,17 @@ namespace Laboratory
 
             try
             {
+                if (txtPhoneNumber.Text.Trim().Length == 0)
+                {
+                    ApplySearchAndTotal();
+                    return;
+                }
+                if (!txtPhoneNumber.Text.Trim().All(x => char.IsDigit(x)))
+                {
+                    MessageBox.Show("کد ملی باید حروف باشد");
+                    txtPhoneNumber.Text = "";
+                    return;
+                }
                 ApplySearchAndTotal();
             }
             catch (Exception ex)
@@ -269,6 +361,23 @@ namespace Laboratory
 
             try
             {
+                if (txtDrName.Text.Trim().Length == 0)
+                {
+                    ApplySearchAndTotal();
+                    return;
+                }
+                if (!char.IsLetter(txtDrName.Text.Trim()[0]))
+                {
+                    MessageBox.Show("نام دکتر باید شامل حروف باشد");
+                    txtDrName.Text = "";
+                    return;
+                }
+                if (!txtDrName.Text.Trim().Skip(1).All(x=> char.IsLetter(x) || x== ' '))
+                {
+                    MessageBox.Show("نام دکتر باید شامل حروف باشد");
+                    txtDrName.Text = "";
+                    return;
+                }
                 ApplySearchAndTotal();
             }
             catch (Exception ex)
@@ -283,6 +392,17 @@ namespace Laboratory
 
             try
             {
+                if (txtSearchFromAge.Text.Trim().Length == 0)
+                {
+                    ApplySearchAndTotal();
+                    return;
+                }
+                if (!txtSearchFromAge.Text.Trim().All(x=>char.IsDigit(x)))
+                {
+                    MessageBox.Show("سن باید عدد باشد");
+                    txtSearchFromAge.Text = "";
+                    return;
+                }
                 ApplySearchAndTotal();
             }
             catch (Exception ex)
@@ -297,6 +417,17 @@ namespace Laboratory
 
             try
             {
+                if (txtSearchToAge.Text.Trim().Length == 0)
+                {
+                    ApplySearchAndTotal();
+                    return;
+                }
+                if (!txtSearchToAge.Text.Trim().All(x=>char.IsDigit(x)))
+                {
+                    MessageBox.Show("سن باید عدد باشد");
+                    txtSearchToAge.Text = "";
+                    return;
+                }
                 ApplySearchAndTotal();
             }
             catch (Exception ex)
@@ -311,6 +442,7 @@ namespace Laboratory
 
             try
             {
+                if (!faDatePickerFrom.SelectedDateTime.HasValue) return;
                 ApplySearchAndTotal();
             }
             catch (Exception ex)
@@ -325,6 +457,7 @@ namespace Laboratory
 
             try
             {
+                if (!faDatePickerToDate.SelectedDateTime.HasValue) return;
                 ApplySearchAndTotal();
             }
             catch (Exception ex)
@@ -446,6 +579,7 @@ namespace Laboratory
                 DGVDetails.DataSource = new ResultTestRepository().GetDetails(PatientTestHederID);
                 CleanForm();
                 GoToAddMode();
+                CleanEditTest();
             }
             catch (Exception ex)
             {
@@ -476,12 +610,20 @@ namespace Laboratory
                 CleanForm();
                 DGVDetails.AutoGenerateColumns = false;
                 DGVDetails.DataSource = null;
+                CleanEditTest();
             }
             catch (Exception ex)
             {
 
                 throw new Exception("ارور در دکمه انصراف : خواهشمند است با پشتیبانی تماس بگیرید" + ex.Message);
             }
+        }
+        private void CleanEditTest()
+        {
+            lblResult.Visible = false;
+            lblTestName.Visible = false;
+            txtResult.Visible = false;
+            txtTestName.Visible = false;
         }
 
         private void GoToAddMode()
@@ -495,6 +637,41 @@ namespace Laboratory
             {
 
                 throw new Exception("ارور در متد gotoAddMode : خواهشمند است با پشتیبانی تماس بگیرید" + ex.Message);
+            }
+        }
+
+        private void txtEmployeer_TextChanged(object sender, EventArgs e)
+        {
+            if (txtEmployeer.Text.Trim().Length == 0)
+            {
+                ApplySearchAndTotal();
+                return;
+            }
+            if (!char.IsLetter(txtEmployeer.Text.Trim()[0]))
+            {
+                MessageBox.Show("نام دکتر باید شامل حروف باشد");
+                txtEmployeer.Text = "";
+                return;
+            }
+            if (!txtEmployeer.Text.Trim().Skip(1).All(x => char.IsLetter(x) || x== ' '))
+            {
+                MessageBox.Show("نام دکتر باید شامل حروف باشد");
+                txtEmployeer.Text = "";
+                return;
+            }
+            ApplySearchAndTotal();
+        }
+
+        private void cmbEmployee_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                ApplySearchAndTotal();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
             }
         }
     }

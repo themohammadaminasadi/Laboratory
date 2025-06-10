@@ -79,10 +79,11 @@
             this.label12 = new System.Windows.Forms.Label();
             this.btnCancle = new System.Windows.Forms.Button();
             this.btnEditResult = new System.Windows.Forms.Button();
-            this.label14 = new System.Windows.Forms.Label();
+            this.lblTestName = new System.Windows.Forms.Label();
             this.txtTestName = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
+            this.lblResult = new System.Windows.Forms.Label();
             this.txtResult = new System.Windows.Forms.TextBox();
+            this.cmbEmployee = new System.Windows.Forms.ComboBox();
             this.grpGender.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVDetails)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGVTestHeader)).BeginInit();
@@ -308,6 +309,7 @@
             this.txtEmployeer.Name = "txtEmployeer";
             this.txtEmployeer.Size = new System.Drawing.Size(291, 31);
             this.txtEmployeer.TabIndex = 68;
+            this.txtEmployeer.TextChanged += new System.EventHandler(this.txtEmployeer_TextChanged);
             // 
             // label8
             // 
@@ -588,7 +590,7 @@
             // 
             this.btnEditResult.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.btnEditResult.Font = new System.Drawing.Font("B Titr", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.btnEditResult.Location = new System.Drawing.Point(110, 731);
+            this.btnEditResult.Location = new System.Drawing.Point(112, 731);
             this.btnEditResult.Name = "btnEditResult";
             this.btnEditResult.Size = new System.Drawing.Size(117, 46);
             this.btnEditResult.TabIndex = 79;
@@ -596,15 +598,15 @@
             this.btnEditResult.UseVisualStyleBackColor = false;
             this.btnEditResult.Click += new System.EventHandler(this.btnEditResult_Click);
             // 
-            // label14
+            // lblTestName
             // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("B Titr", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label14.Location = new System.Drawing.Point(38, 597);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(61, 30);
-            this.label14.TabIndex = 78;
-            this.label14.Text = "آزمایش";
+            this.lblTestName.AutoSize = true;
+            this.lblTestName.Font = new System.Drawing.Font("B Titr", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.lblTestName.Location = new System.Drawing.Point(38, 597);
+            this.lblTestName.Name = "lblTestName";
+            this.lblTestName.Size = new System.Drawing.Size(61, 30);
+            this.lblTestName.TabIndex = 78;
+            this.lblTestName.Text = "آزمایش";
             // 
             // txtTestName
             // 
@@ -613,15 +615,15 @@
             this.txtTestName.Size = new System.Drawing.Size(241, 31);
             this.txtTestName.TabIndex = 77;
             // 
-            // label16
+            // lblResult
             // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("B Titr", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label16.Location = new System.Drawing.Point(53, 654);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(45, 30);
-            this.label16.TabIndex = 75;
-            this.label16.Text = "نتبجه";
+            this.lblResult.AutoSize = true;
+            this.lblResult.Font = new System.Drawing.Font("B Titr", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.lblResult.Location = new System.Drawing.Point(53, 654);
+            this.lblResult.Name = "lblResult";
+            this.lblResult.Size = new System.Drawing.Size(45, 30);
+            this.lblResult.TabIndex = 75;
+            this.lblResult.Text = "نتبجه";
             // 
             // txtResult
             // 
@@ -630,17 +632,27 @@
             this.txtResult.Size = new System.Drawing.Size(241, 31);
             this.txtResult.TabIndex = 74;
             // 
+            // cmbEmployee
+            // 
+            this.cmbEmployee.FormattingEnabled = true;
+            this.cmbEmployee.Location = new System.Drawing.Point(631, 358);
+            this.cmbEmployee.Name = "cmbEmployee";
+            this.cmbEmployee.Size = new System.Drawing.Size(294, 32);
+            this.cmbEmployee.TabIndex = 81;
+            this.cmbEmployee.SelectedIndexChanged += new System.EventHandler(this.cmbEmployee_SelectedIndexChanged);
+            // 
             // frmOrderReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(247)))), ((int)(((byte)(240)))));
             this.ClientSize = new System.Drawing.Size(1378, 922);
+            this.Controls.Add(this.cmbEmployee);
             this.Controls.Add(this.btnCancle);
             this.Controls.Add(this.btnEditResult);
-            this.Controls.Add(this.label14);
+            this.Controls.Add(this.lblTestName);
             this.Controls.Add(this.txtTestName);
-            this.Controls.Add(this.label16);
+            this.Controls.Add(this.lblResult);
             this.Controls.Add(this.txtResult);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.DGVDetails);
@@ -739,9 +751,10 @@
         private System.Windows.Forms.DataGridViewButtonColumn ClmnEditDetailsTest;
         private System.Windows.Forms.Button btnCancle;
         private System.Windows.Forms.Button btnEditResult;
-        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label lblTestName;
         private System.Windows.Forms.TextBox txtTestName;
-        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label lblResult;
         private System.Windows.Forms.TextBox txtResult;
+        private System.Windows.Forms.ComboBox cmbEmployee;
     }
 }

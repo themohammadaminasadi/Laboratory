@@ -28,9 +28,9 @@ namespace DataAccess
             {
                 q = q.Where(x => (x.Patient.FirstName + " " + x.Patient.LastName).Contains(ls.FullName));
             }
-            if (!string.IsNullOrEmpty(ls.Employee))
+            if (ls.EmployeeID > 0)
             {
-                q = q.Where(x => (x.Employee.FirstName + " " + x.Employee.LastName).StartsWith(ls.Employee));
+                q = q.Where(x => x.EmployeeID == ls.EmployeeID);
             }
             if (ls.InsuranceID > 0)
             {
@@ -81,7 +81,8 @@ namespace DataAccess
                              DrName = q1.DrName,
                              HederDate = q1.HederDate,
                              NationalCode = q1.NationalCode,
-                             FullNamePaitent = q1.Patient.FirstName + q1.Patient.LastName,
+                             FullNamePaitent = q1.Patient.FirstName + "   " + q1.Patient.LastName,
+                             
                          };
             return Result.ToList();
         }

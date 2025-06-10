@@ -15,6 +15,7 @@ namespace DoaminModel.ViewModel.ResultTest
         public string NationalCode { get; set; }
         public int Age { get; set; }
         public string FullNamePaitent { get; set; }
+        
 
     }
 }

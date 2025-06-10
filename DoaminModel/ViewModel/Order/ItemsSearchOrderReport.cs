@@ -19,7 +19,9 @@ namespace DoaminModel.ViewModel.Order
         public string NationalCode { get; set; }
         public string MobileNumer { get; set; }
         public int InsuranceID { get; set; }
-        public string Employee { get; set; }
+        public int EmployeeID { get; set; }
         public bool? Gender { get; set; }
+        
+
     }
 }

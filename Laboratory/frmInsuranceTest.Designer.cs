@@ -31,6 +31,15 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewInsuraceTest = new System.Windows.Forms.DataGridView();
+            this.ClmnInsuranceTestID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClmnTestID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClmnTestName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClmnInsuranceID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClmnInsuranceType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClmnYear = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClmnDiscount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClmnEdit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ClmnDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbInsurance = new System.Windows.Forms.ComboBox();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -47,15 +56,6 @@
             this.err = new System.Windows.Forms.ErrorProvider(this.components);
             this.lblErrorDiscount = new System.Windows.Forms.Label();
             this.lblErrorYear = new System.Windows.Forms.Label();
-            this.ClmnInsuranceTestID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClmnTestID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClmnTestName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClmnInsuranceID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClmnInsuranceType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClmnYear = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClmnDiscount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClmnEdit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ClmnDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewInsuraceTest)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.err)).BeginInit();
@@ -91,6 +91,64 @@
             this.dataGridViewInsuraceTest.Size = new System.Drawing.Size(1340, 706);
             this.dataGridViewInsuraceTest.TabIndex = 0;
             this.dataGridViewInsuraceTest.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewInsuraceTest_CellContentClick);
+            // 
+            // ClmnInsuranceTestID
+            // 
+            this.ClmnInsuranceTestID.DataPropertyName = "InsuranceTestID";
+            this.ClmnInsuranceTestID.HeaderText = "شناسه";
+            this.ClmnInsuranceTestID.Name = "ClmnInsuranceTestID";
+            // 
+            // ClmnTestID
+            // 
+            this.ClmnTestID.DataPropertyName = "TestID";
+            this.ClmnTestID.HeaderText = "شناسه آزمایش";
+            this.ClmnTestID.Name = "ClmnTestID";
+            this.ClmnTestID.Visible = false;
+            // 
+            // ClmnTestName
+            // 
+            this.ClmnTestName.DataPropertyName = "TestName";
+            this.ClmnTestName.HeaderText = "نام آزمایش";
+            this.ClmnTestName.Name = "ClmnTestName";
+            // 
+            // ClmnInsuranceID
+            // 
+            this.ClmnInsuranceID.DataPropertyName = "InsuranceID";
+            this.ClmnInsuranceID.HeaderText = "شناسه بیمه";
+            this.ClmnInsuranceID.Name = "ClmnInsuranceID";
+            this.ClmnInsuranceID.Visible = false;
+            // 
+            // ClmnInsuranceType
+            // 
+            this.ClmnInsuranceType.DataPropertyName = "InsuranceType";
+            this.ClmnInsuranceType.HeaderText = "نام بیمه";
+            this.ClmnInsuranceType.Name = "ClmnInsuranceType";
+            // 
+            // ClmnYear
+            // 
+            this.ClmnYear.DataPropertyName = "Year";
+            this.ClmnYear.HeaderText = "سال";
+            this.ClmnYear.Name = "ClmnYear";
+            // 
+            // ClmnDiscount
+            // 
+            this.ClmnDiscount.DataPropertyName = "Discount";
+            this.ClmnDiscount.HeaderText = "فرانشیز";
+            this.ClmnDiscount.Name = "ClmnDiscount";
+            // 
+            // ClmnEdit
+            // 
+            this.ClmnEdit.HeaderText = "ویرایش";
+            this.ClmnEdit.Name = "ClmnEdit";
+            this.ClmnEdit.Text = "ویرایش";
+            this.ClmnEdit.UseColumnTextForButtonValue = true;
+            // 
+            // ClmnDelete
+            // 
+            this.ClmnDelete.HeaderText = "حذف";
+            this.ClmnDelete.Name = "ClmnDelete";
+            this.ClmnDelete.Text = "حذف";
+            this.ClmnDelete.UseColumnTextForButtonValue = true;
             // 
             // label1
             // 
@@ -190,6 +248,7 @@
             this.txtDiscount.Name = "txtDiscount";
             this.txtDiscount.Size = new System.Drawing.Size(187, 31);
             this.txtDiscount.TabIndex = 13;
+            this.txtDiscount.TextChanged += new System.EventHandler(this.txtDiscount_TextChanged);
             // 
             // label3
             // 
@@ -242,64 +301,6 @@
             this.lblErrorYear.Name = "lblErrorYear";
             this.lblErrorYear.Size = new System.Drawing.Size(0, 19);
             this.lblErrorYear.TabIndex = 18;
-            // 
-            // ClmnInsuranceTestID
-            // 
-            this.ClmnInsuranceTestID.DataPropertyName = "InsuranceTestID";
-            this.ClmnInsuranceTestID.HeaderText = "شناسه";
-            this.ClmnInsuranceTestID.Name = "ClmnInsuranceTestID";
-            // 
-            // ClmnTestID
-            // 
-            this.ClmnTestID.DataPropertyName = "TestID";
-            this.ClmnTestID.HeaderText = "شناسه آزمایش";
-            this.ClmnTestID.Name = "ClmnTestID";
-            this.ClmnTestID.Visible = false;
-            // 
-            // ClmnTestName
-            // 
-            this.ClmnTestName.DataPropertyName = "TestName";
-            this.ClmnTestName.HeaderText = "نام آزمایش";
-            this.ClmnTestName.Name = "ClmnTestName";
-            // 
-            // ClmnInsuranceID
-            // 
-            this.ClmnInsuranceID.DataPropertyName = "InsuranceID";
-            this.ClmnInsuranceID.HeaderText = "شناسه بیمه";
-            this.ClmnInsuranceID.Name = "ClmnInsuranceID";
-            this.ClmnInsuranceID.Visible = false;
-            // 
-            // ClmnInsuranceType
-            // 
-            this.ClmnInsuranceType.DataPropertyName = "InsuranceType";
-            this.ClmnInsuranceType.HeaderText = "نام بیمه";
-            this.ClmnInsuranceType.Name = "ClmnInsuranceType";
-            // 
-            // ClmnYear
-            // 
-            this.ClmnYear.DataPropertyName = "Year";
-            this.ClmnYear.HeaderText = "سال";
-            this.ClmnYear.Name = "ClmnYear";
-            // 
-            // ClmnDiscount
-            // 
-            this.ClmnDiscount.DataPropertyName = "Discount";
-            this.ClmnDiscount.HeaderText = "فرانشیز";
-            this.ClmnDiscount.Name = "ClmnDiscount";
-            // 
-            // ClmnEdit
-            // 
-            this.ClmnEdit.HeaderText = "ویرایش";
-            this.ClmnEdit.Name = "ClmnEdit";
-            this.ClmnEdit.Text = "ویرایش";
-            this.ClmnEdit.UseColumnTextForButtonValue = true;
-            // 
-            // ClmnDelete
-            // 
-            this.ClmnDelete.HeaderText = "حذف";
-            this.ClmnDelete.Name = "ClmnDelete";
-            this.ClmnDelete.Text = "حذف";
-            this.ClmnDelete.UseColumnTextForButtonValue = true;
             // 
             // frmInsuranceTest
             // 

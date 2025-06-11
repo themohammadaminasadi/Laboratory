@@ -190,6 +190,15 @@ namespace Laboratory
            ls.Gender.HasValue ||
            ls.PatientTestHederID != 0;
 
+
+            if (!isAnyFilterApplied)
+            {
+                CleanGridDetails();
+                CleanGridHeader();
+                lblTotalPrice.Text = "0";
+                return;
+            }
+
             var lst = DoSearch(ls);
 
             foreach (var item in lst)
@@ -442,7 +451,6 @@ namespace Laboratory
 
             try
             {
-                if (!faDatePickerFrom.SelectedDateTime.HasValue) return;
                 ApplySearchAndTotal();
             }
             catch (Exception ex)
@@ -457,7 +465,6 @@ namespace Laboratory
 
             try
             {
-                if (!faDatePickerToDate.SelectedDateTime.HasValue) return;
                 ApplySearchAndTotal();
             }
             catch (Exception ex)
@@ -640,27 +647,7 @@ namespace Laboratory
             }
         }
 
-        private void txtEmployeer_TextChanged(object sender, EventArgs e)
-        {
-            if (txtEmployeer.Text.Trim().Length == 0)
-            {
-                ApplySearchAndTotal();
-                return;
-            }
-            if (!char.IsLetter(txtEmployeer.Text.Trim()[0]))
-            {
-                MessageBox.Show("نام دکتر باید شامل حروف باشد");
-                txtEmployeer.Text = "";
-                return;
-            }
-            if (!txtEmployeer.Text.Trim().Skip(1).All(x => char.IsLetter(x) || x== ' '))
-            {
-                MessageBox.Show("نام دکتر باید شامل حروف باشد");
-                txtEmployeer.Text = "";
-                return;
-            }
-            ApplySearchAndTotal();
-        }
+   
 
         private void cmbEmployee_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -673,6 +660,23 @@ namespace Laboratory
 
                 throw new Exception(ex.Message);
             }
+        }
+
+        private void txtPatientHeaderID_TextChanged(object sender, EventArgs e)
+        {
+
+            if (txtPatientHeaderID.Text.Trim().Length == 0)
+            {
+                ApplySearchAndTotal();
+                return;
+            }
+            if (!txtPatientHeaderID.Text.Trim().All(x => char.IsDigit(x)))
+            {
+                MessageBox.Show("کد آزمایش باید عدد باشد");
+                txtPatientHeaderID.Text = "";
+                return;
+            }
+            ApplySearchAndTotal();
         }
     }
 }

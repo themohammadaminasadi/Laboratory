@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace Laboratory
 {
-    public partial class frmEmployee: Form
+    public partial class frmEmployee : Form
     {
         private int EmployeeID = 0;
         bool VariableShow = true;
@@ -52,7 +52,7 @@ namespace Laboratory
                 }
             }
 
-            
+
             txtPassword.Text = "";
             txtUserName.Text = "";
             txtFirstName.Text = "";
@@ -102,7 +102,7 @@ namespace Laboratory
 
                 throw new Exception("ارور در هنگام لود صفحه : خواهشمند است با راهبر سیستم تماس بگیرید");
             }
-         
+
 
         }
 
@@ -151,7 +151,7 @@ namespace Laboratory
                             err.Clear();
                             GoToAddMode();
                         }
-                          
+
                     }
                 }
             }
@@ -160,7 +160,7 @@ namespace Laboratory
 
                 throw new Exception("ارور در فرم کارمندان : خواهشمند است با راهبر سیستم تماس بگیرید");
             }
-       
+
         }
 
         private void btnCancle_Click(object sender, EventArgs e)
@@ -175,7 +175,7 @@ namespace Laboratory
 
                 throw new Exception("خواهشمند است با مدیر سیستم تماس بگیرید");
             }
-           
+
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -253,7 +253,7 @@ namespace Laboratory
 
                 throw new Exception("ارور در دکمه آپدیت : خواهمشند است با مدیر سیستم تماس بگیرید");
             }
-         
+
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -331,7 +331,7 @@ namespace Laboratory
 
                 throw new Exception("ارور در دکمه اضافه کردن : خواهشمند است با مدیر سیستم تماس  بگیرید");
             }
-          
+
 
         }
 
@@ -342,7 +342,7 @@ namespace Laboratory
 
         private void lblSee_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void btnShow_Click(object sender, EventArgs e)
@@ -365,14 +365,17 @@ namespace Laboratory
 
                 throw new Exception("ارور در دکمه show : خواهشمند است با مدیر سیستم تماس بگیرید");
             }
-          
+
         }
 
         private void txtFirstName_TextChanged(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtFirstName.Text))
             {
-                
+                return;
+            }
+            if (txtFirstName.Text.Length == 0)
+            {
                 return;
             }
             if (!char.IsLetter(txtFirstName.Text.Trim()[0]))
@@ -390,7 +393,7 @@ namespace Laboratory
             else
             {
                 err.Clear();
-                
+
             }
         }
 
@@ -401,17 +404,19 @@ namespace Laboratory
             string lastName = txtLastName.Text.Trim();
             if (string.IsNullOrEmpty(txtLastName.Text))
             {
-
                 return;
             }
-            if (!char.IsLetter(lastName[0]))
+            if (txtFirstName.Text.Length == 0)
             {
-                err.SetError(txtLastName, "نام خانوادگی باید با یک حرف شروع شود و نمی‌تواند عدد یا فاصله باشد");
+                return;
+            }
+            if (!char.IsLetter(txtLastName.Text.Trim()[0]))
+            {
+                MessageBox.Show("نام خانوادگی باید شامل حروف باشد");
                 txtLastName.Text = "";
                 return;
             }
-
-            if (!lastName.Skip(1).All(c => char.IsLetter(c) || c == ' '))
+            if (!txtLastName.Text.Trim().Skip(1).All(c => char.IsLetter(c) || c == ' '))
             {
                 err.SetError(txtLastName, "نام خانوادگی می‌تواند از کاراکتر دوم به بعد شامل فاصله باشد ولی فقط حروف و فاصله مجاز است");
                 txtLastName.Text = "";
@@ -453,9 +458,8 @@ namespace Laboratory
         {
 
             err.Clear();
-            if (string.IsNullOrEmpty(txtPhoneNumber.Text))
+            if (string.IsNullOrEmpty(txtPhoneNumber.Text) || txtPhoneNumber.Text.Length == 0)
             {
-
                 return;
             }
             if (!string.IsNullOrEmpty(txtPhoneNumber.Text))
@@ -503,9 +507,8 @@ namespace Laboratory
         private void txtNationalCode_TextChanged(object sender, EventArgs e)
         {
             err.Clear();
-            if (string.IsNullOrEmpty(txtNationalCode.Text))
+            if (string.IsNullOrEmpty(txtNationalCode.Text) || txtNationalCode.Text.Length == 0)
             {
-
                 return;
             }
             if (!txtNationalCode.Text.All(c=>char.IsDigit(c)))
@@ -521,11 +524,11 @@ namespace Laboratory
         }
 
         private void txtTitle_TextChanged(object sender, EventArgs e)
+
         {
             err.Clear();
-            if (string.IsNullOrEmpty(txtTitle.Text))
+            if (string.IsNullOrEmpty(txtTitle.Text) || txtTitle.Text.Length == 0)
             {
-
                 return;
             }
             if (!char.IsLetter(txtTitle.Text.Trim()[0]))

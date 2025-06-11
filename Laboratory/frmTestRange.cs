@@ -397,42 +397,100 @@ namespace Laboratory
 
         private void txtSearchFromAge_TextChanged(object sender, EventArgs e)
         {
-            if (!txtSearchFromAge.Text.All(c=>char.IsDigit(c)))
+            try
             {
-                MessageBox.Show("باید عدد وارد کنید");
+                if (txtSearchFromAge.Text.Trim().Length == 0)
+                {
+                    return;
+                }
+                if (!txtSearchFromAge.Text.Trim().All(x => char.IsDigit(x)))
+                {
+                    MessageBox.Show("کمترین سن باید عدد باشد");
+                    txtSearchFromAge.Text = "";
+                    return;
+                }
+                DoSearch();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("خواهشمند است با مدیر سیستم تماس بگیرید" +  ex.Message);
                 return;
             }
-            DoSearch();
         }
 
         private void txtSearchToAge_TextChanged(object sender, EventArgs e)
         {
-            if (!txtSearchToAge.Text.All(c => char.IsDigit(c)))
+            try
             {
-                MessageBox.Show("باید عدد وارد کنید");
+                if (txtSearchToAge.Text.Trim().Length == 0)
+                {
+                    return;
+                }
+                if (!txtSearchToAge.Text.Trim().All(x => char.IsDigit(x)))
+                {
+                    MessageBox.Show("بیشترین سن باید عدد باشد");
+                    txtSearchToAge.Text = "";
+                    return;
+                }
+                DoSearch();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("خواهشمند است با مدیر سیستم تماس بگیرید" +  ex.Message);
                 return;
             }
-            DoSearch();
         }
 
         private void txtSearchFromMinum_TextChanged(object sender, EventArgs e)
         {
-            if (!txtSearchFromMinum.Text.All(c => char.IsDigit(c)))
+            try
             {
-                MessageBox.Show("باید عدد وارد کنید");
+                if (txtSearchFromMinum.Text.Trim().Length == 0)
+                {
+                    return;
+                }
+                if (!txtSearchFromMinum.Text.Trim().All(x => char.IsDigit(x)))
+                {
+                    MessageBox.Show("کمترین رنج باید عدد باشد");
+                    txtSearchFromMinum.Text = "";
+                    return;
+                }
+                DoSearch();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("خواهشمند است با مدیر سیستم تماس بگیرید" +  ex.Message);
                 return;
             }
-            DoSearch();
+            
         }
 
         private void txtSearchToMaximum_TextChanged(object sender, EventArgs e)
         {
-            if (!txtSearchToMaximum.Text.All(c => char.IsDigit(c)))
+            try
             {
-                MessageBox.Show("باید عدد وارد کنید");
+                if (txtSearchToMaximum.Text.Trim().Length == 0)
+                {
+                    return;
+                }
+                if (!txtSearchToMaximum.Text.Trim().All(x => char.IsDigit(x)))
+                {
+                    MessageBox.Show("بیشترین رنج باید عدد باشد");
+                    txtSearchToMaximum.Text = "";
+                    return;
+                }
+                DoSearch();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("خواهشمند است با مدیر سیستم تماس بگیرید" +  ex.Message);
                 return;
             }
-            DoSearch();
+            
         }
 
         private void CKBSearchHazard_Click(object sender, EventArgs e)
@@ -462,36 +520,92 @@ namespace Laboratory
 
         private void txtMinValue_TextChanged(object sender, EventArgs e)
         {
-            if (!txtMinValue.Text.All(c=>char.IsDigit(c)))
+            try
             {
-                MessageBox.Show("کمترین رنج نمیتواند خالی باشد");
+                if (txtMinValue.Text.Trim().Length == 0)
+                {
+                    return;
+                }
+                if (!txtMinValue.Text.Trim().All(x => char.IsDigit(x)))
+                {
+                    MessageBox.Show("کمترین رنج باید عدد باشد");
+                    txtMinValue.Text = "";
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show( "خواهشمند است با مدیر سیستم تماس بگیرید" +  ex.Message);
                 return;
             }
         }
 
         private void txtMaxValue_TextChanged(object sender, EventArgs e)
         {
-            if (!txtMaxValue.Text.All(c=>char.IsDigit(c)))
+            try
             {
-                MessageBox.Show("بیشترین رنج نمیتواند خالی باشد");
+                if (txtMaxValue.Text.Trim().Length == 0)
+                {
+                    return;
+                }
+                if (!txtMaxValue.Text.Trim().All(x => char.IsDigit(x)))
+                {
+                    MessageBox.Show("بیشترین رنج باید عدد باشد");
+                    txtMaxValue.Text = "";
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("خواهشمند است با مدیر سیستم تماس بگیرید" +  ex.Message);
                 return;
             }
         }
 
         private void txtFromAge_TextChanged(object sender, EventArgs e)
         {
-            if (!txtFromAge.Text.All(c => char.IsDigit(c)))
+            try
             {
-                MessageBox.Show("کمترین سن نمیتواند خالی باشد");
+                if (txtFromAge.Text.Trim().Length == 0)
+                {
+                    return;
+                }
+                if (!txtFromAge.Text.Trim().All(x => char.IsDigit(x)))
+                {
+                    MessageBox.Show("کمترین سن باید عدد باشد");
+                    txtFromAge.Text = "";
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("خواهشمند است با مدیر سیستم تماس بگیرید" +  ex.Message);
                 return;
             }
         }
 
         private void txtToAge_TextChanged(object sender, EventArgs e)
         {
-            if (!txtToAge.Text.All(c => char.IsDigit(c)))
+            try
             {
-                MessageBox.Show("کمترین سن نمیتواند خالی باشد");
+                if (txtToAge.Text.Trim().Length == 0)
+                {
+                    return;
+                }
+                if (!txtToAge.Text.Trim().All(x => char.IsDigit(x)))
+                {
+                    MessageBox.Show("بیشترین سن باید عدد باشد");
+                    txtToAge.Text = "";
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("خواهشمند است با مدیر سیستم تماس بگیرید" +  ex.Message);
                 return;
             }
         }

@@ -311,5 +311,19 @@ namespace Laboratory
                 throw new Exception("ارور در دکمه ویرایش : خواهشمند است با مدیر سیستم تماس بگیرید");
             }
         }
+
+        private void txtDiscount_TextChanged(object sender, EventArgs e)
+        {
+            if (txtDiscount.Text.Trim().Length == 0)
+            {
+                return;
+            }
+            if (!txtDiscount.Text.Trim().All(c=>char.IsDigit(c)))
+            {
+                MessageBox.Show("فرانشیز نمیتواند حروف باشد");
+                txtDiscount.Text = "";
+                return;
+            }
+        }
     }
 }

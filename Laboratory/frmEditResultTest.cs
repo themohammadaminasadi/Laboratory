@@ -116,6 +116,7 @@ namespace Laboratory
                 {
                     lstPatient.Visible = false;
                     ConfigeDataGridViewPatientTestHeader();
+                    ConfigeDataGridViewPatientDetails();
                 }
             }
             catch (Exception ex)
@@ -137,6 +138,7 @@ namespace Laboratory
                 else
                 {
                     ConfigeDataGridViewPatientTestHeader();
+                    ConfigeDataGridViewPatientDetails();
                 }
             }
             catch (Exception ex)
@@ -178,6 +180,7 @@ namespace Laboratory
             try
             {
                 PatientTestHeaderID = Convert.ToInt32(DGVPatientTestHeader.Rows[e.RowIndex].Cells[0].Value);
+                PatientID = Convert.ToInt32(DGVPatientTestHeader.Rows[e.RowIndex].Cells["ClmnPaitentID"].Value);
                 if (e.ColumnIndex == 7)
                 {
                     DGVDetails.DataSource = repoResult.GetDetails(PatientTestHeaderID);
@@ -265,11 +268,12 @@ namespace Laboratory
                     return;
                 }
                 PatientTestDetail NewPatientTestDetail = new PatientTestDetail();
+                PatientRepository PatientRepository = new PatientRepository();
                 var OldPatientTestDetails = repoHeader.GetPatientDetails(this.PatientTestDetailsID);
                 double Result = Convert.ToDouble(txtResult.Text);
                 var ListTestRange = repoTestRange.GetTestWithTestID(TestID);
-                int Age = new PatientRepository().Get(PatientID).Age;
-                var patient = new PatientRepository().Get(PatientID); // patient یک شیء از کلاس Patient هست
+                int Age = PatientRepository.Get(PatientID).Age;
+                var patient = PatientRepository.Get(PatientID); // patient یک شیء از کلاس Patient هست
                 int genderInt = patient.Gender ? 1 : 0; // ✅ درست: استفاده از شیء patient
                 foreach (var item in ListTestRange)
                 {
@@ -372,6 +376,10 @@ namespace Laboratory
 
         private void txtResult_TextChanged(object sender, EventArgs e)
         {
+            if (txtResult.Text.Length == 0 || string.IsNullOrEmpty(txtResult.Text))
+            {
+                return;
+            }
             if (!txtResult.Text.All(c=>char.IsDigit(c)))
             {
                 MessageBox.Show("فقط میتوانید عدد وارد کنید");

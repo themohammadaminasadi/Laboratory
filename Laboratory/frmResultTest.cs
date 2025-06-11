@@ -262,7 +262,7 @@ namespace Laboratory
                 {
                     lstPatient.DataSource = repo.SearchPaitentByNationalCode(txtSearchPatient.Text);
                 }
-                else if (txtSearchPatient.Text.All(c => char.IsDigit(c)))
+                else if (txtSearchPatient.Text.Trim().All(c => char.IsDigit(c)))
                 {
                     lstPatient.DataSource = repo.SearchPaitentByPatientHeaderTestID(Convert.ToInt32(txtSearchPatient.Text));
                 }
@@ -397,11 +397,26 @@ namespace Laboratory
 
         private void txtResult_TextChanged(object sender, EventArgs e)
         {
-            if (!txtResult.Text.All(c=>char.IsDigit(c)))
+            try
             {
-                MessageBox.Show("نتیجه فقط میتواند عدد باشد");
+                if (txtResult.Text.Trim().Length == 0)
+                {
+                    return;
+                }
+                if (!txtResult.Text.Trim().All(x => char.IsDigit(x)))
+                {
+                    MessageBox.Show("نتیجه باید عدد باشد");
+                    txtResult.Text = "";
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("خواهشمند است با مدیر سیستم تماس بگیرید" + ex.Message);
                 return;
             }
+           
         }
     }
 }

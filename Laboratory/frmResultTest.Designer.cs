@@ -148,7 +148,7 @@
             // 
             // txtResult
             // 
-            this.txtResult.Location = new System.Drawing.Point(320, 428);
+            this.txtResult.Location = new System.Drawing.Point(321, 423);
             this.txtResult.Name = "txtResult";
             this.txtResult.Size = new System.Drawing.Size(183, 31);
             this.txtResult.TabIndex = 2;
@@ -158,7 +158,7 @@
             // 
             this.lblResultTitle.AutoSize = true;
             this.lblResultTitle.Font = new System.Drawing.Font("B Titr", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.lblResultTitle.Location = new System.Drawing.Point(266, 429);
+            this.lblResultTitle.Location = new System.Drawing.Point(267, 424);
             this.lblResultTitle.Name = "lblResultTitle";
             this.lblResultTitle.Size = new System.Drawing.Size(45, 30);
             this.lblResultTitle.TabIndex = 4;
@@ -168,7 +168,7 @@
             // 
             this.btnAddResult.BackColor = System.Drawing.Color.MediumAquamarine;
             this.btnAddResult.Font = new System.Drawing.Font("B Titr", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.btnAddResult.Location = new System.Drawing.Point(97, 520);
+            this.btnAddResult.Location = new System.Drawing.Point(117, 520);
             this.btnAddResult.Name = "btnAddResult";
             this.btnAddResult.Size = new System.Drawing.Size(173, 46);
             this.btnAddResult.TabIndex = 5;
@@ -309,7 +309,7 @@
             // 
             this.btnEditResult.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.btnEditResult.Font = new System.Drawing.Font("B Titr", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.btnEditResult.Location = new System.Drawing.Point(97, 510);
+            this.btnEditResult.Location = new System.Drawing.Point(117, 520);
             this.btnEditResult.Name = "btnEditResult";
             this.btnEditResult.Size = new System.Drawing.Size(173, 46);
             this.btnEditResult.TabIndex = 11;
@@ -323,7 +323,7 @@
             this.btnCancle.Font = new System.Drawing.Font("B Titr", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.btnCancle.Location = new System.Drawing.Point(320, 520);
             this.btnCancle.Name = "btnCancle";
-            this.btnCancle.Size = new System.Drawing.Size(144, 46);
+            this.btnCancle.Size = new System.Drawing.Size(173, 46);
             this.btnCancle.TabIndex = 12;
             this.btnCancle.Text = "انصراف";
             this.btnCancle.UseVisualStyleBackColor = false;
@@ -352,7 +352,6 @@
             this.Name = "frmResultTest";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.RightToLeftLayout = true;
-            this.Text = "مدیریت نتیجه ی آزمایشات";
             this.Load += new System.EventHandler(this.frmResultTest_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DGVTestHeader)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGVDetails)).EndInit();

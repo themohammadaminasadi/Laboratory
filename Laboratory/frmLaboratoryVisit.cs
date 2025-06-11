@@ -588,6 +588,7 @@ namespace Laboratory
                         CleanError();
                         ActiveHeaderVisit();
                         btnClearFormForAddVisit.Visible = false;
+                        lstPatient.Visible = false;
                     }
                 }
             }

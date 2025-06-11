@@ -354,9 +354,20 @@ namespace Laboratory
             {
                 err.Clear();
             }
-            if (!txtFirstName.Text.All(c=>char.IsLetter(c)))
+            if (txtFirstName.Text.Length == 0)
             {
-                MessageBox.Show("نام نمیتواند عدد باشد");
+                return;
+            }
+            if (!char.IsLetter(txtFirstName.Text.Trim()[0]))
+            {
+                MessageBox.Show("نام باید شامل حروف باشد");
+                txtFirstName.Text = "";
+                return;
+            }
+            if (!txtFirstName.Text.Skip(1).All(x => char.IsLetter(x) || x == ' '))
+            {
+                MessageBox.Show("نام باید شامل حروف باشد");
+                txtFirstName.Text = "";
                 return;
             }
         }
@@ -367,6 +378,16 @@ namespace Laboratory
             {
                 err.Clear();
             }
+            if (txtNationalCode.Text.Length == 0)
+            {
+                return;
+            }
+            if (!txtNationalCode.Text.Trim().All(c=>char.IsDigit(c)))
+            {
+                MessageBox.Show("کد ملی باید عدد باشد");
+                txtNationalCode.Text = "";
+                return;
+            }
         }
 
         private void txtLastName_TextChanged(object sender, EventArgs e)
@@ -375,9 +396,20 @@ namespace Laboratory
             {
                 err.Clear();
             }
-            if (!txtLastName.Text.All(c=>char.IsLetter(c)))
+            if (txtLastName.Text.Length == 0)
             {
-                MessageBox.Show("نام خانوادگی نمیتواند عدد باشد");
+                return;
+            }
+            if (!char.IsLetter(txtLastName.Text.Trim()[0]))
+            {
+                MessageBox.Show("نام خانوادگی باید شامل حروف باشد");
+                txtLastName.Text = "";
+                return;
+            }
+            if (!txtLastName.Text.Skip(1).All(x => char.IsLetter(x) || x == ' '))
+            {
+                MessageBox.Show("نام خانوادگی باید شامل حروف باشد");
+                txtLastName.Text = "";
                 return;
             }
         }
@@ -388,14 +420,29 @@ namespace Laboratory
             {
                 err.Clear();
             }
+            if (txtPhoneNumber.Text.Length == 0)
+            {
+                return;
+            }
+            if (!txtPhoneNumber.Text.Trim().All(c => char.IsDigit(c)))
+            {
+                MessageBox.Show("کد ملی باید عدد باشد");
+                txtPhoneNumber.Text = "";
+                return;
+            }
 
         }
 
         private void txtAge_TextChanged(object sender, EventArgs e)
         {
-            if (!txtAge.Text.All(c=>char.IsDigit(c)))
+            if (txtAge.Text.Length == 0)
             {
-                MessageBox.Show("باید عدد وارد کنید");
+                return;
+            }
+            if (!txtAge.Text.Trim().All(c => char.IsDigit(c)))
+            {
+                MessageBox.Show("سن باید عدد باشد");
+                txtAge.Text = "";
                 return;
             }
             if (!string.IsNullOrEmpty(txtAge.Text))
@@ -415,9 +462,14 @@ namespace Laboratory
 
         private void txtSearchNationalCode_TextChanged(object sender, EventArgs e)
         {
-            if (!txtNationalCode.Text.All(c=>char.IsDigit(c)))
+            if (txtSearchNationalCode.Text.Length == 0)
             {
-                MessageBox.Show("کد ملی را باید به صورت عدد وارد کنید");
+                return;
+            }
+            if (!txtSearchNationalCode.Text.Trim().All(c => char.IsDigit(c)))
+            {
+                MessageBox.Show("کد ملی باید عدد باشد");
+                txtSearchNationalCode.Text = "";
                 return;
             }
             if (!string.IsNullOrEmpty(txtSearchNationalCode.Text))
@@ -432,9 +484,14 @@ namespace Laboratory
 
         private void txtSearchPhoneNumber_TextChanged(object sender, EventArgs e)
         {
-            if (!txtSearchPhoneNumber.Text.All(c=>char.IsDigit(c)))
+            if (txtSearchPhoneNumber.Text.Length == 0)
             {
-                MessageBox.Show("شماره موبایل را باید به صورت عدد وارد کنید");
+                return;
+            }
+            if (!txtSearchPhoneNumber.Text.Trim().All(c => char.IsDigit(c)))
+            {
+                MessageBox.Show("موبایل باید عدد باشد");
+                txtSearchPhoneNumber.Text = "";
                 return;
             }
             if (!string.IsNullOrEmpty(txtSearchPhoneNumber.Text))
@@ -449,6 +506,22 @@ namespace Laboratory
 
         private void txtSearchFirstName_TextChanged(object sender, EventArgs e)
         {
+            if (txtSearchFirstName.Text.Length == 0)
+            {
+                return;
+            }
+            if (!char.IsLetter(txtSearchFirstName.Text.Trim()[0]))
+            {
+                MessageBox.Show("نام  باید شامل حروف باشد");
+                txtSearchFirstName.Text = "";
+                return;
+            }
+            if (!txtSearchFirstName.Text.Skip(1).All(x => char.IsLetter(x) || x == ' '))
+            {
+                MessageBox.Show("نام  باید شامل حروف باشد");
+                txtSearchFirstName.Text = "";
+                return;
+            }
             if (!string.IsNullOrEmpty(txtSearchFirstName.Text))
             {
                 DoSearch();
@@ -483,7 +556,22 @@ namespace Laboratory
 
         private void txtSearchLastName_TextChanged(object sender, EventArgs e)
         {
-            DoSearch();
+            if (txtSearchLastName.Text.Length == 0)
+            {
+                return;
+            }
+            if (!char.IsLetter(txtSearchLastName.Text.Trim()[0]))
+            {
+                MessageBox.Show("نام خانوادگی باید شامل حروف باشد");
+                txtSearchLastName.Text = "";
+                return;
+            }
+            if (!txtSearchLastName.Text.Skip(1).All(x => char.IsLetter(x) || x == ' '))
+            {
+                MessageBox.Show("نام خانوادگی  باید شامل حروف باشد");
+                txtSearchLastName.Text = "";
+                return;
+            }
             if (!string.IsNullOrEmpty(txtSearchLastName.Text))
             {
                 DoSearch();

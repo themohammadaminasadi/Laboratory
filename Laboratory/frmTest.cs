@@ -457,41 +457,69 @@ namespace Laboratory
 
         private void txtFromUnitPrice_TextChanged(object sender, EventArgs e)
         {
-            if (!txtFromUnitPrice.Text.All(c=>char.IsDigit(c)))
+            try
             {
-                MessageBox.Show("خواهشمند است عدد وارد کنید");
+                if (txtFromUnitPrice.Text.Trim().Length == 0)
+                {
+                    return;
+                }
+                if (!txtFromUnitPrice.Text.Trim().All(x => char.IsDigit(x)))
+                {
+                    MessageBox.Show("خواهشمند است عدد وارد کنید");
+                    return;
+                }
+                if (!string.IsNullOrEmpty(txtFromUnitPrice.Text))
+                {
+                    sm.FromPrice = Convert.ToInt32(txtFromUnitPrice.Text);
+                    BindGridForSearch(sm);
+                }
+                else
+                {
+                    sm.FromPrice = null;
+                    BindGrid();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("خواهشمند است با مدیر سیستم تماس بگیرید" +  ex.Message);
                 return;
             }
-            if (!string.IsNullOrEmpty(txtFromUnitPrice.Text))
-            {
-                sm.FromPrice = Convert.ToInt32(txtFromUnitPrice.Text);
-                BindGridForSearch(sm);
-            }
-            else
-            {
-                sm.FromPrice = null;
-                BindGrid();
-            }
+         
         }
 
         private void txtSearchToUnitPrice_TextChanged(object sender, EventArgs e)
         {
-            if (!txtSearchToUnitPrice.Text.All(c => char.IsDigit(c)))
+            try
             {
-                MessageBox.Show("خواهشمند است عدد وارد کنید");
+                if (txtSearchToUnitPrice.Text.Trim().Length == 0)
+                {
+                    return;
+                }
+                if (!txtSearchToUnitPrice.Text.Trim().All(x => char.IsDigit(x)))
+                {
+                    MessageBox.Show("قیمت آزمایش باید عدد باشد");
+                    txtSearchToUnitPrice.Text = "";
+                    return;
+                }
+                if (!string.IsNullOrEmpty(txtSearchToUnitPrice.Text))
+                {
+                    sm.ToPrice = Convert.ToInt32(txtSearchToUnitPrice.Text);
+                    BindGridForSearch(sm);
+                }
+                else
+                {
+                    sm.ToPrice = null;
+                    BindGrid();
+                }
+            
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("خواهشمند است با مدیر سیستم تماس بگیرید" +  ex.Message);
                 return;
             }
-            if (!string.IsNullOrEmpty(txtSearchToUnitPrice.Text))
-            {
-                sm.ToPrice = Convert.ToInt32(txtSearchToUnitPrice.Text);
-                BindGridForSearch(sm);
-
-            }
-            else
-            {
-                sm.ToPrice = null;
-                BindGrid();
-            }
+          
         }
 
         private void txtTest_TextChanged(object sender, EventArgs e)
@@ -504,13 +532,28 @@ namespace Laboratory
 
         private void txtPrice_TextChanged(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtPrice.Text))
+          
+            try
             {
-                lblErrorPrice.Text = "";
+                if (!string.IsNullOrEmpty(txtPrice.Text))
+                {
+                    lblErrorPrice.Text = "";
+                }
+                if (txtPrice.Text.Trim().Length == 0)
+                {
+                    return;
+                }
+                if (!txtPrice.Text.Trim().All(x => char.IsDigit(x)))
+                {
+                    MessageBox.Show("قیمت آزمایش باید عدد باشد");
+                    txtPrice.Text = "";
+                    return;
+                }
             }
-            if (!txtPrice.Text.All(c=>char.IsDigit(c)))
+            catch (Exception ex)
             {
-                MessageBox.Show("باید به صورت عدد وارد کنید");
+
+                MessageBox.Show("خواهشمند است با مدیر سیستم تماس بگیرید" +  ex.Message);
                 return;
             }
         }

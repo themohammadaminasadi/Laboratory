@@ -50,7 +50,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.cmbInsurance = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtEmployeer = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.txtPatientHeaderID = new System.Windows.Forms.TextBox();
@@ -71,12 +70,8 @@
             this.ClmnAge = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClmnShowResult = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lblInsuracePrice = new System.Windows.Forms.Label();
             this.lblTotalPrice = new System.Windows.Forms.Label();
-            this.lblTotalPriceTests = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
             this.btnCancle = new System.Windows.Forms.Button();
             this.btnEditResult = new System.Windows.Forms.Button();
             this.lblTestName = new System.Windows.Forms.Label();
@@ -303,14 +298,6 @@
             this.label7.TabIndex = 65;
             this.label7.Text = "بیمه بیمار";
             // 
-            // txtEmployeer
-            // 
-            this.txtEmployeer.Location = new System.Drawing.Point(631, 307);
-            this.txtEmployeer.Name = "txtEmployeer";
-            this.txtEmployeer.Size = new System.Drawing.Size(291, 31);
-            this.txtEmployeer.TabIndex = 68;
-            this.txtEmployeer.TextChanged += new System.EventHandler(this.txtEmployeer_TextChanged);
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -337,6 +324,7 @@
             this.txtPatientHeaderID.Name = "txtPatientHeaderID";
             this.txtPatientHeaderID.Size = new System.Drawing.Size(240, 31);
             this.txtPatientHeaderID.TabIndex = 69;
+            this.txtPatientHeaderID.TextChanged += new System.EventHandler(this.txtPatientHeaderID_TextChanged);
             // 
             // DGVDetails
             // 
@@ -500,79 +488,33 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.lblInsuracePrice);
             this.panel1.Controls.Add(this.lblTotalPrice);
-            this.panel1.Controls.Add(this.lblTotalPriceTests);
             this.panel1.Controls.Add(this.label15);
-            this.panel1.Controls.Add(this.label13);
-            this.panel1.Controls.Add(this.label12);
-            this.panel1.Location = new System.Drawing.Point(951, 190);
+            this.panel1.Location = new System.Drawing.Point(951, 401);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(415, 292);
+            this.panel1.Size = new System.Drawing.Size(415, 81);
             this.panel1.TabIndex = 73;
-            // 
-            // lblInsuracePrice
-            // 
-            this.lblInsuracePrice.AutoSize = true;
-            this.lblInsuracePrice.Font = new System.Drawing.Font("B Titr", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.lblInsuracePrice.ForeColor = System.Drawing.Color.Magenta;
-            this.lblInsuracePrice.Location = new System.Drawing.Point(25, 150);
-            this.lblInsuracePrice.Name = "lblInsuracePrice";
-            this.lblInsuracePrice.Size = new System.Drawing.Size(20, 29);
-            this.lblInsuracePrice.TabIndex = 79;
-            this.lblInsuracePrice.Text = "0";
             // 
             // lblTotalPrice
             // 
             this.lblTotalPrice.AutoSize = true;
             this.lblTotalPrice.Font = new System.Drawing.Font("B Titr", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.lblTotalPrice.ForeColor = System.Drawing.Color.Magenta;
-            this.lblTotalPrice.Location = new System.Drawing.Point(25, 247);
+            this.lblTotalPrice.Location = new System.Drawing.Point(54, 23);
             this.lblTotalPrice.Name = "lblTotalPrice";
             this.lblTotalPrice.Size = new System.Drawing.Size(20, 29);
             this.lblTotalPrice.TabIndex = 78;
             this.lblTotalPrice.Text = "0";
             // 
-            // lblTotalPriceTests
-            // 
-            this.lblTotalPriceTests.AutoSize = true;
-            this.lblTotalPriceTests.Font = new System.Drawing.Font("B Titr", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.lblTotalPriceTests.ForeColor = System.Drawing.Color.Magenta;
-            this.lblTotalPriceTests.Location = new System.Drawing.Point(25, 50);
-            this.lblTotalPriceTests.Name = "lblTotalPriceTests";
-            this.lblTotalPriceTests.Size = new System.Drawing.Size(20, 29);
-            this.lblTotalPriceTests.TabIndex = 74;
-            this.lblTotalPriceTests.Text = "0";
-            // 
             // label15
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("B Titr", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label15.Location = new System.Drawing.Point(84, 196);
+            this.label15.Location = new System.Drawing.Point(94, 22);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(228, 30);
             this.label15.TabIndex = 77;
             this.label15.Text = "مبلغی که بیماران پرداخت کرده اند :";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("B Titr", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label13.Location = new System.Drawing.Point(103, 96);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(209, 30);
-            this.label13.TabIndex = 75;
-            this.label13.Text = "مبلغی که بیمه باید پرداخت کند : ";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("B Titr", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label12.Location = new System.Drawing.Point(193, 15);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(119, 30);
-            this.label12.TabIndex = 74;
-            this.label12.Text = "مجموع آزمایشات";
             // 
             // btnCancle
             // 
@@ -635,7 +577,7 @@
             // cmbEmployee
             // 
             this.cmbEmployee.FormattingEnabled = true;
-            this.cmbEmployee.Location = new System.Drawing.Point(631, 358);
+            this.cmbEmployee.Location = new System.Drawing.Point(621, 306);
             this.cmbEmployee.Name = "cmbEmployee";
             this.cmbEmployee.Size = new System.Drawing.Size(294, 32);
             this.cmbEmployee.TabIndex = 81;
@@ -659,7 +601,6 @@
             this.Controls.Add(this.DGVTestHeader);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.txtPatientHeaderID);
-            this.Controls.Add(this.txtEmployeer);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.cmbInsurance);
             this.Controls.Add(this.label7);
@@ -722,19 +663,14 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cmbInsurance;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtEmployeer;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtPatientHeaderID;
         private System.Windows.Forms.DataGridView DGVDetails;
         private System.Windows.Forms.DataGridView DGVTestHeader;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label lblInsuracePrice;
         private System.Windows.Forms.Label lblTotalPrice;
-        private System.Windows.Forms.Label lblTotalPriceTests;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClmnPatientTestHederID;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClmnHederDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClmnFullNamePaitent;

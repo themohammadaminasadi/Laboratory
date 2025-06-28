@@ -214,8 +214,9 @@
             // 
             // ToolStrip
             // 
-            this.ToolStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(202)))), ((int)(((byte)(203)))), ((int)(((byte)(210)))));
+            this.ToolStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(239)))), ((int)(((byte)(250)))));
             this.ToolStrip.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.ToolStrip.Font = new System.Drawing.Font("B Titr", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.ToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblUserName,
             this.lblDateTime});
@@ -228,7 +229,7 @@
             // lblUserName
             // 
             this.lblUserName.Font = new System.Drawing.Font("B Titr", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.lblUserName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(132)))), ((int)(((byte)(219)))));
+            this.lblUserName.ForeColor = System.Drawing.Color.Black;
             this.lblUserName.Name = "lblUserName";
             this.lblUserName.RightToLeftAutoMirrorImage = true;
             this.lblUserName.Size = new System.Drawing.Size(102, 22);

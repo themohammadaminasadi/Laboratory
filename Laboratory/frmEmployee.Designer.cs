@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnCancle = new System.Windows.Forms.Button();
@@ -69,6 +69,7 @@
             this.ClmnEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ClmnDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.err = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label2 = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.pnlInfoUser.SuspendLayout();
@@ -208,6 +209,7 @@
             // pnlInfoUser
             // 
             this.pnlInfoUser.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlInfoUser.Controls.Add(this.label2);
             this.pnlInfoUser.Controls.Add(this.cmbEmployeeAction);
             this.pnlInfoUser.Controls.Add(this.txtPassword);
             this.pnlInfoUser.Controls.Add(this.btnShow);
@@ -363,14 +365,14 @@
             // dataGridViewEmployee
             // 
             this.dataGridViewEmployee.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(244)))), ((int)(((byte)(234)))));
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewEmployee.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewEmployee.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewEmployee.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ClmnEmployeeID,
@@ -483,6 +485,17 @@
             this.err.BlinkRate = 500;
             this.err.ContainerControl = this;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("B Titr", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label2.Location = new System.Drawing.Point(239, 125);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(63, 29);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "دسترسی";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
             // frmEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 24F);
@@ -557,5 +570,6 @@
         private System.Windows.Forms.DataGridViewButtonColumn ClmnEdit;
         private System.Windows.Forms.DataGridViewButtonColumn ClmnDelete;
         private System.Windows.Forms.ComboBox cmbEmployeeAction;
+        private System.Windows.Forms.Label label2;
     }
 }

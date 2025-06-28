@@ -63,20 +63,20 @@ namespace Laboratory
                     var txt = (System.Windows.Forms.TextBox)control;
                     txt.Text = "";
                 }
-                cmbCategory.SelectedValue =-1;
-                txtFromUnitPrice.Text = "";
-                txtSearchToUnitPrice.Text = "";
-                txtSearchTest.Text = "";
-                rdbHasAge.Checked = true;
-                rdbHasGender.Checked = true;
-                txtSearchUnit.Text = "";
                 //for (int i = 0; i < checklistCategoryTest.Items.Count; i++)
                 //{
                 //    checklistCategoryTest.SetItemChecked(i, false);
                 //}
                 lstUnit.Visible =false; 
-
             }
+            
+            txtFromUnitPrice.Text = "";
+            txtSearchToUnitPrice.Text = "";
+            txtSearchTest.Text = "";
+            rdbHasAge.Checked = true;
+            rdbHasGender.Checked = true;
+            txtSearchUnit.Text = "";
+            cmbCategory.SelectedValue = -1;
         }
         #region 
         void GoToAddMode()
@@ -110,6 +110,7 @@ namespace Laboratory
                 BindCombo();
                 //BindCheckListBox();
                 BindGrid();
+                GoToAddMode();
                 DataGridViewTest.EnableHeadersVisualStyles = false;
 
                 // رنگ پس‌زمینه کلی گرید
@@ -209,6 +210,7 @@ namespace Laboratory
                 CleanForm();
                 BindGrid();
                 GoToAddMode();
+                err.Clear();
             }
             catch (Exception)
             {

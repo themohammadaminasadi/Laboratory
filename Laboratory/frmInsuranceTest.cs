@@ -86,6 +86,8 @@ namespace Laboratory
                 txtYear.Text = pc.GetYear(DateTime.Now).ToString();
                 txtYear.Enabled = false;
                 err.Clear();
+                dataGridViewInsuraceTest.ScrollBars = ScrollBars.Both;
+                dataGridViewInsuraceTest.Height = 300;
             }
             catch (Exception)
             {
@@ -320,9 +322,9 @@ namespace Laboratory
             }
             if (!txtDiscount.Text.Trim().All(c=>char.IsDigit(c)))
             {
-                MessageBox.Show("فرانشیز نمیتواند حروف باشد");
                 txtDiscount.Text = "";
                 return;
+
             }
         }
     }

@@ -68,9 +68,14 @@ namespace Laboratory
                             MessageBox.Show("این بیمه دارای سابقه می باشد در جدول آزمایش نمیتوانید آن را حذف کنید");
                             return;
                         }
+                        if (repo.hasInsuranceTableInsuranceType(this.InsuranceID))
+                        {
+                            MessageBox.Show("این بیمه دارای سابقه می باشد");
+                            return;
+                        }
                         else
                         {
-                            repo.Delete(InsuranceID);
+                            repo.Delete(this.InsuranceID);
                             BindGrid();
                             GoToAddMode();
                             err.Clear();

@@ -36,7 +36,6 @@ namespace DataAccess
             }
             catch (Exception)
             {
-
                 throw new Exception("عملیات حذف به درستی انجام نشد با پشتیبانی تماس بگیرید");
             }
         }
@@ -55,7 +54,10 @@ namespace DataAccess
         {
             return db.PaitentTestHeders.Any(x => x.InsuranceID == InsuranceID);
         }
-
+        public bool hasInsuranceTableInsuranceType(int InsuranceID)
+        {
+            return db.InsuranceTests.Any(x => x.InsuraneID == InsuranceID);
+        }
         public bool HasInuranceTypeNameInTableInsurance(string InsuranceTypeName)
         {
             return db.Insurances.Any(x => x.InsuranceTypeName == InsuranceTypeName);

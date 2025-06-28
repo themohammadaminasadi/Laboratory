@@ -615,8 +615,8 @@ namespace Laboratory
             {
                 GoToAddMode();
                 CleanForm();
-                DGVDetails.AutoGenerateColumns = false;
-                DGVDetails.DataSource = null;
+                //DGVDetails.AutoGenerateColumns = false;
+                //DGVDetails.DataSource = null;
                 CleanEditTest();
             }
             catch (Exception ex)

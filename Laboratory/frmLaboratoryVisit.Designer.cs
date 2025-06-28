@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnAddPatientTest = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblNationalCodePatient = new System.Windows.Forms.Label();
@@ -136,7 +136,7 @@
             this.lblPatientName.AutoSize = true;
             this.lblPatientName.Font = new System.Drawing.Font("B Titr", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.lblPatientName.ForeColor = System.Drawing.Color.Red;
-            this.lblPatientName.Location = new System.Drawing.Point(48, 61);
+            this.lblPatientName.Location = new System.Drawing.Point(38, 61);
             this.lblPatientName.Name = "lblPatientName";
             this.lblPatientName.Size = new System.Drawing.Size(0, 29);
             this.lblPatientName.TabIndex = 9;
@@ -155,7 +155,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("B Titr", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label8.Location = new System.Drawing.Point(145, 111);
+            this.label8.Location = new System.Drawing.Point(147, 111);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(58, 29);
             this.label8.TabIndex = 7;
@@ -165,7 +165,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("B Titr", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label7.Location = new System.Drawing.Point(142, 61);
+            this.label7.Location = new System.Drawing.Point(144, 61);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(61, 29);
             this.label7.TabIndex = 4;
@@ -175,7 +175,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("B Titr", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label6.Location = new System.Drawing.Point(112, 13);
+            this.label6.Location = new System.Drawing.Point(114, 13);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(91, 29);
             this.label6.TabIndex = 3;
@@ -354,14 +354,14 @@
             // DGVTestDetails
             // 
             this.DGVTestDetails.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(244)))), ((int)(((byte)(234)))));
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DGVTestDetails.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DGVTestDetails.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.DGVTestDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGVTestDetails.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ClmnPatientTestHederID,

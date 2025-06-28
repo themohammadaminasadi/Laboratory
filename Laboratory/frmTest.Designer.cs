@@ -428,16 +428,16 @@
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.txtSearchTest);
             this.panel1.Controls.Add(this.label6);
-            this.panel1.Location = new System.Drawing.Point(38, 377);
+            this.panel1.Location = new System.Drawing.Point(330, 373);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1324, 180);
+            this.panel1.Size = new System.Drawing.Size(807, 180);
             this.panel1.TabIndex = 22;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("B Titr", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label10.Location = new System.Drawing.Point(1246, 95);
+            this.label10.Location = new System.Drawing.Point(706, 112);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(60, 30);
             this.label10.TabIndex = 29;
@@ -445,9 +445,9 @@
             // 
             // txtSearchToUnitPrice
             // 
-            this.txtSearchToUnitPrice.Location = new System.Drawing.Point(335, 94);
+            this.txtSearchToUnitPrice.Location = new System.Drawing.Point(28, 111);
             this.txtSearchToUnitPrice.Name = "txtSearchToUnitPrice";
-            this.txtSearchToUnitPrice.Size = new System.Drawing.Size(393, 31);
+            this.txtSearchToUnitPrice.Size = new System.Drawing.Size(290, 31);
             this.txtSearchToUnitPrice.TabIndex = 27;
             this.txtSearchToUnitPrice.TextChanged += new System.EventHandler(this.txtSearchToUnitPrice_TextChanged);
             // 
@@ -455,7 +455,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("B Titr", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label9.Location = new System.Drawing.Point(734, 95);
+            this.label9.Location = new System.Drawing.Point(318, 112);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(58, 30);
             this.label9.TabIndex = 26;
@@ -463,15 +463,15 @@
             // 
             // txtFromUnitPrice
             // 
-            this.txtFromUnitPrice.Location = new System.Drawing.Point(812, 94);
+            this.txtFromUnitPrice.Location = new System.Drawing.Point(417, 111);
             this.txtFromUnitPrice.Name = "txtFromUnitPrice";
-            this.txtFromUnitPrice.Size = new System.Drawing.Size(411, 31);
+            this.txtFromUnitPrice.Size = new System.Drawing.Size(283, 31);
             this.txtFromUnitPrice.TabIndex = 28;
             this.txtFromUnitPrice.TextChanged += new System.EventHandler(this.txtFromUnitPrice_TextChanged);
             // 
             // txtSearchUnit
             // 
-            this.txtSearchUnit.Location = new System.Drawing.Point(568, 18);
+            this.txtSearchUnit.Location = new System.Drawing.Point(28, 35);
             this.txtSearchUnit.Name = "txtSearchUnit";
             this.txtSearchUnit.Size = new System.Drawing.Size(290, 31);
             this.txtSearchUnit.TabIndex = 25;
@@ -481,7 +481,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("B Titr", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label7.Location = new System.Drawing.Point(864, 19);
+            this.label7.Location = new System.Drawing.Point(337, 36);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(44, 30);
             this.label7.TabIndex = 24;
@@ -489,7 +489,7 @@
             // 
             // txtSearchTest
             // 
-            this.txtSearchTest.Location = new System.Drawing.Point(957, 18);
+            this.txtSearchTest.Location = new System.Drawing.Point(417, 35);
             this.txtSearchTest.Name = "txtSearchTest";
             this.txtSearchTest.Size = new System.Drawing.Size(284, 31);
             this.txtSearchTest.TabIndex = 25;
@@ -499,7 +499,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("B Titr", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label6.Location = new System.Drawing.Point(1247, 19);
+            this.label6.Location = new System.Drawing.Point(707, 36);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(61, 30);
             this.label6.TabIndex = 24;
@@ -509,7 +509,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("B Titr", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label5.Location = new System.Drawing.Point(50, 358);
+            this.label5.Location = new System.Drawing.Point(342, 354);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(101, 30);
             this.label5.TabIndex = 23;

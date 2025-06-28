@@ -136,16 +136,6 @@ namespace Laboratory
                     MessageBox.Show("موبایل باید 11 رقم باشد");
                     return;
                 }
-                if (!txtLastName.Text.All(c => char.IsLetter(c)))
-                {
-                    MessageBox.Show("نام خانوادگی نمیتواند عدد باشد");
-                    return;
-                }
-                if (!txtFirstName.Text.All(c => char.IsLetter(c)))
-                {
-                    MessageBox.Show("نام نمیتواند عدد باشد");
-                    return;
-                }
                 repo.Add(patient);
                 CleanForm();
                 BindGrid();
@@ -231,16 +221,6 @@ namespace Laboratory
                 if (patient.PhoneNumber.Length != 11)
                 {
                     MessageBox.Show("موبایل باید 11 رقم باشد");
-                    return;
-                }
-                if (!txtLastName.Text.All(c => char.IsLetter(c)))
-                {
-                    MessageBox.Show("نام خانوادگی نمیتواند عدد باشد");
-                    return;
-                }
-                if (!txtFirstName.Text.All(c => char.IsLetter(c)))
-                {
-                    MessageBox.Show("نام نمیتواند عدد باشد");
                     return;
                 }
                 if (rdbMale.Checked)
@@ -464,6 +444,7 @@ namespace Laboratory
         {
             if (txtSearchNationalCode.Text.Length == 0)
             {
+                BindGrid();
                 return;
             }
             if (!txtSearchNationalCode.Text.Trim().All(c => char.IsDigit(c)))
@@ -486,6 +467,7 @@ namespace Laboratory
         {
             if (txtSearchPhoneNumber.Text.Length == 0)
             {
+                BindGrid();
                 return;
             }
             if (!txtSearchPhoneNumber.Text.Trim().All(c => char.IsDigit(c)))
@@ -508,21 +490,22 @@ namespace Laboratory
         {
             if (txtSearchFirstName.Text.Length == 0)
             {
+                BindGrid();
                 return;
             }
-            if (!char.IsLetter(txtSearchFirstName.Text.Trim()[0]))
+            else if (!char.IsLetter(txtSearchFirstName.Text.Trim()[0]))
             {
                 MessageBox.Show("نام  باید شامل حروف باشد");
                 txtSearchFirstName.Text = "";
                 return;
             }
-            if (!txtSearchFirstName.Text.Skip(1).All(x => char.IsLetter(x) || x == ' '))
+            else if (!txtSearchFirstName.Text.Skip(1).All(x => char.IsLetter(x) || x == ' '))
             {
                 MessageBox.Show("نام  باید شامل حروف باشد");
                 txtSearchFirstName.Text = "";
                 return;
             }
-            if (!string.IsNullOrEmpty(txtSearchFirstName.Text))
+            else if (!string.IsNullOrEmpty(txtSearchFirstName.Text))
             {
                 DoSearch();
             }
@@ -558,21 +541,22 @@ namespace Laboratory
         {
             if (txtSearchLastName.Text.Length == 0)
             {
+                BindGrid();
                 return;
             }
-            if (!char.IsLetter(txtSearchLastName.Text.Trim()[0]))
+            else if (!char.IsLetter(txtSearchLastName.Text.Trim()[0]))
             {
                 MessageBox.Show("نام خانوادگی باید شامل حروف باشد");
                 txtSearchLastName.Text = "";
                 return;
             }
-            if (!txtSearchLastName.Text.Skip(1).All(x => char.IsLetter(x) || x == ' '))
+            else if (!txtSearchLastName.Text.Skip(1).All(x => char.IsLetter(x) || x == ' '))
             {
                 MessageBox.Show("نام خانوادگی  باید شامل حروف باشد");
                 txtSearchLastName.Text = "";
                 return;
             }
-            if (!string.IsNullOrEmpty(txtSearchLastName.Text))
+            else if (!string.IsNullOrEmpty(txtSearchLastName.Text))
             {
                 DoSearch();
             }
